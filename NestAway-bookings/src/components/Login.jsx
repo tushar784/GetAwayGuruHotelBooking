@@ -4,7 +4,7 @@ function Login(){
     return (
         <div className=' bg-slate-200 h-dvh flex'>
 
-            <div className='basis-1/2 mt-20 ml-56 mb-20 ' style={{backgroundColor:"#90CCBA"}}>
+            <div className='w-1/2 mt-20 ml-56 mb-20 ' style={{backgroundColor:"#90CCBA"}}>
                     <h1 className='text-white mt-7 ml-8 font-bold'>NestAway</h1>
                     <h1 className='font-bold text-white text-5xl mt-10 pt-20 ml-8 '>Welcome</h1>
                     <h1 className='font-bold text-white text-5xl mt-7 ml-8'>Back!</h1>
