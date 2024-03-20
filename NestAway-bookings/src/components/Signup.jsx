@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
-import Navbar from "./Navbar"
+
 
     // logic for signup (backend logic is required)
-//     const signupp = (history) => {
+//     const signup = (history) => {
 //       history.push('/signup');
 //   };
 
@@ -10,7 +10,7 @@ import Navbar from "./Navbar"
 function Signup(){
   return (
      <>
-        <Navbar />
+      
         <div className='h-dvh flex'>
         
         {/* 1st half */}
