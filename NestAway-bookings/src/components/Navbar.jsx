@@ -5,19 +5,22 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 
 function Navbar() {
   const [user ,setUser] = useState({});
+  // const [user] = useState({});
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Define functions for handling authentication and mobile menu toggling
   
   return (
     <div className="flex bg-white fixed z-10 w-full">
+       <div className="ml-2"><h1 className="font-bold text-xl p-4">NestAway</h1></div>
       <header className="container mx-auto py-4 px-6 flex items-center justify-between">
+      {/* <div className="ml-2"><h1 className="font-bold text-xl p-4">NestAway</h1></div> */}
         <div className="flex items-center">
-          <Link to="/" className="text-xl md:text-3xl font-bold"> {/* Adjusted text size for mobile */}
-          NestAway
+        {/* <div className="ml-2"><h1 className="font-bold text-xl p-4">NestAway</h1></div> */}
+          <Link to="/" className="text-xl md:text-3xl font-bold">
           </Link>
           <nav className="hidden md:flex md:ml-[17rem]">
-            <div className="flex gap-12 ">
+            <div className="flex gap-10 font-semibold">
               <Link to="/">Home</Link>
               <Link to="">Customer Support</Link>
               <Link to="">About</Link>
@@ -26,13 +29,13 @@ function Navbar() {
         </div>
         <div className="md:hidden">
           <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            {mobileMenuOpen ? <FaTimes className="text-xl" /> : <FaBars className="text-xl" />}
+            {mobileMenuOpen ? <FaTimes className="text-xl mt-[2rem]" /> : <FaBars className="text-xl" />}
           </button>
         </div>
 
         {/* Button for LG Screen */}
         {/* login */}
-        <nav className="hidden md:flex items-center gap-4">
+        <nav className="hidden md:flex items-center gap-4 ">
           <Link className="font-semibold mr-4 ml-[18rem]" to="/login">Login</Link>
           {user && (
             <div>
@@ -43,7 +46,7 @@ function Navbar() {
         </nav>
         {/* sign up */}
         <nav className="hidden md:flex items-center gap-4">
-          <Link className="bg-[#90CCBA] text-white font-bold py-1 mt-[0.75rem] ml-[1rem] px-4 rounded h-10" to="/SignUp">Sign Up</Link>
+          <Link className="bg-[#90CCBA] text-white font-semibold py-1 mt-[0.75rem] ml-[1rem] px-4 rounded h-10" to="/SignUp">Sign Up</Link>
           {user && (
             <div>
               <h3 className="font-bold py-2">{user.name}</h3>
