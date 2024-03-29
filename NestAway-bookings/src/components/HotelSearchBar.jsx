@@ -75,7 +75,7 @@ const HotelSearchBar = () => {
               onChange={item => setDate([item.selection])}
               moveRangeOnFirstSelection={false}
               ranges={date}
-              className=' lg:absolute m-9 lg:text-[0.7rem] text-[0.4rem] absolute'
+              className='date lg:absolute m-9 lg:text-[0.7rem] text-[0.4rem] absolute'
               minDate={new Date()}
             />}
           </div> 

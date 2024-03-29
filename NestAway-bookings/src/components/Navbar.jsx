@@ -23,7 +23,7 @@ function Navbar() {
             <div className="flex gap-10 font-semibold">
               <Link to="/">Home</Link>
               <Link to="">Customer Support</Link>
-              <Link to="">About</Link>
+              <Link to="/about">About</Link>
             </div>
           </nav>
         </div>
@@ -60,7 +60,7 @@ function Navbar() {
           <div className="px-2 pt-2 pb-3 space-y-1">
             <Link to="/" className="block px-3 py-2 rounded-md text-base font-medium" onClick={() => setMobileMenuOpen(false)}>Home</Link>
             <Link to="" className="block px-3 py-2 rounded-md text-base font-medium" onClick={() => setMobileMenuOpen(false)}>Customer Support</Link>
-            <Link to="" className="block px-3 py-2 rounded-md text-base font-medium" onClick={() => setMobileMenuOpen(false)}>About</Link>
+            <Link to="/about" className="block px-3 py-2 rounded-md text-base font-medium" onClick={() => setMobileMenuOpen(false)}>About</Link>
             <Link to="/login" className="block px-3 py-2 rounded-md text-base font-medium" onClick={() => setMobileMenuOpen(false)}>Login</Link>
             <Link to="/SignUp" className="block px-3 py-2 rounded-md text-base font-medium" onClick={() => setMobileMenuOpen(false)}>SignUp</Link>
            
