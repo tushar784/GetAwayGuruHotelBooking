@@ -7,6 +7,10 @@ app.use(express.json());
 app.use(cors())
 
 
+// const app = express();
+
+app.use(express.json()); // Parse incoming JSON data
+
 try {
   //database connection
   const mongodb = mongoose.connect("mongodb://localhost:27017/DemoDB");
@@ -19,7 +23,7 @@ const register = require("./registration");
 app.use("/api", register);
 
 app.get("/api/signUp", (req, res) => {
-  res.send("sign up is working");
+  res.send("sign up is working");  //{msg: done}
 });
 
 const userLoginRouter = require("./login");
@@ -32,3 +36,6 @@ app.get("/api/login", (req, res) => {
 app.listen(port, () => {
   console.log("server started!");
 });
+
+
+
