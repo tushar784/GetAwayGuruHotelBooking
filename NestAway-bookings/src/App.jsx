@@ -3,6 +3,8 @@ import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignUp from './components/Signup';
 import Home from './components/Home';
+import Hotels from './HotelList/Hotels';
+// import HotelCard from './HotelList/HotelCard';
 // import Navbar from './components/Navbar'
 function App() {
   
@@ -11,9 +13,10 @@ function App() {
     <Router>
    <div>
     <Routes>
-      <Route exact path='/Home' Component={Home}/>
+      <Route exact path='/' Component={Home}/>
       <Route exact path='/login' Component={Login}/>
       <Route exact path='/signup' Component={SignUp}/>
+      <Route exact path='/Hotels' Component={Hotels}/>
     </Routes>
    </div>
       </Router>
@@ -24,20 +27,3 @@ function App() {
 export default App
 
 
-// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-// import Login from './components/Login';
-// import Signup from './components/Signup';
-
-// function App() {
-//   return (
-//     <Router>
-//       <Switch>
-//         {/* <Route exact path="/" component={Login} /> */}
-//         <Route path="/login" component={Login} />
-//         <Route path="/signup" component={Signup} />
-//       </Switch>
-//     </Router>
-//   );
-// }
-
-// export default App;

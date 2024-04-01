@@ -3,6 +3,7 @@ import { useState } from "react";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
+import { Link } from "react-router-dom";
 
 const HotelSearchBar = () => {
   // For Calender logic
@@ -159,15 +160,30 @@ const HotelSearchBar = () => {
       </div>
 
       <div className="headerSearchItem">
-        <button className="bg-[#90CCBA] text-white font-bold h-16 pl-6 pr-6 mt-[-0.7rem] mr-[-3.5rem] border-[1px] rounded-r-lg">
+        <Link to = "/Hotels"><button className="bg-[#90CCBA] text-white font-bold h-16 pl-6 pr-6 mt-[-0.7rem] mr-[-3.5rem] border-[1px] rounded-r-lg">
           Search
         </button>
+        </Link>
       </div>
     </div>
   );
 };
 
 export default HotelSearchBar;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // old
 // import { DateRange } from 'react-date-range';

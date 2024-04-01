@@ -70,14 +70,6 @@ function Navbar() {
 
 export default Navbar;
 
-// logic for login
-const handleLoginClick = (history) => {
-  history.push("/login");
-};
-
-
-
-
 
 
 
