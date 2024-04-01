@@ -33,6 +33,13 @@ app.get("/api/login", (req, res) => {
   res.send("login is working");
 });
 
+
+const hotelList = require('./HotelList')
+app.use('/api', hotelList)
+app.get('/api/hotels', (req,res)=>{
+  res.send("hotels list")
+})
+
 app.listen(port, () => {
   console.log("server started!");
 });
