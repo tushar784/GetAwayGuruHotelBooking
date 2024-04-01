@@ -1,18 +1,24 @@
 const express = require('express')
-const router = express.Router()
+// const router = express.Router()
 const app = express()
 const schema = require('./hotel.model')
 
-router.get('/hotels', async(req,res)=>{
-    const location = req.query.location;
+app.get('/hotels', async(req,res)=>{
+    const { location } = req.query;
+    console.log("Requested location:", location);
+    
 
     try {
         let hotels;
         if (location){
-            hotels = await schema.find({Location: location})
+            hotels = await schema.find({ location })
         }
         else{
             hotels = await schema.find()
+        }
+
+        if (!hotels) {
+            return res.status(404).json({ message: 'No hotels found' });
         }
         res.status(200).json(hotels); // Send successful response with hotels data
 
@@ -22,4 +28,4 @@ router.get('/hotels', async(req,res)=>{
     }
 })
 
-module.exports = router;    
+module.exports = app;    

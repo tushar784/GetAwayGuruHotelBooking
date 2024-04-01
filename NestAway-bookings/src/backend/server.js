@@ -5,11 +5,9 @@ const app = express();
 const cors = require('cors')
 app.use(express.json());
 app.use(cors())
-
-
-// const app = express();
-
 app.use(express.json()); // Parse incoming JSON data
+
+
 
 try {
   //database connection
@@ -19,29 +17,30 @@ try {
   console.log("err", error);
 }
 const register = require("./registration");
+const userLoginRouter = require("./login");
+const hotelList = require('./HotelList')
 
 app.use("/api", register);
+app.use("/api", userLoginRouter);
+app.use('/api', hotelList)
+
+
 
 app.get("/api/signUp", (req, res) => {
   res.send("sign up is working");  //{msg: done}
 });
 
-const userLoginRouter = require("./login");
-
-app.use("/api", userLoginRouter);
 app.get("/api/login", (req, res) => {
   res.send("login is working");
 });
 
 
-const hotelList = require('./HotelList')
-app.use('/api', hotelList)
-app.get('/api/hotels', (req,res)=>{
-  res.send("hotels list")
-})
+// app.get('/api/hotels', (req,res)=>{
+//   res.send("hotels list")
+// })
 
 app.listen(port, () => {
-  console.log("server started!");
+  console.log(`Server listening on port ${port}`);
 });
 
 
