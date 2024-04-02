@@ -8,13 +8,14 @@ function Home() {
       <>
           <Navbar />
           <div className="flex flex-col items-center justify-center">
-              <img src="src/assets/img/homepage.jpg" alt="Hotel Image" className="pl-2 pr-2 pt-16 h-22" />
+              <img src="src/assets/img/homepage.jpg" alt="Hotel Image" className="w-[98%] h-[35rem] object-cover rounded mt-[5.8rem] " />
               <h1 className="absolute text-4xl font-bold mt-22 mb-52 text-amber-50 italic" style={{ fontFamily: "cursive" }}>NestAway: Find Your Home Away From Home</h1>
               <p className="absolute text-2xl font-bold mt-22 mb-28 text-amber-50 italic" style={{ fontFamily: "cursive" }}>Curated Stay for Every Traveler</p>
               <HotelSearchBar />
           </div>
-          <Speciality />
+         
           <PopularDestinations />
+          <Speciality />
           <Footer />
       </>
   );
