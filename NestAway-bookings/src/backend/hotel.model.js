@@ -2,32 +2,32 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const hotelSchema = new Schema({
-  hotel_id: {
+  Hotel_id: {
     type: String,
     required: true,
     unique: true
   },
-  name: {
+  Name: {
     type: String,
     required: true
   },
-  location: {
+  Location: {
     type: String,
     required: true
   },
-  stars: {
+  StarRating: {
     type: Number,
     min: 1,
     max: 5
   },
-  amenities: {
+  Amenities: {
     type: [String]
   },
-  price: {
+  Price: {
     type: Number,
     required: true
   },
-  image: {
+  Image: {
     type: String
   }
 });
