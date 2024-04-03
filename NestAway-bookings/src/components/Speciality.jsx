@@ -6,7 +6,7 @@ function Speciality() {
           Why book hotels with NestAway
         </h1>
 
-        <div className="grid grid-cols-1 sm:lgrid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
           {/* <div className="flex justify-center items-center ml-[3.8rem] mr-[4rem] mt-4 mb-[2rem]"> */}
           <img
             src="src/assets/img/deal.jpg"

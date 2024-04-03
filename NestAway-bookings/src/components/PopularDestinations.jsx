@@ -4,7 +4,7 @@ function PopularDestinations() {
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-xl font-bold mb-4">Popular Destinations</h1>
   
-        <div className="grid grid-cols-1 sm:lgrid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:grid-cols-5 gap-4">
        
           <img
             src="src/assets/img/mumbai.jpg"
