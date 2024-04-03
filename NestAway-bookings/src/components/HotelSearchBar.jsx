@@ -1,11 +1,10 @@
-//final
+// //final
 import { DateRange } from "react-date-range";
 import { useState } from "react";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
-
 
 const destinations = [
   { value: "Mumbai", label: "Mumbai" },
@@ -16,6 +15,8 @@ const destinations = [
   { value: "Hydrabad", label: "Hydrabad" },
   { value: "Goa", label: "Goa" },
   { value: "Manali", label: "Manali" },
+  { value: "Chennai", label: "Chennai" },
+
   // Add more destinations as needed
 ];
 
@@ -47,19 +48,17 @@ const HotelSearchBar = () => {
     });
   };
 
-  // function HotelSearchBar() {
-  // Your existing code for HotelSearchBar component...
 
   return (
-    <div className="h-16 w-full lg:w-5/6 bg-[white] flex justify-around absolute px-0 py-2.5 border-[1px] rounded-xl lg:ml-4 lg:mt-28 lg:mb-2">
+    
+    <div className="h-16 w-full lg:w-5/6 bg-[white] font-poppins static flex justify-around absolute px-0 py-2.5 border-[1px] rounded-xl lg:ml-4 lg:mt-28 lg:mb-2">
       {/* Content of your HotelSearchBar component... */}
 
       <div className="headerSearchItem items-center gap-2.5">
-    
-       <h1 className="ml-[2.3rem]">Destination</h1>
+        <h1 className="ml-[2.3rem]">Destination</h1>
 
-     {/* Dropdown list for destination */}
-     <select className="headerSearchInput pl-[2rem] pr-[2rem]">
+        {/* Dropdown list for destination */}
+        <select className="headerSearchInput pl-[2rem] pr-[2rem]">
           {destinations.map((destination) => (
             <option key={destination.value} value={destination.value}>
               {destination.label}
@@ -91,7 +90,7 @@ const HotelSearchBar = () => {
       </div>
 
       {/* Guest and rooms */}
-      <div className="headerSearchItem">
+      <div className="headerSearchItem font-poppins">
         <h1>Rooms & Guest</h1>
         <span
           onClick={() => setOpenOptions(!openOptions)}
@@ -179,9 +178,10 @@ const HotelSearchBar = () => {
       </div>
 
       <div className="headerSearchItem">
-        <Link to = "/Hotels"><button className="bg-[#90CCBA] text-white font-bold h-16 pl-6 pr-6 mt-[-0.7rem] mr-[-4.5rem] border-[1px] rounded-r-lg">
-          Search
-        </button>
+        <Link to="/Hotels">
+          <button className="bg-[#90CCBA] text-white font-bold h-16 pl-6 pr-6 mt-[-0.7rem] mr-[-4.5rem] border-[1px] rounded-r-lg">
+            Search
+          </button>
         </Link>
       </div>
     </div>
@@ -190,37 +190,27 @@ const HotelSearchBar = () => {
 
 export default HotelSearchBar;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import { DateRange } from "react-date-range";
+// // //final
+//  import { DateRange } from "react-date-range";
 // import { useState } from "react";
 // import "react-date-range/dist/styles.css"; // main css file
 // import "react-date-range/dist/theme/default.css"; // theme css file
 // import { format } from "date-fns";
 // import { Link } from "react-router-dom";
+
+// const destinations = [
+//   { value: "Mumbai", label: "Mumbai" },
+//   { value: "New Delhi", label: "New Delhi" },
+//   { value: "Agra", label: "Agra" },
+//   { value: "Jaipur", label: "Jaipur" },
+//   { value: "Bengaluru", label: "Bengaluru" },
+//   { value: "Hydrabad", label: "Hydrabad" },
+//   { value: "Goa", label: "Goa" },
+//   { value: "Manali", label: "Manali" },
+//   { value: "Chennai", label: "Chennai" },
+
+//   // Add more destinations as needed
+// ];
 
 // const HotelSearchBar = () => {
 //   // For Calender logic
@@ -254,16 +244,21 @@ export default HotelSearchBar;
 //   // Your existing code for HotelSearchBar component...
 
 //   return (
-//     <div className="h-16 w-full lg:w-5/6 bg-[white] flex justify-around absolute px-0 py-2.5 border-[1px] rounded-xl lg:ml-4 lg:mt-28 lg:mb-2">
+//     <div className="h-16 w-full lg:w-5/6 bg-[white] font-poppins static flex justify-around absolute px-0 py-2.5 border-[1px] rounded-xl lg:ml-4 lg:mt-28 lg:mb-2">
 //       {/* Content of your HotelSearchBar component... */}
 
 //       <div className="headerSearchItem items-center gap-2.5">
-//         <h1>Destination</h1>
-//         <input
-//           type="text"
-//           placeholder="Where are you going?"
-//           className="headerSearchInput"
-//         ></input>
+
+//        <h1 className="ml-[2.3rem]">Destination</h1>
+
+//      {/* Dropdown list for destination */}
+//      <select className="headerSearchInput pl-[2rem] pr-[2rem]">
+//           {destinations.map((destination) => (
+//             <option key={destination.value} value={destination.value}>
+//               {destination.label}
+//             </option>
+//           ))}
+//         </select>
 //       </div>
 
 //       {/* Calender */}
@@ -289,7 +284,7 @@ export default HotelSearchBar;
 //       </div>
 
 //       {/* Guest and rooms */}
-//       <div className="headerSearchItem">
+//       <div className="headerSearchItem font-poppins">
 //         <h1>Rooms & Guest</h1>
 //         <span
 //           onClick={() => setOpenOptions(!openOptions)}
@@ -377,7 +372,7 @@ export default HotelSearchBar;
 //       </div>
 
 //       <div className="headerSearchItem">
-//         <Link to = "/Hotels"><button className="bg-[#90CCBA] text-white font-bold h-16 pl-6 pr-6 mt-[-0.7rem] mr-[-3.5rem] border-[1px] rounded-r-lg">
+//         <Link to = "/Hotels"><button className="bg-[#90CCBA] text-white font-bold h-16 pl-6 pr-6 mt-[-0.7rem] mr-[-4.5rem] border-[1px] rounded-r-lg">
 //           Search
 //         </button>
 //         </Link>
@@ -387,16 +382,3 @@ export default HotelSearchBar;
 // };
 
 // export default HotelSearchBar;
-
-
-
-
-
-
-
-
-
-
-
-
-
