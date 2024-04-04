@@ -1,50 +1,40 @@
 function Speciality() {
-    return (
-      <>
-          <div className="container mx-auto px-4 py-8">
-        <h1 className="text-xl font-bold mb-4">Why book hotels with NestAway</h1>
-  
-        <div className="grid grid-cols-1 sm:lgrid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
-        {/* <div className="flex justify-center items-center ml-[3.8rem] mr-[4rem] mt-4 mb-[2rem]"> */}
+  return (
+    <>
+      <div className="container mx-auto px-4 py-8">
+        <h1 className="text-xl font-bold mb-4">
+          Why book hotels with NestAway
+        </h1>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
+          {/* <div className="flex justify-center items-center ml-[3.8rem] mr-[4rem] mt-4 mb-[2rem]"> */}
           <img
-            src="img/deal.jpg"
+            src="src/assets/img/deal.jpg"
             alt="Image 1"
             className="rounded-xl object-cover transition duration-300 transform md:hover:scale-110"
           />
-           <img
-            src="img/24Hr.jpg"
+          <img
+            src="src/assets/img/24Hr.jpg"
             alt="Image 1"
             className="rounded-xl object-cover transition duration-300 transform md:hover:scale-110"
           />
-            <img
-            src="img/LargeSelection.jpg"
+          <img
+            src="src/assets/img/LargeSelection.jpg"
             alt="Image 1"
             className="rounded-xl object-cover transition duration-300 transform md:hover:scale-110"
           />
-            <img
-            src="img/PayAtHotel.jpg"
+          <img
+            src="src/assets/img/PayAtHotel.jpg"
             alt="Image 1"
             className="rounded-xl object-cover transition duration-300 transform md:hover:scale-110"
           />
-         
         </div>
       </div>
-    
-              
-              </>
-          )
-          }
-  
-  export default Speciality
+    </>
+  );
+}
 
-
-
-
-
-
-
-
-
+export default Speciality;
 
 // function Speciality() {
 //   return (
@@ -62,13 +52,13 @@ function Speciality() {
 //                 src="img/24Hr.jpg"
 //                 alt="Image 2"
 //                 className="w-1/4 mx-1 rounded-xl ml-2 mr-2"
-               
+
 //             />
 //             <img
 //                 src="img/LargeSelection.jpg"
 //                 alt="Image 3"
 //                 className="w-1/4 mx-1 rounded-xl ml-2 mr-2"
-            
+
 //             />
 //             <img
 //                 src="img/PayAtHotel.jpg"
