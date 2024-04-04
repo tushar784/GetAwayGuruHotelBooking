@@ -1,6 +1,10 @@
-import { data } from "autoprefixer";
-import { useContext, createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from 'react';
+import jwt_decode from 'jsonwebtoken'
 const AuthContext = createContext()
+
+const storedToken = localStorage.getItem('token')
+const decodeToken = jwt_decode(storedToken)
+const expireTime = decodeToken.exp
 
 const AuthProvider = ({children})=>{
     const [isAuthenticate, setAuthenticate] = useState(null)
@@ -18,9 +22,30 @@ const AuthProvider = ({children})=>{
         setToken(null); 
     };
     
-}
+    useEffect(()=>{
+        if(isValidToken(storedToken)){
+            setAuthenticate(true)
+        }     
+    },[])
 
-export default AuthProvider;
-export const useAuth = () =>{
-    return useContext(AuthContext)
+    const expirationDate = new Date(expirationTime * 1000); // Convert seconds to milliseconds
+    const currentTime = Date.now();
+
+if (expirationDate < currentTime) {
+  // Token is expired
+  console.log('Token is expired!');
+  // Handle expiration (e.g., logout user, prompt for re-login)
+} else {
+  // Token is valid, proceed with API request
+  console.log('Token is valid');
+  // Make your API call with the token
 }
+return (
+    <AuthContext.Provider value={{ isAuthenticated, user, token, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+export {AuthContext,AuthProvider}
+

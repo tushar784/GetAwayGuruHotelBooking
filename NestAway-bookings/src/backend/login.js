@@ -3,6 +3,7 @@ const router = express.Router()
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const schema = require('./user.modules')
+const { AuthContext } = require('../AuthContext/Auth_Context.jsx');
 
 //defining route
 router.post('/login', async(req,res)=>{
@@ -26,13 +27,17 @@ router.post('/login', async(req,res)=>{
     const passwdMatch = await bcrypt.compare(password, userEmail.password) 
     if(!passwdMatch){
         return res.status(401).json({msg: 'Invalid email or password'})
+    }else if(passwdMatch){
+
+        const token = jwt.sign({userId: schema._id},'secret-key',{expiresIn: '1h'})
+        const authContext = new AuthContext()
+        authContext.login({token,user: {...userEmail}})
+        res.json({ token, user: { ...userEmail } });
+        res.status(200).send({ message: 'Successfully logged in!' });
+    }else {
+        res.status(401).json({ msg: 'Invalid email or password' });
     }
 
-    //generate token
-    const token = jwt.sign({userId: schema._id}, 'your-secret-key', {expiresIn: '1h'})
-    res.json({token, user: {_id: userEmail._id, name: userEmail.username, email: userEmail.email}})
-    res.status(201).send({msgs:'successfully logged in!'})
-  
     } catch (error) {
         console.log("error",error);
     }
