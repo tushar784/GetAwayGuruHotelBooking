@@ -1,8 +1,8 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import HotelSearchBar from "../components/HotelSearchBar"
-import Speciality from "../components/Speciality"
-import PopularDestinations from "../components/PopularDestinations"
+import HotelSearchBar from "../components/HotelSearchBar";
+import Speciality from "../components/Speciality";
+import PopularDestinations from "../components/PopularDestinations";
 function Home() {
   return (
       <>

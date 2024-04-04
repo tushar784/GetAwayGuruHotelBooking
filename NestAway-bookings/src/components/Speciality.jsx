@@ -9,22 +9,22 @@ function Speciality() {
           <img
             src="img/deal.jpg"
             alt="Image 1"
-            className="rounded-xl object-cover transition duration-300 transform hover:scale-110"
+            className="rounded-xl object-cover transition duration-300 transform md:hover:scale-110"
           />
            <img
             src="img/24Hr.jpg"
             alt="Image 1"
-            className="rounded-xl object-cover transition duration-300 transform hover:scale-110"
+            className="rounded-xl object-cover transition duration-300 transform md:hover:scale-110"
           />
             <img
             src="img/LargeSelection.jpg"
             alt="Image 1"
-            className="rounded-xl object-cover transition duration-300 transform hover:scale-110"
+            className="rounded-xl object-cover transition duration-300 transform md:hover:scale-110"
           />
             <img
             src="img/PayAtHotel.jpg"
             alt="Image 1"
-            className="rounded-xl object-cover transition duration-300 transform hover:scale-110"
+            className="rounded-xl object-cover transition duration-300 transform md:hover:scale-110"
           />
          
         </div>

@@ -7,40 +7,40 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import {format} from "date-fns";
 import { useNavigate } from 'react-router-dom';
 
-const HotelSearchBar = () => {
-  // For Calender logic
-  const[destination,setDestination] = useState("");
-  const[openDate,setOpenDate] = useState(false);
-  const [date, setDate] = useState([
-    {
-      startDate: new Date(),
-      endDate: new Date(),
-      key: 'selection'
-    }
-  ]);
- 
-  //  For Guest and Room Logic
-  const[openOptions,setOpenOptions] = useState(false)
-  const[options,setOptions] = useState({
-    adult:1,
-    children:0,
-    room:1,
-  });
+  const HotelSearchBar = () => {
+    // For Calender logic
+    const[destination,setDestination] = useState("");
+    const[openDate,setOpenDate] = useState(false);
+    const [date, setDate] = useState([
+      {
+        startDate: new Date(),
+        endDate: new Date(),
+        key: 'selection'
+      }
+    ]);
+  
+    //  For Guest and Room Logic
+    const[openOptions,setOpenOptions] = useState(false)
+    const[options,setOptions] = useState({
+      adult:1,
+      children:0,
+      room:1,
+    });
 
-  const navigate =useNavigate();
+    const navigate =useNavigate();
 
-  const handleOption = (name , operation) => {
-    setOptions (prev=>{return{
-      ...prev,
-      [name]:operation == "i" ? options[name] + 1 : options[name] - 1,
+    const handleOption = (name , operation) => {
+      setOptions (prev=>{return{
+        ...prev,
+        [name]:operation == "i" ? options[name] + 1 : options[name] - 1,
+      };
+    });
     };
-  });
-  };
 
 
-  const handleSearch=()=>{
-    navigate("/hotellist" , {state:{destination,date,options}});
-  };
+    const handleSearch=()=>{
+      navigate("/hotellist" , {state:{destination,date,options}});
+    };
 
 // function HotelSearchBar() {
 // Your existing code for HotelSearchBar component...
