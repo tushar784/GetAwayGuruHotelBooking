@@ -1,10 +1,21 @@
-import hotels from "./HotelList.json";
+import hotels from "../HotelList/hotellist.json";
+import HotelSearchBar from "../components/HotelSearchBar";
+import Navbar from "../components/Navbar";
 function HotelList() {
   if (!hotels) {
     return <div>No hotels data available</div>;
   }
 
   return (
+    
+    <>
+    {/* <div> */}
+    <div className="mt-[-10rem] mb-[10rem]">
+      <Navbar />
+    </div>
+    <div className="">
+      <HotelSearchBar />
+      </div>
       <div className="ml-[25rem] mt-[2rem]">
         <h1 className="mb-[1rem] font-semibold text-xl mt-[10rem]">
           Showing properties in Navi Mumbai
@@ -59,6 +70,7 @@ function HotelList() {
         ))}
         
       </div>
+      </>
   );
 }
 

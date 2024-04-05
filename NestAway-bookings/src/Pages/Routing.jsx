@@ -1,9 +1,9 @@
-import { Routes,Route } from 'react-router-dom'
-import Home from "./Home"
-import Login from "./Login"
-import Signup from  "./Signup"
-import HotelList from './HotelList';
-import About from './About';
+import { Routes,Route } from 'react-router-dom';  
+import Home from './Home'
+import Login from './Login';
+import Signup from  "./Signup";
+import HotelList from '../HotelList/HotelList';
+
 
 const Routing = () => {
   return (
@@ -11,11 +11,7 @@ const Routing = () => {
         <Route exact path='/' element={<Home />} />
         <Route exact path='/signup' element={<Signup />} />
         <Route exact path='/login' element={<Login />} />
-        <Route exact path= '/hotellist' element={<HotelList />} />
-        <Route exact path= '/about' element={<About/>} />
-
-        {/* <Route exact path='/hotellist' element = {<hotellist/>}/> */}
-        {/* <Route exact path='/' element={<HotelSearchBar/>} /> */}
+        <Route exact path='/hotels' element={<HotelList />} />
         
   </Routes>
   )

@@ -182,7 +182,7 @@ const HotelSearchBar = () => {
       </div>
 
       <div className="headerSearchItem">
-        <Link to="/Hotels">
+        <Link to="/hotels">
           <button className="bg-[#90CCBA] text-white font-bold h-16 pl-6 pr-6 mt-[-0.7rem] mr-[-4.5rem] border-[1px] rounded-r-lg">
             Search
           </button>
