@@ -1,4 +1,4 @@
-import hotels from "./HotelList.json";
+import hotels from './hotellist.json';
 function HotelList() {
   if (!hotels) {
     return <div>No hotels data available</div>;

@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/logo.jpg";
 import { FaBars, FaTimes } from "react-icons/fa";
-// import { jwtDecode } from 'jwt-decode'; // Ensure this import is correct and necessary for your use case
+import { AuthContext } from "../AuthContext/Auth_Context";
+
+const auth = useContext(AuthContext);
 
 function Navbar() {
   const [user, setUser] = useState({});

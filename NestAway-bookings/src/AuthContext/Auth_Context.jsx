@@ -1,9 +1,9 @@
-import React, { createContext, useState, useEffect } from 'react';
-import jwt_decode from 'jsonwebtoken'
+import { createContext, useState, useEffect } from 'react';
+import jwt from 'jsonwebtoken'
 const AuthContext = createContext()
 
 const storedToken = localStorage.getItem('token')
-const decodeToken = jwt_decode(storedToken)
+const decodeToken = jwt.decode(storedToken)
 const expireTime = decodeToken.exp
 
 const AuthProvider = ({children})=>{
@@ -28,7 +28,7 @@ const AuthProvider = ({children})=>{
         }     
     },[])
 
-    const expirationDate = new Date(expirationTime * 1000); // Convert seconds to milliseconds
+    const expirationDate = new Date(expireTime * 1000); // Convert seconds to milliseconds
     const currentTime = Date.now();
 
 if (expirationDate < currentTime) {
@@ -41,7 +41,7 @@ if (expirationDate < currentTime) {
   // Make your API call with the token
 }
 return (
-    <AuthContext.Provider value={{ isAuthenticated, user, token, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticate, user, token, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
