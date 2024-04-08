@@ -1,3 +1,7 @@
+
+
+
+
 // //final
 import { DateRange } from "react-date-range";
 import { useState } from "react";
@@ -5,7 +9,6 @@ import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
-import { Navigate } from "react-router-dom";
 
 const destinations = [
   { value: "Mumbai", label: "Mumbai" },
@@ -50,16 +53,16 @@ const HotelSearchBar = () => {
   };
 
     const handleSearch=()=>{
-      navigate("/hotellist" , {state:{destination,date,options}});
+      navigate("/hotels" , {state:{destinations,date,options}});
     };
 
   return (
     
-    <div className="h-16 w-full lg:w-5/6 bg-[white] font-poppins static flex justify-around absolute px-0 py-2.5 border-[1px] rounded-xl lg:ml-4 lg:mt-28 lg:mb-2">
+    <div className="lg:h-16 md:h-[12rem] w-full lg:w-5/6 bg-[white] font-poppins static flex justify-around absolute px-0 py-2.5 border-[1px] rounded-xl lg:ml-4 lg:mt-28 lg:mb-2 md:ml-2">
       {/* Content of your HotelSearchBar component... */}
 
       <div className="headerSearchItem items-center gap-2.5">
-        <h1 className="ml-[2.3rem]">Destination</h1>
+        <h1 className="ml-[2.3rem] font-semibold">Destination</h1>
 
         {/* Dropdown list for destination */}
         <select className="headerSearchInput pl-[2rem] pr-[2rem]">
@@ -73,7 +76,7 @@ const HotelSearchBar = () => {
 
       {/* Calender */}
       <div className="headerSearchItem">
-        <h1 className="ml-8">Check-in & Check-out Date</h1>
+        <h1 className="ml-8 font-semibold">Check-in & Check-out Date</h1>
         <span
           onClick={() => setOpenDate(!openDate)}
           className="headerSearchText absolute ml-8 text-gray-400 bold cursor-pointer"
@@ -95,7 +98,7 @@ const HotelSearchBar = () => {
 
       {/* Guest and rooms */}
       <div className="headerSearchItem font-poppins">
-        <h1>Rooms & Guest</h1>
+        <h1 className="font-semibold">Rooms & Guest</h1>
         <span
           onClick={() => setOpenOptions(!openOptions)}
           className="headerSearchText text-gray-400 bold cursor-pointer"
@@ -193,6 +196,28 @@ const HotelSearchBar = () => {
 };
 
 export default HotelSearchBar;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // // //final
 //  import { DateRange } from "react-date-range";

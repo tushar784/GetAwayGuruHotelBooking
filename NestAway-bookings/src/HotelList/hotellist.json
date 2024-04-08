@@ -60,7 +60,7 @@
     },
     {
         "Hotel_id": "6907",
-        "Hotel_Name": "Four Seasons Hotel Mumbai",
+        "Hotel_Name": "Four Seasons Hotel ",
         "Location": "Mumbai, India",
         "Staring_Rating": "5",
         "Amenities": "Harbor View, Fine Dining, Ballroom",
@@ -70,17 +70,17 @@
     },
     {
         "Hotel_id": "6908",
-        "Hotel_Name": "The St. Regis Mumbai",
+        "Hotel_Name": "The St. Regis ",
         "Location": "Mumbai, India",
         "Staring_Rating": "3",
         "Amenities": "Butler Service, Private Dining, Luxury Spa",
         "Price": "28,000",
-        "Image": "src/assets/img/homepage.jpg",
+        "Image": "https://cdn.pixabay.com/photo/2017/01/14/12/48/hotel-1979406_640.jpg",
         "": ""
     },
     {
         "Hotel_id": "6909",
-        "Hotel_Name": "JW Marriott Hotel Bengaluru",
+        "Hotel_Name": "JW Marriott Hotel ",
         "Location": "Bengaluru, India",
         "Staring_Rating": "5",
         "Amenities": "Multiple Restaurants, Sky Lounge, Fitness Center",

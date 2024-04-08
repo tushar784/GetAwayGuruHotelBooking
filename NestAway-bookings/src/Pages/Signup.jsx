@@ -13,7 +13,6 @@ function Signup(){
         <Navbar />
         <div className='h-dvh lg:flex lg:pt-0 pt-[2rem]'>
         
-        {/* 1st half */}
         <div className='lg:w-1/2 lg:mt-20 lg:ml-56 lg:mb-16 drop-shadow-xl mt-[1rem] ml-[1rem] w-[19.7rem] ' style={{backgroundColor:"#90CCBA"}}>
             {/* <div className='w-1/2 mt-20 ml-56 mb-16 drop-shadow-xl' style={{backgroundColor:"#90CCBA"}}> */}
                <h1 className='text-white lg:mt-7 lg:ml-8 font-bold mt-8 ml-2'>NestAway</h1>
