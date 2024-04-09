@@ -1,25 +1,24 @@
 import Login from "./components/Login";
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
 import SignUp from "./components/Signup";
-import Home from "./Pages/Home";
+import Home from './Pages/Home'
 import Hotels from "./Pages/Hotels";
-import { SearchProvider } from "../src/Search_Context/SearchContext";
+import { AuthProvider } from "./Context/Auth_Context";
+
 function App() {
   return (
     <>
-      <Router>
-        <div>
-          <SearchProvider>
-            <Routes>
-              <Route exact path="/" Component={Home} />
-              <Route exact path="/login" Component={Login} />
-              <Route exact path="/signup" Component={SignUp} />
-              <Route exact path="/Hotels" Component={Hotels} />
-            </Routes>
-          </SearchProvider>
-        </div>
-      </Router>
+    <AuthProvider>
+    <BrowserRouter>
+      <Routes>
+      <Route exact path='/' element={<Home />} />
+        <Route exact path='/signup' element={<SignUp />} />
+        <Route exact path='/login' element={<Login />} />
+        <Route exact path= '/hotels' element={<Hotels />} />
+      </Routes>
+    </BrowserRouter>
+    </AuthProvider>
     </>
   );
 }

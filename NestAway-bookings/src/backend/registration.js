@@ -1,7 +1,7 @@
 const express = require('express')
 const { default: mongoose } = require('mongoose')
 const router = express.Router()
-const schema = require('./user.modules')
+const schema = require('./Models/user.model')
 const bcrypt = require('bcrypt')
 
 router.post('/signUp', async(req,res)=>{      //signup route
