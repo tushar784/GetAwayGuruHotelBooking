@@ -2,16 +2,14 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/logo.jpg";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { useContext } from "react";
 import { AuthContext } from "../Context/Auth_Context";
 
 function Navbar() {
-  // const [user, setUser] = useState({});
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   // const [user,setUser]= useState("aditya");
   const {user} = useContext(AuthContext);
   console.log(user,"user");
-  // const {user} = useContext(AuthContext)
+ 
 
   // Define functions for handling authentication and mobile menu toggling
 
@@ -47,7 +45,7 @@ function Navbar() {
           {/* login */}
           <nav className="hidden md:flex items-center gap-4">
             {user ? (
-              <div className="font-bold py-2">{user.name}</div>
+              <div className="font-bold py-2">Hello {user.email}</div>
             ) : (
               <Link className="font-semibold mr-4 ml-[18rem]" to="/login">
                 Login
