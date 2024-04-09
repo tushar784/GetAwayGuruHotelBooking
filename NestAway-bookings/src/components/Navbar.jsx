@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/logo.jpg";
 import { FaBars, FaTimes } from "react-icons/fa";
