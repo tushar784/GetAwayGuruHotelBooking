@@ -33,9 +33,9 @@ function HotelList() {
               </div>
               <div className="flex items-center">
                 <div>
-                  <div className="font-semibold mr-[2rem] text-[#90CCBA]">
+                  <div className="font-semibold mr-[2rem] ">
                     {/* <p>Amenities:</p> */}
-                    <ul className="list-disc ml-4">
+                    <ul className="list-disc ml-4 text-black ">
                       {hotel.Amenities.split(", ").map((amenity, index) => (
                         <li key={index}>{amenity}</li>
                       ))}

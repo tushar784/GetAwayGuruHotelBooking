@@ -1,7 +1,7 @@
 function Speciality() {
   return (
     <>
-      <div className="container mx-auto px-4 py-8 md:mt-[12rem]">
+      <div className="container mx-auto px-4 py-8 sm:mt-[10rem]]">
         <h1 className="text-xl font-bold mb-4">
           Why book hotels with NestAway
         </h1>

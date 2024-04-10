@@ -1,9 +1,9 @@
-import { Routes,Route } from 'react-router-dom';  
+import { BrowserRouter, Routes,Route } from 'react-router-dom';  
 import Home from '../Pages/Home'
-import Login from '../Pages/Login';
-import Signup from  "../Pages/Signup";
+import Signup from  "../components/Signup";
 import Hotels from '../Pages/Hotels';
 import { AuthProvider } from '../Context/Auth_Context';
+import Login from '../components/Login'
 
 const Routing = () => {
   return (

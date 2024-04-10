@@ -1,51 +1,57 @@
-import { createContext, useState, useEffect } from 'react';
-import jwt from 'jsonwebtoken'
-const AuthContext = createContext()
+import React, { createContext, useState, useEffect } from 'react';
+import { jwtDecode } from "jwt-decode"
 
-const storedToken = localStorage.getItem('token')
-const decodeToken = jwt.decode(storedToken)
-const expireTime = decodeToken.exp
+const AuthContext = createContext();
 
-const AuthProvider = ({children})=>{
-    const [isAuthenticate, setAuthenticate] = useState(null)
-    const [user,setUser] = useState(null)
-    const [token,setToken] = useState(null)
+const AuthProvider = ({ children }) => {
+  const [isAuthenticate, setAuthenticate] = useState(null);
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
 
-    const login = async (data)=>{
-        setAuthenticate(true)
-        setUser(data.user)
-        setToken(data.token0)
-    };
-    const logout = () => {
-        setAuthenticate(false);
-        setUser(null);
-        setToken(null); 
-    };
+  useEffect(() => {
+    const storedToken = localStorage.getItem('token');
     
-    useEffect(()=>{
-        if(isValidToken(storedToken)){
-            setAuthenticate(true)
-        }     
-    },[])
+    if (storedToken) {
+      const decodeToken = jwtDecode(storedToken);
+      const expireTime = decodeToken.exp;
+      const expirationDate = new Date(expireTime * 1000);
+      const currentTime = Date.now();
+      
+      if (expirationDate < currentTime) {
+        console.log('Token is expired!');
+        logout();
+      } else {
+        // Token is valid
+        console.log('Token is valid');
+        setAuthenticate(true);
+        setUser(decodeToken); // Assuming user is stored in the token
+        setToken(storedToken);
+      }
+    }
+  }, []);
 
-    const expirationDate = new Date(expireTime * 1000); // Convert seconds to milliseconds
-    const currentTime = Date.now();
+  const login = (data) => {
+    setAuthenticate(true);
+    setUser(data.user);
+    setToken(data.token);
+    localStorage.setItem("token", data.token);
+  };
 
-if (expirationDate < currentTime) {
-  // Token is expired
-  console.log('Token is expired!');
-  // Handle expiration (e.g., logout user, prompt for re-login)
-} else {
-  // Token is valid, proceed with API request
-  console.log('Token is valid');
-  // Make your API call with the token
-}
-return (
+  const logout = () => {
+    setAuthenticate(false);
+    setUser(null);
+    setToken(null);
+    localStorage.removeItem("token");
+  };
+ 
+  useEffect(()=>{
+    console.log("user",user);
+  })
+  return (
     <AuthContext.Provider value={{ isAuthenticate, user, token, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-export {AuthContext,AuthProvider}
-
+export { AuthContext, AuthProvider };
