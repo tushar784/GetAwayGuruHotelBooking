@@ -1,7 +1,7 @@
 function Speciality() {
   return (
     <>
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 sm:mt-[10rem]]">
         <h1 className="text-xl font-bold mb-4">
           Why book hotels with NestAway
         </h1>
@@ -11,22 +11,22 @@ function Speciality() {
           <img
             src="src/assets/img/deal.jpg"
             alt="Image 1"
-            className="rounded-xl object-cover transition duration-300 transform hover:scale-110"
+            className="rounded-xl object-cover transition duration-300 transform md:hover:scale-110"
           />
           <img
             src="src/assets/img/24Hr.jpg"
             alt="Image 1"
-            className="rounded-xl object-cover transition duration-300 transform hover:scale-110"
+            className="rounded-xl object-cover transition duration-300 transform md:hover:scale-110"
           />
           <img
             src="src/assets/img/LargeSelection.jpg"
             alt="Image 1"
-            className="rounded-xl object-cover transition duration-300 transform hover:scale-110"
+            className="rounded-xl object-cover transition duration-300 transform md:hover:scale-110"
           />
           <img
             src="src/assets/img/PayAtHotel.jpg"
             alt="Image 1"
-            className="rounded-xl object-cover transition duration-300 transform hover:scale-110"
+            className="rounded-xl object-cover transition duration-300 transform md:hover:scale-110"
           />
         </div>
       </div>

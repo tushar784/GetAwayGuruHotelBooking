@@ -1,4 +1,4 @@
-// //final
+//final
 import { DateRange } from "react-date-range";
 import { useState } from "react";
 import "react-date-range/dist/styles.css"; // main css file
@@ -48,14 +48,17 @@ const HotelSearchBar = () => {
     });
   };
 
+    const handleSearch=()=>{
+      navigate("/hotels" , {state:{destinations,date,options}});
+    };
 
   return (
     
-    <div className="h-16 w-full lg:w-5/6 bg-[white] font-poppins static flex justify-around absolute px-0 py-2.5 border-[1px] rounded-xl lg:ml-4 lg:mt-28 lg:mb-2">
+    <div className="lg:h-16 md:h-[12rem] w-full lg:w-5/6 bg-[white] font-poppins static flex justify-around absolute px-0 py-2.5 border-[1px] rounded-xl lg:ml-4 lg:mt-28 lg:mb-2 md:ml-2">
       {/* Content of your HotelSearchBar component... */}
 
       <div className="headerSearchItem items-center gap-2.5">
-        <h1 className="ml-[2.3rem]">Destination</h1>
+        <h1 className="ml-[2.3rem] font-semibold">Destination</h1>
 
         {/* Dropdown list for destination */}
         <select className="headerSearchInput pl-[2rem] pr-[2rem]">
@@ -69,7 +72,7 @@ const HotelSearchBar = () => {
 
       {/* Calender */}
       <div className="headerSearchItem">
-        <h1 className="ml-8">Check-in & Check-out Date</h1>
+        <h1 className="ml-8 font-semibold">Check-in & Check-out Date</h1>
         <span
           onClick={() => setOpenDate(!openDate)}
           className="headerSearchText absolute ml-8 text-gray-400 bold cursor-pointer"
@@ -91,7 +94,7 @@ const HotelSearchBar = () => {
 
       {/* Guest and rooms */}
       <div className="headerSearchItem font-poppins">
-        <h1>Rooms & Guest</h1>
+        <h1 className="font-semibold">Rooms & Guest</h1>
         <span
           onClick={() => setOpenOptions(!openOptions)}
           className="headerSearchText text-gray-400 bold cursor-pointer"
@@ -178,7 +181,7 @@ const HotelSearchBar = () => {
       </div>
 
       <div className="headerSearchItem">
-        <Link to="/Hotels">
+        <Link to="/hotels">
           <button className="bg-[#90CCBA] text-white font-bold h-16 pl-6 pr-6 mt-[-0.7rem] mr-[-4.5rem] border-[1px] rounded-r-lg">
             Search
           </button>
@@ -189,6 +192,28 @@ const HotelSearchBar = () => {
 };
 
 export default HotelSearchBar;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // // //final
 //  import { DateRange } from "react-date-range";
@@ -291,45 +316,75 @@ export default HotelSearchBar;
 //           className="headerSearchText text-gray-400 bold cursor-pointer"
 //         >{`${options.adult} adult . ${options.children} children . ${options.room} room`}</span>
 
-//         {/* bg  */}
-//         {openOptions && (
-//           <div className="options absolute bg-white shadow-md rounded-xl mt-2">
-//             {/* For Adult */}
-//             <div className="optionIntem w-22 flex justify-between m-4 pt-2">
-//               <span className="optionaText ">Adult :</span>
-//               <div className="optionCounter flex items-center gap-2.5 text-xs text-[black]">
-//                 {/* Increament And Decrement Button For Adult  */}
-//                 <button
-//                   disabled={options.adult <= 1}
-//                   className="optionCounterButton w-[30px] h-[30px] border text-[#0071c2] cursor-pointer border-solid border-[#0071c2]"
-//                   onClick={() => handleOption("adult", "d")}
-//                 >
-//                   -
-//                 </button>
+//               {/* For Adult */}
+//               <div className="optionIntem w-22 flex justify-between m-4 pt-2">
+//                 <span className="optionaText ">Adult :</span>
+//                 <div className="optionCounter flex items-center gap-2.5 text-xs text-[black]">
+
+
+//                  {/* Increament And Decrement Button For Adult  */}
+//                  <button 
+//                     disabled={options.adult<=1}
+//                     className='optionCounterButton w-[30px] h-[30px] border text-[#0071c2] cursor-pointer border-solid border-[#0071c2]' onClick={()=>handleOption("adult","d")}>-</button>
 
 //                 <span className="optionCounterNumber">{options.adult}</span>
 
-//                 <button
-//                   className="optionCounterButton w-[30px] h-[30px] border text-[#0071c2] cursor-pointer border-solid border-[#0071c2]"
-//                   onClick={() => handleOption("adult", "i")}
-//                 >
-//                   +
-//                 </button>
+//                 <button className='optionCounterButton w-[30px] h-[30px] border text-[#0071c2] cursor-pointer border-solid border-[#0071c2]'onClick={()=>handleOption("adult","i")}>+</button>
+//                 </div>
 //               </div>
-//             </div>
 
-//             {/* For Children */}
-//             <div className="optionIntem w-22 flex justify-between m-4 pt-2">
-//               <span className="optionaText">Children :</span>
-//               <div className="optionCounter flex items-center gap-2.5 ml-2 text-xs text-[black]">
-//                 {/* Increament And Decrement Button For Children */}
-//                 <button
-//                   disabled={options.children <= 0}
-//                   className="optionCounterButton w-[30px] h-[30px] border text-[#0071c2] cursor-pointer border-solid border-[#0071c2]"
-//                   onClick={() => handleOption("children", "d")}
-//                 >
-//                   -
-//                 </button>
+
+//                 {/* For Children */}
+//                 <div className="optionIntem w-22 flex justify-between m-4 pt-2">
+//                 <span className="optionaText">Children :</span>
+//                 <div className="optionCounter flex items-center gap-2.5 ml-2 text-xs text-[black]">
+
+//                   {/* Increament And Decrement Button For Children */}
+//                   <button 
+//                        disabled={options.children <= 0}
+                     
+//                       className='optionCounterButton w-[30px] h-[30px] border text-[#0071c2] cursor-pointer border-solid border-[#0071c2]' onClick={()=>handleOption("children","d")}>-</button>
+
+//                 <span className="optionCounterNumber">{options.children}</span>
+
+//                 <button 
+//                     disabled={options.children>=16}
+//                     className='optionCounterButton w-[30px] h-[30px] border text-[#0071c2] cursor-pointer border-solid border-[#0071c2]'onClick={()=>handleOption("children","i")}>+</button>
+//                 </div>
+//               </div>
+
+
+
+//                  {/* For Room */}
+//               <div className="optionIntem w-22 flex justify-between m-4 pt-2">
+//                 <span className="optionaText">Room :</span>
+
+//                 <div className="optionCounter flex items-center gap-2.5 text-xs text-[black]">
+//                  {/* Increament And Decrement Button For Room */}
+//                  <button 
+//                       disabled={options.room <= 1}
+//                       className='optionCounterButton w-[30px] h-[30px] border text-[#0071c2] cursor-pointer border-solid border-[#0071c2]'
+//                       onClick={()=>handleOption("room","d")}>-</button>
+
+//                 <span className="optionCounterNumber">{options.room}</span>
+
+//                 <button 
+//                     className='optionCounterButton w-[30px] h-[30px] border text-[#0071c2] cursor-pointer border-solid border-[#0071c2]' onClick={()=>handleOption("room","i")} >+</button>
+//                 </div>
+//               </div>
+              
+//             </div>}
+//           </div> 
+
+//           <div className="headerSearchItem">
+//           <button className="bg-[#90CCBA] text-white font-bold h-16 pl-6 pr-6 mt-[-0.7rem] mr-[-3.5rem] border-[1px] rounded-r-lg">Search</button>
+//           </div> 
+          
+//       </div>
+//   );
+// }
+
+// export default HotelSearchBar;
 
 //                 <span className="optionCounterNumber">{options.children}</span>
 

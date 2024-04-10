@@ -18,10 +18,12 @@ function Navbar() {
       <div className="flex bg-white fixed z-50 w-full">
         <header className="container mx-auto py-4 px-2 flex items-center justify-between">
           <div className="flex items-center">
-            <div>
+            <div >
+                       
               <img src={logo} alt="" />
+         
             </div>
-            <nav className="hidden md:flex md:ml-[17rem] ">
+            <nav className="hidden md:flex md:ml-[17rem] pb-[2rem] ">
               <div className="flex gap-12 ">
                 <Link to="/">Home</Link>
                 <Link to="" className="">
@@ -40,9 +42,6 @@ function Navbar() {
               )}
             </button>
           </div>
-
-          {/* Button for LG Screen */}
-          {/* login */}
           <nav className="hidden md:flex items-center gap-4">
             {user ? (
               <div className="font-bold py-2">Hello {user.email}</div>
@@ -79,7 +78,14 @@ function Navbar() {
                 className="block px-3 py-2 rounded-md text-base font-medium"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Customer Support
+               Holiday Package
+              </Link>
+              <Link
+                to=""
+                className="block px-3 py-2 rounded-md text-base font-medium"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+               Events & Concerts
               </Link>
               <Link
                 to=""
