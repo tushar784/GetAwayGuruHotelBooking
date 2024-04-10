@@ -5,6 +5,7 @@ import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 const destinations = [
   { value: "Mumbai", label: "Mumbai" },
@@ -23,6 +24,7 @@ const destinations = [
 const HotelSearchBar = () => {
   // For Calender logic
   const [openDate, setOpenDate] = useState(false);
+
   const [date, setDate] = useState([
     {
       startDate: new Date(),

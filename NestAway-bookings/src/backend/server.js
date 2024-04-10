@@ -7,8 +7,6 @@ app.use(express.json());
 app.use(cors())
 app.use(express.json()); // Parse incoming JSON data
 
-
-
 try {
   //database connection
   const mongodb = mongoose.connect("mongodb://localhost:27017/DemoDB");
