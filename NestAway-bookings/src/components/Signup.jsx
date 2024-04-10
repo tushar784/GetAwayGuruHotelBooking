@@ -55,7 +55,7 @@ function SignUp() {
         formData
       );
       console.log(response.data);
-      navigate("/Home"); //navigation
+      navigate("/"); //navigation
     } catch (error) {
       // Handle error
       console.error(error);

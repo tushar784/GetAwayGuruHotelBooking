@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/logo.jpg";
 import { FaBars, FaTimes } from "react-icons/fa";
-// import { jwtDecode } from 'jwt-decode'; 
+import { AuthContext } from "../Context/Auth_Context";
+
 function Navbar() {
-  const [user, setUser] = useState({});
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  // const [user,setUser]= useState("aditya");
+  const {user} = useContext(AuthContext);
+  console.log(user,"user");
+ 
 
   // Define functions for handling authentication and mobile menu toggling
 
@@ -39,31 +43,24 @@ function Navbar() {
             </button>
           </div>
           <nav className="hidden md:flex items-center gap-4">
-            <Link className="font-semibold mr-4 ml-[18rem]" to="/login">
-              Login
-            </Link>
-            {user && (
-              <div>
-                <h3 className="font-bold py-2">{user.name}</h3>
-              </div>
+            {user ? (
+              <div className="font-bold py-2">Hello {user.email}</div>
+            ) : (
+              <Link className="font-semibold mr-4 ml-[18rem]" to="/login">
+                Login
+              </Link>
+            )}
+            {user ? (
+              <></> // Remove duplicate user name display (handled above)
+            ) : (
+              <Link
+                className="bg-[#90CCBA] text-white font-bold py-1 mt-[0.75rem] ml-[1rem] px-4 rounded h-10"
+                to="/SignUp"
+              >
+                SignUp
+              </Link>
             )}
           </nav>
-          <nav className="hidden md:flex items-center gap-4">
-            <Link
-              className="bg-[#90CCBA] text-white font-bold py-1 mt-[0.75rem] ml-[1rem] px-4 rounded h-10"
-              to="/SignUp"
-            >
-              SignUp
-            </Link>
-            {user && (
-              <div>
-                <h3 className="font-bold py-2">{user.name}</h3>
-              </div>
-            )}
-          </nav>
-          {/* <div className=''>
-        <HotelSearchBar />
-      </div> */}
         </header>
 
         {mobileMenuOpen && (

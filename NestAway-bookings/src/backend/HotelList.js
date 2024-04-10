@@ -1,7 +1,7 @@
 const express = require('express')
 // const router = express.Router()
 const app = express()
-const schema = require('./hotel.model')
+const schema = require('./Models/hotel.model')
 
 app.get('/hotels', async(req,res)=>{
     const { location } = req.query;

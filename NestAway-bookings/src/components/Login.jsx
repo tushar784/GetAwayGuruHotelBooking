@@ -50,7 +50,7 @@ function Login() {
       const token = response.data.token; //storing token in LocalStorage
       localStorage.setItem("token", token);
       // Handle successful login
-      navigate("/Home");
+      navigate("/");
     } catch (error) {
       // Handle error
       console.error(error);
@@ -118,14 +118,6 @@ function Login() {
               Forgot Password?
             </p>
           </p>
-
-          {/* <div className="flex">
-                    <p className="mr-4"> 
-                        <input type="checkbox" id="rememberMe" className='mt-4 mb-5 ml-8 mr-4' style={{backgroundColor:"#90CCBA"}}/>
-                        <p className="text-slate-400 text-xs mb-9 mt-4">Remember me</p>
-                    </p>
-                    <p className="ml-5 mr-9 mt-4 text-slate-400 text-xs">Forgot Password?</p>
-                </div> */}
 
           {/* Button */}
           <button
