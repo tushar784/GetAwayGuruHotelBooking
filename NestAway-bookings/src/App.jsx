@@ -1,13 +1,13 @@
 
-import Routing  from './Pages/Routing';
-import './App.css'
-function App() {
+import Routing from "./Routes/Routing";
 
+function App() {
   return (
     <>
-      <Routing/> 
+      <Routing />
     </>
-  )
+      
+  );
 }
 
-export default App
+export default App;
