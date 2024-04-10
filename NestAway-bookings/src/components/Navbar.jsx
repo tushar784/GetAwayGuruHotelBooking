@@ -29,7 +29,7 @@ function Navbar() {
                 </Link>
                 <Link to="">About</Link>
               </div>
-            </nav>
+            </nav> 
           </div>
           <div className="md:hidden">
             <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
