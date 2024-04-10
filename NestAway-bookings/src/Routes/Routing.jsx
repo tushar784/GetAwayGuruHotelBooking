@@ -4,6 +4,7 @@ import Signup from  "../components/Signup";
 import Hotels from '../Pages/Hotels';
 import { AuthProvider } from '../Context/Auth_Context';
 import Login from '../components/Login'
+import Specific from '../Pages/HotelInfoPage';
 
 const Routing = () => {
   return (
@@ -15,6 +16,7 @@ const Routing = () => {
         <Route exact path='/signup' element={<Signup />} />
         <Route exact path='/login' element={<Login />} />
         <Route exact path= '/hotels' element={<Hotels />} />
+        <Route path='/townhouse' element={<Specific />} />
       </Routes>
     </BrowserRouter>
     </AuthProvider>
