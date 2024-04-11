@@ -3,14 +3,14 @@ const app = express()
 const schema = require('./Models/hotel.model')
 
 app.get('/hotels', async(req,res)=>{
-    const { location } = req.query;
-    console.log("Requested location:", location);
+    const { Location } = req.query;
+    console.log("Requested location:", Location);
     
 
     try {
         let hotels;
-        if (location){
-            hotels = await schema.find({ location })
+        if (Location){
+            hotels = await schema.find({ Location })
         }
         else{
             hotels = await schema.find()

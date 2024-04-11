@@ -19,10 +19,12 @@ try {
 const register = require("./registration");
 const userLoginRouter = require("./login");
 const hotelList = require('./HotelList')
+const forgetpassword = require('./ForgetPassword')
 
 app.use("/api", register);
 app.use("/api", userLoginRouter);
 app.use('/api', hotelList)
+app.use('/api', forgetpassword)
 
 
 
@@ -32,7 +34,7 @@ app.get("/api/signUp", (req, res) => {
 
 app.get("/api/login", (req, res) => {
   res.send("login is working");
-});
+}); 
 
 
 // app.get('/api/hotels', (req,res)=>{

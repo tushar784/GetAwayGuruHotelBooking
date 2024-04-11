@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 // final
 function Login() {
   const navigate = useNavigate();
+  const[loading,setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -40,7 +41,7 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setValidation(Validation(formData));
-
+     setLoading(true);
     try {
       const response = await axios.post(
         "http://localhost:4000/api/login",
@@ -50,13 +51,16 @@ function Login() {
       const token = response.data.token; //storing token in LocalStorage
       localStorage.setItem("token", token);
       // Handle successful login
-      navigate("/");
+      navigate("/");      
     } catch (error) {
-      // Handle error
       console.error(error);
+    }finally{
+      setLoading(false);
     }
   };
   return (
+    <>
+    {loading && <p>loading</p>}
     <div className=" bg-slate-200 h-dvh flex">
       <div
         className="w-1/2 mt-20 ml-56 mb-20 "
@@ -137,6 +141,7 @@ function Login() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

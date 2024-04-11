@@ -10,9 +10,11 @@ import Filters from "../components/Filters";
 const Hotels = () => {
   return (
     <>
-      <Navbar className="mb-6 sticky h-[12rem] bg-white  " />
-      <div className="sticky top-0 ml-[10rem] h-[6rem]  z-10 ">
+      <div className="sticky top-2 bg-white w-[102rem]  h-[13rem] shadow-lg z-50">
+        <Navbar />
+        <div className="sticky top-[-1rem] ml-[15rem] bg-white z-30">
         <HotelSearchBar />
+      </div>
       </div>
    
       <Layout >
