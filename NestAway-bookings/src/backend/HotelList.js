@@ -6,7 +6,6 @@ app.get('/hotels', async(req,res)=>{
     const { Location } = req.query;
     console.log("Requested location:", Location);
     
-
     try {
         let hotels;
         if (Location){
