@@ -2,10 +2,13 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../Context/Auth_Context";
 
 // final
 function Login() {
   const navigate = useNavigate();
+  const[loading,setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -33,6 +36,8 @@ function Login() {
     return errors;
   }
 
+  const {login} = useContext(AuthContext)
+
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
@@ -40,23 +45,27 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setValidation(Validation(formData));
-
+    setLoading(true);
     try {
       const response = await axios.post(
         "http://localhost:4000/api/login",
         formData
       );
-      console.log(response.data);
-      const token = response.data.token; //storing token in LocalStorage
+      const { token, user } = response.data; // Destructure token and user directly
       localStorage.setItem("token", token);
+      login({ user, token });   //coming from authcontext
       // Handle successful login
       navigate("/");
     } catch (error) {
-      // Handle error
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
+  
   return (
+    <>
+    {loading && <p>loading</p>}
     <div className=" bg-slate-200 h-dvh flex">
       <div
         className="w-1/2 mt-20 ml-56 mb-20 "
@@ -105,6 +114,7 @@ function Login() {
             <p style={{ color: "red" }}>{validation.password}</p>
           )}
           {/* CheckBox */}
+          <div>
           <p className="flex">
             <p className="flex">
               <input
@@ -118,7 +128,7 @@ function Login() {
               Forgot Password?
             </p>
           </p>
-
+          </div>
           {/* Button */}
           <button
             onClick={handleSubmit}
@@ -137,6 +147,7 @@ function Login() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
