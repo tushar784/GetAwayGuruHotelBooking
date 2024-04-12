@@ -24,7 +24,7 @@ const hotelSchema = new Schema({
     type: [String]
   },
   Price: {
-    type: Number,
+    type: String,
     required: true
   },
   Image: {
@@ -32,4 +32,4 @@ const hotelSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model('Hotel', hotelSchema);
+module.exports = mongoose.model('HotelDB', hotelSchema);

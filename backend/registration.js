@@ -1,10 +1,10 @@
 const express = require('express')
 const { default: mongoose } = require('mongoose')
-const router = express.Router()
+const app = express()
 const schema = require('./Models/user.model')
 const bcrypt = require('bcrypt')
 
-router.post('/signUp', async(req,res)=>{      //signup route
+app.post('/signUp', async(req,res)=>{      //signup route
     const { username, email, password} = req.body;
 
     if(!username || !email || !password){            //if any empty fields
@@ -44,4 +44,4 @@ router.post('/signUp', async(req,res)=>{      //signup route
 });
 
 
-module.exports = router
+module.exports = app

@@ -1,23 +1,25 @@
-const mongoose = require("mongoose");
+
+require('dotenv').config();
 const express = require("express");
+const mongoose = require("mongoose");
+const cors = require('cors');
 const port = 4000;
 const app = express();
-const cors = require('cors')
 app.use(express.json());
 app.use(cors())
-app.use(express.json()); // Parse incoming JSON data
+app.use(express.json()); 
 
-try {
-  //database connection
-  const mongodb = mongoose.connect("mongodb://localhost:27017/DemoDB");
-  console.log("mongo connected!");
-} catch (error) {
-  console.log("err", error);
-}
+const URL = process.env.MONGO_URL;
+console.log(URL,"url")
+mongoose.connect(URL)
+.then(()=> console.log('Mongo Connected!'))
+.catch(err => console.error('MongoDB connection error:', err));
+
+
 const register = require("./registration");
 const userLoginRouter = require("./login");
 const hotelList = require('./HotelList')
-const forgetpassword = require('./ForgetPassword')
+const forgetpassword = require('./ForgetPassword.js')
 
 app.use("/api", register);
 app.use("/api", userLoginRouter);

@@ -1,10 +1,11 @@
 const express = require('express')
-const router = express.Router()
+const app = express()
 const ResetPasswordSchema = require('./Models/UserResetPassword.model')
 const nodemailer = require('nodemailer')
 const crypto = require('crypto');
 
-router.post('/forgot-password', async(req,res)=>{
+
+app.post('/forgot-password', async(req,res)=>{
     const {email} = req.body
 
     try {
@@ -33,3 +34,5 @@ router.post('/forgot-password', async(req,res)=>{
     };
     
 });
+
+module.exports=app;

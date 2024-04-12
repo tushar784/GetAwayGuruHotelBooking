@@ -10,38 +10,19 @@ import Filters from "../components/Filters";
 const Hotels = () => {
   return (
     <>
-      <div className="sticky top-2 bg-white w-[102rem]  h-[13rem] shadow-lg z-50">
+      <div className="sticky top-2 bg-white w-full h-[13rem] shadow-lg z-50">
         <Navbar />
         <div className="sticky top-[-1rem] ml-[15rem] bg-white z-30">
-        <HotelSearchBar />
+          <HotelSearchBar />
+        </div>
       </div>
-      </div>
-   
-      <Layout >
-      {[
-        <Filters />,
-        <HotelList hotels={hotels}  />,
-      ]}
-    </Layout>
-      
+
+      <Layout>{[<Filters />, <HotelList hotels={hotels} />]}</Layout>
     </>
   );
 };
 
 export default Hotels;
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import React from "react";
 // import hotels from "../HotelList/hotellist.json";
@@ -53,7 +34,7 @@ export default Hotels;
 //   return (
 //     <>
 //     <Navbar/>
-  
+
 //       <HotelSearchBar />
 //       <HotelList hotels={hotels} />
 //     </>
@@ -62,28 +43,7 @@ export default Hotels;
 
 // export default Hotels;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //final today
-
-
-
 
 // import Filters from "../HotelList/Filters";
 // // import HotelSearchBar from "../components/HotelSearchBar"

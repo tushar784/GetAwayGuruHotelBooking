@@ -11,7 +11,7 @@ function Navbar() {
   // const [user,setUser]= useState("aditya");
   const {user} = useContext(AuthContext);
   console.log(user,"user");
- 
+  
 
   return (
     <>

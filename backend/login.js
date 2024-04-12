@@ -1,11 +1,11 @@
 const express = require('express');
-const router = express.Router();
+const app = express()
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const schema = require('./Models/user.model');
 
 // Define route
-router.post('/login', async (req, res) => {
+app.post('/login', async (req, res) => {
     try {
         const { email, password } = req.body;
 
@@ -54,4 +54,4 @@ router.post('/login', async (req, res) => {
     }
 });
 
-module.exports = router;
+module.exports = app;

@@ -2,7 +2,7 @@
     {
         "Hotel_id": "6901",
         "Hotel_Name": "The Taj Mahal Palace",
-        "Location": "Mumbai, India",
+        "Location": "mumbai",
         "Staring_Rating": "5",
         "Amenities": "Spa, Fitness Center, Pool, Airport Shuttle",
         "Price": "15,000",
@@ -12,7 +12,7 @@
     {
         "Hotel_id": "6902",
         "Hotel_Name": "The Leela Palace",
-        "Location": "New Delhi, India",
+        "Location": "newdelhi",
         "Staring_Rating": "4",
         "Amenities": "Butler Service, Concierge, Business Center, Babysitting",
         "Price": "20,000",
@@ -22,7 +22,7 @@
     {
         "Hotel_id": "6903",
         "Hotel_Name": "ITC Maurya",
-        "Location": "New Delhi, India",
+        "Location": "newdelhi",
         "Staring_Rating": "5",
         "Amenities": "Presidential Suite, Multiple Restaurants, Nightclub",
         "Price": "25,000",
@@ -32,7 +32,7 @@
     {
         "Hotel_id": "6904",
         "Hotel_Name": "The Oberoi Amarvilas",
-        "Location": "Agra, India",
+        "Location": "agra",
         "Staring_Rating": "5",
         "Amenities": "Private Balconies, Taj Mahal View, Jacuzzi",
         "Price": "30,000",
@@ -41,7 +41,7 @@
     {
         "Hotel_id": "6905",
         "Hotel_Name": "Rambagh Palace",
-        "Location": "Jaipur, India",
+        "Location": "jaipur",
         "Staring_Rating": "4",
         "Amenities": "Heritage Property, Swimming Pool, Jharokha Architecture",
         "Price": "18,000",
@@ -51,7 +51,7 @@
     {
         "Hotel_id": "6906",
         "Hotel_Name": "The LaLiT Mangal",
-        "Location": "Udaipur, India",
+        "Location": "udaipur",
         "Staring_Rating": "5",
         "Amenities": "Palace Stay, Boating on Lake Pichola, Spa",
         "Price": "12,000",
@@ -61,7 +61,7 @@
     {
         "Hotel_id": "6907",
         "Hotel_Name": "Four Seasons Hotel ",
-        "Location": "Mumbai, India",
+        "Location": "mumbai",
         "Staring_Rating": "5",
         "Amenities": "Harbor View, Fine Dining, Ballroom",
         "Price": "22,000",
@@ -71,7 +71,7 @@
     {
         "Hotel_id": "6908",
         "Hotel_Name": "The St. Regis ",
-        "Location": "Mumbai, India",
+        "Location": "mumbai",
         "Staring_Rating": "3",
         "Amenities": "Butler Service, Private Dining, Luxury Spa",
         "Price": "28,000",
@@ -81,7 +81,7 @@
     {
         "Hotel_id": "6909",
         "Hotel_Name": "JW Marriott Hotel ",
-        "Location": "Bengaluru, India",
+        "Location": "bengaluru",
         "Staring_Rating": "5",
         "Amenities": "Multiple Restaurants, Sky Lounge, Fitness Center",
         "Price": "16,000",
