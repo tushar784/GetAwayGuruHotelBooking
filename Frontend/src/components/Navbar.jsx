@@ -9,7 +9,7 @@ function Navbar() {
   const[loading,setLoading]=useState(false);
 
   // const [user,setUser]= useState("aditya");
-  const {user} = useContext(AuthContext);
+  const {user,logout} = useContext(AuthContext);
   console.log(user,"user");
   
 
@@ -43,7 +43,11 @@ function Navbar() {
           </div>
           <nav className="hidden md:flex items-center gap-4">
             {user ? (
-              <div className="font-bold py-2">Hello {user?.email}</div> 
+              <div className="font-bold py-2">Hello {user?.email}
+                <Link className="font-semibold mr-4 ml-[18rem]" to="/login" onClick={logout}>
+                Logout
+              </Link>
+              </div> 
             ) : (
               <Link className="font-semibold mr-4 ml-[18rem]" to="/login">
                 Login
