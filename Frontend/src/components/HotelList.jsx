@@ -4,7 +4,7 @@ const HotelList = ({ hotels }) => {
   //api
 
   return (
-    <div className="container mx-auto pl-[6rem] font-poppins pr-[4rem] pt-[2rem]  ">
+    <div className="container mx-auto ml-[4rem] font-poppins pr-[4rem] pt-[2rem]  ">
       <h1 className="text-xl font-semibold  mb-4">
         Showing properties in navi mumbai
       </h1>

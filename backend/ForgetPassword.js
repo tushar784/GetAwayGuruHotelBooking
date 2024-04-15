@@ -9,8 +9,7 @@ app.post('/forgot-password', async(req,res)=>{
     const {email} = req.body
 
     try {
-        const user = ResetPasswordSchema.findOne({email})
-
+        const user = awaits ResetPasswordSchema.find({email})
         if(!user){
             res.json({message:'user not found'})
         }
@@ -24,8 +23,8 @@ app.post('/forgot-password', async(req,res)=>{
     await user.save(); 
         
     const mailOptions = {
-        from: 'your_email@example.com',
-        to: email,
+        from: 'thewitcher1501@gmail.com',
+        to: 'survetushar1501@gmail.com',
         subject: 'Reset your password',
         text: `You are receiving this because you (or someone else) have requested to reset the password for your account.\n\n`
             + `Please click on the following link, or paste this into your browser to complete the process:\n\n`
