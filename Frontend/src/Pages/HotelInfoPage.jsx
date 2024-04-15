@@ -6,21 +6,23 @@ import RoomCard from "../components/RoomCard.jsx";
 import ImgLoad from "../components/ImgLoad.jsx";
 import Map from "../components/Map.jsx";
 import Policies from "../components/Policies.jsx";
+import axios from "axios";
+import { useEffect,useParams } from "react";
 
 
 const HotelInfoPage = () => {
-  const [rating, setRating] = useState(null);
-  const [hover, setHover] = useState(null);
+  const { hotelName } = useParams();
+  const [hotelDetails, setHotelDetails] = useState(null);
+
+  useEffect(() => {
+    axios.get(`http://localhost:4000/api/hotels?Hotel_Name=${hotelName}`)
+      .then(response => response.json())
+      .then(data => setHotelDetails(data))
+      .catch(error => console.error('Error fetching hotel details:', error));
+  }, [hotelName]);
 
   return (
     <>
-    {/* <div className="sticky top-2 bg-white w-[102rem] h-[13rem] shadow-lg z-50">
-        <Navbar />
-        <div className="sticky top-[-1rem] ml-[3rem] bg-white  z-30">
-        <HotelSearchBar />
-      </div>
-      </div> */}
-
       <div className="sticky top-2 bg-white w-full h-[13rem] shadow-lg z-50">
         <Navbar />
         <div className="sticky top-[-1rem] ml-[15rem] bg-white z-30">

@@ -1,9 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const HotelCard = () => {
+const HotelCard = ({hotelname}) => {
   const navigate = useNavigate();
   const [hotels, setHotels] = useState([]);
 
@@ -11,7 +11,7 @@ const HotelCard = () => {
     // Fetch data from the API endpoint using Axios
     axios.get("http://localhost:4000/api/hotels")
       .then((response) => {
-        console.log('data',response)
+
         setHotels(response.data);
       })
       .catch((error) => {
@@ -26,7 +26,7 @@ const HotelCard = () => {
           className="bg-white h-[14rem] w-[95%] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
           <div className="h-auto md:h-48 overflow-hidden mt-4 ml-2 rounded-lg">
             <img
-              src={hotel.Image}
+              src={hotel.Card_Image}
               alt={hotel.Hotel_Name}
               className="object-cover w-[18rem] h-[11rem] rounded m-2"
             />
@@ -56,15 +56,13 @@ const HotelCard = () => {
             </div>
           </div>
           <div className="mt-12 ml-[2rem]">
-            <p className="text-black font-extrabold mb-4">₹{hotel.Price}</p>
+            <p className="text-black font-extrabold mb-4">{hotel.Price}</p>
+            <Link to={`/hotels/${hotelname}`}>
             <button
-              className="bg-[#90CCBA] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              onClick={() => {
-                navigate("/townhouse");
-              }}
-            >
+              className="bg-[#90CCBA] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
               Book Now
             </button>
+            </Link>
           </div>
         </div>
       ))}
