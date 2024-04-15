@@ -35,7 +35,9 @@ app.get("/api/login", (req, res) => {
   res.send("login is working");
 }); 
 
-
+app.get("/api/forgot-password", (req, res) => {
+  res.send("Forget password is working");
+}); 
 // app.get('/api/hotels', (req,res)=>{
 //   res.send("hotels list")
 // })
