@@ -44,7 +44,7 @@ function Navbar() {
           <nav className="hidden md:flex items-center gap-4">
             {user ? (
               <div className="font-bold py-2">Hello {user?.email}
-                <Link className="font-semibold mr-4 ml-[18rem]" to="/login" onClick={logout}>
+                <Link className="font-semibold " to="/login" onClick={logout}>
                 Logout
               </Link>
               </div> 
