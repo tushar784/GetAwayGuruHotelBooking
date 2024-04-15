@@ -32,7 +32,7 @@ app.post('/login', async (req, res) => {
         const token = jwt.sign(
             {
                 userId: user._id,
-                name: user.username,
+                username: user.username,
                 email: user.email
             },
             'your-secret-key',
@@ -44,7 +44,7 @@ app.post('/login', async (req, res) => {
             token,
             user: {
                 _id: user._id,
-                name: user.username,
+                username: user.username,
                 email: user.email
             }
         });
