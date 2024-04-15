@@ -6,21 +6,12 @@ import RoomCard from "../components/RoomCard.jsx";
 import ImgLoad from "../components/ImgLoad.jsx";
 import Map from "../components/Map.jsx";
 import Policies from "../components/Policies.jsx";
-
+import axios from "axios";
 
 const HotelInfoPage = () => {
-  const [rating, setRating] = useState(null);
-  const [hover, setHover] = useState(null);
 
   return (
     <>
-    {/* <div className="sticky top-2 bg-white w-[102rem] h-[13rem] shadow-lg z-50">
-        <Navbar />
-        <div className="sticky top-[-1rem] ml-[3rem] bg-white  z-30">
-        <HotelSearchBar />
-      </div>
-      </div> */}
-
       <div className="sticky top-2 bg-white w-full h-[13rem] shadow-lg z-50">
         <Navbar />
         <div className="sticky top-[-1rem] ml-[15rem] bg-white z-30">
@@ -29,10 +20,10 @@ const HotelInfoPage = () => {
       </div>
 
       <div className=" ml-[1rem]">
-     <ImgLoad />       
+        <ImgLoad />
         <Map />
-      <RoomCard />
-      <Policies />
+        <RoomCard />
+        <Policies />
       </div>
       <Footer />
     </>
@@ -40,29 +31,6 @@ const HotelInfoPage = () => {
 };
 
 export default HotelInfoPage;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import React, { useState } from "react";
 // import Navbar from "../components/Navbar";
@@ -78,8 +46,6 @@ export default HotelInfoPage;
 // import Roomdata from "../components/RoomCard.jsx";
 // import Footer from "../components/Footer.jsx";
 // import HotelSearchBar from "../components/HotelSearchBar.jsx";
-
-
 
 // const Specific = () => {
 //   const [rating, setRating] = useState(null);
@@ -101,7 +67,7 @@ export default HotelInfoPage;
 //             alt=""
 //           />
 //         </div>
-        
+
 //         <div className="flex-direaction-column mt-[2rem] ml-[20px] border-1  w-[339px]">
 //           <img
 //             className=" rounded w-[20rem] h-[212px]"
