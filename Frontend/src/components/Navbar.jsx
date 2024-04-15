@@ -26,9 +26,9 @@ function Navbar() {
               <div className="flex gap-12 ">
                 <Link to="/">Home</Link>
                 <Link to="" className="">
-                  Customer Support
+                  Holiday Packages
                 </Link>
-                <Link to="">About</Link>
+                <Link to="">Events</Link>
               </div>
             </nav> 
           </div>
@@ -43,7 +43,7 @@ function Navbar() {
           </div>
           <nav className="hidden md:flex items-center gap-4">
             {user ? (
-              <div className="font-bold py-2">Hello {user?.email}</div>
+              <div className="font-bold py-2">Hello {user?.email}</div> 
             ) : (
               <Link className="font-semibold mr-4 ml-[18rem]" to="/login">
                 Login

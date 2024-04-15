@@ -9,8 +9,7 @@ const HotelCard = () => {
 
   useEffect(() => {
     // Fetch data from the API endpoint using Axios
-    axios
-      .get("http://localhost:4000/api/hotels")
+    axios.get("http://localhost:4000/api/hotels")
       .then((response) => {
         setHotels(response.data);
       })
