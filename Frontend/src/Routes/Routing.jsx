@@ -5,6 +5,7 @@ import Hotels from '../Pages/Hotels';
 import { AuthProvider } from '../Context/Auth_Context';
 import Login from '../components/Login'
 import Specific from '../Pages/HotelInfoPage';
+import HotelInfoPage from '../Pages/HotelInfoPage';
 
 const Routing = () => {
   return (
@@ -16,7 +17,7 @@ const Routing = () => {
         <Route exact path='/signup' element={<Signup />} />
         <Route exact path='/login' element={<Login />} />
         <Route exact path= '/hotels' element={<Hotels />} />
-        <Route path='/townhouse' element={<Specific />} />
+        <Route path="/hotels/:hotelName" component={<HotelInfoPage />} />
       </Routes>
     </BrowserRouter>
     </AuthProvider>

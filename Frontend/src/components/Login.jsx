@@ -133,8 +133,7 @@ function Login() {
           <button
             onClick={handleSubmit}
             className="text-white font-bold py-2 px-20 w-80 h-10 ml-8 rounded"
-            style={{ backgroundColor: "#90CCBA" }}
-          >
+            style={{ backgroundColor: "#90CCBA" }}>
             Log in
           </button>
         </form>

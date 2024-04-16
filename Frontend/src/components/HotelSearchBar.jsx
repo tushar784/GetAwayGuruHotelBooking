@@ -9,6 +9,19 @@ import axios from "axios"
 
 
 
+const destinations = [
+  { value: "Mumbai", label: "Mumbai" },
+  { value: "New Delhi", label: "New Delhi" },
+  { value: "Agra", label: "Agra" },
+  { value: "Jaipur", label: "Jaipur" },
+  { value: "Bengaluru", label: "Bengaluru" },
+  { value: "Hydrabad", label: "Hydrabad" },
+  { value: "Goa", label: "Goa" },
+  { value: "Manali", label: "Manali" },
+  // Add more destinations as needed
+];
+
+
 const HotelSearchBar = () => {
   // For Calender logic
   const [openDate, setOpenDate] = useState(false);
@@ -85,11 +98,21 @@ const HotelSearchBar = () => {
       <div className="items-center gap-2.5">
         <h1 className="ml-[2.3rem] font-semibold">Destination</h1> 
 
+        
+        <select className="headerSearchInput pl-[2rem] pr-[2rem]">
+          {destinations.map((destination) => (
+            <option key={destination.value} value={destination.value}>
+              {destination.label}
+            </option>
+          ))}
+        {/* </select> */}
         {/* Dropdown list for destination */}
-        <select className="pl-[2rem] pr-[2rem] border"
+        {/* <select className="pl-[2rem] pr-[2rem] border"
           value={selectedLocation}
           onChange={handleLocationChange}
-        >
+        > */}
+
+           {/* old code */}
           <option value="">Select Location</option>
           {locations.map((location) => (
             <option key={location} value={location}>
@@ -221,26 +244,4 @@ const HotelSearchBar = () => {
 };
 
 export default HotelSearchBar;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

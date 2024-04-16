@@ -10,7 +10,6 @@ app.use(cors())
 app.use(express.json()); 
 
 const URL = process.env.MONGO_URL;
-console.log(URL,"url")
 mongoose.connect(URL)
 .then(()=> console.log('Mongo Connected!'))
 .catch(err => console.error('MongoDB connection error:', err));
@@ -36,7 +35,9 @@ app.get("/api/login", (req, res) => {
   res.send("login is working");
 }); 
 
-
+app.get("/api/forgot-password", (req, res) => {
+  res.send("Forget password is working");
+}); 
 // app.get('/api/hotels', (req,res)=>{
 //   res.send("hotels list")
 // })
