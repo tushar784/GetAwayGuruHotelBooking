@@ -3,15 +3,15 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const HotelCard = ({hotelname}) => {
+const HotelCard = () => {
   const navigate = useNavigate();
   const [hotels, setHotels] = useState([]);
 
   useEffect(() => {
     // Fetch data from the API endpoint using Axios
-    axios.get("http://localhost:4000/api/hotels")
+    const url = import.meta.env.VITE_BASE_URL
+    const response = axios.get(`${url}/api/hotels`)
       .then((response) => {
-
         setHotels(response.data);
       })
       .catch((error) => {
@@ -57,7 +57,7 @@ const HotelCard = ({hotelname}) => {
           </div>
           <div className="mt-12 ml-[2rem]">
             <p className="text-black font-extrabold mb-4">{hotel.Price}</p>
-            <Link to={`/hotels/${hotelname}`}>
+            <Link to={`/hotels/${hotel.Hotel_Name}`}>
             <button
               className="bg-[#90CCBA] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
               Book Now

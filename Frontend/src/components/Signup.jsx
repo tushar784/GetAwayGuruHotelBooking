@@ -41,8 +41,10 @@ function SignUp() {
   }
 
   const handleChange = (event) => {
+    console.log("this is the event",event);
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
+  console.log("handlechange",handleChange);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -50,10 +52,13 @@ function SignUp() {
 
     // Handle successful signup
     try {
+      const url = import.meta.env.VITE_BASE_URL
       const response = await axios.post(
-        "http://localhost:4000/api/signUp",
+        `${url}/api/signUp`,
         formData
       );
+      const data = response.json()
+      console.log("data here",data);
       console.log(response.data);
       navigate("/"); //navigation
     } catch (error) {
@@ -164,3 +169,5 @@ function SignUp() {
 }
 
 export default SignUp;
+
+

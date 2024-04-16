@@ -47,8 +47,9 @@ function Login() {
     setValidation(Validation(formData));
     setLoading(true);
     try {
+      const url = import.meta.env.VITE_BASE_URL
       const response = await axios.post(
-        "http://localhost:4000/api/login",
+        `${url}/api/login`,
         formData
       );
       const { token, user } = response.data; // Destructure token and user directly

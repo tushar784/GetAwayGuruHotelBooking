@@ -7,8 +7,9 @@ const HotelList = () => {
   const [hotels, setHotels] = useState([]);
 
   useEffect(() => {
+    const url = import.meta.env.VITE_BASE_URL
     // Fetch data from the API endpoint using Axios
-    axios.get("http://localhost:4000/api/hotels")
+    axios.get(`${url}/api/hotels`)
       .then((response) => {
         setHotels(response.data);
       })
@@ -23,7 +24,7 @@ const HotelList = () => {
       </h1>
       <div className="grid grid-rows-1 sm:grid-rows-2 md:grid-rows-3 lg:grid-rows-4 gap-4">
         {hotels.map((hotel) => (
-          <HotelCard key={hotel.Hotel_id} hotel={hotel.Hotel_Name} />
+          <HotelCard key={hotel.Hotel_Name} hotel={hotel} />
         ))}
       </div>
     </div>

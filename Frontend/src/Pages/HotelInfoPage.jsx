@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer.jsx";
 import HotelSearchBar from "../components/HotelSearchBar.jsx";
@@ -7,19 +7,24 @@ import ImgLoad from "../components/ImgLoad.jsx";
 import Map from "../components/Map.jsx";
 import Policies from "../components/Policies.jsx";
 import axios from "axios";
-import { useEffect,useParams } from "react";
-
+import { useParams } from "react-router-dom";
 
 const HotelInfoPage = () => {
   const { hotelName } = useParams();
   const [hotelDetails, setHotelDetails] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/api/hotels?Hotel_Name=${hotelName}`)
-      .then(response => response.json())
-      .then(data => setHotelDetails(data))
-      .catch(error => console.error('Error fetching hotel details:', error));
-  }, [hotelName]);
+    const fetchHotelDetails = async () => {
+      try {
+        const url = import.meta.env.VITE_BASE_URL
+        const response = await axios.get(`${url}/api/hotels?Hotel_Name=${hotelName}`);
+        setHotelDetails(response.data);
+      } catch (error) {
+        console.error('Error fetching hotel details:', error);
+      }
+    };
+    fetchHotelDetails();
+  }, []);
 
   return (
     <>
@@ -31,10 +36,10 @@ const HotelInfoPage = () => {
       </div>
 
       <div className=" ml-[1rem]">
-     <ImgLoad />       
+        <ImgLoad />
         <Map />
-      <RoomCard />
-      <Policies />
+        <RoomCard hotelDetails={hotelDetails} />
+        <Policies hotelDetails={hotelDetails} />
       </div>
       <Footer />
     </>
@@ -42,28 +47,6 @@ const HotelInfoPage = () => {
 };
 
 export default HotelInfoPage;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // import React, { useState } from "react";
@@ -80,8 +63,6 @@ export default HotelInfoPage;
 // import Roomdata from "../components/RoomCard.jsx";
 // import Footer from "../components/Footer.jsx";
 // import HotelSearchBar from "../components/HotelSearchBar.jsx";
-
-
 
 // const Specific = () => {
 //   const [rating, setRating] = useState(null);
@@ -103,7 +84,7 @@ export default HotelInfoPage;
 //             alt=""
 //           />
 //         </div>
-        
+
 //         <div className="flex-direaction-column mt-[2rem] ml-[20px] border-1  w-[339px]">
 //           <img
 //             className=" rounded w-[20rem] h-[212px]"
