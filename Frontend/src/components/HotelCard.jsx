@@ -1,28 +1,10 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { useState, useEffect } from "react";
 
-const HotelCard = () => {
-  // const navigate = useNavigate();
-  const [hotels, setHotels] = useState([]);
-
-  useEffect(() => {
-    // Fetch data from the API endpoint using Axios
-    axios.get("http://localhost:4000/api/hotels")
-      .then((response) => {
-        setHotels(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching hotels:", error);
-      });
-  }, []);
+const HotelCard = ({hotel}) => {
   return (
     <>
-      {hotels.map((hotel,index) => (
-        <div
-          key={index}
-          className="bg-white h-[14rem] w-[95%] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
+        <div className="bg-white h-[14rem] w-[95%] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
           <div className="h-auto md:h-48 overflow-hidden mt-4 ml-2 rounded-lg">
             <img
               src={hotel.Card_Image}
@@ -56,16 +38,14 @@ const HotelCard = () => {
           </div>
           <div className="mt-12 ml-[2rem]">
             <p className="text-black font-extrabold mb-4">{hotel.Price}</p>
-            <Link to={'/hotels/:${Hotel_Name}'}>
+            <Link to={`/hotels/${hotel.Hotel_Name}`}>
             <button
-              className="bg-[#90CCBA] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            >
+              className="bg-[#90CCBA] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
               Book Now
             </button>
             </Link>
           </div>
         </div>
-      ))}
     </>
   );
 };
