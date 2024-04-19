@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { FaStar } from "react-icons/fa";
 import { ImLocation2 } from "react-icons/im";
 import { IoShareSocialSharp } from "react-icons/io5";
