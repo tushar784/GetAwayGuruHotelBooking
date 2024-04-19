@@ -37,10 +37,11 @@ app.get("/api/login", (req, res) => {
 
 app.get("/api/forgot-password", (req, res) => {
   res.send("Forget password is working");
-}); 
-// app.get('/api/hotels', (req,res)=>{
-//   res.send("hotels list")
-// })
+});
+ 
+app.get('/api/hotels', (req,res)=>{
+  res.send("hotels list")
+})
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
