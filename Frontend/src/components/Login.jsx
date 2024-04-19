@@ -116,19 +116,19 @@ function Login() {
           )}
           {/* CheckBox */}
           <div>
-          <p className="flex">
-            <p className="flex">
+          <div className="flex">
+            <div className="flex">
               <input
                 type="checkbox"
                 id="rememberMe"
                 className="bg-teal-200 mt-4 mb-5 ml-8 mr-2"
               />
               <p className="mt-6 ml-0 text-slate-400 text-sm">Remember me</p>
-            </p>
+               </div>
             <p className="ml-20 mb-8 mt-6 text-slate-400 text-sm mr-10">
               Forgot Password?
             </p>
-          </p>
+          </div>
           </div>
           {/* Button */}
           <button

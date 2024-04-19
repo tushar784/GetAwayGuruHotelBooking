@@ -15,6 +15,7 @@ const Hotels = () => {
       try {
         const url = import.meta.env.VITE_BASE_URL;
         const response = await axios.get(`${url}/api/hotels`);
+        console.log(response);
         setHotels(response.data);
       } catch (error) {
         console.error("Error fetching hotels:", error);
