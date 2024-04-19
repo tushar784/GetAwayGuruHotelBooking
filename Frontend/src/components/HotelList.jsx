@@ -9,7 +9,7 @@ const HotelList = ({ hotels }) => {
       </h1>
       <div className="grid grid-rows-1 sm:grid-rows-2 md:grid-rows-3 lg:grid-rows-4 gap-4">
         {hotels.map((hotel) => (
-          <HotelCard key={hotel.Hotel_id} hotel={hotel.Hotel_Name} />
+          <HotelCard key={hotel.Hotel_id} hotel={hotel} />
         ))}
       </div>
     </div>

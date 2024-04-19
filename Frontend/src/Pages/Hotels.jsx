@@ -9,6 +9,7 @@ import axios from "axios";
 
 const Hotels = () => {
   const [hotels, setHotels] = useState([]);
+  console.log("hotels in hotesl main",hotels);
 
   useEffect(() => {
     const fetchHotels = async () => {
@@ -17,6 +18,7 @@ const Hotels = () => {
         const response = await axios.get(`${url}/api/hotels`);
         //console.log(response);
         setHotels(response.data);
+        console.log("hotels in hotesl main",response.data);
       } catch (error) {
         console.error("Error fetching hotels:", error);
       }

@@ -2,18 +2,14 @@ import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const HotelCard = ({hotel}) => {
-
-  useEffect(()=>{
-    console.log("card",hotel.Hotel_Name);
-  })
   return (
     <>
         <div className="bg-white h-[14rem] w-[95%] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
           <div className="h-auto md:h-48 overflow-hidden mt-4 ml-2 rounded-lg">
-          <h1>{hotel.Hotel_Name}</h1>
+          {/* <h1>{hotel.Hotel_Name}</h1> */}
             <img
-              src={hotel.Card_Image}
-              alt={hotel.Hotel_Name}
+              src={hotel?.Card_Image}
+              alt={hotel?.Hotel_Name}
               className="object-cover w-[18rem] h-[11rem] rounded m-2"
             />
           </div>
@@ -30,7 +26,8 @@ const HotelCard = ({hotel}) => {
                   {hotel.Staring_Rating}
                 </span>
               </div>
-              <ul className="text-[#90CCBA] flex flex-col mb-[-2rem]">
+
+              <ul className="text-black flex flex-col mb-[-2rem]">
                 {typeof hotel.Amenities === "string" ? (
                   hotel.Amenities.split(", ").map((amenity, index) => (
                     <li key={index}>{amenity}</li>
@@ -39,13 +36,15 @@ const HotelCard = ({hotel}) => {
                   <li>{hotel.Amenities}</li>
                 )}
               </ul>
+           
+
             </div>
           </div>
           <div className="mt-12 ml-[2rem]">
             <p className="text-black font-extrabold mb-4">{hotel.Price}</p>
             <Link to={`/hotels/${hotel.Hotel_Name}`}>
             <button
-              className="bg-[#90CCBA] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              className="bg-[#90CCBA] hover:bg-[#46c79f] text-white font-bold py-2 px-4 rounded">
               Book Now
             </button>
             </Link>
