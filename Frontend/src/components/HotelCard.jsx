@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const HotelCard = ({hotel}) => {
+
+  useEffect(()=>{
+    console.log("card",hotel.Hotel_Name);
+  })
   return (
     <>
         <div className="bg-white h-[14rem] w-[95%] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
           <div className="h-auto md:h-48 overflow-hidden mt-4 ml-2 rounded-lg">
+          <h1>{hotel.Hotel_Name}</h1>
             <img
               src={hotel.Card_Image}
               alt={hotel.Hotel_Name}
