@@ -3,6 +3,7 @@ const { default: mongoose } = require('mongoose')
 const app = express()
 const schema = require('./Models/user.model')
 const bcrypt = require('bcrypt')
+const { v4: uuidv4 } = require('uuid');
 
 app.post('/signUp', async(req,res)=>{      //signup route
     const { username, email, password} = req.body;
@@ -31,9 +32,11 @@ app.post('/signUp', async(req,res)=>{      //signup route
         //hashed password
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
-    
+        
+        //creating unique id
+        const customerId = uuidv4();
 
-        const createUser = new schema({username, email, password: hashedPassword})    //creating new user
+        const createUser = new schema({username, email, password: hashedPassword, customer_id: customerId})    //creating new user
         await createUser.save()
         res.status(201).send({msgs:'new user create'})
         
