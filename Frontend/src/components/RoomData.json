@@ -1,0 +1,23 @@
+[
+    {
+        "RoomType": "Deluxe Room",
+        "Facilities": "Parking, Free wifi, Indoor gym access, Cable TV channel, Free breakfast",
+        "RefundInfo": "Non-refundable",
+        "Price":"5669",
+        "taxes": "+₹1020 taxes",
+        "note": "per night for 1 room",
+        "Image": "https://imageio.forbes.com/specials-images/imageserve/5cdb058a5218470008b0b00f/Nobu-Ryokan-Malibu/0x0.jpg?format=jpg&height=1009&width=2000"
+
+        
+    },
+    {
+        "RoomType": "Standard Room",
+        "Facilities": "Parking, Free wifi, Indoor gym access, Cable TV channel",
+        "RefundInfo": "Non-refundable",
+        "Price":"10,999",
+        "taxes": "+₹1020 taxes",
+        "note": "per night for 1 room",
+        "Image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnmBAZNHH2gGOmM-JPVuMU0hAKVnFYB8TPoA&usqp=CAU"
+
+    }
+]
