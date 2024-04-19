@@ -9,6 +9,7 @@ const HotelCard = ({hotel}) => {
             <img
               src={hotel.Card_Image}
               alt={hotel.Hotel_Name}
+              
               className="object-cover w-[18rem] h-[11rem] rounded m-2"
             />
           </div>
