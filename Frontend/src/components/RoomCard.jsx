@@ -10,7 +10,7 @@ function RoomCard() {
   return (
     <div className=' p-9 ml-[5rem] '>
       {RoomData.map((roomData, index) => (
-        <div key={index} className='bg-white mb-4 h-[14rem] w-[95%] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row '>
+        <div key={index} className='bg-white mb-4 h-[14rem] w-[95%] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row'>
         {/* className='bg-white shadow-lg rounded-xl h-[14rem] w-[88%] border border-slate-300	flex overflow-hidden mb-4 */}
 
           <img src={roomData.Image} 

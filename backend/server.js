@@ -17,15 +17,19 @@ mongoose.connect(URL)
 
 const register = require("./registration");
 const userLoginRouter = require("./login");
-const hotelList = require('./HotelList')
+// const hotelList = require('./HotelList')
+const hotelList = require('./HotelList.js')
 const forgetpassword = require('./ForgetPassword.js')
+// const rooms = require('./room')
+
+
 
 app.use("/api", register);
 app.use("/api", userLoginRouter);
-app.use('/api', hotelList)
+// app.use('/api', hotelList)
+app.use('/api' ,hotelList)
 app.use('/api', forgetpassword)
-
-
+// app.use('./api', room)
 
 app.get("/api/signUp", (req, res) => {
   res.send("sign up is working");  //{msg: done}

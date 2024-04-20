@@ -1,6 +1,10 @@
 const { default: mongoose } = require('mongoose')
 
 const userSchema = new mongoose.Schema({
+    customer_id:{
+    type: String,
+    unique: true
+    },
     username: {
         type: String,
         required: true,
@@ -17,14 +21,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
       },
-      resetPasswordToken: {
-        type: String,
-        required: true
-     },
-     resetPasswordExpires: {
-         type:Date,
-         required: true
-     },
     },
     { timestamps: true }
 )

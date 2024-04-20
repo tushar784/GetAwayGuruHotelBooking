@@ -60,7 +60,7 @@ function SignUp() {
       const data = response.json()
       console.log("data here",data);
       console.log(response.data);
-      navigate("/"); //navigation
+      navigate("/login"); //navigation
     } catch (error) {
       // Handle error
       console.error(error);

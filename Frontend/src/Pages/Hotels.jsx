@@ -9,13 +9,16 @@ import axios from "axios";
 
 const Hotels = () => {
   const [hotels, setHotels] = useState([]);
+  console.log("hotels in hotesl main",hotels);
 
   useEffect(() => {
     const fetchHotels = async () => {
       try {
         const url = import.meta.env.VITE_BASE_URL;
         const response = await axios.get(`${url}/api/hotels`);
+        //console.log(response);
         setHotels(response.data);
+        console.log("hotels in hotesl main",response.data);
       } catch (error) {
         console.error("Error fetching hotels:", error);
       }
@@ -34,7 +37,7 @@ const Hotels = () => {
       </div>
 
       <Layout>
-        {[<Filters />, <HotelList hotels={hotels} />]}
+        {[<Filters />, <HotelList  hotels={hotels} />]}
       </Layout>
     </>
   );

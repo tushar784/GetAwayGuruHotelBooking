@@ -10,7 +10,8 @@ const ImgLoad = ({ hotel }) => {
   const [hover, setHover] = useState(null);
 
   return (
-    <div className="flex bg-white-200 ml-[4rem] bg-white-300 w-[70rem]">
+    <div >
+      <div className="flex bg-white-200 ml-[4rem] bg-white-300 w-[70rem]">
       <div className="mt-[1.5rem] ml-[2rem] w-[25rem]">
         <img
           className="rounded mt-2 h-[26rem]"
@@ -51,7 +52,9 @@ const ImgLoad = ({ hotel }) => {
           </div>
         </div>
       </div>
-      <div className="items-center w-[70rem] h-full ml-[6rem] mt-2">
+      </div>
+      {/* <div className="items-center w-[70rem] h-full ml-[6rem] mt-2"> */}
+      <div className="items-center w-[70rem] h-full ml-[6rem] mt-[1rem]">
         <h1 className="text-black text-2xl font-bold mr-2">
           {hotel.Hotel_Name}
         </h1>
