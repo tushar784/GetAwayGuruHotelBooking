@@ -30,7 +30,7 @@ const Filters = ({ setFilters }) => {
   };
 
   return (
-    <div className="bg-white mt-[2rem] ml-[3.5rem] rounded-xl fixed w-full md:w-[22%] md:h-[68%] md:shadow">
+    <div className="bg-white ml-[3.5rem] rounded-xl fixed w-full md:w-[22%] md:h-[68%] md:shadow">
       <div className="flex items-center m-4">
         <FaFilter className="text-gray-600 mr-2" />
         <h2 className="text-xl font-bold text-gray-800">Filters</h2>

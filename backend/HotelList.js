@@ -54,4 +54,21 @@ app.get('/hotels/location/:Location', async (req, res) => {
     }
 });
 
+
+    // GET request to fetch Standard Room
+
+    app.get('/rooms', async (req, res) => {
+        try {
+            const rooms = await schema.find();
+    
+            if (!rooms || rooms.length === 0) {
+                return res.status(404).json({ message: 'No  rooms found' });
+            }
+            res.status(200).json(rooms); // Send successful response with rooms data
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({ message: 'Server Error' });
+        }
+    });
+    
 module.exports = app;    

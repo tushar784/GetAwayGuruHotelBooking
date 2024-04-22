@@ -13,7 +13,7 @@ const Map = () => {
     <div>
 
 <div className="flex w-[60rem] ml-[6rem]">
-        <div className=" ">
+        <div>
           <h1 className=" font-bold text-2xl">Map Location</h1>
 
           <iframe
@@ -81,7 +81,7 @@ const Map = () => {
           </div>
         </div>
       </div>
-      <div className=" w-[17rem] ml-[6rem]">
+      {/* <div className=" w-[17rem] ml-[6rem]">
             <h1 className="text-2xl font-bold ">Select Your Room</h1>
         <select
           className="bg-white-200 w-[180px] mt-3 h-7 text-black rounded  border border-black"
@@ -91,7 +91,7 @@ const Map = () => {
           <option value="standard">Standard Room</option>
           <option value="deluxe">Deluxe Room</option>
         </select>
-      </div>
+      </div> */}
 
     
     </div>
