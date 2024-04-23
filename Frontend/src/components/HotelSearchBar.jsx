@@ -8,6 +8,35 @@ import axios from "axios";
 
 const HotelSearchBar = ({ selectedLocation, setHotels }) => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchHotels = async () => {
+      try {
+        if (selectedLocation) {
+          const url = import.meta.env.VITE_BASE_URL;
+          const response = await axios.get(
+            `${url}/api/hotels/location/${selectedLocation}`
+          );
+          setHotels(response.data); // Update the hotels state in the parent component
+        }
+      } catch (error) {
+        console.error("Error fetching hotels:", error);
+      }
+    };
+
+    fetchHotels();
+  }, [selectedLocation, setHotels]);
+
+  const handleSearch = () => {
+    // You can remove the API call from here since it's handled by useEffect
+    navigate(`/hotels/location/${selectedLocation}`);
+  }
+  
+  const handleLocationChange = (event) => {
+    selectedLocation = event.target.value;
+    
+  };
+
   // For Calendar logic
   const [openDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
@@ -38,23 +67,7 @@ const HotelSearchBar = ({ selectedLocation, setHotels }) => {
   
   // const [hotels, setHotelsLocal] = useState([]);
 
-  const handleSearch = async () => {
-    try {
-      if (selectedLocation) {
-        const url = import.meta.env.VITE_BASE_URL;
-        const response = await axios.get(`${url}/api/hotels/location/${selectedLocation}`);
-        navigate(`/hotels/location/${selectedLocation}`);
-        setHotels(response.data); // Update the hotels state in the parent component
-      }
-    } catch (error) {
-      console.error("Error fetching hotels:", error);
-    }
-  };
-
-  const handleLocationChange = (event) => {
-    selectedLocation = event.target.value;
-    
-  };
+  
 
   const destinations = [
     { value: "Mumbai", label: "Mumbai" },
