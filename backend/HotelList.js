@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const schema = require('./Models/hotel.model')
+const room = require('./Models/room.model')
 
 // GET request to fetch all hotels
 app.get('/hotels', async (req, res) => {
@@ -59,7 +60,7 @@ app.get('/hotels/location/:Location', async (req, res) => {
 
     app.get('/rooms', async (req, res) => {
         try {
-            const rooms = await schema.find();
+            const rooms = await room.find();
     
             if (!rooms || rooms.length === 0) {
                 return res.status(404).json({ message: 'No  rooms found' });
