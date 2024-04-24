@@ -7,6 +7,35 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const HotelSearchBar = ({ selectedLocation, setHotels }) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchHotels = async () => {
+      try {
+        if (selectedLocation) {
+          const url = import.meta.env.VITE_BASE_URL;
+          const response = await axios.get(
+            `${url}/api/hotels/location/${selectedLocation}`
+          );
+          setHotels(response.data); // Update the hotels state in the parent component
+        }
+      } catch (error) {
+        console.error("Error fetching hotels:", error);
+      }
+    };
+
+    fetchHotels();
+  }, [selectedLocation, setHotels]);
+
+  const handleSearch = () => {
+    navigate(`/hotels/location/${selectedLocation}`);
+  }
+  
+  const handleLocationChange = (event) => {
+    selectedLocation = event.target.value;
+    
+  };
+
   // For Calendar logic
   const [openDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
@@ -34,25 +63,10 @@ const HotelSearchBar = ({ selectedLocation, setHotels }) => {
     });
   };
 
-  const navigate = useNavigate();
-  const [hotels, setHotelsLocal] = useState([]);
+  
+  // const [hotels, setHotelsLocal] = useState([]);
 
-  const handleSearch = async () => {
-    try {
-      if (selectedLocation) {
-        const url = import.meta.env.VITE_BASE_URL;
-        const response = await axios.get(`${url}/api/hotels/location/${selectedLocation}`);
-        setHotels(response.data); // Update the hotels state in the parent component
-      }
-    } catch (error) {
-      console.error("Error fetching hotels:", error);
-    }
-  };
-
-  const handleLocationChange = (event) => {
-    const selectedLocation = event.target.value;
-    navigate(`/hotels/location/${selectedLocation}`);
-  };
+  
 
   const destinations = [
     { value: "Mumbai", label: "Mumbai" },
@@ -66,7 +80,7 @@ const HotelSearchBar = ({ selectedLocation, setHotels }) => {
   ];
 
   return (
-    <div className="lg:h-16 md:h-[12rem] w-full lg:w-5/6 bg-[white] font-poppins static flex justify-around absolute px-0 py-2.5 border-[1px] rounded-xl lg:ml-4 lg:mt-28 lg:mb-2 md:ml-2">
+    <div className="lg:h-16 md:h-[12rem] w-full lg:w-5/6 bg-[white] font-poppins flex justify-around absolute px-0 py-2.5 border-[1px] rounded-xl lg:ml-4 lg:mt-28 lg:mb-2 md:ml-2">
     {/* Content of your HotelSearchBar component... */}
 
     <div className="items-center gap-2.5">
@@ -193,11 +207,11 @@ const HotelSearchBar = ({ selectedLocation, setHotels }) => {
       </div>
 
       <div className="headerSearchItem">
-        <Link to={`/hotels/location/${selectedLocation}`}>
+     
           <button className="bg-[#90CCBA] text-white font-bold h-16 pl-6 pr-6 mt-[-0.7rem] mr-[-4.5rem] border-[1px] rounded-r-lg" onClick={handleSearch}>
             Search
           </button>
-        </Link>
+       
       </div>
     </div>
   );
