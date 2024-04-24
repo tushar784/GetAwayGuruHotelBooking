@@ -64,10 +64,6 @@ const HotelSearchBar = ({ selectedLocation, setHotels }) => {
   };
 
   
-  // const [hotels, setHotelsLocal] = useState([]);
-
-  
-
   const destinations = [
     { value: "Mumbai", label: "Mumbai" },
     { value: "New Delhi", label: "New Delhi" },
