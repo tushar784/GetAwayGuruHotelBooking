@@ -7,6 +7,35 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const HotelSearchBar = ({ selectedLocation, setHotels }) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchHotels = async () => {
+      try {
+        if (selectedLocation) {
+          const url = import.meta.env.VITE_BASE_URL;
+          const response = await axios.get(
+            `${url}/api/hotels/location/${selectedLocation}`
+          );
+          setHotels(response.data); // Update the hotels state in the parent component
+        }
+      } catch (error) {
+        console.error("Error fetching hotels:", error);
+      }
+    };
+
+    fetchHotels();
+  }, [selectedLocation, setHotels]);
+
+  const handleSearch = () => {
+    navigate(`/hotels/location/${selectedLocation}`);
+  }
+  
+  const handleLocationChange = (event) => {
+    selectedLocation = event.target.value;
+    
+  };
+
   // For Calendar logic
   const [openDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
@@ -34,26 +63,7 @@ const HotelSearchBar = ({ selectedLocation, setHotels }) => {
     });
   };
 
-  const navigate = useNavigate();
-  const [hotels, setHotelsLocal] = useState([]);
-
-  const handleSearch = async () => {
-    try {
-      if (selectedLocation) {
-        const url = import.meta.env.VITE_BASE_URL;
-        const response = await axios.get(`${url}/api/hotels/location/${selectedLocation}`);
-        setHotels(response.data); // Update the hotels state in the parent component
-      }
-    } catch (error) {
-      console.error("Error fetching hotels:", error);
-    }
-  };
-
-  const handleLocationChange = (event) => {
-    const selectedLocation = event.target.value;
-    navigate(`/hotels/location/${selectedLocation}`);
-  };
-
+  
   const destinations = [
     { value: "Mumbai", label: "Mumbai" },
     { value: "New Delhi", label: "New Delhi" },
@@ -193,11 +203,11 @@ const HotelSearchBar = ({ selectedLocation, setHotels }) => {
       </div>
 
       <div className="headerSearchItem">
-        <Link to={`/hotels/location/${selectedLocation}`}>
+     
           <button className="bg-[#90CCBA] text-white font-bold h-16 pl-6 pr-6 mt-[-0.7rem] mr-[-4.5rem] border-[1px] rounded-r-lg" onClick={handleSearch}>
             Search
           </button>
-        </Link>
+       
       </div>
     </div>
   );
