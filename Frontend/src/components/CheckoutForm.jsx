@@ -1,6 +1,6 @@
-
 import React, { useState } from 'react';
 import Navbar from './Navbar';
+import { SiPhonepe } from 'react-icons/si';
 
 const CheckoutForm = () => {
   const [name, setName] = useState('');
@@ -32,15 +32,15 @@ const CheckoutForm = () => {
   return (
     <>
     <Navbar />
-     <h1 className='ml-[12rem] text-2xl font-semibold mt-10 mb-2'>Shipping Address</h1>
-    <div className="ml-[12rem] flex mt-[1rem]">
+     <h1 className='ml-[7rem] text-xl font-semibold mt-10 mb-2'>Shipping Address</h1>
+    <div className="ml-[10rem] flex mt-[1rem]">
 
-   <div className='flex-initial w-[30rem] mr-[3rem] size-22'>
+   <div className='flex-initial w-[35rem]  size-22'>
       <form onSubmit={handleSubmit}>
 
         <div className='flex gap-8'>
         <div className="mb-4">
-          <label htmlFor="name" className="block font-bold mb-2">
+          <label htmlFor="name" className="block text-base font-semibold mb-2">
             Name
           </label>
           <input
@@ -53,7 +53,7 @@ const CheckoutForm = () => {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="email" className="block font-bold mb-2">
+          <label htmlFor="email" className="block text-base font-semibold mb-2">
             Email
           </label>
           <input
@@ -69,7 +69,7 @@ const CheckoutForm = () => {
 
 
         <div className="mb-4">
-          <label htmlFor="address" className="block font-bold mb-2">
+          <label htmlFor="address" className="block text-base font-semibold mb-2">
             Address
           </label>
           <input
@@ -78,12 +78,12 @@ const CheckoutForm = () => {
             placeholder="Address"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
-            className="border border-gray-300 rounded-md px-4 py-2 w-full"
+            className="border border-gray-300 rounded-md px-4 py-2 w-[29rem]"
           />
         </div>
         <div className="flex mb-4">
-          <div className="mr-4 w-1/2">
-            <label htmlFor="pincode" className="block font-bold mb-2">
+          <div className=" w-[45%]">
+            <label htmlFor="pincode" className="block text-base font-semibold mb-2">
               Pincode
             </label>
             <input
@@ -92,27 +92,28 @@ const CheckoutForm = () => {
               placeholder="Pincode"
               value={pincode}
               onChange={(e) => setPincode(e.target.value)}
-              className="border border-gray-300 rounded-md px-4 py-2 w-full"
+              // className="border border-gray-300 rounded-md px-4 py-2 w-full"
+              className="border border-gray-300 rounded-md px-4 py-2 w-[14rem]"
             />
           </div>
           <div className="w-1/2">
-            <label htmlFor="state" className="block font-bold mb-2">
+            <label htmlFor="state" className="block text-base font-semibold mb-2">
               State
             </label>
             <select
               id="state"
               value={state}
               onChange={(e) => setState(e.target.value)}
-              className="border border-gray-300 rounded-md px-4 py-2 w-full"
+              className="border border-gray-300 rounded-md px-4 py-2 w-[14rem]"
             >
               <option value="">eg. Maharashtra</option>
               {/* Add more state options here */}
             </select>
           </div>
         </div>
-        <div className="flex mb-4">
-          <div className="mr-4 w-1/2">
-            <label htmlFor="checkInDate" className="block font-bold mb-2">
+        <div className="flex flex-row mb-4">
+          <div className="mr-2 basis-1/4">
+            <label htmlFor="checkInDate" className="block text-base font-semibold mb-2">
               Check in date
             </label>
             <input
@@ -120,11 +121,11 @@ const CheckoutForm = () => {
               id="checkInDate"
               value={checkInDate}
               onChange={(e) => setCheckInDate(e.target.value)}
-              className="border border-gray-300 rounded-md px-4 py-2 w-full"
+              className="border border-gray-300 rounded-md px-4 py-2 w-[10rem]"
             />
           </div>
-          <div className="w-1/2">
-            <label htmlFor="checkOutDate" className="block font-bold mb-2">
+          <div className="mr-2 basis-1/4">
+            <label htmlFor="checkOutDate" className="block text-base font-semibold mb-2">
               Checkout date
             </label>
             <input
@@ -132,28 +133,45 @@ const CheckoutForm = () => {
               id="checkOutDate"
               value={checkOutDate}
               onChange={(e) => setCheckOutDate(e.target.value)}
-              className="border border-gray-300 rounded-md px-4 py-2 w-full"
+              className="border border-gray-300 rounded-md px-4 py-2 w-[10rem]"
             />
           </div>
+       
+
+        <div className="mb-4 basis-1/4">
+          <label className="block text-base font-semibold mb-2">Rooms & guests</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Room and Guest"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="border border-gray-300 text-sm rounded-md px-4 py-2.5 w-full"
+          />
         </div>
-        <div className="mb-4">
-          <label className="block font-bold mb-2">Rooms & guests</label>
-          <div className="border border-gray-300 rounded-md px-4 py-2">
-            1 Room & 2 Guests
+      </div>
+      <div className="mb-[2rem] flex items-center justify-between">
+          <div className="flex items-center">
+            <input
+              type="radio"
+              checked="checked"
+              className="w-4 h-4 py-3 text-blue-600 bg-gray-100 rounded border-gray-300"
+            />
+            <label htmlFor="default-checkbox" className="ml-2 flex items-center text-lg font-medium text-fuchsia-900">
+              <SiPhonepe className="text-2xl" />
+              <span className="ml-1">Phone Pe</span>
+            </label>
           </div>
         </div>
     </form>
-  
-
  </div>
-
 
                     {/* 2nd half */}
 
 
-        <div className="mb-4 flex-initial w-[22rem]  ">
+        <div className="mb-4 flex w-[22rem]  ">
        
-          <div className="border border-gray-300 rounded-md p-4">
+          <div className="border border-gray-300 rounded-2xl p-2">
           <h3 className="font-bold mb-2 text-xl">Summary</h3>
           <div className="flex">
           <img
@@ -175,26 +193,15 @@ const CheckoutForm = () => {
             </div>
             <button
               type="submit"
-              className="bg-[#90CCBA] text-white rounded-md px-4 py-2 w-full"
-            >
+              className="bg-[#90CCBA] text-white rounded-md px-4 py-2 w-full">
               Pay now
             </button>
           </div>
         </div>
-        <div className="mb-[2rem] flex items-center justify-between">
-        <div className="flex items-center">
-          <input
-            type="radio"
-            checked="checked"
-            className="w-4 h-4 py-3 text-blue-600 bg-gray-100 rounded border-gray-300"
-          />
-          <label htmlFor="default-checkbox" className="ml-2 flex items-center text-lg font-medium text-fuchsia-900">
-            <SiPhonepe className="text-2xl" />
-            <span className="ml-1">Phone Pe</span>
-          </label>
-        </div>
-      </div>
     </div>
+
+
+    
     </>
   
   );

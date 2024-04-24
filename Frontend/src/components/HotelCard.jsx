@@ -1,7 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import { FaStar } from "react-icons/fa";
+import { ImLocation2 } from "react-icons/im";
+import { IoShareSocialSharp } from "react-icons/io5";
 const HotelCard = ({hotel}) => {
+  const [rating, setRating] = useState(null);
+  const [hover, setHover] = useState(null);
   return (
     <>
         <div className="bg-white h-[14rem] w-[95%] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
@@ -18,14 +22,32 @@ const HotelCard = ({hotel}) => {
               {hotel.Hotel_Name}
             </h2>
 
-            <div>
-              <p className="text-black mb-2">{hotel.Location}</p>
-              <div className="flex items-center mb-2">
-                <span className="text-yellow-500 mr-2">
-                  <i className="fas fa-star"></i>
-                  {hotel.Staring_Rating}
-                </span>
-              </div>
+        <div>
+        <p className="text-black mb-2">{hotel.Location}</p>
+         <div className="flex items-center mb-2">
+          
+          <div className="flex justify-normal gap-2">
+          <p className="mt-[10px]">{hotel.Staring_Rating}/5</p>
+            {[...Array(hotel.Staring_Rating)].map((_, index) => {
+              const currentRating = index + 1;
+              return (
+              <label key={index}>
+                <FaStar
+                  size={12}
+                  className={`text-yellow-500 cursor-pointer mt-4 ${
+                    currentRating <= (hover || rating)
+                      ? "text-yellow-500"
+                      : "text-gray-400"
+                  }`}
+                  onMouseEnter={() => setHover(currentRating)}
+                  onMouseLeave={() => setHover(null)}
+                />
+              </label>
+            );
+          })}
+
+          </div>
+        </div>
 
               <ul className="text-black flex flex-col mb-[-2rem]">
                 {typeof hotel.Amenities === "string" ? (

@@ -20,14 +20,7 @@ const Hotels = () => {
         <HotelSearchBar selectedLocation={selectedLocation} setHotels={setHotels} />
         </div>
       </div>
-      {/* //       <div className="sticky top-2 bg-white w-full h-[13rem] shadow-lg z-50">
-//         <Navbar />
-//         <div className="sticky top-[-1rem] ml-[15rem] bg-white z-30">
-//           <HotelSearchBar selectedLocation={selectedLocation} setHotels={setHotels} />
-//         </div>
-//       </div> */}
-
-      
+         
       <Layout>
         <Filters key="filters" />
         <HotelList key="hotelList" hotels={hotels} />

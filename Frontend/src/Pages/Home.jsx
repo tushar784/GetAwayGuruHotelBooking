@@ -18,13 +18,13 @@ function Home() {
         <img
           src="src/assets/img/homepage.jpg"
           alt="Hotel Image"
-          className="pl-2 pr-2 pt-24 h-[41rem] w-[82rem]"
+          className="pl-2 pr-2 h-[32rem] w-[82rem]"
         />
         <h1
           className="absolute text-4xl font-bold mt-22 mb-52 text-amber-50 italic"
           style={{ fontFamily: "cursive" }}
         >
-          NestAway: Find Your Home Away From Home
+          GetawayGuru: Find Your Home Away From Home
         </h1>
         <p
           className="absolute text-2xl font-bold mt-22 mb-28 text-amber-50 italic"
@@ -38,7 +38,7 @@ function Home() {
       <PopularDestinations />
       <FAQ />
       <Footer />
-      {/* <CheckoutForm /> */}
+    
      
     </>
   );

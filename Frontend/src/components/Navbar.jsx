@@ -1,15 +1,8 @@
-
-// import React, { useState, useContext } from "react";
-// import { Link } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
 import { FaCartPlus, FaBars, FaTimes } from "react-icons/fa";
-// import { AuthContext } from "./AuthProvider";
-// import Logo from '/src/assets/logo.jpg'
-
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/logo.jpg";
-// import { FaBars, FaTimes } from "react-icons/fa";
 import { AuthContext } from "../Context/Auth_Context";
 
 function Navbar() {
@@ -34,7 +27,7 @@ function Navbar() {
             MediMart
           </Link> */}
           <nav className="hidden md:flex md:ml-[18vw]">
-            <div className="flex gap-10 text-gray-900">
+            <div className="flex gap-10 font-semibold text-gray-900">
               <Link to="/" className="">
                 Home
               </Link>
@@ -120,7 +113,7 @@ function Navbar() {
           ) : (
             <Link to="/login" >
               <button
-                className="flex items-center justify-center bg-[#125872] text-white font-bold py-2 md:px-8 px-[6px] rounded transition-colors duration-300">                
+                className="flex items-center justify-center bg-[#90CCBA] text-white font-bold py-2 md:px-8 px-[6px] rounded transition-colors duration-300">                
                Login
               </button>
             </Link>

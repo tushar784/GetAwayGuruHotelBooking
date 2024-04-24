@@ -59,7 +59,7 @@ const ImgLoad = ({ hotel }) => {
           {hotel.Hotel_Name}
         </h1>
         <div className="flex justify-normal gap-2">
-          {[...Array(4)].map((_, index) => {
+          {[...Array(hotel.Staring_Rating)].map((_, index) => {
             const currentRating = index + 1;
             return (
               <label key={index}>
@@ -77,7 +77,7 @@ const ImgLoad = ({ hotel }) => {
             );
           })}
 
-          <p className="mt-[10px]">4/5 ratings</p>
+          <p className="mt-[10px]">{hotel.Staring_Rating}/5</p>
           <div className="flex mt-0 gap-2 ">
             <ImLocation2 className="text-1xl mt-[15px] " />
             <p className="mt-[10px] ml-[5px]">{hotel.Location}</p>

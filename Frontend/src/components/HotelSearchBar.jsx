@@ -77,6 +77,12 @@ const HotelSearchBar = ({ selectedLocation, setHotels }) => {
     { value: "Hyderabad", label: "Hyderabad" },
     { value: "Goa", label: "Goa" },
     { value: "Manali", label: "Manali" },
+    { value: "Chennai", label: "Chennai" },
+    { value: "Kerla", label: "Kerla" },
+    { value: "Dubai", label: "Dubai" },
+    { value: "Bangkok", label: "Bangkok" },
+    { value: "Sigapore", label: "Sigapore" },
+    { value: "Phuket", label: "Phuket" },
   ];
 
   return (
