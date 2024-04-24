@@ -57,9 +57,6 @@ function SignUp() {
         `${url}/api/signUp`,
         formData
       );
-      const data = response.json()
-      console.log("data here",data);
-      console.log(response.data);
       navigate("/login"); //navigation
     } catch (error) {
       // Handle error

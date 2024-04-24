@@ -14,7 +14,7 @@ const ImgLoad = ({ hotel }) => {
       <div className="flex bg-white-200 ml-[4rem] bg-white-300 w-[70rem]">
       <div className="mt-[1.5rem] ml-[2rem] w-[25rem]">
         <img
-          className="rounded mt-2 h-[26rem]"
+          className="rounded mt-2 h-[26rem] object-cover"
           src={hotel.Image_1}
           alt={hotel.Hotel_Name}
         />

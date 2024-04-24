@@ -5,6 +5,7 @@ import Hotels from '../Pages/Hotels';
 import { AuthProvider } from '../Context/Auth_Context';
 import Login from '../components/Login';
 import HotelInfoPage from '../Pages/HotelInfoPage';
+import CheckoutForm from '../components/CheckoutForm';
 
 const Routing = () => {
   return (
@@ -17,6 +18,8 @@ const Routing = () => {
             <Route exact path='/login' element={<Login />} />
             <Route exact path='/hotels/location/:selectedLocation' element={<Hotels />} />
             <Route path="/hotels/:hotelName" element={<HotelInfoPage />} />
+            <Route path = "/checkout" element ={ <CheckoutForm />} />
+           
           </Routes>
         </BrowserRouter>
       </AuthProvider>
