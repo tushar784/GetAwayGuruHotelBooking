@@ -1,11 +1,7 @@
 import React from "react"; 
 import RoomData from './RoomData.json';
 
-function RoomCard() {
-  // Check if hotels data is undefined or null
-  if (!RoomData || RoomData.length === 0) {
-    return <div>No hotels data available</div>;
-  }
+function RoomCard({hotel}) {
 
   return (
     <div className=' p-9 ml-[5rem] '>
@@ -19,7 +15,7 @@ function RoomCard() {
             <div className='flex items-center '>
               <div className=" ml-4 w-[280px] ">
               {/* <h1 className=" text-2xl font-bold ">Standard room</h1> */}
-                <h1 className="text-2xl font-bold ">{roomData.RoomType}</h1>  
+                <h1 className="text-2xl font-bold ">{hotel.Room_Type_1}</h1>  
                 <div className='text-gray-600 font-semibold mt-3 text-emerald-400 mr-[2rem]'>
                     
                   <ul className="list-disc ml-4">
@@ -28,7 +24,7 @@ function RoomCard() {
                       
                     ))}
                   </ul>
-                  <p className='text-red-700 mt-2 ml-1 mb-2 '>{roomData.RefundInfo}</p>
+                  <p className='text-red-700 mt-2 ml-1 mb-2 '>{hotel.Room_Type_2}</p>
                 </div>
               </div>
               <div className='ml-[8rem] mt-9 justify-end  '>
