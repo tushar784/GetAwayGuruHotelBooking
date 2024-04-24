@@ -38,6 +38,8 @@ function Home() {
       <PopularDestinations />
       <FAQ />
       <Footer />
+      {/* <CheckoutForm /> */}
+     
     </>
   );
 }
