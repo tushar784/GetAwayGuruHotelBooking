@@ -28,7 +28,6 @@ const HotelSearchBar = ({ selectedLocation, setHotels }) => {
   }, [selectedLocation, setHotels]);
 
   const handleSearch = () => {
-    // You can remove the API call from here since it's handled by useEffect
     navigate(`/hotels/location/${selectedLocation}`);
   }
   
@@ -81,7 +80,7 @@ const HotelSearchBar = ({ selectedLocation, setHotels }) => {
   ];
 
   return (
-    <div className="lg:h-16 md:h-[12rem] w-full lg:w-5/6 bg-[white] font-poppins static flex justify-around absolute px-0 py-2.5 border-[1px] rounded-xl lg:ml-4 lg:mt-28 lg:mb-2 md:ml-2">
+    <div className="lg:h-16 md:h-[12rem] w-full lg:w-5/6 bg-[white] font-poppins flex justify-around absolute px-0 py-2.5 border-[1px] rounded-xl lg:ml-4 lg:mt-28 lg:mb-2 md:ml-2">
     {/* Content of your HotelSearchBar component... */}
 
     <div className="items-center gap-2.5">
