@@ -55,8 +55,5 @@ app.get('/hotels/location/:Location', async (req, res) => {
     }
 });
 
-
-  
-
     
 module.exports = app;    
