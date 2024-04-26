@@ -7,8 +7,10 @@ import { FaWifi } from "react-icons/fa";
 import { MdOutlineDinnerDining } from "react-icons/md";
  import { MdRoomService } from "react-icons/md";
 import { MdOutlineSportsBar } from "react-icons/md";
+import { Link, useParams } from "react-router-dom";
 
 const Map = () => {
+  const {hotelName} = useParams();
   return (
     <div>
 
@@ -36,12 +38,14 @@ const Map = () => {
           <p className="text-lg font-bold mt-4 text-[45px]">₹5,669</p>
           <p className="mt-5">per night of 1 room</p>
           <br />
+          <Link to={`/checkoutform?hotelName=${encodeURIComponent(hotelName)}`}>
           <button
             className="text-white font-bold w-80 h-10  mb-4 rounded"
             style={{ backgroundColor: "#90CCBA" }}
           >
             Reserve Now
           </button>
+          </Link>
         </div>
       </div>
 

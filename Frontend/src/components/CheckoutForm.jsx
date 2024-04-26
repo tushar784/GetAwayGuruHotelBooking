@@ -155,7 +155,7 @@ const CheckoutForm = () => {
             <input
               type="radio"
               checked="checked"
-              className="w-4 h-4 py-3 text-blue-600 bg-gray-100 rounded border-gray-300"
+              className="w-4 h-4 py-3 text-blue-600 bg-gray-100 rounded border-gray-300" onChange={(e) => setEmail(e.target.value)}
             />
             <label htmlFor="default-checkbox" className="ml-2 flex items-center text-lg font-medium text-fuchsia-900">
               <SiPhonepe className="text-2xl" />
