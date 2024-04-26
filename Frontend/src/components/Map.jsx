@@ -53,6 +53,7 @@ const Map = ({ selectedRoom }) => {
           <button className="text-white font-bold w-80 h-10 mb-4 rounded" style={{ backgroundColor: "#90CCBA" }}>
             Reserve Now
           </button>
+          
         </div>
 
        
