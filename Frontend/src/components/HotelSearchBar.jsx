@@ -49,8 +49,7 @@ const HotelSearchBar = ({ selectedLocation, setHotels }) => {
   // For Guest and Room Logic
   const [openOptions, setOpenOptions] = useState(false);
   const [options, setOptions] = useState({
-    adult: 1,
-    children: 0,
+    guest: 1,
     room: 1,
   });
 
@@ -126,69 +125,45 @@ const HotelSearchBar = ({ selectedLocation, setHotels }) => {
         <span
           onClick={() => setOpenOptions(!openOptions)}
           className="headerSearchText text-gray-400 bold cursor-pointer"
-        >{`${options.adult} adult . ${options.children} children . ${options.room} room`}</span>
+        >{`${options.guest} guest & ${options.room} room`}</span>
 
         {/* bg  */}
         {openOptions && (
           <div className="options absolute bg-white shadow-md rounded-xl mt-2">
             {/* For Adult */}
             <div className="optionItem w-22 flex justify-between m-4 pt-2">
-              <span className="optionText ">Adult :</span>
-              <div className="optionCounter flex items-center gap-2.5 text-xs text-[black]">
+              <span className="optionText ">Guest :</span>
+              <div className="optionCounter flex items-center gap-2 text-xs text-[black]">
                 {/* Increament And Decrement Button For Adult  */}
                 <button
-                  disabled={options.adult <= 1}
-                  className="optionCounterButton w-[30px] h-[30px] border text-[#0071c2] cursor-pointer border-solid border-[#0071c2]"
-                  onClick={() => handleOption("adult", "d")}
+                  disabled={options.guest <= 1}
+                  className="optionCounterButton w-[30px] h-[30px] ml-2 border text-[#0071c2] cursor-pointer border-solid border-[#0071c2]"
+                  onClick={() => handleOption("guest", "d")}
                 >
                   -
                 </button>
 
-                <span className="optionCounterNumber">{options.adult}</span>
+                <span className="optionCounterNumber">{options.guest}</span>
 
                 <button
                   className="optionCounterButton w-[30px] h-[30px] border text-[#0071c2] cursor-pointer border-solid border-[#0071c2]"
-                  onClick={() => handleOption("adult", "i")}
+                  onClick={() => handleOption("guest", "i")}
                 >
                   +
                 </button>
               </div>
             </div>
 
-            {/* For Children */}
-            <div className="optionItem w-22 flex justify-between m-4 pt-2">
-              <span className="optionText">Children :</span>
-              <div className="optionCounter flex items-center gap-2.5 ml-2 text-xs text-[black]">
-                {/* Increament And Decrement Button For Children */}
-                <button
-                  disabled={options.children <= 0}
-                  className="optionCounterButton w-[30px] h-[30px] border text-[#0071c2] cursor-pointer border-solid border-[#0071c2]"
-                  onClick={() => handleOption("children", "d")}
-                >
-                  -
-                </button>
-
-                <span className="optionCounterNumber">{options.children}</span>
-
-                <button
-                  disabled={options.children >= 16}
-                  className="optionCounterButton w-[30px] h-[30px] border text-[#0071c2] cursor-pointer border-solid border-[#0071c2]"
-                  onClick={() => handleOption("children", "i")}
-                >
-                  +
-                </button>
-              </div>
-            </div>
-
-            {/* For Room */}
+                      {/* For Room */}
+                      
             <div className="optionItem w-22 flex justify-between m-4 pt-2">
               <span className="optionText">Room :</span>
 
-              <div className="optionCounter flex items-center gap-2.5 text-xs text-[black]">
+              <div className="optionCounter flex items-center gap-2 text-xs text-[black]">
                 {/* Increament And Decrement Button For Room */}
                 <button
                   disabled={options.room <= 1}
-                  className="optionCounterButton w-[30px] h-[30px] border text-[#0071c2] cursor-pointer border-solid border-[#0071c2]"
+                  className="optionCounterButton w-[30px] h-[30px] ml-2 border text-[#0071c2] cursor-pointer border-solid border-[#0071c2]"
                   onClick={() => handleOption("room", "d")}
                 >
                   -
@@ -228,6 +203,27 @@ export default HotelSearchBar;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import { DateRange } from "react-date-range";
 // import { useEffect, useState } from "react";
 // import "react-date-range/dist/styles.css";
@@ -237,6 +233,35 @@ export default HotelSearchBar;
 // import axios from "axios";
 
 // const HotelSearchBar = ({ selectedLocation, setHotels }) => {
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     const fetchHotels = async () => {
+//       try {
+//         if (selectedLocation) {
+//           const url = import.meta.env.VITE_BASE_URL;
+//           const response = await axios.get(
+//             `${url}/api/hotels/location/${selectedLocation}`
+//           );
+//           setHotels(response.data); // Update the hotels state in the parent component
+//         }
+//       } catch (error) {
+//         console.error("Error fetching hotels:", error);
+//       }
+//     };
+
+//     fetchHotels();
+//   }, [selectedLocation, setHotels]);
+
+//   const handleSearch = () => {
+//     navigate(`/hotels/location/${selectedLocation}`);
+//   }
+  
+//   const handleLocationChange = (event) => {
+//     selectedLocation = event.target.value;
+    
+//   };
+
 //   // For Calendar logic
 //   const [openDate, setOpenDate] = useState(false);
 //   const [date, setDate] = useState([
@@ -250,8 +275,8 @@ export default HotelSearchBar;
 //   // For Guest and Room Logic
 //   const [openOptions, setOpenOptions] = useState(false);
 //   const [options, setOptions] = useState({
-//     adult: 1,
-//     children: 0,
+//     guest: 1,
+    // children: 0,
 //     room: 1,
 //   });
 
@@ -264,26 +289,7 @@ export default HotelSearchBar;
 //     });
 //   };
 
-//   const navigate = useNavigate();
-//   const [hotels, setHotelsLocal] = useState([]);
-
-//   const handleSearch = async () => {
-//     try {
-//       if (selectedLocation) {
-//         const url = import.meta.env.VITE_BASE_URL;
-//         const response = await axios.get(`${url}/api/hotels/location/${selectedLocation}`);
-//         setHotels(response.data); // Update the hotels state in the parent component
-//       }
-//     } catch (error) {
-//       console.error("Error fetching hotels:", error);
-//     }
-//   };
-
-//   const handleLocationChange = (event) => {
-//     const selectedLocation = event.target.value;
-//     navigate(`/hotels/location/${selectedLocation}`);
-//   };
-
+  
 //   const destinations = [
 //     { value: "Mumbai", label: "Mumbai" },
 //     { value: "New Delhi", label: "New Delhi" },
@@ -293,10 +299,16 @@ export default HotelSearchBar;
 //     { value: "Hyderabad", label: "Hyderabad" },
 //     { value: "Goa", label: "Goa" },
 //     { value: "Manali", label: "Manali" },
+//     { value: "Chennai", label: "Chennai" },
+//     { value: "Kerla", label: "Kerla" },
+//     { value: "Dubai", label: "Dubai" },
+//     { value: "Bangkok", label: "Bangkok" },
+//     { value: "Sigapore", label: "Sigapore" },
+//     { value: "Phuket", label: "Phuket" },
 //   ];
 
 //   return (
-//     <div className="lg:h-16 md:h-[12rem] w-full lg:w-5/6 bg-[white] font-poppins static flex justify-around absolute px-0 py-2.5 border-[1px] rounded-xl lg:ml-4 lg:mt-28 lg:mb-2 md:ml-2">
+//     <div className="lg:h-16 md:h-[12rem] w-full lg:w-5/6 bg-[white] font-poppins flex justify-around absolute px-0 py-2.5 border-[1px] rounded-xl lg:ml-4 lg:mt-28 lg:mb-2 md:ml-2">
 //     {/* Content of your HotelSearchBar component... */}
 
 //     <div className="items-center gap-2.5">
@@ -423,14 +435,20 @@ export default HotelSearchBar;
 //       </div>
 
 //       <div className="headerSearchItem">
-//         <Link to={`/hotels/location/${selectedLocation}`}>
+     
 //           <button className="bg-[#90CCBA] text-white font-bold h-16 pl-6 pr-6 mt-[-0.7rem] mr-[-4.5rem] border-[1px] rounded-r-lg" onClick={handleSearch}>
 //             Search
 //           </button>
-//         </Link>
+       
 //       </div>
 //     </div>
 //   );
 // };
 
 // export default HotelSearchBar;
+
+
+
+
+
+
