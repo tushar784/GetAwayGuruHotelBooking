@@ -49,8 +49,7 @@ const HotelSearchBar = ({ selectedLocation, setHotels }) => {
   // For Guest and Room Logic
   const [openOptions, setOpenOptions] = useState(false);
   const [options, setOptions] = useState({
-    adult: 1,
-    children: 0,
+    guest: 1,
     room: 1,
   });
 
@@ -126,69 +125,45 @@ const HotelSearchBar = ({ selectedLocation, setHotels }) => {
         <span
           onClick={() => setOpenOptions(!openOptions)}
           className="headerSearchText text-gray-400 bold cursor-pointer"
-        >{`${options.adult} adult . ${options.children} children . ${options.room} room`}</span>
+        >{`${options.guest} guest & ${options.room} room`}</span>
 
         {/* bg  */}
         {openOptions && (
           <div className="options absolute bg-white shadow-md rounded-xl mt-2">
             {/* For Adult */}
             <div className="optionItem w-22 flex justify-between m-4 pt-2">
-              <span className="optionText ">Adult :</span>
-              <div className="optionCounter flex items-center gap-2.5 text-xs text-[black]">
+              <span className="optionText ">Guest :</span>
+              <div className="optionCounter flex items-center gap-2 text-xs text-[black]">
                 {/* Increament And Decrement Button For Adult  */}
                 <button
-                  disabled={options.adult <= 1}
-                  className="optionCounterButton w-[30px] h-[30px] border text-[#0071c2] cursor-pointer border-solid border-[#0071c2]"
-                  onClick={() => handleOption("adult", "d")}
+                  disabled={options.guest <= 1}
+                  className="optionCounterButton w-[30px] h-[30px] ml-2 border text-[#0071c2] cursor-pointer border-solid border-[#0071c2]"
+                  onClick={() => handleOption("guest", "d")}
                 >
                   -
                 </button>
 
-                <span className="optionCounterNumber">{options.adult}</span>
+                <span className="optionCounterNumber">{options.guest}</span>
 
                 <button
                   className="optionCounterButton w-[30px] h-[30px] border text-[#0071c2] cursor-pointer border-solid border-[#0071c2]"
-                  onClick={() => handleOption("adult", "i")}
+                  onClick={() => handleOption("guest", "i")}
                 >
                   +
                 </button>
               </div>
             </div>
 
-            {/* For Children */}
-            <div className="optionItem w-22 flex justify-between m-4 pt-2">
-              <span className="optionText">Children :</span>
-              <div className="optionCounter flex items-center gap-2.5 ml-2 text-xs text-[black]">
-                {/* Increament And Decrement Button For Children */}
-                <button
-                  disabled={options.children <= 0}
-                  className="optionCounterButton w-[30px] h-[30px] border text-[#0071c2] cursor-pointer border-solid border-[#0071c2]"
-                  onClick={() => handleOption("children", "d")}
-                >
-                  -
-                </button>
-
-                <span className="optionCounterNumber">{options.children}</span>
-
-                <button
-                  disabled={options.children >= 16}
-                  className="optionCounterButton w-[30px] h-[30px] border text-[#0071c2] cursor-pointer border-solid border-[#0071c2]"
-                  onClick={() => handleOption("children", "i")}
-                >
-                  +
-                </button>
-              </div>
-            </div>
-
-            {/* For Room */}
+                      {/* For Room */}
+                      
             <div className="optionItem w-22 flex justify-between m-4 pt-2">
               <span className="optionText">Room :</span>
 
-              <div className="optionCounter flex items-center gap-2.5 text-xs text-[black]">
+              <div className="optionCounter flex items-center gap-2 text-xs text-[black]">
                 {/* Increament And Decrement Button For Room */}
                 <button
                   disabled={options.room <= 1}
-                  className="optionCounterButton w-[30px] h-[30px] border text-[#0071c2] cursor-pointer border-solid border-[#0071c2]"
+                  className="optionCounterButton w-[30px] h-[30px] ml-2 border text-[#0071c2] cursor-pointer border-solid border-[#0071c2]"
                   onClick={() => handleOption("room", "d")}
                 >
                   -
