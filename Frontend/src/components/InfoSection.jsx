@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ImLocation2 } from "react-icons/im";
 import { IoShareSocialSharp } from "react-icons/io5";
 import { MdOutlineSportsBar } from "react-icons/md";
@@ -9,8 +9,10 @@ import { MdOutlineDinnerDining } from "react-icons/md";
 import { MdRoomService } from "react-icons/md";
 import { MdSportsBar } from "react-icons/md";
 
-const InfoSection = ({ selectedRoom }) => {
-  const [quantity, setQuantity] = useState(1); // State to manage quantity, initialized to 1
+const Map = ({ selectedRoom }) => {
+  const [quantity, setQuantity] = useState(1);
+  const [price, setPrice] = useState(selectedRoom?.price || 0);
+  
 
   const handleIncrement = () => {
     setQuantity(quantity + 1);
@@ -22,7 +24,22 @@ const InfoSection = ({ selectedRoom }) => {
     }
   };
 
-  const totalPrice = selectedRoom?.price * quantity; // Calculate total price based on quantity
+  const handlePrice = () => {
+    let totalPrice = 0;
+    if (selectedRoom) { // Check if selectedRoom exists before accessing price
+      totalPrice = selectedRoom.price * quantity;
+    }
+    setPrice(totalPrice);
+  };
+
+  useEffect(() => {
+    handlePrice();
+  }, [selectedRoom, quantity]);
+
+  useEffect(() => {
+    console.log("Price updated:", price);
+  }, [price]);
+
 
   return (
     
@@ -38,23 +55,22 @@ const InfoSection = ({ selectedRoom }) => {
 
         </div>
         <div className="border shadow-lg h-[19rem] p-5 mt-14 w-[25rem]">
-          <h1 className="card-title text-2xl font-semibold">
-            {selectedRoom?.roomType === "Room_Type_1" ? "Deluxe Room" : "Standard Room"}
-          </h1>
-          <p className="text-black mt-3 text-xl mb-2 font-extrabold">{selectedRoom?.price}</p>
-          <p className="mt-5">per night of 1 room</p>
-          <div className="flex items-center mt-4">
-            <button onClick={handleDecrement}>-</button>
-            <span className="mx-2">{quantity}</span>
-            <button onClick={handleIncrement}>+</button>
-          </div>
-          <p className="text-xl font-semibold mt-3">Total Price: {totalPrice}</p>
-          <br />
-          <button className="text-white font-bold w-80 h-10 mb-4 rounded" style={{ backgroundColor: "#90CCBA" }}>
-            Reserve Now
-          </button>
-          
-        </div>
+      <h1 className="card-title text-2xl font-semibold">
+        {selectedRoom?.roomType === "Room_Type_1" ? "Deluxe Room" : "Standard Room"}
+      </h1>
+      <p className="text-black mt-3 text-xl mb-2 font-extrabold">{selectedRoom?.price}</p>
+      <p className="mt-5">per night for 1 room</p>
+      <div className="flex items-center mt-4">
+        <button onClick={handleDecrement} onChange={handlePrice}>-</button>
+        <span className="mx-2">{quantity}</span>
+        <button onClick={handleIncrement} onChange={handlePrice}>+</button>
+      </div>
+      <p className="text-xl font-semibold mt-3">Total Price: {price}</p>
+      <br />
+      <button className="text-white font-bold w-80 h-10 mb-4 rounded" style={{ backgroundColor: "#90CCBA" }}>
+        Reserve Now
+      </button>
+    </div>
 
        
 

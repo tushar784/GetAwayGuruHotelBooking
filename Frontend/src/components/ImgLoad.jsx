@@ -5,7 +5,6 @@ import { ImLocation2 } from "react-icons/im";
 import { IoShareSocialSharp } from "react-icons/io5";
 
 const ImgLoad = ({ hotel }) => {
-  console.log("Hotel: ", hotel);
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
 
