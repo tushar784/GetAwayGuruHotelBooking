@@ -63,7 +63,7 @@ const HotelCard = ({hotel}) => {
             </div>
           </div>
           <div className="mt-12 ml-[2rem]">
-            <p className="text-black font-extrabold mb-4">{hotel.Price}</p>
+            <p className="text-black font-extrabold mb-4">₹{hotel.Price}</p>
             <Link to={`/hotels/${hotel.Hotel_Name}`}>
             <button
               className="bg-[#90CCBA] hover:bg-[#46c79f] text-white font-bold py-2 px-4 rounded">

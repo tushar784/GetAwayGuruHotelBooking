@@ -41,7 +41,7 @@ function RoomCard({ hotel, setSelectedRoom }) {
             </div>
             <div className="ml-[8rem] justify-end ">
               <p className="text-black mt-3 text-xl mb-2 font-extrabold">
-                {hotel.Type1_Price}
+                ₹{hotel.Type1_Price}
               </p>
               <p className='text-black text-sm mb-2 '>+₹1020 taxes</p>
               <p className='text-black text-sm mb-2 '>per night for 1 room</p>
@@ -90,7 +90,7 @@ function RoomCard({ hotel, setSelectedRoom }) {
             </div>
             <div className="ml-[8rem] justify-end ">
               <p className="text-black mt-3 text-xl mb-2 font-extrabold">
-                 {hotel.Type2_Price}
+                 ₹{hotel.Type2_Price}
               </p>
               <p className='text-black text-sm mb-2 '>+₹1020 taxes</p>
               <p className='text-black text-sm mb-2 '>per night for 1 room</p>

@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import { SiPhonepe } from 'react-icons/si';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 const CheckoutForm = () => {
+  const {hotelName} = useParams
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
@@ -10,23 +13,25 @@ const CheckoutForm = () => {
   const [state, setState] = useState('');
   const [checkInDate, setCheckInDate] = useState('');
   const [checkOutDate, setCheckOutDate] = useState('');
+  const [hotels,setHotels] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic here
   };
 
-  const handleSearch = async () => {
-    try {
-      if (selectedLocation) {
-        const url = import.meta.env.VITE_BASE_URL;
-        const response = await axios.get(`${url}/api/hotels/location/${selectedLocation}`);
-        setHotels(response.data); // Update the hotels state in the parent component
-      }
-    } catch (error) {
-      console.error("Error fetching hotels:", error);
-    }
-  };
+  // useEffect(()=>{
+  //   const fetchdetails = async()=>{
+  //     try {
+  //       const url = import.meta.env.VITE_BASE_URL
+  //       const response = await axios.get(`${url}/api/hotels/${hotelName}`);
+  //       setHotels(response.data)
+  //       console.log("details", setHotels());
+  //     } catch (error) {
+  //       console.log("error",error)
+  //     }
+  //   }
+  // },[])
 
 
   return (
@@ -180,7 +185,7 @@ const CheckoutForm = () => {
                 className="w-26 h-20 object-cover rounded "
               />
          
-              <h1 className='px-2'>Ibis New Delhi Aerocity - An AccorHotels Brand</h1>
+              <h1 className='px-2'>{hotel.Hotel_Name}</h1>
             </div>
             <div className='px-2 py-2'>
             <div className="mb-2">Standard room</div>

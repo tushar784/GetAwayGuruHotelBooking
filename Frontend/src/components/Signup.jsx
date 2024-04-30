@@ -57,6 +57,7 @@ function SignUp() {
         `${url}/api/signUp`,
         formData
       );
+      //toastify
       navigate("/login"); //navigation
     } catch (error) {
       // Handle error
