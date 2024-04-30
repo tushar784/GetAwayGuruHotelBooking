@@ -23,5 +23,5 @@ const RoomReserve = ({ roomPrice, quantity, handleIncrement, handleDecrement }) 
     </div>
   );
 };
-
+}
 export default RoomReserve;
