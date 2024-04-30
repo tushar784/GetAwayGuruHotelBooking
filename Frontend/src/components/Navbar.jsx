@@ -16,12 +16,12 @@ function Navbar() {
 
   return (
     <div className="bg-white text-gray-900 z-50 w-full">
-      <header className="container mx-auto md:py-2 md:px-6 py-2 px-2 flex items-center justify-between">
+      <header className="container mx-auto md:py-2 md:px-6 py-2 px-2 flex items-center justify-between ">
         <div className="flex items-center">
           <Link to='/'>
             {/* <img className="h-12" src={Logo} alt="Logo" /> */}
             <img src={logo} alt=""
-            className="md:h-16 md:w-22 h-10" />
+            className="md:h-16 md:w-22 h-8" />
           </Link>
           {/* <Link to="/" className="md:block hidden text-xl md:text-3xl font-bold ml-1  font-PlayFair">
             MediMart

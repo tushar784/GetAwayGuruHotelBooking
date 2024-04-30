@@ -9,7 +9,7 @@ import { MdOutlineDinnerDining } from "react-icons/md";
 import { MdRoomService } from "react-icons/md";
 import { MdSportsBar } from "react-icons/md";
 
-const Map = ({ selectedRoom }) => {
+const InfoSection = ({ selectedRoom ,hotel}) => {
   const [quantity, setQuantity] = useState(1);
   const [price, setPrice] = useState(selectedRoom?.price || 0);
   
@@ -49,33 +49,31 @@ const Map = ({ selectedRoom }) => {
         <div>
           <h1 className="text-black text-2xl font-bold mr-2">About Us</h1>
           {/* here is the code for About hotel */}
-
+          {hotel.About_Us}
 
 
 
         </div>
-        <div className="border shadow-lg h-[19rem] p-5 mt-14 w-[25rem]">
+
+
+    <div className="border shadow-lg h-[19rem] p-5 mt-14 w-[25rem]">
       <h1 className="card-title text-2xl font-semibold">
-        {selectedRoom?.roomType === "Room_Type_1" ? "Deluxe Room" : "Standard Room"}
+        {selectedRoom?.roomType === "Room_Type_1" ? "Standard Room" : "Deluxe Room"}
       </h1>
-      <p className="text-black mt-3 text-xl mb-2 font-extrabold">{selectedRoom?.price}</p>
+      <p className="text-black mt-3 text-xl mb-2 font-extrabold">₹ {selectedRoom?.price}</p>
       <p className="mt-5">per night for 1 room</p>
       <div className="flex items-center mt-4">
         <button onClick={handleDecrement} onChange={handlePrice}>-</button>
         <span className="mx-2">{quantity}</span>
         <button onClick={handleIncrement} onChange={handlePrice}>+</button>
       </div>
-      <p className="text-xl font-semibold mt-3">Total Price: {price}</p>
+      <p className="text-xl font-semibold mt-3">Total Price: ₹ {price}</p>
       <br />
       <button className="text-white font-bold w-80 h-10 mb-4 rounded" style={{ backgroundColor: "#90CCBA" }}>
         Reserve Now
       </button>
     </div>
-
-       
-
-
-      </div>
+   </div>
       {/* Aminities */}
 
       <div className=" mt-6 ml-[6rem] mb-[2rem]">

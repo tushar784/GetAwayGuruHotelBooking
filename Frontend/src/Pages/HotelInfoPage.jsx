@@ -36,7 +36,7 @@ const HotelInfoPage = () => {
         {hotel && (
           <>
             <ImgLoad hotel={hotel} />
-            <InfoSection selectedRoom={selectedRoom} />
+            <InfoSection selectedRoom ={selectedRoom} hotel={hotel}  />
             <RoomCard hotel={hotel} setSelectedRoom={setSelectedRoom} />
             <Policies hotel={hotel} />
           </>
