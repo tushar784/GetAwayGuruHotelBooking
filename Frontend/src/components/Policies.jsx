@@ -29,7 +29,7 @@ const Policies = () => {
       <h1 className="text-black text-lg mt-4 font-semibold mr-4">
         Property information{" "}
       </h1>
-      <p className="text-black ml-[210px] mt-4 ml-4">Total rooms 40 rooms</p>
+      <p className="text-black ml-[15rem] mt-4 ">Total rooms 40 rooms</p>
     </div>
     </div>
   </div>
