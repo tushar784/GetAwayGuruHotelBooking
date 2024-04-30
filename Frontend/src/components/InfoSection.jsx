@@ -9,7 +9,7 @@ import { MdOutlineDinnerDining } from "react-icons/md";
 import { MdRoomService } from "react-icons/md";
 import { MdSportsBar } from "react-icons/md";
 
-const Map = ({ selectedRoom }) => {
+const InfoSection = ({ selectedRoom }) => {
   const [quantity, setQuantity] = useState(1); // State to manage quantity, initialized to 1
 
   const handleIncrement = () => {
@@ -100,7 +100,7 @@ const Map = ({ selectedRoom }) => {
   );
 };
 
-export default Map;
+export default InfoSection;
 
 
 

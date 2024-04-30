@@ -14,14 +14,15 @@ function Home() {
   return (
     <>
       <Navbar />
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center md:h-[32rem] h-[15rem] ">
         <img
           src="src/assets/img/homepage.jpg"
           alt="Hotel Image"
-          className="pl-2 pr-2 h-[32rem] w-[82rem]"
+          className="hidden md:block md:pl-2 md:pr-2 md:w-[82rem] md:h-[32rem]"
         />
+        
         <h1
-          className="absolute text-4xl font-bold mt-22 mb-52 text-amber-50 italic"
+          className="absolute text-4xl font-bold sm:mt-22 md:mb-52 text-amber-50 italic"
           style={{ fontFamily: "cursive" }}
         >
           GetawayGuru: Find Your Home Away From Home
