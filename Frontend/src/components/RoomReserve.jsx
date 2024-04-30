@@ -1,7 +1,6 @@
 import React from 'react';
 
 const RoomReserve = ({ roomPrice, quantity, handleIncrement, handleDecrement }) => {
-//   const totalPrice = roomPrice * quantity;
   const totalPrice = roomPrice * quantity;
   return (
     <div className="border shadow-lg h-[19rem] p-5 mt-14 w-[25rem]">
