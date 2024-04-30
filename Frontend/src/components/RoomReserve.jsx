@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
 
-const RoomReserve = ({ roomPrice }) => {
-
-  
-
 const RoomReserve = ({ roomPrice, quantity, handleIncrement, handleDecrement }) => {
   const totalPrice = roomPrice * quantity;
   return (
@@ -23,5 +19,5 @@ const RoomReserve = ({ roomPrice, quantity, handleIncrement, handleDecrement }) 
     </div>
   );
 };
-}
+
 export default RoomReserve;
