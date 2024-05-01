@@ -18,8 +18,8 @@ const Routing = () => {
             <Route exact path='/login' element={<Login />} />
             <Route exact path='/hotels/location/:selectedLocation' element={<Hotels />} />
             <Route path="/hotels/:hotelName" element={<HotelInfoPage />} />
-            <Route path ="/hotels/:hotelName/checkout" element ={ <CheckoutForm />} />
-           
+            <Route path="/checkout/:hotelName" element={<CheckoutForm />} />
+
           </Routes>
         </BrowserRouter>
       </AuthProvider>

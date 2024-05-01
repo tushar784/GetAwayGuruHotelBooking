@@ -5,7 +5,10 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 const CheckoutForm = () => {
-  const {hotelName} = useParams
+  const { hotelName } = useParams();
+  const [roomType, setRoomType] = useState('');
+  const [price, setPrice] = useState(0);
+  const [hotel, setHotel] = useState(null)  
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
@@ -13,26 +16,30 @@ const CheckoutForm = () => {
   const [state, setState] = useState('');
   const [checkInDate, setCheckInDate] = useState('');
   const [checkOutDate, setCheckOutDate] = useState('');
-  const [hotels,setHotels] = useState('')
+
+  useEffect(() => {
+    const fetchHotelDetails = async () => {
+      try {
+        const url = import.meta.env.VITE_BASE_URL;
+        const response = await axios.get(`${url}/api/hotels/${hotelName}`);
+        setHotel(response.data);
+      } catch (error) {
+        console.error('Error fetching hotel details:', error);
+      }
+    };
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const params = Object.fromEntries(urlParams.entries());
+    setRoomType(params.roomType);
+    setPrice(parseFloat(params.price));
+
+    fetchHotelDetails();
+  }, [hotelName]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic here
   };
-
-  // useEffect(()=>{
-  //   const fetchdetails = async()=>{
-  //     try {
-  //       const url = import.meta.env.VITE_BASE_URL
-  //       const response = await axios.get(`${url}/api/hotels/${hotelName}`);
-  //       setHotels(response.data)
-  //       console.log("details", setHotels());
-  //     } catch (error) {
-  //       console.log("error",error)
-  //     }
-  //   }
-  // },[])
-
 
   return (
     <>
@@ -171,8 +178,7 @@ const CheckoutForm = () => {
     </form>
  </div>
 
-                    {/* 2nd half */}
-
+                    {/* summary box */}
 
         <div className="mb-4 flex w-[22rem]  ">
        
@@ -180,21 +186,19 @@ const CheckoutForm = () => {
           <h3 className="font-bold mb-2 text-xl">Summary</h3>
           <div className="flex">
           <img
-                src="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?cs=srgb&dl=pexels-thorsten-technoman-109353-338504.jpg&fm=jpg"
+                src={hotel?.Image_1}
                 alt="Hotel"
                 className="w-26 h-20 object-cover rounded "
               />
-         
-              <h1 className='px-2'>{hotel.Hotel_Name}</h1>
+              <h1 className='px-2'>{hotel?.Hotel_Name}</h1>
             </div>
             <div className='px-2 py-2'>
-            <div className="mb-2">Standard room</div>
+            <div className="mb-2">Room : {roomType}</div>
             <div className="mb-2">GST</div>
-            <div className="mb-2">check in </div>
-            <div className="mb-2">checkout</div>
+            <div className="mb-2">Check in:  {checkInDate}</div>
+            <div className="mb-2">Check out:  {checkOutDate}</div>
             <div className="mb-2">no. of guest</div>
-            <div className="mb-2">breakfast included or not</div>
-            <div className="font-bold mb-4">Total</div>
+            <div className="font-bold mb-4">Price: {price}</div>
             </div>
             <button
               type="submit"

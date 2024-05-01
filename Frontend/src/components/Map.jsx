@@ -8,13 +8,15 @@ import { FaWifi } from "react-icons/fa";
 import { MdOutlineDinnerDining } from "react-icons/md";
 import { MdRoomService } from "react-icons/md";
 import { MdSportsBar } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Map = ({ selectedRoom,hotel }) => {
+  const { hotelName } = useParams();
   const [quantity, setQuantity] = useState(1);
-  const [price, setPrice] = useState(selectedRoom?.price || 0);
+  const [price, setPrice] = useState(hotel?.Type2_Price);
   
-
+  console.log("dadsa", hotel);
+  
   const handleIncrement = () => {
     setQuantity(quantity + 1);
   };
@@ -68,7 +70,7 @@ const Map = ({ selectedRoom,hotel }) => {
       </div>
       <p className="text-xl font-semibold mt-3">Total Price: ₹{price}</p>
       <br />
-      <Link to={`/hotels/${hotel.Hotel_Name}/checkout`}>
+      <Link to={`/checkout/${hotelName}?roomType=${selectedRoom?.roomType === "Room_Type_1" ? "Deluxe Room" : "Standard Room"}&price=${price}`}>
       <button className="text-white font-bold w-80 h-10 mb-4 rounded" style={{ backgroundColor: "#90CCBA" }}>
         Reserve Now
       </button>

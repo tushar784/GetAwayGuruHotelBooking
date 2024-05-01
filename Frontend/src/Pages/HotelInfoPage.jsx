@@ -16,7 +16,8 @@ const HotelInfoPage = () => {
   useEffect(() => {
     const fetchHotelDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/hotels/${hotelName}`);
+        const url = import.meta.env.VITE_BASE_URL;
+        const response = await axios.get(`${url}/api/hotels/${hotelName}`);
         setHotel(response.data);
       } catch (error) {
         console.error('Error fetching hotel details:', error);
@@ -34,9 +35,10 @@ const HotelInfoPage = () => {
         {hotel && (
           <>
             <ImgLoad hotel={hotel} />
-            <Map selectedRoom={selectedRoom} hotel={hotel}/>
+            <Map selectedRoom={selectedRoom} setSelectedRoom={setSelectedRoom} hotel={hotel}/>
             <RoomCard hotel={hotel} setSelectedRoom={setSelectedRoom} />
             <Policies hotel={hotel} />
+            
           </>
         )}
       </div>
