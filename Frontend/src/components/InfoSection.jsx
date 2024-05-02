@@ -46,7 +46,7 @@ const InfoSection = ({ selectedRoom ,hotel}) => {
     <div>
      
       <div className="flex w-[60rem] ml-[6rem]">
-        <div>
+        <div className="hidden md:block">
           <h1 className="text-black text-2xl font-bold mr-2">About Us</h1>
           {/* here is the code for About hotel */}
           {hotel.About_Us}
@@ -58,7 +58,7 @@ const InfoSection = ({ selectedRoom ,hotel}) => {
 
     <div className="border shadow-lg h-[19rem] p-5 mt-14 w-[25rem]">
       <h1 className="card-title text-2xl font-semibold">
-        {selectedRoom?.roomType === "Room_Type_1" ? "Standard Room" : "Deluxe Room"}
+        {selectedRoom?.roomType === "Room_Type_2" ? "Standard Room" : "Deluxe Room"}
       </h1>
       <p className="text-black mt-3 text-xl mb-2 font-extrabold">₹ {selectedRoom?.price}</p>
       <p className="mt-5">per night for 1 room</p>

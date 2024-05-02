@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const HotelSearchBar = ({ selectedLocation, setHotels }) => {
+ 
   const navigate = useNavigate();
 
   useEffect(() => {
