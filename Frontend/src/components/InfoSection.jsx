@@ -8,12 +8,15 @@ import { FaWifi } from "react-icons/fa";
 import { MdOutlineDinnerDining } from "react-icons/md";
 import { MdRoomService } from "react-icons/md";
 import { MdSportsBar } from "react-icons/md";
+import { Link, useParams } from "react-router-dom";
 
-const InfoSection = ({ selectedRoom ,hotel}) => {
+const InfoSection = ({ selectedRoom,hotel }) => {
+  const { hotelName } = useParams();
   const [quantity, setQuantity] = useState(1);
-  const [price, setPrice] = useState(selectedRoom?.price || 0);
+  const [price, setPrice] = useState(hotel?.Type2_Price);
   
-
+  console.log("dadsa", hotel);
+  
   const handleIncrement = () => {
     setQuantity(quantity + 1);
   };
@@ -60,18 +63,20 @@ const InfoSection = ({ selectedRoom ,hotel}) => {
       <h1 className="card-title text-2xl font-semibold">
         {selectedRoom?.roomType === "Room_Type_2" ? "Standard Room" : "Deluxe Room"}
       </h1>
-      <p className="text-black mt-3 text-xl mb-2 font-extrabold">₹ {selectedRoom?.price}</p>
-      <p className="mt-5">per night for 1 room</p>
+      <p className="text-black mt-3 text-xl mb-2 font-extrabold">₹{selectedRoom?.price}</p>
+      <p className="mt-5">per night for {quantity} room</p>
       <div className="flex items-center mt-4">
         <button onClick={handleDecrement} onChange={handlePrice}>-</button>
         <span className="mx-2">{quantity}</span>
         <button onClick={handleIncrement} onChange={handlePrice}>+</button>
       </div>
-      <p className="text-xl font-semibold mt-3">Total Price: ₹ {price}</p>
+      <p className="text-xl font-semibold mt-3">Total Price: ₹{price}</p>
       <br />
+      <Link to={`/checkout/${hotelName}?roomType=${selectedRoom?.roomType === "Room_Type_1" ? "Deluxe Room" : "Standard Room"}&price=${price}`}>
       <button className="text-white font-bold w-80 h-10 mb-4 rounded" style={{ backgroundColor: "#90CCBA" }}>
         Reserve Now
       </button>
+      </Link>
     </div>
    </div>
       {/* Aminities */}
