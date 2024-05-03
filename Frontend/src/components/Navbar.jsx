@@ -16,12 +16,12 @@ function Navbar() {
 
   return (
     <div className="bg-white text-gray-900 z-50 w-full">
-      <header className="container mx-auto py-2 px-6 flex items-center justify-between">
+      <header className="container mx-auto md:py-2 md:px-6 py-2 px-2 flex items-center justify-between ">
         <div className="flex items-center">
           <Link to='/'>
             {/* <img className="h-12" src={Logo} alt="Logo" /> */}
             <img src={logo} alt=""
-            className="size-22" />
+            className="md:h-16 md:w-22 h-8" />
           </Link>
           {/* <Link to="/" className="md:block hidden text-xl md:text-3xl font-bold ml-1  font-PlayFair">
             MediMart
@@ -155,17 +155,17 @@ function Navbar() {
               className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100 transition duration-300"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Shop
+              Holiday Packages
             </Link>
             <Link
               to="/about"
               className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100 transition duration-300"
               onClick={() => setMobileMenuOpen(false)}
             >
-              About Us
+              Events
             </Link>
            
-            <Link
+            {/* <Link
               to="/cart"
               className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100 transition duration-300"
               onClick={() => setMobileMenuOpen(false)}
@@ -178,7 +178,7 @@ function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
             >
               Contact
-            </Link>
+            </Link> */}
             {user ? (
               <button
                 onClick={logout}

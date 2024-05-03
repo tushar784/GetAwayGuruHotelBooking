@@ -10,7 +10,7 @@ import { MdRoomService } from "react-icons/md";
 import { MdSportsBar } from "react-icons/md";
 import { Link, useParams } from "react-router-dom";
 
-const Map = ({ selectedRoom,hotel }) => {
+const InfoSection = ({ selectedRoom,hotel }) => {
   const { hotelName } = useParams();
   const [quantity, setQuantity] = useState(1);
   const [price, setPrice] = useState(hotel.Type2_Price);
@@ -49,17 +49,19 @@ const Map = ({ selectedRoom,hotel }) => {
     <div>
      
       <div className="flex w-[60rem] ml-[6rem]">
-        <div>
+        <div className="hidden md:block">
           <h1 className="text-black text-2xl font-bold mr-2">About Us</h1>
           {/* here is the code for About hotel */}
-
+          {hotel.About_Us}
 
 
 
         </div>
-        <div className="border shadow-lg h-[19rem] p-5 mt-14 w-[25rem]">
+
+
+    <div className="border shadow-lg h-[19rem] p-5 mt-14 w-[25rem]">
       <h1 className="card-title text-2xl font-semibold">
-        {selectedRoom?.roomType === "Room_Type_1" ? "Deluxe Room" : "Standard Room"}
+        {selectedRoom?.roomType === "Room_Type_2" ? "Standard Room" : "Deluxe Room"}
       </h1>
       <p className="text-black mt-3 text-xl mb-2 font-extrabold">₹{selectedRoom?.price}</p>
       <p className="mt-5">per night for {quantity} room</p>
@@ -76,11 +78,7 @@ const Map = ({ selectedRoom,hotel }) => {
       </button>
       </Link>
     </div>
-
-       
-
-
-      </div>
+   </div>
       {/* Aminities */}
 
       <div className=" mt-6 ml-[6rem] mb-[2rem]">
@@ -121,7 +119,7 @@ const Map = ({ selectedRoom,hotel }) => {
   );
 };
 
-export default Map;
+export default InfoSection;
 
 
 
