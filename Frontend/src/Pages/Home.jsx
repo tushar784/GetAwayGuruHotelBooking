@@ -35,7 +35,7 @@ function Home() {
         <HotelSearchBar selectedLocation={selectedLocation} setHotels={setHotels} />
       </div>
       <Speciality />
-      <PopularDestinations />
+      <PopularDestinations selectedLocation={selectedLocation} setHotels={setHotels} />
       <FAQ />
       <Footer />
     
