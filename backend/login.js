@@ -53,5 +53,4 @@ app.post('/login', async (req, res) => {
         res.status(500).json({ msg: 'Server Error' }); // Handle server errors
     }
 });
-
 module.exports = app;
