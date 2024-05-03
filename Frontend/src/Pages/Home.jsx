@@ -14,25 +14,28 @@ function Home() {
   return (
     <>
       <Navbar />
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center md:h-[32rem] h-[15rem] md:mb-0 mb-12 ">
         <img
           src="src/assets/img/homepage.jpg"
           alt="Hotel Image"
-          className="pl-2 pr-2 h-[32rem] w-[82rem]"
+          className="hidden md:block md:pl-2 md:pr-2 md:w-[82rem] md:h-[32rem]"
         />
+
         <h1
-          className="absolute text-4xl font-bold mt-22 mb-52 text-amber-50 italic"
+          className="absolute md:text-4xl font-bold md:mt-12 md:mb-52 md:text-amber-50 italic text-mx text-center mt-16 mb-48 text-black"
           style={{ fontFamily: "cursive" }}
         >
-          GetawayGuru: Find Your Home Away From Home
+          GetawayGuru:Find Your Home Away From Home
         </h1>
         <p
-          className="absolute text-2xl font-bold mt-22 mb-28 text-amber-50 italic"
+          className="absolute md:text-2xl font-bold md:mt-14 md:mb-28 md:text-amber-50 text-[0.81rem] font-bold mt-40 mb-48 text-black italic"
           style={{ fontFamily: "cursive" }}
         >
           Curated Stay for Every Traveler
         </p>
-        <HotelSearchBar selectedLocation={selectedLocation} setHotels={setHotels} />
+  
+        <HotelSearchBar selectedLocation={selectedLocation} setHotels={setHotels}
+      />
       </div>
       <Speciality />
       <PopularDestinations />
