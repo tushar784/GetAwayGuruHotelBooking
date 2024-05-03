@@ -38,7 +38,7 @@ function Home() {
       />
       </div>
       <Speciality />
-      <PopularDestinations />
+      <PopularDestinations selectedLocation={selectedLocation} setHotels={setHotels} />
       <FAQ />
       <Footer />
     

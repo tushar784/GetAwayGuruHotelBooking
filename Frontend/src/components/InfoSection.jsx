@@ -13,7 +13,7 @@ import { Link, useParams } from "react-router-dom";
 const InfoSection = ({ selectedRoom,hotel }) => {
   const { hotelName } = useParams();
   const [quantity, setQuantity] = useState(1);
-  const [price, setPrice] = useState(hotel?.Type2_Price);
+  const [price, setPrice] = useState(hotel.Type2_Price);
   
   console.log("dadsa", hotel);
   
