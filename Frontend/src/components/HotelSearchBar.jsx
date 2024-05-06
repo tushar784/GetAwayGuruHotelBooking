@@ -75,7 +75,7 @@ const HotelSearchBar = ({ selectedLocation, setHotels }) => {
     { value: "Kerla", label: "Kerla" },
     { value: "Dubai", label: "Dubai" },
     { value: "Bangkok", label: "Bangkok" },
-    { value: "Sigapore", label: "Sigapore" },
+    { value: "Singapore", label: "Singapore" },
     { value: "Phuket", label: "Phuket" },
   ];
 
