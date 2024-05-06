@@ -30,7 +30,7 @@ const HotelCard = ({hotel}) => {
           <p className="text-black md:mb-2">{hotel.Location}</p>
 
             {/*hotellist star rating  */}
-          <div className="flex items-center md:mb-2 ">
+           <div className="flex items-center md:mb-2 ">
             <p className="mt-[6px] mr-2">{hotel.Staring_Rating}/5</p>
             {[...Array(hotel.Staring_Rating)].map((_, index) => {
               const currentRating = index + 1;
@@ -49,9 +49,7 @@ const HotelCard = ({hotel}) => {
                 </label>
               );
             })}
-          </div>
-
-          
+          </div> 
         </div>
 
         {/* mobile view for Location and Star */}

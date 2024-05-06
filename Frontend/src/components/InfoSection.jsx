@@ -9,11 +9,13 @@ import { MdOutlineDinnerDining } from "react-icons/md";
 import { MdRoomService } from "react-icons/md";
 import { MdSportsBar } from "react-icons/md";
 import { Link, useParams } from "react-router-dom";
+import AboutUsPopup from './AboutUsPopup';
 
 const InfoSection = ({ selectedRoom,hotel }) => {
   const { hotelName } = useParams();
   const [quantity, setQuantity] = useState(1);
   const [price, setPrice] = useState(hotel.Type2_Price);
+  const [showPopup, setShowPopup] = useState(false);
   
   console.log("dadsa", hotel);
   
@@ -25,6 +27,9 @@ const InfoSection = ({ selectedRoom,hotel }) => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
     }
+  };
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
   };
 
   const handlePrice = () => {
@@ -51,13 +56,33 @@ const InfoSection = ({ selectedRoom,hotel }) => {
      <div>
       {/* Desktop view */}
       <div className="hidden md:flex w-[60rem] ml-[6rem]">
-        <div className="">
-          <h1 className="text-black text-2xl font-bold mr-2">About Us</h1>
-          {/* Here is the code for About hotel */}
+        {/* <div className="">
+          <h1 className="text-black text-2xl font-bold mr-2 mb-2">About Us</h1>
+         
           {hotel.About_Us}
-        </div>
+        </div> */}
 
-        <div className="border shadow-lg h-[19rem] p-5 mt-14 w-[25rem]">
+
+
+
+
+   <div>
+      <h1 className="text-black text-2xl font-bold mr-2 mb-2">About Us</h1>
+      {showPopup ? (
+        <AboutUsPopup aboutUs={hotel.About_Us} onClose={togglePopup} className="indent-40" />
+      ) : (
+        <>
+          <p>{hotel.About_Us.slice(0, 300)}...</p> {/* Display first 120 characters */}
+          <button onClick={togglePopup} className="text-blue-600 font-semibold">
+            Read More
+          </button>
+        </>
+      )}
+    </div>
+
+
+
+        <div className="border shadow-lg h-[19rem] p-5 ml-[2rem] mt-4 w-[25rem]">
           <h1 className="card-title text-2xl font-semibold">
             {selectedRoom?.roomType === "Room_Type_1" ? "Deluxe Room" : "Standard Room"}
           </h1>
