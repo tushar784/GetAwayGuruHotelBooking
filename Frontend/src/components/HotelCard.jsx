@@ -28,6 +28,8 @@ const HotelCard = ({hotel}) => {
       <div className="hidden flex md:block">
         
           <p className="text-black md:mb-2">{hotel.Location}</p>
+
+            {/*hotellist star rating  */}
           <div className="flex items-center md:mb-2 ">
             <p className="mt-[6px] mr-2">{hotel.Staring_Rating}/5</p>
             {[...Array(hotel.Staring_Rating)].map((_, index) => {
@@ -48,12 +50,13 @@ const HotelCard = ({hotel}) => {
               );
             })}
           </div>
+
           
         </div>
 
         {/* mobile view for Location and Star */}
         <div className="flex md:hidden">
-        <ImLocation2 className="text-1xl  mt-[4px] mr-2" />
+        <ImLocation2 className="text-1xl mt-[4px] mr-2" />
           <p className="text-black ">{hotel.Location}</p>
           <div className="flex ml-4">
             <p className="mr-2 mb-2">{hotel.Staring_Rating}/5</p>
@@ -91,7 +94,7 @@ const HotelCard = ({hotel}) => {
         </div>
 
         <div className="hidden flex md:block md:mt-12 mt-2 pl-4 md:ml-[0rem] ">
-          <p className="text-black font-extrabold mb-4 ">₹ {hotel.Price}</p>
+          <p className="text-black text-xl font-extrabold mb-4 ">₹ {hotel.Price}</p>
           <Link to={`/hotels/${hotel.Hotel_Name}`}>
             <button className="bg-[#90CCBA] hover:bg-[#46c79f] text-white font-bold md:py-2 md:px-4 py-[0.50rem] px-[0.52rem] rounded">
               Book Now
@@ -104,7 +107,7 @@ const HotelCard = ({hotel}) => {
             
         <div className="flex md:hidden pl-4 ">
         
-          <p className="text-black font-bold mt-[0.2rem] text-xl">₹ {hotel.Price}</p>
+          <p className="text-black text-lg font-bold mt-[0.2rem] ">₹ {hotel.Price}</p>
         
         </div>
       </div>
@@ -123,84 +126,3 @@ export default HotelCard;
 
 
 
-
-
-
-// import React, { useState } from "react";
-// import { Link, useNavigate } from "react-router-dom";
-// import { FaStar } from "react-icons/fa";
-// import { ImLocation2 } from "react-icons/im";
-// import { IoShareSocialSharp } from "react-icons/io5";
-// const HotelCard = ({hotel}) => {
-//   const [rating, setRating] = useState(null);
-//   const [hover, setHover] = useState(null);
-//   return (
-//     <>
-//         <div className="bg-white h-[14rem] w-[95%] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
-//           <div className="h-auto md:h-48 overflow-hidden mt-4 ml-2 rounded-lg">
-//           {/* <h1>{hotel.Hotel_Name}</h1> */}
-//             <img
-//               src={hotel?.Card_Image}
-//               alt={hotel?.Hotel_Name}
-//               className="object-cover w-[18rem] h-[11rem] rounded m-2"
-//             />
-//           </div>
-//           <div className="p-4 w-full md:w-1/3">
-//             <h2 className="text-xl font-semibold mb-2 text-black">
-//               {hotel.Hotel_Name}
-//             </h2>
-
-//         <div>
-//         <p className="text-black mb-2">{hotel.Location}</p>
-//          <div className="flex items-center mb-2">
-          
-//           <div className="flex justify-normal gap-2">
-//           <p className="mt-[10px]">{hotel.Staring_Rating}/5</p>
-//             {[...Array(hotel.Staring_Rating)].map((_, index) => {
-//               const currentRating = index + 1;
-//               return (
-//               <label key={index}>
-//                 <FaStar
-//                   size={12}
-//                   className={`text-yellow-500 cursor-pointer mt-4 ${
-//                     currentRating <= (hover || rating)
-//                       ? "text-yellow-500"
-//                       : "text-gray-400"
-//                   }`}
-//                   onMouseEnter={() => setHover(currentRating)}
-//                   onMouseLeave={() => setHover(null)}
-//                 />
-//               </label>
-//             );
-//           })}
-
-//           </div>
-//         </div>
-
-//                <ul className="text-black flex flex-col mb-[-2rem]">
-//                 {typeof hotel.Amenities === "string" ? (
-//                   hotel.Amenities.split(", ").map((amenity, index) => (
-//                     <li key={index}>{amenity}</li>
-//                   ))
-//                 ) : (
-//                   <li>{hotel.Amenities}</li>
-//                 )}
-//               </ul>
-    
-//             </div>
-//           </div>
-//           <div className="mt-12 ml-[2rem]">
-//             <p className="text-black font-extrabold mb-4">₹ {hotel.Price}</p>
-//             <Link to={`/hotels/${hotel.Hotel_Name}`}>
-//             <button
-//               className="bg-[#90CCBA] hover:bg-[#46c79f] text-white font-bold py-2 px-4 rounded">
-//               Book Now
-//             </button>
-//             </Link>
-//           </div>
-//         </div>
-//     </>
-//   );
-// };
-
-// export default HotelCard;

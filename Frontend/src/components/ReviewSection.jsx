@@ -43,14 +43,14 @@ const ReviewSection = () => {
   };
 
   return (
-    <div className="bg-white p-6 ml-12 rounded-md relative  max-h-screen">
-      <h2 className="text-black text-2xl font-bold mr-2 mb-2">Reviews</h2>
+    <div className="bg-white p-6 md:ml-12 rounded-md relative  max-h-screen">
+      <h2 className="text-black md:text-2xl text-xl font-bold md:mr-2 md:mb-2 ml-2">Reviews</h2>
       <div className="mb-4 flex justify-end">
         <button
-          className="flex item-center justify-center bg-[#90CCBA] text-white font-bold py-2 px-4 rounded"
+          className="flex item-center justify-center bg-[#90CCBA] text-white font-bold md:py-2 md:px-4 py-2 px-2 rounded"
           onClick={handleReviewClick}
         >
-          <PiPencilLine className='mr-2 text-xl'/> Write a Review
+          <PiPencilLine className='md:mr-2 md:text-xl text-mx md:mt-[0.3rem] mt-[0.3rem] mr-2'/> Write a Review
         </button>
       </div>
       <div className="flex items-center text-2xl mb-4">
