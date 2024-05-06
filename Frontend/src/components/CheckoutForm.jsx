@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import { SiPhonepe } from 'react-icons/si';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { FaArrowDown as ArrowDownIcon, FaArrowUp as ArrowUpIcon } from 'react-icons/fa';
 
 const CheckoutForm = () => {
   const { hotelName } = useParams();
@@ -16,6 +17,9 @@ const CheckoutForm = () => {
   const [state, setState] = useState('');
   const [checkInDate, setCheckInDate] = useState('');
   const [checkOutDate, setCheckOutDate] = useState('');
+  const [rooms, setRooms] = useState(1);
+  const [guests, setGuests] = useState(1);
+  
 
   useEffect(() => {
     const fetchHotelDetails = async () => {
@@ -105,7 +109,7 @@ const CheckoutForm = () => {
               value={pincode}
               onChange={(e) => setPincode(e.target.value)}
               // className="border border-gray-300 rounded-md px-4 py-2 w-full"
-              className="border border-gray-300 rounded-md px-4 py-2 w-[14rem]"
+              className="border border-gray-300 rounded-md px-4 py-2 w-[13.5rem]"
             />
           </div>
           <div className="w-1/2">
@@ -116,13 +120,14 @@ const CheckoutForm = () => {
               id="state"
               value={state}
               onChange={(e) => setState(e.target.value)}
-              className="border border-gray-300 rounded-md px-4 py-2 w-[14rem]"
+              className="border border-gray-300 rounded-md px-4 py-2 w-[13.5rem]"
             >
               <option value="">eg. Maharashtra</option>
               {/* Add more state options here */}
             </select>
           </div>
         </div>
+
         <div className="flex flex-row mb-4">
           <div className="mr-2 basis-1/4">
             <label htmlFor="checkInDate" className="block text-base font-semibold mb-2">
@@ -133,11 +138,12 @@ const CheckoutForm = () => {
               id="checkInDate"
               value={checkInDate}
               onChange={(e) => setCheckInDate(e.target.value)}
-              className="border border-gray-300 rounded-md px-4 py-2 w-[10rem]"
+              // className="border border-gray-300 rounded-md px-4 py-2 w-[10rem]"
+              className="border border-gray-300 rounded-md px-4 py-2 w-[13.5rem]"
             />
           </div>
           <div className="mr-2 basis-1/4">
-            <label htmlFor="checkOutDate" className="block text-base font-semibold mb-2">
+            <label htmlFor="checkOutDate" className="ml-[1.2rem] block text-base font-semibold mb-2">
               Checkout date
             </label>
             <input
@@ -145,23 +151,55 @@ const CheckoutForm = () => {
               id="checkOutDate"
               value={checkOutDate}
               onChange={(e) => setCheckOutDate(e.target.value)}
-              className="border border-gray-300 rounded-md px-4 py-2 w-[10rem]"
+              // className="border border-gray-300 rounded-md px-4 py-2 w-[10rem]"
+              className='border border-gray-300 rounded-md px-4 py-2 w-[13.5rem] ml-[1.4rem]'
+              
             />
+          </div>
           </div>
        
 
-        <div className="mb-4 basis-1/4">
-          <label className="block text-base font-semibold mb-2">Rooms & guests</label>
+        {/* <div className="mb-4 basis-1/4">
+          <label className="block text-base font-semibold mb-2">Rooms </label>
           <input
-            type="email"
-            id="email"
-            placeholder="Room and Guest"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="number"
+            id="room"
+            placeholder="Room and "
+            value={room}
+            onChange={(e) => setroom(e.target.value)}
             className="border border-gray-300 text-sm rounded-md px-4 py-2.5 w-full"
+          />
+        </div> */}
+        
+    <div className="flex items-center mb-4">
+      <div className=" basis-1/4">
+        <label className="block text-base font-semibold mb-2">Rooms</label>
+          <input
+            type="number"
+            id="room"
+            placeholder="Room"
+            value={rooms}
+            onChange={(e) => setRooms(e.target.value)}
+            className="border border-gray-300 rounded-md px-4 py-2 w-[14rem]"
+          />
+      </div>
+
+
+
+    <div className="basis-1/4">
+    <label className="block text-base font-semibold mb-2 ml-[2rem]">Guest: </label>
+          <input
+            type="number"
+            id="guest"
+            placeholder="Guest "
+            value={guests}
+            onChange={(e) => setGuests(e.target.value)}
+            className="border border-gray-300 rounded-md px-4 py-2 w-[13.5rem] ml-[2rem] "
           />
         </div>
       </div>
+
+      
       <div className="mb-[2rem] flex items-center justify-between">
           <div className="flex items-center">
             <input
@@ -180,25 +218,25 @@ const CheckoutForm = () => {
 
                     {/* summary box */}
 
-        <div className="mb-4 flex w-[22rem]  ">
+        <div className="mb-4 flex w-[22rem] h-[24em] m-4 ">
        
           <div className="border border-gray-300 rounded-2xl p-2">
-          <h3 className="font-bold mb-2 text-xl">Summary</h3>
+          <h3 className="font-bold mb-4 text-xl mt-2">Summary</h3>
           <div className="flex">
           <img
                 src={hotel?.Image_1}
                 alt="Hotel"
                 className="w-26 h-20 object-cover rounded "
               />
-              <h1 className='px-2'>{hotel?.Hotel_Name}</h1>
+              <h1 className='px-4 text-xl font-bold'>{hotel?.Hotel_Name}</h1>
             </div>
-            <div className='px-2 py-2'>
+            <div className='px-2 py-2 text-mx font-semibold'>
             <div className="mb-2">Room : {roomType}</div>
-            <div className="mb-2">GST</div>
+            {/* <div className="mb-2">GST</div> */}
             <div className="mb-2">Check in:  {checkInDate}</div>
             <div className="mb-2">Check out:  {checkOutDate}</div>
-            <div className="mb-2">no. of guest</div>
-            <div className="font-bold mb-4">Price: {price}</div>
+            <div className="mb-2">no. of guest: {guests}</div>
+            <div className="font-bold text-lg mb-2">Price: {price}</div>
             </div>
             <button
               type="submit"
@@ -208,9 +246,6 @@ const CheckoutForm = () => {
           </div>
         </div>
     </div>
-
-
-    
     </>
   
   );
