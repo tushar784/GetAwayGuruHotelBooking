@@ -53,8 +53,8 @@ const ImgLoad = ({ hotel }) => {
       </div>
       </div>
       {/* <div className="items-center w-[70rem] h-full ml-[6rem] mt-2"> */}
-      <div className="items-center w-[70rem] h-full ml-[6rem] mt-[1rem]">
-        <h1 className="text-black text-2xl font-bold mr-2">
+      <div className="items-center md:w-[70rem] md:h-full md:ml-[6rem] md:mt-[1rem]">
+        <h1 className="text-black md:text-2xl font-bold md:mr-2">
           {hotel.Hotel_Name}
         </h1>
         <div className="flex justify-normal gap-2">

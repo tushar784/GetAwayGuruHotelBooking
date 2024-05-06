@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ImgLoad from "../components/ImgLoad";
-import Map from "../components/Map";
+// import Map from "../components/Map";
+import InfoSection from "../components/InfoSection";
 import RoomCard from "../components/RoomCard";
 import Policies from "../components/Policies";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import ReviewSection from "../components/ReviewSection";
 
 const HotelInfoPage = () => {
   const { hotelName } = useParams();
@@ -35,13 +37,14 @@ const HotelInfoPage = () => {
         {hotel && (
           <>
             <ImgLoad hotel={hotel} />
-            <Map selectedRoom={selectedRoom} setSelectedRoom={setSelectedRoom} hotel={hotel}/>
+            <InfoSection selectedRoom={selectedRoom} setSelectedRoom={setSelectedRoom} hotel={hotel}/>
             <RoomCard hotel={hotel} setSelectedRoom={setSelectedRoom} />
             <Policies hotel={hotel} />
             
           </>
         )}
       </div>
+      <ReviewSection />
       <Footer />
     </>
   );
