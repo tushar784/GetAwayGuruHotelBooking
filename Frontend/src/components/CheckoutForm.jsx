@@ -208,9 +208,6 @@ const CheckoutForm = () => {
           </div>
         </div>
     </div>
-
-
-    
     </>
   
   );
