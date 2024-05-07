@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import { SiPhonepe } from "react-icons/si";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { AuthContext } from "../Context/Auth_Context";
 
 const CheckoutForm = () => {
   const { hotelName } = useParams();
@@ -11,13 +12,14 @@ const CheckoutForm = () => {
   const [hotel, setHotel] = useState(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [address, setAddress] = useState("");
+  // const [address, setAddress] = useState("");
   const [pincode, setPincode] = useState("");
   const [state, setState] = useState("");
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
   const [rooms, setRooms] = useState(1);
   const [guests, setGuests] = useState(1);
+  const {user} = useContext(AuthContext);
 
   useEffect(() => {
     const fetchHotelDetails = async () => {
@@ -38,54 +40,76 @@ const CheckoutForm = () => {
     fetchHotelDetails();
   }, [hotelName]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Handle form submission logic here
+    try {
+      const url = import.meta.env.VITE_BASE_URL;
+      const response = await axios.post(`http://localhost:4000/api/booking/createorder`, {
+        Hotel_Name: hotel?.Hotel_Name,
+        checkInDate,
+        checkOutDate,
+        numberOfGuests: guests,
+        numberOfRooms: rooms,
+        username: user.username,
+        email: user.email,
+        // address,
+        state: state,
+        room_Type: roomType,
+        pincode,
+        price: price,
+      });
+
+      console.log("Order created successfully:", response.data);
+      setOrderSuccess(true); // Set orderSuccess to true on successful order creation
+    } catch (error) {
+      console.error("Error creating order:", error);
+      // Handle errors appropriately (e.g., display error message to user)
+    }
   };
 
   return (
     <>
       <Navbar />
 
-                  {/* Mobile View Summery Box */}
+      {/* Mobile View Summery Box */}
       <div className="md:ml-[4rem] mb-4 md:flex md:hidden w-[20rem] h-[26em]  ">
-          <div className="border border-gray-300 m-2 rounded-2xl p-2">
-            <h3 className="font-bold mb-4 text-xl mt-2">Summary</h3>
-            <div className="flex">
-              <img
-                src={hotel?.Image_1}
-                alt="Hotel"
-                className="w-26 h-20 object-cover rounded "
-              />
-              <h1 className="px-4 text-xl font-bold">{hotel?.Hotel_Name}</h1>
-            </div>
-            <div className="px-2 py-2 text-mx font-semibold">
-              <div className="mb-2">Room : {roomType}</div>
-              <div className="mb-2">Check in: {checkInDate}</div>
-              <div className="mb-2">Check out: {checkOutDate}</div>
-              <div className="mb-2">no. of rooms: {rooms}</div>
-              <div className="mb-2">no. of guest: {guests}</div>
-              <div className="font-bold text-lg mb-2">Price: {price}</div>
-            </div>
-            <button
-              type="submit"
-              className="bg-[#90CCBA] text-white rounded-md px-4 py-2 w-[18rem]"
-            >
-              Pay now
-            </button>
+        <div className="border border-gray-300 m-2 rounded-2xl p-2">
+          <h3 className="font-bold mb-4 text-xl mt-2">Summary</h3>
+          <div className="flex">
+            <img
+              src={hotel?.Image_1}
+              alt="Hotel"
+              className="w-26 h-20 object-cover rounded "
+            />
+            <h1 className="px-4 text-xl font-bold">{hotel?.Hotel_Name}</h1>
           </div>
+          <div className="px-2 py-2 text-mx font-semibold">
+            <div className="mb-2">Room : {roomType}</div>
+            <div className="mb-2">Check in: {checkInDate}</div>
+            <div className="mb-2">Check out: {checkOutDate}</div>
+            <div className="mb-2">no. of rooms: {rooms}</div>
+            <div className="mb-2">no. of guest: {guests}</div>
+            <div className="font-bold text-lg mb-2">Price: {price}</div>
+          </div>
+          {/* <button
+            type="submit"
+            className="bg-[#90CCBA] text-white rounded-md px-4 py-2 w-[18rem]"
+          >
+            Pay now
+          </button> */}
         </div>
+      </div>
 
-
-        {/* Shipping Form */}
+      {/* Customer details Form */}
       <h1 className="ml-[7rem] text-xl font-semibold mt-10 mb-2">
         Customer Details
-      </h1>  
+      </h1>
       <div className="md:ml-[10rem] flex mt-[1rem]">
         <div className="flex-initial md:m-[2px] m-[1rem] w-[35rem] size-22">
           <form onSubmit={handleSubmit} className="flex flex-col">
-            <div className="flex flex-col lg:flex-row ">
-              <div className="mb-4 lg:mr-4 flex-auto">
+            {/* <div className="flex flex-col lg:flex-row "> */}
+              {/* <div className="mb-4 lg:mr-4 flex-auto">
                 <label
                   htmlFor="name"
                   className="block text-base font-semibold mb-2"
@@ -133,7 +157,7 @@ const CheckoutForm = () => {
                 onChange={(e) => setAddress(e.target.value)}
                 className="border border-gray-300 rounded-md px-4 py-2 w-full"
               />
-            </div>
+            </div> */}
 
             <div className="flex flex-col lg:flex-row mb-2">
               <div className="mb-4 lg:mr-4 flex-auto">
@@ -165,7 +189,8 @@ const CheckoutForm = () => {
                   onChange={(e) => setState(e.target.value)}
                   className="border border-gray-300 rounded-md px-4 py-2 w-full"
                 >
-                  <option value="">eg. Maharashtra</option>
+                  <option value="Maharashtra">Maharashtra</option>
+                  <option value="New Delhi">New Delhi</option>
                   {/* Add more state options here */}
                 </select>
               </div>
@@ -203,20 +228,6 @@ const CheckoutForm = () => {
               </div>
             </div>
             <div className="flex flex-col lg:flex-row mb-4">
-              {/* <div className="mb-4 lg:mr-4 flex-auto">
-            <label htmlFor="room" className="block text-base font-semibold mb-2">
-              Rooms
-            </label>
-            <input
-              type="number"
-              id="room"
-              placeholder="Room"
-              value={rooms}
-              onChange={(e) => setRooms(e.target.value)}
-              className="border border-gray-300 rounded-md px-4 py-2 w-full"
-            />
-          </div> */}
-
               <div className="mb-4 lg:mr-4 flex-auto">
                 <label
                   htmlFor="room"
@@ -243,21 +254,6 @@ const CheckoutForm = () => {
                   className="border border-gray-300 rounded-md px-4 py-2 w-full"
                 />
               </div>
-
-              {/*           
-          <div className="mb-4 lg:mb-0 flex-auto">
-            <label htmlFor="guest" className="block text-base font-semibold mb-2">
-              Guest
-            </label>
-            <input
-              type="number"
-              id="guest"
-              placeholder="Guest"
-              value={guests}
-              onChange={(e) => setGuests(e.target.value)}
-              className="border border-gray-300 rounded-md px-4 py-2 w-full"
-            />
-          </div> */}
 
               <div className="mb-4 lg:mb-0 flex-auto">
                 <label
@@ -286,18 +282,6 @@ const CheckoutForm = () => {
                 />
               </div>
             </div>
-            {/* <div className="flex items-center mb-4">
-          <input
-            type="radio"
-            checked="checked"
-            className="w-4 h-4 py-3 text-blue-600 bg-gray-100 rounded border-gray-300"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          
-          <label htmlFor="default-checkbox" className="ml-2 flex items-center text-lg font-medium text-fuchsia-900">
-            <span className="ml-1">Phone Pe</span>
-          </label>
-        </div> */}
 
             <div className="mb-[0.9rem] flex items-center justify-between">
               <div className="flex items-center">
@@ -320,6 +304,7 @@ const CheckoutForm = () => {
             <button
               type="submit"
               className="bg-[#90CCBA] text-white font-bold py-2 px-4 rounded"
+              onClick={handleSubmit}
             >
               Submit
             </button>
@@ -347,12 +332,12 @@ const CheckoutForm = () => {
               <div className="mb-2">No. of guest: {guests}</div>
               <div className="font-bold text-lg mb-2">Price: {price}</div>
             </div>
-            <button
+            {/* <button
               type="submit"
               className="bg-[#90CCBA] text-white rounded-md px-4 py-2 w-[23rem]"
             >
               Pay now
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
@@ -361,24 +346,3 @@ const CheckoutForm = () => {
 };
 
 export default CheckoutForm;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
