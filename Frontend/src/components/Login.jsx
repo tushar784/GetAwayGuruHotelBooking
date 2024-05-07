@@ -4,6 +4,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../Context/Auth_Context";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function Login() {
   const navigate = useNavigate();
@@ -46,6 +49,10 @@ function Login() {
       localStorage.setItem("token", token);
       login({ user, token });
       navigate("/");
+      toast.success("Login successful!", {
+        position: "top-right", // Optional: Customize position
+        autoClose: 3000, // Optional: Close toast automatically after 3 seconds
+      });
     } catch (error) {
       console.error(error);
     } finally {
