@@ -4,13 +4,11 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../Context/Auth_Context";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Login() {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -41,7 +39,7 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setValidation(Validation(formData));
-    setLoading(true);
+  
     try {
       const url = import.meta.env.VITE_BASE_URL;
       const response = await axios.post(`${url}/api/login`, formData);
@@ -55,9 +53,7 @@ function Login() {
       });
     } catch (error) {
       console.error(error);
-    } finally {
-      setLoading(false);
-    }
+    } 
   };
   return (
     <>
