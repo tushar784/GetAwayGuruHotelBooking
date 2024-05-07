@@ -14,6 +14,23 @@ const bookingSchema = new Schema({
     },
     checkInDate: {
       type: Date,
+      required: true,
+      unique: true
+    },
+    checkOutDate: {
+      type: Date,
+      required: true,
+      unique: true
+    },
+    numberOfGuests: {
+      type: Number,
+      required: true,
+      unique: true
+    },
+    numberOfRooms: {
+      type: Number,
+      required: true,
+      unique: true
     }
   });
   
