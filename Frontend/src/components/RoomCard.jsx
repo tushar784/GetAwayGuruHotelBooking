@@ -122,7 +122,7 @@ function RoomCard({ hotel, setSelectedRoom }) {
       <div className="md:hidden ">
         <h1 className="font-bold text-xl mt-4 ml-4">Rooms</h1>
         {/* Render Deluxe Room */}
-        <div className="bg-white mb-4 h-[25rem] w-[17rem] ml-[0.5rem] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
+        <div onClick={() => handleReserveRoom("Room_Type_1", hotel.Type1_Price)} className="bg-white mb-4 h-[25rem] w-[17rem] ml-[0.5rem] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
           {/* ... */}          
         <img
           src={hotel.Type1_Img}
@@ -156,21 +156,24 @@ function RoomCard({ hotel, setSelectedRoom }) {
               <p className='text-black text-sm mb-2 '>per night for 1 room</p>
 
         
-        <button
+        {/* <button
           className="text-white font-medium w-[11rem] h-10 rounded"
           style={{ backgroundColor: "#90CCBA" }}
           onClick={() => handleReserveRoom("Room_Type_1", hotel.Type1_Price)}
         >
           Reserve room
-        </button>
+        </button> */}
        </div>
       </div>
      </div>
     </div>
 
+
+
         {/* Render Standard Room */}
-        <div className="bg-white mb-4 h-[25rem] w-[17rem] ml-[0.5rem] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
-          {/* ... */}          
+        <div onClick={() => handleReserveRoom("Room_Type_2", hotel.Type2_Price)}
+        className="bg-white mb-4 h-[25rem] w-[17rem] ml-[0.5rem] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
+                
         <img
           src={hotel.Type2_Img}
           className="w-[15rem] h-[13rem] object-cover items-center rounded-lg m-[1rem]"

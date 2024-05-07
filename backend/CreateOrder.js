@@ -2,31 +2,36 @@ const express = require('express');
 const app = express();
 const Booking = require('./Models/booking.model'); // Import Booking model schema
 
-app.post('/booking/createorder', async (req, res) => { // Changed (res, req) to (req, res)
-    const { Hotel_Name, checkInDate, checkOutDate, numberOfGuests, numberOfRooms } = req.body;
+app.post('/booking/createorder', async (req, res) => {
+    const { Hotel_Name, checkInDate, checkOutDate, numberOfGuests, numberOfRooms, username, email, address, state, room_Type, pincode } = req.body;
 
     // Validate the request body
-    if (!Hotel_Name || !checkInDate || !checkOutDate || !numberOfGuests) {
+    if (!Hotel_Name || !checkInDate || !checkOutDate || !numberOfGuests || !numberOfRooms) {
         return res.status(400).json({ error: 'Missing required fields' });
     }
 
-    const newBooking = new Booking({
-        Hotel_Name,
-        checkInDate,
-        checkOutDate,
-        numberOfGuests,
-        numberOfRooms
-    });
+    try {
+        const newBooking = new Booking({
+            username,
+            email,
+            address,
+            pincode,
+            state,
+            room_Type,
+            Hotel_Name,
+            checkInDate,
+            checkOutDate,
+            numberOfGuests,
+            numberOfRooms
+        });
 
-    newBooking.save((err, savedBooking) => {
-        if (err) {
-            console.error('Error saving booking:', err);
-            return res.status(500).json({ error: 'Internal server error' });
-        }
+        const savedBooking = await newBooking.save();
         // Return the saved booking object as a response
         res.status(201).json(savedBooking);
-    });
+    } catch (error) {
+        console.error('Error saving booking:', error);
+        return res.status(500).json({ error: 'Internal server error' });
+    }
 });
-
 
 module.exports = app;
