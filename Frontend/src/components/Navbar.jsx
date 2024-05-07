@@ -19,19 +19,16 @@ function Navbar() {
       <header className="container mx-auto md:py-2 md:px-6 py-2 px-2 flex items-center justify-between ">
         <div className="flex items-center">
           <Link to='/'>
-            {/* <img className="h-12" src={Logo} alt="Logo" /> */}
             <img src={logo} alt=""
             className="md:h-16 md:w-22 h-8" />
           </Link>
-          {/* <Link to="/" className="md:block hidden text-xl md:text-3xl font-bold ml-1  font-PlayFair">
-            MediMart
-          </Link> */}
+        
           <nav className="hidden md:flex md:ml-[18vw]">
             <div className="flex gap-10 font-semibold text-gray-900">
               <Link to="/" className="">
                 Home
               </Link>
-              <Link to="" className="">
+              <Link to="holidayhome" className="">
               Holiday Packages
               </Link>
               <Link to="" className="">
@@ -151,7 +148,7 @@ function Navbar() {
               Home
             </Link>
             <Link
-              to="/shop"
+              to="/holidayhome"
               className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100 transition duration-300"
               onClick={() => setMobileMenuOpen(false)}
             >

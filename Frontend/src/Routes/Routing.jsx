@@ -6,6 +6,7 @@ import { AuthProvider } from '../Context/Auth_Context';
 import Login from '../components/Login';
 import HotelInfoPage from '../Pages/HotelInfoPage';
 import CheckoutForm from '../components/CheckoutForm';
+import HolidayHome from '../Pages/HolidayHome';
 
 const Routing = () => {
   return (
@@ -19,6 +20,11 @@ const Routing = () => {
             <Route exact path='/hotels/location/:selectedLocation' element={<Hotels />} />
             <Route path="/hotels/:hotelName" element={<HotelInfoPage />} />
             <Route path="/checkout/:hotelName" element={<CheckoutForm />} />
+
+
+            {/* For Holiday Route */}
+            <Route exact path='/holidayhome' element={<HolidayHome />} />
+
 
           </Routes>
         </BrowserRouter>

@@ -72,7 +72,7 @@ const InfoSection = ({ selectedRoom,hotel }) => {
         <AboutUsPopup aboutUs={hotel.About_Us} onClose={togglePopup} className="indent-40" />
       ) : (
         <>
-          <p>{hotel.About_Us.slice(0, 300)}...</p> {/* Display first 120 characters */}
+          <p>{hotel.About_Us.slice(0, 120)}...</p> {/* Display first 120 characters */}
           <button onClick={togglePopup} className="text-blue-600 font-semibold">
             Read More
           </button>
@@ -113,6 +113,8 @@ const InfoSection = ({ selectedRoom,hotel }) => {
           {/* Here is the code for About hotel */}
           {hotel.About_Us}
         </div>
+
+        {/* Total price card  */}
 
         <div className="border shadow-lg h-[19rem] p-5 mt-[1rem] w-[85%] ml-[1.6rem] mx-auto mb-4">
           <h1 className="card-title text-2xl font-semibold">
