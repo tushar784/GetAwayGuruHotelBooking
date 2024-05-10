@@ -33,7 +33,7 @@ const HotelInfoPage = () => {
       <div className="sticky top-0 bg-white w-full h-[4rem] shadow-lg z-50">
         <Navbar />
       </div>
-      <div className="ml-[1rem]">
+      <div className="m-[0.7rem] ">
         {hotel && (
           <>
             <ImgLoad hotel={hotel} />
