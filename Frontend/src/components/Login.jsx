@@ -42,11 +42,9 @@ function Login() {
       const { token, user } = response.data;
       localStorage.setItem("token", token);
       login({ user, token });
-  
-      // Display toast notification before navigating
       toast.success("Login successful!", {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 1000,
         onClose: () => navigate("/"), // Navigate after the toast is closed
       });
     } catch (error) {

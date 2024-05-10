@@ -54,12 +54,12 @@ function SignUp() {
     try {
       const url = import.meta.env.VITE_BASE_URL;
       const response = await axios.post(`${url}/api/signUp`, formData);
-      // toastify
-      toast.success("Sign up successful!", {
+      toast.success("Login successful!", {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 1000,
+        onClose: () => navigate("/login"), // Navigate after the toast is closed
       });
-      navigate("/login"); // navigation
+      
     } catch (error) {
       // Handle error
       console.error(error);
