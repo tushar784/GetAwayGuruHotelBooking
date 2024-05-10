@@ -9,6 +9,7 @@ import CheckoutForm from '../components/CheckoutForm';
 import HolidayHome from '../Pages/HolidayHome';
 import ProfileSection from '../components/ProfileSection';
 import ContactUs from '../components/ContactUs';
+import CheckoutPage from '../Pages/CheckoutPage';
 
 const Routing = () => {
   return (
@@ -21,12 +22,11 @@ const Routing = () => {
             <Route exact path='/login' element={<Login />} />
             <Route exact path='/hotels/location/:selectedLocation' element={<Hotels />} />
             <Route path="/hotels/:hotelName" element={<HotelInfoPage />} />
-            <Route path="/checkout/:hotelName" element={<CheckoutForm />} />
+            <Route path="/checkout/:hotelName" element={<CheckoutPage />} />
 
 
             {/* For Holiday Route */}
             <Route exact path='/holidaypackages' element={<HolidayHome />} />
-
             <Route exact path='/profile' element={<ProfileSection />} />
             <Route exact path='/contact' element={<ContactUs />} />
 
