@@ -25,7 +25,8 @@ app.post("/booking/createorder", async (req, res) => {
     !numberOfRooms ||
     !pincode ||
     !state ||
-    !room_Type
+    !room_Type ||
+    !price
   ) {
     return res.status(400).json({ error: "Missing required fields" });
   }

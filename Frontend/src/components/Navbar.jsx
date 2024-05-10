@@ -28,7 +28,7 @@ function Navbar() {
               <Link to="/" className="">
                 Home
               </Link>
-              <Link to="holidayhome" className="">
+              <Link to="/holidaypackages" className="">
               Holiday Packages
               </Link>
               <Link to="" className="">
@@ -65,19 +65,21 @@ function Navbar() {
                 {/* <div className="bg-black rounded-full w-12 h-12 flex items-center justify-center text-white font-bold text-xl ml-4">
                   {user.username.charAt(0)}
                 </div> */}
-                <p className="py-2 px-4 font-bold text-lg ml-2">
+                {/* <p className="py-2 px-4 font-bold text-lg ml-2">
                   {user.username}
-                </p>
+                </p> */}
+                
                 <button
-                  onClick={toggleDropdown}
-                  className="focus:outline-none ml-2"
+                    onClick={toggleDropdown}
+                    className="focus:outline-none ml-2 mr-[1rem]"
                 >
-                  <CgProfile className="h-[2rem] w-[1.4rem]" />
+                    <CgProfile className="h-[2rem] w-[1.4rem]" style={{ width: '1.7rem', height: '1.7rem' }} />
                 </button>
+
               </div>
               {dropdownOpen && (
                 <div
-                  className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  className="absolute right-0 z-10 mt-2 w-[12rem] h-[4rem] origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                   role="menu"
                   aria-orientation="vertical"
                   aria-labelledby="menu-button"
@@ -91,7 +93,8 @@ function Navbar() {
                       tabIndex="-1"
                       id="menu-item-0"
                     >
-                      Profile
+                      {/* Profile */}
+                      {user?.username}
                     </Link>
                     <br />
                     <button
@@ -148,7 +151,7 @@ function Navbar() {
               Home
             </Link>
             <Link
-              to="/holidayhome"
+              to="/holidaypackages"
               className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100 transition duration-300"
               onClick={() => setMobileMenuOpen(false)}
             >

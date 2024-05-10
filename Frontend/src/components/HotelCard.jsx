@@ -10,8 +10,10 @@ const HotelCard = ({hotel}) => {
 
   return (
     <>
+    
     <Link to={`/hotels/${hotel.Hotel_Name}`}>
       <div className="bg-white w-[17rem] md:pl-0 md:w-[95%] md:h-[14rem] h-[21rem] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
+      
         <div className="h-auto md:h-48  mt-2 md:mt-4 ml-2 rounded-lg md:w-[18rem] md:mr-2">
         {/* <div className="h-auto md:h-48 overflow-hidden mt-4 ml-2 rounded-lg"> */}
           <img
