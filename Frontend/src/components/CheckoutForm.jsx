@@ -8,21 +8,22 @@ import { AuthContext } from "../Context/Auth_Context";
 const CheckoutForm = () => {
   const { hotelName } = useParams();
   const [roomType, setRoomType] = useState("");
-  const [price, setPrice] = useState(0);
+  const [basePrice, setBasePrice] = useState(0); // Base price for a single room with up to 4 guests
   const [hotel, setHotel] = useState(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  // const [address, setAddress] = useState("");
   const [pincode, setPincode] = useState("");
   const [state, setState] = useState("");
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
   const [rooms, setRooms] = useState(1);
   const [guests, setGuests] = useState(1);
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  const [price, setPrice] = useState(0);
 
   useEffect(() => {
     const fetchHotelDetails = async () => {
+
       try {
         const url = import.meta.env.VITE_BASE_URL;
         const response = await axios.get(`${url}/api/hotels/${hotelName}`);
@@ -35,10 +36,24 @@ const CheckoutForm = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const params = Object.fromEntries(urlParams.entries());
     setRoomType(params.roomType);
-    setPrice(parseFloat(params.price));
-
+    setBasePrice(parseFloat(params.price));
+    setPrice(parseFloat(params.price)); // Set the initial price
+    setRooms(parseInt(params.rooms) || 1); // Set the initial number of rooms
+    setGuests(parseInt(params.guests) || 1); // Set the initial number of guests
     fetchHotelDetails();
   }, [hotelName]);
+
+  const calculateTotalPrice = (rooms, guests) => {
+    let totalPrice = basePrice * rooms;
+  
+    // Calculate the additional cost for extra guests (more than 4 per room)
+    const extraGuestsPerRoom = Math.max(0, guests - rooms * 4);
+    const additionalCost = extraGuestsPerRoom * (basePrice / 4); // Adjust the additional cost calculation as needed
+  
+    totalPrice += additionalCost;
+  
+    return totalPrice;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,11 +68,10 @@ const CheckoutForm = () => {
         numberOfRooms: rooms,
         username: user.username,
         email: user.email,
-        // address,
         state: state,
         room_Type: roomType,
         pincode,
-        price: price,
+        price: calculateTotalPrice(), // Use the calculated total price
       });
 
       console.log("Order created successfully:", response.data);
@@ -68,6 +82,20 @@ const CheckoutForm = () => {
     }
   };
 
+  const handleRoomsChange = (value) => {
+    // Prevent setting rooms to a value less than 1
+    value = Math.max(value, 1);
+    setRooms(value);
+    setPrice(calculateTotalPrice(value, guests));
+  };
+  
+  const handleGuestsChange = (value) => {
+    // Prevent setting guests to a value less than 1
+    value = Math.max(value, 1);
+    setGuests(value);
+    setPrice(calculateTotalPrice(rooms, value));
+  };
+  
   const statesList = [
     "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa",
     "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala",
@@ -81,33 +109,28 @@ const CheckoutForm = () => {
       <Navbar />
 
       {/* Mobile View Summery Box */}
-      <div className="md:ml-[4rem] mb-4 md:flex md:hidden w-[20rem] h-[26em]  ">
-        <div className="border border-gray-300 m-2 rounded-2xl p-2">
-          <h3 className="font-bold mb-4 text-xl mt-2">Summary</h3>
+      <div className="md:hidden">
+        <div className="border border-gray-300 rounded-2xl pl-4 mb-4">
+          <h3 className="font-bold mb-4 text-2xl mt-4">Summary</h3>
           <div className="flex">
             <img
               src={hotel?.Image_1}
               alt="Hotel"
               className="w-26 h-20 object-cover rounded "
             />
-            <h1 className="px-4 text-xl font-bold">{hotel?.Hotel_Name}</h1>
+            <h1 className="px-4 text-lg font-bold">{hotel?.Hotel_Name}</h1>
           </div>
           <div className="px-2 py-2 text-mx font-semibold">
             <div className="mb-2">Room : {roomType}</div>
             <div className="mb-2">Check in: {checkInDate}</div>
             <div className="mb-2">Check out: {checkOutDate}</div>
-            <div className="mb-2">no. of rooms: {rooms}</div>
-            <div className="mb-2">no. of guest: {guests}</div>
+            <div className="mb-2">No. of rooms: {rooms}</div>
+            <div className="mb-2">No. of guest: {guests}</div>
             <div className="font-bold text-lg mb-2">Price: {price}</div>
-          </div>
-          {/* <button
-            type="submit"
-            className="bg-[#90CCBA] text-white rounded-md px-4 py-2 w-[18rem]"
-          >
-            Pay now
-          </button> */}
+          </div> 
         </div>
-      </div>
+        </div>
+     
 
       {/* Customer details Form */}
       <h1 className="ml-[7rem] text-xl font-semibold mt-10 mb-2">
@@ -116,57 +139,6 @@ const CheckoutForm = () => {
       <div className="md:ml-[10rem] flex mt-[1rem]">
         <div className="flex-initial md:m-[2px] m-[1rem] w-[35rem] size-22">
           <form onSubmit={handleSubmit} className="flex flex-col">
-            {/* <div className="flex flex-col lg:flex-row "> */}
-              {/* <div className="mb-4 lg:mr-4 flex-auto">
-                <label
-                  htmlFor="name"
-                  className="block text-base font-semibold mb-2"
-                >
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  placeholder="Name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="border border-gray-300 rounded-md px-4 py-2 w-full"
-                />
-              </div>
-              <div className="mb-4 flex-auto mb-4 lg:mb-0 flex-auto">
-                <label
-                  htmlFor="email"
-                  className="block text-base font-semibold lg:mb-2"
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="border border-gray-300 rounded-md px-4 py-2 w-full"
-                />
-              </div>
-            </div>
-            <div className="mb-4">
-              <label
-                htmlFor="address"
-                className="block text-base font-semibold mb-2"
-              >
-                Address
-              </label>
-              <input
-                type="text"
-                id="address"
-                placeholder="Address"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                className="border border-gray-300 rounded-md px-4 py-2 w-full"
-              />
-            </div> */}
-
             <div className="flex flex-col lg:flex-row mb-2">
               <div className="mb-4 lg:mr-4 flex-auto">
                 <label htmlFor="number" className="block text-base font-semibold mb-2">
@@ -252,19 +224,10 @@ const CheckoutForm = () => {
                   // onChange={(e) => setQuantity(parseInt(e.target.value))}
                 
                   value={rooms}
-                  onChange={(e) => {
-                    // Check if the entered value is negative
-                    const value = parseInt(e.target.value);
-                    if (value >= 0) {
-                      // If not negative, update the state
-                      setRooms(value);
-                    } else {
-                      // If negative, set the value to zero
-                      setRooms(0);
-                    }
-                  }}
+                  onChange={(e) => handleRoomsChange(parseInt(e.target.value))}
                   className="border border-gray-300 rounded-md px-4 py-2 w-full"
-                />
+                  />
+                
               </div>
 
               <div className="mb-4 lg:mb-0 flex-auto">
@@ -279,17 +242,7 @@ const CheckoutForm = () => {
                   id="guest"
                   placeholder="Guest"
                   value={guests}
-                  onChange={(e) => {
-                    // Check if the entered value is negative
-                    const value = parseInt(e.target.value);
-                    if (value >= 0) {
-                      // If not negative, update the state
-                      setGuests(value);
-                    } else {
-                      // If negative, set the value to zero
-                      setGuests(0);
-                    }
-                  }}
+                  onChange={(e) => handleGuestsChange(parseInt(e.target.value))}
                   className="border border-gray-300 rounded-md px-4 py-2 w-full"
                 />
               </div>
@@ -344,6 +297,7 @@ const CheckoutForm = () => {
               <div className="mb-2">No. of rooms: {rooms}</div>
               <div className="mb-2">No. of guest: {guests}</div>
               <div className="font-bold text-lg mb-2">Price: {price}</div>
+              {/* <div className="font-bold text-lg mb-2">Price: {calculateTotalPrice()}</div> */}
             </div>
           </div>
       </div>
@@ -354,3 +308,4 @@ const CheckoutForm = () => {
 };
 
 export default CheckoutForm;
+

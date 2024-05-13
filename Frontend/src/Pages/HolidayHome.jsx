@@ -33,9 +33,10 @@ function HolidayHome() {
         <HotelSearchBar  />
 
       </div>
-   <Speciality />
-   <PopularDestinations />
+  
+   {/* <PopularDestinations /> */}
    <TopHolidayPackages />
+   <Speciality />
    <Footer />
     </>
   )

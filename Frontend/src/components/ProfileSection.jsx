@@ -32,26 +32,27 @@ function ProfileSection({ updateProfilePic }) {
         <>
             <Navbar />
             <div className="flex flex-col md:flex-row h-auto md:h-[36.5rem] font-poppins ">
-                <div className="w-full md:w-[15rem] bg-[#90CCBA] md:order-1 ">
-                    <h2 className="text-2xl font-semibold text-white font-poppins mt-[2rem] md:mt-[5rem] ml-4">Profile</h2>
-                    <p className='text-xl text-white font-poppins mt-[1rem] ml-4'>Order history</p>
-                    <Link to="/" className="mb-12" style={{ color: "#90CCBA" }}>
-                        <button
-                            onClick={logout}
-                            className="text-xl text-white font-poppins mt-[1rem] ml-4"
-                            role="menuitem"
-                            tabIndex="-1"
-                            id="menu-item-3"
-                        >
-                            Logout
-                        </button>
-                    </Link>
-                </div>
+            <div className="hidden md:block w-full md:w-[15rem] bg-[#90CCBA] md:order-1">
+                <h2 className="text-2xl font-semibold text-white font-poppins mt-[2rem] md:mt-[5rem] ml-4">Profile</h2>
+                <p className='text-xl text-white font-poppins mt-[1rem] ml-4'>Order history</p>
+                <Link to="/" className="mb-12" style={{ color: "#90CCBA" }}>
+                    <button
+                        onClick={logout}
+                        className="text-xl text-white font-poppins mt-[1rem] ml-4"
+                        role="menuitem"
+                        tabIndex="-1"
+                        id="menu-item-3"
+                    >
+                        Logout
+                    </button>
+                </Link>
+            </div>
 
-                <div className="w-full md:w-[66rem] bg-gray-100 md:order-2 " >
+
+                <div className="w-full md:w-[66rem] md:h-auto h-[33.2rem] md:mt-0 bg-gray-100 md:order-2 " >
                     <div className="flex flex-col md:flex-row w-full md:border md:border-gray-500 md:mt-[3rem] md:w-[63rem] md:h-[23rem] rounded p-4 ml-4 ">
                         {/* Mobile view */}
-                        <div className="md:hidden flex justify-center">
+                        <div className="md:hidden flex justify-center mt-8">
                             <div className="relative mb-4">
                                 <img
                                     className="object-cover w-[7rem] h-[7rem] rounded-full "

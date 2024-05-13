@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import logo from "../assets/img/logo.jpg";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -69,9 +70,10 @@ function SignUp() {
   return (
     <div className="bg-slate-200 min-h-screen flex justify-center items-center md:flex">
       <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
-        <h1 className="text-center text-2xl font-bold text-gray-800 mb-6">
-          GetAwayGuru
-        </h1>
+      <Link to='/'>
+            <img src={logo} alt=""
+            className="md:h-14 md:w-22 h-10 ml-[3.5rem]" />
+          </Link>
         <h2 className="text-xl font-semibold text-gray-800 mb-2">
           Create Your Account
         </h2>
