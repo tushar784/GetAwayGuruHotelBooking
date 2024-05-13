@@ -34,6 +34,9 @@ function Navbar() {
               <Link to="" className="">
                 Events
               </Link>
+              <Link to="/contact" className="">
+                Contact Us
+              </Link>
              
             </div>
           </nav>
@@ -158,13 +161,20 @@ function Navbar() {
               Holiday Packages
             </Link>
             <Link
-              to="/about"
+              to=""
               className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100 transition duration-300"
               onClick={() => setMobileMenuOpen(false)}
             >
               Events
             </Link>
-           
+            <Link
+              to=""
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100 transition duration-300"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Order History
+            </Link>
+          
             {/* <Link
               to="/cart"
               className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100 transition duration-300"
@@ -179,6 +189,7 @@ function Navbar() {
             >
               Contact
             </Link> */}
+            
             {user ? (
               <button
                 onClick={logout}

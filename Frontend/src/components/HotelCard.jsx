@@ -80,18 +80,17 @@ const HotelCard = ({hotel}) => {
           </div>
         </div>
 
-
-
-          <ul className="hidden md:block md:text-black md:flex md:flex-col md:mb-[-2rem]">
-            {typeof hotel.Amenities === "string" ? (
+           <ul className="hidden md:block md:text-black md:flex md:flex-col md:mb-[-2rem] md:text-mx">
+          {typeof hotel.Amenities === "string" ? (
               hotel.Amenities.split(", ").map((amenity, index) => (
                 <li key={index}>{amenity}</li>
               ))
             ) : (
               <li>{hotel.Amenities}</li>
             )}
-          </ul>
-        </div>
+          </ul> 
+
+          </div>
 
         <div className="hidden flex md:block md:mt-12 mt-2 pl-4 md:ml-[0rem] ">
           <p className="text-black text-xl font-extrabold mb-4 ">₹ {hotel.Price}</p>
