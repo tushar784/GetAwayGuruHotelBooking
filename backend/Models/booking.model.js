@@ -14,8 +14,8 @@ const bookingSchema = new Schema({
     type: String,
     required: true
   },
-  pincode: {
-    type: String,
+  contact_number: {
+    type: Number,
     required: true
   },
   state: {

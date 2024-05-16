@@ -60,7 +60,7 @@ const CheckoutForm = () => {
     // Handle form submission logic here
     try {
       const url = import.meta.env.VITE_BASE_URL;
-      const response = await axios.post(`http://localhost:4000/api/booking/createorder`, {
+      const response = await axios.post(`${url}/api/booking/createorder`, {
         Hotel_Name: hotel?.Hotel_Name,
         checkInDate,
         checkOutDate,
@@ -78,7 +78,6 @@ const CheckoutForm = () => {
       setOrderSuccess(true); // Set orderSuccess to true on successful order creation
     } catch (error) {
       console.error("Error creating order:", error);
-      // Handle errors appropriately (e.g., display error message to user)
     }
   };
 
@@ -145,11 +144,12 @@ const CheckoutForm = () => {
                   Contact No: 
                 </label>
                 <input
-                  type="text"
+                  type="tel"
                   id="number"
                   placeholder="Phone No"
-                  value={pincode}
-                  onChange={(e) => setPincode(e.target.value)}
+                  pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                  value={contact_number}
+                  onChange={(e) => setContact_number(e.target.value)}
                   className="border border-gray-300 rounded-md px-4 py-2 w-full"
                 />
               </div>
@@ -254,7 +254,6 @@ const CheckoutForm = () => {
                   type="radio"
                   checked="checked"
                   className="w-4 h-4 py-3 text-blue-600 bg-gray-100 rounded border-gray-300"
-                  onChange={(e) => setEmail(e.target.value)}
                 />
                 <label
                   htmlFor="default-checkbox"

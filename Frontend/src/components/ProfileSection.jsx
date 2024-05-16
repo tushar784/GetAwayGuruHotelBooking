@@ -142,4 +142,3 @@ function ProfileSection({ updateProfilePic }) {
 }
 
 export default ProfileSection;
-
