@@ -36,6 +36,7 @@ app.get('/hotels/:Hotel_Name', async (req, res) => {
     }
 });
 
+// fetching hotels based on location
 app.get('/hotels/location/:Location', async (req, res) => {
     const { Location } = req.params;
 
