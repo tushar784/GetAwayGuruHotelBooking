@@ -26,7 +26,7 @@ function Navbar() {
           <nav className="hidden md:flex md:ml-[18vw]">
             <div className="flex gap-10 font-semibold text-gray-900">
               <Link to="/" className="">
-                Home
+                Hotels
               </Link>
               <Link to="/holidaypackages" className="">
               Holiday Packages

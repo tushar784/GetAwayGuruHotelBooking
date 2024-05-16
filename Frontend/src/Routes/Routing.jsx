@@ -22,7 +22,7 @@ const Routing = () => {
             <Route exact path='/hotels/location/:selectedLocation' element={<Hotels />} />
             <Route path="/hotels/:hotelName" element={<HotelInfoPage />} />
             <Route path="/checkout/:hotelName" element={<CheckoutForm />} />
-            <Route exact path="/contactpage" element={<ContactPage />} /> {/* Use ContactPage instead of Contact */}
+            <Route exact path="/contactpage" element={<ContactUs />} /> {/* Use ContactPage instead of Contact */}
 
 
 

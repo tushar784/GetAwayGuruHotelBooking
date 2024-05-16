@@ -76,6 +76,7 @@ function ProfileSection({ updateProfilePic }) {
                                     type="text"
                                     id="name"
                                     name="name"
+                                    value={user.username}
                                     className="mt-1 w-full border-b-2 border-gray-300 md:mt-[0.5rem] bg-transparent focus:outline-none focus:border-[#90CCBA]"
                                     placeholder="Enter Your Name"
                                     required
@@ -106,6 +107,7 @@ function ProfileSection({ updateProfilePic }) {
                                     type="email"
                                     id="email"
                                     name="email"
+                                    value={user.email}
                                     className="mt-1 w-full border-b-2 border-gray-300 md:mt-[0.5rem] bg-transparent focus:outline-none focus:border-[#90CCBA]"
                                     placeholder="Enter Your Email"
                                     required
