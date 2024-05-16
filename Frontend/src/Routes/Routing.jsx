@@ -6,8 +6,9 @@ import { AuthProvider } from '../Context/Auth_Context';
 import Login from '../components/Login';
 import HotelInfoPage from '../Pages/HotelInfoPage';
 import CheckoutForm from '../components/CheckoutForm';
-import ContactPage from '../Pages/ContactPage';// Assuming Contact.jsx is in the same directory
-
+import HolidayHome from '../Pages/HolidayHome';
+import ProfileSection from '../components/ProfileSection';
+import ContactUs from '../components/ContactUs';
 
 const Routing = () => {
   return (
@@ -22,6 +23,14 @@ const Routing = () => {
             <Route path="/hotels/:hotelName" element={<HotelInfoPage />} />
             <Route path="/checkout/:hotelName" element={<CheckoutForm />} />
             <Route exact path="/contactpage" element={<ContactPage />} /> {/* Use ContactPage instead of Contact */}
+
+
+
+            {/* For Holiday Route */}
+            <Route exact path='/holidaypackages' element={<HolidayHome />} />
+
+            <Route exact path='/profile' element={<ProfileSection />} />
+            <Route exact path='/contact' element={<ContactUs />} />
 
 
           </Routes>

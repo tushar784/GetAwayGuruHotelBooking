@@ -10,8 +10,10 @@ const HotelCard = ({hotel}) => {
 
   return (
     <>
+    
     <Link to={`/hotels/${hotel.Hotel_Name}`}>
       <div className="bg-white w-[17rem] md:pl-0 md:w-[95%] md:h-[14rem] h-[21rem] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
+      
         <div className="h-auto md:h-48  mt-2 md:mt-4 ml-2 rounded-lg md:w-[18rem] md:mr-2">
         {/* <div className="h-auto md:h-48 overflow-hidden mt-4 ml-2 rounded-lg"> */}
           <img
@@ -30,7 +32,7 @@ const HotelCard = ({hotel}) => {
           <p className="text-black md:mb-2">{hotel.Location}</p>
 
             {/*hotellist star rating  */}
-          <div className="flex items-center md:mb-2 ">
+           <div className="flex items-center md:mb-2 ">
             <p className="mt-[6px] mr-2">{hotel.Staring_Rating}/5</p>
             {[...Array(hotel.Staring_Rating)].map((_, index) => {
               const currentRating = index + 1;
@@ -49,9 +51,7 @@ const HotelCard = ({hotel}) => {
                 </label>
               );
             })}
-          </div>
-
-          
+          </div> 
         </div>
 
         {/* mobile view for Location and Star */}
@@ -80,18 +80,17 @@ const HotelCard = ({hotel}) => {
           </div>
         </div>
 
-
-
-          <ul className="hidden md:block md:text-black md:flex md:flex-col md:mb-[-2rem]">
-            {typeof hotel.Amenities === "string" ? (
+           <ul className="hidden md:block md:text-black md:flex md:flex-col md:mb-[-2rem] md:text-mx">
+          {typeof hotel.Amenities === "string" ? (
               hotel.Amenities.split(", ").map((amenity, index) => (
                 <li key={index}>{amenity}</li>
               ))
             ) : (
               <li>{hotel.Amenities}</li>
             )}
-          </ul>
-        </div>
+          </ul> 
+
+          </div>
 
         <div className="hidden flex md:block md:mt-12 mt-2 pl-4 md:ml-[0rem] ">
           <p className="text-black text-xl font-extrabold mb-4 ">₹ {hotel.Price}</p>

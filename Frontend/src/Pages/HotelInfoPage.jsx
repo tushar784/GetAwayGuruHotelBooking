@@ -14,6 +14,7 @@ const HotelInfoPage = () => {
   const { hotelName } = useParams();
   const [hotel, setHotel] = useState(null);
   const [selectedRoom, setSelectedRoom] = useState(null);
+  const [guests, setguests] = useState(null);
 
   useEffect(() => {
     const fetchHotelDetails = async () => {
@@ -37,7 +38,8 @@ const HotelInfoPage = () => {
         {hotel && (
           <>
             <ImgLoad hotel={hotel} />
-            <InfoSection selectedRoom={selectedRoom} setSelectedRoom={setSelectedRoom} hotel={hotel}/>
+            <InfoSection selectedRoom={selectedRoom} hotel={hotel} guests={guests} />
+            {/* <InfoSection selectedRoom={selectedRoom} setSelectedRoom={setSelectedRoom} hotel={hotel}/> */}
             <RoomCard hotel={hotel} setSelectedRoom={setSelectedRoom} />
             <Policies hotel={hotel} />
             
