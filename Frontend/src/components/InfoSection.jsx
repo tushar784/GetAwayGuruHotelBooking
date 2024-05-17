@@ -112,7 +112,7 @@ const InfoSection = ({ selectedRoom, hotel, guests }) => {
           <Link
             to={`/checkout/${hotelName}?roomType=${
               selectedRoom?.roomType === "Room_Type_1" ? "Deluxe Room" : "Standard Room"
-            }&price=${price}&rooms=${quantity}&guests=${guests}`}
+            }&price=${price}`}
           >
             <button
               className="text-white font-bold w-80 h-10 mb-4 rounded"
@@ -155,7 +155,7 @@ const InfoSection = ({ selectedRoom, hotel, guests }) => {
           <Link
             to={`/checkout/${hotelName}?roomType=${
               selectedRoom?.roomType === "Room_Type_1" ? "Deluxe Room" : "Standard Room"
-            }&price=${price}&rooms=${quantity}&guests=${guests}`}
+            }&price=${price}`}
           >
             <button className="text-white font-bold w-[12.5rem] h-10 mb-4 rounded" style={{ backgroundColor: "#90CCBA" }}>
               Reserve Now

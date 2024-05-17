@@ -10,7 +10,7 @@ app.post("/booking/createorder", async (req, res) => {
     checkOutDate,
     numberOfGuests,
     numberOfRooms,
-    pincode,
+    contact_number,
     state,
     room_Type,
     price
@@ -23,7 +23,7 @@ app.post("/booking/createorder", async (req, res) => {
     !checkOutDate ||
     !numberOfGuests ||
     !numberOfRooms ||
-    !pincode ||
+    !contact_number ||
     !state ||
     !room_Type ||
     !price
@@ -40,7 +40,7 @@ app.post("/booking/createorder", async (req, res) => {
       order_id, // Add the generated order_id to the booking
       username,
       email,
-      pincode,
+      contact_number,
       state,
       room_Type,
       Hotel_Name,
@@ -60,4 +60,26 @@ app.post("/booking/createorder", async (req, res) => {
   }
 });
 
+
+
+app.get("/booking/:email", async (req, res) => {
+  const email = req.params.email;
+
+  try {
+    // Find all bookings associated with the provided email
+    const bookings = await Booking.find({ email });
+
+    if (bookings.length === 0) {
+      return res.status(404).json({ error: "No bookings found for the provided email" });
+    }
+
+    res.status(200).json(bookings);
+  } catch (error) {
+    console.error("Error fetching bookings:", error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+
 module.exports = app;
+

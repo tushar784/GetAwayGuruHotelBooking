@@ -19,6 +19,7 @@ const userLoginRouter = require("./login");
 const hotelList = require('./HotelList.js')
 const forgetpassword = require('./ForgetPassword.js')
 const createorder = require('./CreateOrder.js')
+const packages = require('./HolidayPackage.js')
 
 
 
@@ -27,6 +28,7 @@ app.use("/api", userLoginRouter);
 app.use('/api' ,hotelList)
 app.use('/api', forgetpassword)
 app.use('/api', createorder)
+app.use('/api', packages)
 
 app.get("/api/signUp", (req, res) => {
   res.send("sign up is working");  //{msg: done}
@@ -46,6 +48,10 @@ app.get('/api/hotels', (req,res)=>{
 
 app.get('/api/booking/createorder', (req,res)=>{
   res.send("i am node js")
+})
+
+app.get('/api/holidaypackages', (req,res)=>{
+  res.send('its working');
 })
 
 app.listen(port, () => {

@@ -43,12 +43,10 @@ function Login() {
       const { token, user } = response.data;
       localStorage.setItem("token", token);
       login({ user, token });
-  
-      // Display toast notification on home screen after successful login
       toast.success("Login successful!", {
         position: "top-right",
-        autoClose: 3000,
-        onClose: () => navigate("/") // Navigate to home screen after the toast is closed
+        autoClose: 1000,
+        onClose: () => navigate("/"), // Navigate after the toast is closed
       });
     } catch (error) {
       console.error(error);
