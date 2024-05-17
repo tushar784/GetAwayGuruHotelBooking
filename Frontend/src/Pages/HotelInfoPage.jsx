@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ImgLoad from "../components/ImgLoad";
-// import Map from "../components/Map";
 import InfoSection from "../components/InfoSection";
 import RoomCard from "../components/RoomCard";
 import Policies from "../components/Policies";

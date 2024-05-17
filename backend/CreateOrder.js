@@ -33,7 +33,7 @@ app.post("/booking/createorder", async (req, res) => {
 
   try {
     const order_id = uuidv4(); // Generate a unique order_id using uuid
-    // Assuming username and email are available through authentication context
+    // username and email are available through authentication context
     const { username, email } = req.body;
 
     const newBooking = new Booking({

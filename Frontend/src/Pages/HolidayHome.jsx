@@ -1,12 +1,18 @@
 import React from 'react'
+import { useState } from "react";
 import Navbar from '../components/Navbar'
 import HotelSearchBar from '../components/HotelSearchBar'
 import Speciality from '../components/Speciality'
+import { useParams } from "react-router-dom";
 import PopularDestinations from '../components/PopularDestinations'
 import TopHolidayPackages from '../ComponentHoliday/TopHolidayPackages'
 import Footer from '../components/Footer'
+import HolidaySearchBar from '../ComponentHoliday/HolidaySearchBar'
 
 function HolidayHome() {
+  const { selectedLocation } = useParams();
+  const [holiday, setHoliday] = useState([]);
+  
 
   return (
     <>
@@ -30,7 +36,12 @@ function HolidayHome() {
         >
           Discover Unforgettable Getaways Tailored Just for You
         </p>
-        <HotelSearchBar  />
+        {/* <HolidaySearchBar selectedLocation={selectedLocation} setHoliday={setHoliday}/> */}
+        <HolidaySearchBar
+          selectedLocation={selectedLocation} // Make sure this is a function
+          setHoliday={setHoliday}
+        />
+
 
       </div>
   

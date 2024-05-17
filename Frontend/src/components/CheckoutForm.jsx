@@ -1,3 +1,4 @@
+//final
 import React, { useContext, useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import { SiPhonepe } from "react-icons/si";
@@ -71,7 +72,7 @@ const CheckoutForm = () => {
         state: state,
         room_Type: roomType,
         pincode,
-        price: calculateTotalPrice(), // Use the calculated total price
+        price: price, // Use the calculated total price
       });
 
       console.log("Order created successfully:", response.data);

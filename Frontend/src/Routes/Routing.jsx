@@ -9,6 +9,7 @@ import CheckoutForm from '../components/CheckoutForm';
 import HolidayHome from '../Pages/HolidayHome';
 import ProfileSection from '../components/ProfileSection';
 import ContactUs from '../components/ContactUs';
+import Holidays from '../Pages/Holidays';
 
 const Routing = () => {
   return (
@@ -26,6 +27,7 @@ const Routing = () => {
 
             {/* For Holiday Route */}
             <Route exact path='/holidaypackages' element={<HolidayHome />} />
+            <Route exact path='/holidaypackages/location/:selectedLocation' element={<Holidays />} />
 
             <Route exact path='/profile' element={<ProfileSection />} />
             <Route exact path='/contact' element={<ContactUs />} />
