@@ -60,7 +60,7 @@ const Hotels = () => {
 
   return (
     <>
-      <div className="sticky bg-white top-0 md:h-[13rem] z-50">
+      <div className="sticky bg-white top-0 md:h-[5rem] z-50">
         <Navbar />
       </div>
       <Layout>

@@ -14,6 +14,7 @@ const HolidaySearchBar = ({ selectedLocation, setHoliday }) => {
             `${url}/api/holidaypackages/location/${selectedLocation}`
           );
           setHoliday(response.data);
+          console.log(response.data);
         }
       } catch (error) {
         console.error("Error fetching holiday packages:", error);

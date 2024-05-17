@@ -6,7 +6,7 @@ const HotelList = ({ hotels,hotel }) => {
   return (
    
     <div className="container md:mx-auto font-poppins md:pl-[5rem] md:pt-[2rem]  ">
-      <h1 className="md:text-xl font-semibold md:mb-4 text-sm mb-4 mt-2" >Showing Properties in </h1>
+      <h1 className="md:text-xl font-semibold md:mb-4 text-sm mb-4 mt-2" >Showing Properties in {hotels.Location}</h1>
 
       {/* <h1 className="text-black md:text-xl font-semibold md:mb-4 text-sm mb-4 mt-2 ">{hotel.Location}</h1> */}
       

@@ -74,7 +74,7 @@ const InfoSection = ({ selectedRoom, hotel, guests }) => {
         </div>
 
         {/* Desktop view Total price card */}
-        <div className="border shadow-lg h-[19rem] p-5 ml-[2rem] mt-4 w-[25rem]">
+        <div className="border shadow-sm h-[19rem] p-5 ml-[2rem] mt-4 w-[25rem]">
           <h1 className="card-title text-2xl font-semibold">
             {selectedRoom?.roomType === "Room_Type_1" ? "Deluxe Room" : "Standard Room"}
           </h1>

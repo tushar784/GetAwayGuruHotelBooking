@@ -12,7 +12,7 @@ import HolidaySearchBar from '../ComponentHoliday/HolidaySearchBar'
 function HolidayHome() {
   const { selectedLocation } = useParams();
   const [holiday, setHoliday] = useState([]);
-  
+    
 
   return (
     <>
