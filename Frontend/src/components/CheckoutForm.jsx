@@ -20,6 +20,7 @@ const CheckoutForm = () => {
   const [guests, setGuests] = useState(1);
   const { user } = useContext(AuthContext);
   const [price, setPrice] = useState(0);
+  const [contact_number, setContact_number] = useState("")
 
   useEffect(() => {
     const fetchHotelDetails = async () => {
