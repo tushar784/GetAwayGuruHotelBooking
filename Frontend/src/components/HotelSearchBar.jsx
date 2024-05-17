@@ -27,14 +27,14 @@ const HotelSearchBar = ({ selectedLocation, setHotels }) => {
   }, [selectedLocation, setHotels]);
 
   const handleSearch = () => {
-    navigate(`/hotels/location/${selectedLocation}`, {
-      state: {
-        startDate: date[0].startDate,
-        endDate: date[0].endDate,
-        guests: options.guest,
-        rooms: options.room
-      }
-    });
+    const startDate = format(date[0].startDate, "yyyy-MM-dd");
+    const endDate = format(date[0].endDate, "yyyy-MM-dd");
+    const guests = options.guest;
+    const rooms = options.room;
+  
+    navigate(
+      `/hotels/location/${selectedLocation}?startDate=${startDate}&endDate=${endDate}&guests=${guests}&rooms=${rooms}`
+    );
   };
 
   const handleLocationChange = (event) => {
