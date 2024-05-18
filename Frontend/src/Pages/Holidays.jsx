@@ -13,7 +13,8 @@ const Holidays = () => {
     const fetchHolidayPackages = async () => {
       try {
         if (selectedLocation) {
-          const response = await axios.get(`/api/holidaypackages/location/${selectedLocation}`);
+          const url = import.meta.env.VITE_BASE_URL;
+          const response = await axios.get(`${url}/api/holidaypackages/location/${selectedLocation}`);
           setHoliday(response.data); // Set holiday state with response.data
           console.log(response.data);
         }

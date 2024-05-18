@@ -11,7 +11,7 @@ const HolidaySearchBar = ({ selectedLocation, setHoliday }) => {
         if (selectedLocation) {
           const url = import.meta.env.VITE_BASE_URL;
           const response = await axios.get(
-            `${url}/api/holidaypackages/location/${selectedLocation}`
+            `${url}/holidaypackages/location/${selectedLocation}`
           );
           setHoliday(response.data);
           console.log(response.data);
@@ -33,20 +33,15 @@ const HolidaySearchBar = ({ selectedLocation, setHoliday }) => {
   };
 
   const destinations = [
-    { value: "Mumbai", label: "Mumbai" },
-    { value: "New Delhi", label: "New Delhi" },
-    { value: "Agra", label: "Agra" },
-    { value: "Jaipur", label: "Jaipur" },
-    { value: "Bengaluru", label: "Bengaluru" },
-    { value: "Hyderabad", label: "Hyderabad" },
-    { value: "Goa", label: "Goa" },
-    { value: "Manali", label: "Manali" },
-    { value: "Chennai", label: "Chennai" },
-    { value: "Kerla", label: "Kerla" },
+    { value: "Canada", label: "Canada" },
+    { value: "Bhutan", label: "Bhutan" },
+    { value: "Switzerland", label: "Switzerland" },
+    { value: "France", label: "France" },
+    { value: "Greece", label: "Greece" },
+    { value: "Abu Dhabi", label: "Abu Dhabi" },
+    { value: "Hong kong", label: "Hong kong" },
+    { value: "Australia", label: "Australia" },
     { value: "Dubai", label: "Dubai" },
-    { value: "Bangkok", label: "Bangkok" },
-    { value: "Singapore", label: "Singapore" },
-    { value: "Phuket", label: "Phuket" },
   ];
 
   return (
