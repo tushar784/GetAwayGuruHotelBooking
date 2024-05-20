@@ -158,7 +158,7 @@ const PopularDestinations = ({ selectedLocation, setHotels })=> {
             className="rounded-xl object-cover w-full sm:h-22 md:h-[21rem] h-[31rem] size-16 transition duration-300 transform md:hover:scale-110"
           />
           </button>
-          <button onClick={()=>{navigate(`/hotels/location/hydrabad`);}}>
+          <button onClick={()=>{navigate(`/hotels/location/Hyderabad`);}}>
           <img
             src="src/assets/img/hydrabad.jpg"
             alt="Image 2"
@@ -179,11 +179,13 @@ const PopularDestinations = ({ selectedLocation, setHotels })=> {
             className="rounded-xl object-cover w-full md:h-[21rem] h-[31rem] transition duration-300 transform md:hover:scale-110"
           />
           </button>
+          <button onClick={()=>{navigate(`/hotels/location/manali`);}}>
           <img
             src="src/assets/img/manali.jpg"
             alt="Image 5"
             className="rounded-xl object-cover w-full md:h-[21rem] h-[31rem] transition duration-300 transform md:hover:scale-110"
           />
+           </button>
         </div>
       </div>
   );

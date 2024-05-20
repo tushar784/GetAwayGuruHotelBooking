@@ -110,7 +110,7 @@ const CheckoutForm = () => {
       <Navbar />
 
       {/* Mobile View Summery Box */}
-      <div className="md:hidden">
+      <div className="font-poppins md:hidden">
         <div className="border border-gray-300 rounded-2xl pl-4 mb-4">
           <h3 className="font-bold mb-4 text-2xl mt-4">Summary</h3>
           <div className="flex">
@@ -134,10 +134,10 @@ const CheckoutForm = () => {
      
 
       {/* Customer details Form */}
-      <h1 className="ml-[7rem] text-xl font-semibold mt-10 mb-2">
+      <h1 className="font-poppins ml-[7rem] text-xl font-semibold mt-10 mb-2">
         Customer Details
       </h1>
-      <div className="md:ml-[10rem] flex mt-[1rem]">
+      <div className="font-poppins md:ml-[10rem] flex mt-[1rem]">
         <div className="flex-initial md:m-[2px] m-[1rem] w-[35rem] size-22">
           <form onSubmit={handleSubmit} className="flex flex-col">
             <div className="flex flex-col lg:flex-row mb-2">
