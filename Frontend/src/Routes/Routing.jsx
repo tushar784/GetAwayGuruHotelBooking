@@ -10,6 +10,9 @@ import HolidayHome from '../Pages/HolidayHome';
 import ProfileSection from '../components/ProfileSection';
 import ContactUs from '../components/ContactUs';
 import Holidays from '../Pages/Holidays';
+import HolidayInfoPage from '../Pages/HolidayInfoPage';
+import HolidayImgSection from '../ComponentHoliday/HolidayImgSection';
+// import SingleHolidayPage from '../ComponentHoliday/SingleHolidayPage';
 
 const Routing = () => {
   return (
@@ -27,7 +30,8 @@ const Routing = () => {
             {/* For Holiday Route */}
             <Route exact path='/holidaypackages' element={<HolidayHome />} />
             <Route exact path='/holidaypackages/location/:selectedLocation' element={<Holidays />} />
-
+           <Route exact path='/holidaypackages/:packageName' element={<HolidayInfoPage /> }/>
+      
             <Route exact path='/profile' element={<ProfileSection />} />
             <Route exact path='/contact' element={<ContactUs />} />
 

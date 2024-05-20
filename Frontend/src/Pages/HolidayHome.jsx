@@ -4,10 +4,11 @@ import HotelSearchBar from '../components/HotelSearchBar';
 import Speciality from '../components/Speciality';
 import { useParams } from "react-router-dom";
 import PopularDestinations from '../components/PopularDestinations';
-import TopHolidayPackages from '../ComponentHoliday/TopHolidayPackages';
 import Footer from '../components/Footer';
 import HolidaySearchBar from '../ComponentHoliday/HolidaySearchBar';
 import HolidayList from '../ComponentHoliday/HolidayList'; // Import HolidayList
+import TopHolidayPackages from '../ComponentHoliday/TopHolidayPackages';
+// import SingleHolidayPage from '../ComponentHoliday/SingleHolidayPage';
 
 function HolidayHome() {
   const { selectedLocation } = useParams();
@@ -33,6 +34,7 @@ function HolidayHome() {
         <HolidaySearchBar selectedLocation={selectedLocation} setHoliday={setHoliday} />
       </div>
       <HolidayList holiday={holiday} /> {/* Render HolidayList with holiday data */}
+      {/* <SingleHolidayPage holiday={holiday}/> */}
       <TopHolidayPackages />
       <Speciality />
       <Footer />

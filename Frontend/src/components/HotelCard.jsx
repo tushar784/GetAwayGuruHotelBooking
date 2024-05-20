@@ -89,8 +89,7 @@ const HotelCard = ({hotel}) => {
               <li>{hotel.Amenities}</li>
             )}
           </ul> 
-
-          </div>
+         </div>
 
         <div className="hidden flex md:block md:mt-12 mt-2 pl-4 md:ml-[0rem] ">
           <p className="text-black text-xl font-extrabold mb-4 ">₹ {hotel.Price}</p>

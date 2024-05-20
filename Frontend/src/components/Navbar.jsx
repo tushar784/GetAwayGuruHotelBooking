@@ -26,7 +26,7 @@ function Navbar() {
           <nav className="hidden md:flex md:ml-[18vw]">
             <div className="flex gap-10 font-semibold text-gray-900">
               <Link to="/" className="">
-                Hotels
+              Home
               </Link>
               <Link to="/holidaypackages" className="">
               Holiday Packages
@@ -54,24 +54,10 @@ function Navbar() {
           </button>
         </div>
         <nav className="hidden md:flex items-center gap-4">
-        {/* <Link
-                  to="/cart"
-                  className="font-bold py-2 rounded flex items-center"
-                >
-                  <FaCartPlus className="text-xl" />
-                  <span className="text-lg ml-1">Cart</span>
-                </Link> */}
           {user ? (
             <div className="relative inline-block text-left">
               <div className="flex items-center">
-                
-                {/* <div className="bg-black rounded-full w-12 h-12 flex items-center justify-center text-white font-bold text-xl ml-4">
-                  {user.username.charAt(0)}
-                </div> */}
-                {/* <p className="py-2 px-4 font-bold text-lg ml-2">
-                  {user.username}
-                </p> */}
-                
+                                
                 <button
                     onClick={toggleDropdown}
                     className="focus:outline-none ml-2 mr-[1rem]"
