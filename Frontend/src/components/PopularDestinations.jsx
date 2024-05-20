@@ -57,7 +57,7 @@ const PopularDestinations = ({ selectedLocation, setHotels }) => {
             className="w-full h-[22rem] object-center items-center rounded-xl"
             src={images[currentImageIndex].src}
             alt={`Image ${currentImageIndex + 1}`}
-            onClick={() => navigate(`/hotels/location/${image.location}`)}
+            onClick={() => navigate(`/hotels/location/${images.location}`)}
 
           />
           <div className="absolute inset-0 flex justify-between items-center px-4">

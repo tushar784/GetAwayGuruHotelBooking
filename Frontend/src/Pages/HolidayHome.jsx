@@ -4,7 +4,7 @@ import HotelSearchBar from '../components/HotelSearchBar';
 import Speciality from '../components/Speciality';
 import { useParams } from "react-router-dom";
 import PopularDestinations from '../components/PopularDestinations';
-import TopHolidayPackages from '../ComponentH oliday/TopHolidayPackages';
+import TopHolidayPackages from '../ComponentHoliday/TopHolidayPackages';
 import Footer from '../components/Footer';
 import HolidaySearchBar from '../ComponentHoliday/HolidaySearchBar';
 import HolidayList from '../ComponentHoliday/HolidayList'; // Import HolidayList
