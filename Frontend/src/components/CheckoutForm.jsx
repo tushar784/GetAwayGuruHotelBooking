@@ -17,6 +17,7 @@ const CheckoutForm = () => {
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
   const [rooms, setRooms] = useState(1);
+  const [contact_number, setContact_number] = useState("")
   const [guests, setGuests] = useState(1);
   const { user } = useContext(AuthContext);
   const [price, setPrice] = useState(0);
