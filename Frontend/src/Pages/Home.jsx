@@ -7,6 +7,7 @@ import Speciality from "../components/Speciality";
 import FAQ from "../components/FAQ";
 import PopularDestinations from "../components/PopularDestinations";
 
+
 function Home() {
   const { selectedLocation } = useParams();
   const [hotels, setHotels] = useState([]);

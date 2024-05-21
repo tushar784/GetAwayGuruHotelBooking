@@ -9,7 +9,11 @@ import CheckoutForm from '../components/CheckoutForm';
 import HolidayHome from '../Pages/HolidayHome';
 import ProfileSection from '../components/ProfileSection';
 import ContactUs from '../components/ContactUs';
-import CheckoutPage from '../Pages/CheckoutPage';
+import Holidays from '../Pages/Holidays';
+import HolidayInfoPage from '../Pages/HolidayInfoPage';
+import HolidayImgSection from '../ComponentHoliday/HolidayImgSection';
+import HolidayCheckout from '../ComponentHoliday/HolidayCheckout';
+// import SingleHolidayPage from '../ComponentHoliday/SingleHolidayPage';
 
 const Routing = () => {
   return (
@@ -22,11 +26,14 @@ const Routing = () => {
             <Route exact path='/login' element={<Login />} />
             <Route exact path='/hotels/location/:selectedLocation' element={<Hotels />} />
             <Route path="/hotels/:hotelName" element={<HotelInfoPage />} />
-            <Route path="/checkout/:hotelName" element={<CheckoutPage />} />
-
-
+            <Route path="/checkout/:hotelName" element={<CheckoutForm />} />
+      
             {/* For Holiday Route */}
             <Route exact path='/holidaypackages' element={<HolidayHome />} />
+            <Route exact path='/holidaypackages/location/:selectedLocation' element={<Holidays />} />
+           <Route exact path='/holidaypackages/:packageName' element={<HolidayInfoPage /> }/>
+           <Route exact path='/holidaypackages/checkout/:packageName' element={<HolidayCheckout/>} />
+      
             <Route exact path='/profile' element={<ProfileSection />} />
             <Route exact path='/contact' element={<ContactUs />} />
 

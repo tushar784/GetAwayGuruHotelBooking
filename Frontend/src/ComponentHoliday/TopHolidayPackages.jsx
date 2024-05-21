@@ -64,9 +64,6 @@ function TopHolidayPackages() {
             className="rounded-xl object-cover w-full h-[21rem] transition duration-300 transform hover:scale-110"
           />
         </div>
-        {/* Add more image slides here */}
-
-
         <div className="px-2">
           <img
             src="src/assets/img/Holiday2.png"
