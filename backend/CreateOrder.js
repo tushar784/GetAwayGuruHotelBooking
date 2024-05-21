@@ -1,9 +1,13 @@
 const express = require("express");
 const app = express();
 const Booking = require("./Models/booking.model");
+const packagebooking = require("./Models/packagebooking.model")
 const { v4: uuidv4 } = require('uuid'); // Import uuid to generate unique IDs
+app.use(express.json());
 
-app.post("/booking/createorder", async (req, res) => {
+
+//hotel booking
+app.post("/hotels/booking", async (req, res) => {
   const {
     Hotel_Name,
     checkInDate,
@@ -80,3 +84,62 @@ app.get('/booking/:email', async (req, res) => {
   }
 });
 
+// holiday packages booking
+app.post("/holidaypackages/booking", async (req, res) => {
+  const {
+    Packages_Name,
+    checkInDate,
+    checkOutDate,
+    numberOfGuests,
+    numberOfRooms,
+    contact_number,
+    state,
+    room_Type,
+    price
+  } = req.body;
+
+  // Validate the request body
+  if (
+    !Packages_Name ||
+    !checkInDate ||
+    !checkOutDate ||
+    !numberOfGuests ||
+    !numberOfRooms ||
+    !contact_number ||
+    !state ||
+    !room_Type ||
+    !price
+  ) {
+    return res.status(400).json({ error: "Missing required fields" });
+  }
+
+  try {
+    const order_id = uuidv4(); // Generate a unique order_id using uuid
+    // username and email are available through authentication context
+    const { username, email } = req.body;
+
+    const newBooking = new packagebooking({
+      order_id, // Add the generated order_id to the booking
+      username,
+      email,
+      contact_number,
+      state,
+      room_Type,
+      Packages_Name,
+      checkInDate,
+      checkOutDate,
+      numberOfGuests,
+      numberOfRooms,
+      price
+    });
+
+    const savedBooking = await newBooking.save();
+    // Return the saved booking object as a response
+    res.status(201).json(savedBooking);
+  } catch (error) {
+    console.error("Error saving booking:", error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+module.exports=app;
