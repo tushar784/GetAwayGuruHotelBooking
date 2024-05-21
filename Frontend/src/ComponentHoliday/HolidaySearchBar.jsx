@@ -42,6 +42,14 @@ const HolidaySearchBar = ({ selectedLocation, setHoliday }) => {
     { value: "Hong kong", label: "Hong kong" },
     { value: "Australia", label: "Australia" },
     { value: "Dubai", label: "Dubai" },
+    { value: "South Korea", label: "South Korea" },
+    { value: "Greece", label: "Greece" },
+    { value: "Mumbai", label: "Mumbai" },
+    { value: "Rajasthan", label: "Rajasthan" },
+    { value: "Bengaluru", label: "Bengaluru" },
+    { value: "Assam", label: "Assam" },
+    { value: "Darjeeling", label: "Darjeeling" },
+   
   ];
 
   return (

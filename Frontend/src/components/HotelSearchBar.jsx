@@ -150,78 +150,80 @@ const HotelSearchBar = ({ setHotels, selectedLocation: propSelectedLocation }) =
 
           {openDate && (
             <DateRange
-              editableDateInputs={true}
-              onChange={(item) => setDate([item.selection])}
-              moveRangeOnFirstSelection={false}
-              ranges={date}
-              className="absolute z-50 mt-[3rem] bg-white border rounded-lg shadow-lg"
-              rangeColors={["#90CCBA"]}
-              showDateDisplay={false}
-            />
+            editableDateInputs={true}
+            onChange={(item) => setDate([item.selection])}
+            moveRangeOnFirstSelection={false}
+            ranges={date}
+            minDate={new Date()} // Set minimum selectable date to today
+            // maxDate is not specified, allowing any date in the future to be selectable
+            className="absolute z-50 mt-[3rem] bg-white border rounded-lg shadow-lg"
+            rangeColors={["#90CCBA"]}
+            showDateDisplay={false}
+          />
+    
+       
+        
           )}
         </div>
+ <div className="headerSearchItem font-poppins">
+        <h1 className="md:font-semibold">Rooms & Guests</h1>
+        <div className="headerSearchText md:text-gray-400 md:bold md:cursor-pointer flex items-center rounded-lg">
+          <button onClick={() => setOpenOptions(!openOptions)} className="flex items-center">
+            <span className="mr-2">{`${options.guest} guest & ${options.room} room`}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M10 12a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+              <path fillRule="evenodd" d="M10 3a7 7 0 100 14 7 7 0 000-14zM0 10a10 10 0 1120 0 10 10 0 01-20 0z" clipRule="evenodd" />
+            </svg>
+          </button>
+        </div>
 
-        <div className="headerSearchItem font-poppins">
-          <h1 className="md:font-semibold">Rooms & Guest</h1>
-          <div
-            onClick={() => setOpenOptions(!openOptions)}
-            className="headerSearchText md:text-gray-400 md:bold md:cursor-pointer flex items-center rounded-lg"
-          >
-            {`${options.guest} guest & ${options.room} room`}
-          </div>
+        {openOptions && (
+          <div className="options absolute bg-white shadow-md rounded-xl mt-2 p-">
+            <div className="optionItem flex justify-between m-4 pt-2">
+              <span className="optionText">Guests :</span>
+              <div className="optionCounter flex items-center ml-2 gap-2 text-xs text-[black]">
+                <button
+                  disabled={options.guest <= 1}
+                  className="optionCounterButton w-8 h-8 border text-[#0071c2] cursor-pointer border-solid border-[#0071c2] rounded-full"
+                  onClick={() => handleOption("guest", "d")}
+                >
+                  -
+                </button>
 
-          {openOptions && (
-            <div className="options md:absolute md:bg-white md:shadow-md md:rounded-xl md:mt-2">
-              {/* For Guest */}
-              <div className="optionItem w-22 flex justify-between m-4 pt-2">
-                <span className="optionText ">Guest :</span>
-                <div className="optionCounter flex items-center gap-2 text-xs text-[black]">
-                  <button
-                    disabled={options.guest <= 1}
-                    className="optionCounterButton md:w-[30px] md:h-[30px] md:ml-2 md:border md:text-[#0071c2] md:cursor-pointer md:border-solid md:border-[#0071c2]"
-                    onClick={() => handleOption("guest", "d")}
-                  >
-                    -
-                  </button>
+                <span className="optionCounterNumber">{options.guest}</span>
 
-                  <span className="optionCounterNumber">{options.guest}</span>
-
-                  <button
-                    className="optionCounterButton md:w-[30px] md:h-[30px] md:border md:text-[#0071c2] md:cursor-pointer md:border-solid md:border-[#0071c2]"
-                    onClick={() => handleOption("guest", "i")}
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-
-              {/* For Room */}
-              <div className="optionItem md:w-22 md:flex md:justify-between md:m-4 md:pt-2">
-                <span className="optionText">Room :</span>
-
-                <div className="optionCounter flex items-center gap-2 text-xs text-[black]">
-                  <button
-                    disabled={options.room <= 1}
-                    className="optionCounterButton w-[30px] h-[30px] ml-2 border text-[#0071c2] cursor-pointer border-solid border-[#0071c2]"
-                    onClick={() => handleOption("room", "d")}
-                  >
-                    -
-                  </button>
-
-                  <span className="optionCounterNumber">{options.room}</span>
-
-                  <button
-                    className="optionCounterButton w-[30px] h-[30px] border text-[#0071c2] cursor-pointer border-solid border-[#0071c2]"
-                    onClick={() => handleOption("room", "i")}
-                  >
-                    +
-                  </button>
-                </div>
+                <button
+                  className="optionCounterButton w-8 h-8 border text-[#0071c2] cursor-pointer border-solid border-[#0071c2] rounded-full"
+                  onClick={() => handleOption("guest", "i")}
+                >
+                  +
+                </button>
               </div>
             </div>
-          )}
-        </div>
-        <button onClick={handleSearch} className="search-button md:bg-[#90CCBA] md:text-white md:font-bold md:h-16 md:pl-6 md:pr-6 md:mt-[-0.7rem] md:mr-[-4.5rem] md:border-[1px] md:rounded-r-lg">Search</button>
+
+            <div className="optionItem flex justify-between m-4 pt-2">
+              <span className="optionText">Rooms :</span>
+              <div className="optionCounter flex items-center gap-2 text-xs text-[black]">
+                <button
+                  disabled={options.room <= 1}
+                  className="optionCounterButton w-8 h-8 border text-[#0071c2] cursor-pointer border-solid border-[#0071c2] rounded-full"
+                  onClick={() => handleOption("room", "d")}
+                >
+                  -
+                </button>
+                <span className="optionCounterNumber">{options.room}</span>
+                <button
+                  className="optionCounterButton w-8 h-8 border text-[#0071c2] cursor-pointer border-solid border-[#0071c2] rounded-full"
+                  onClick={() => handleOption("room", "i")}
+                >
+                  +
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+      <button onClick={handleSearch} className="search-button md:bg-[#90CCBA] md:text-white md:font-bold md:h-16 md:pl-6 md:pr-6 md:mt-[-0.7rem] md:mr-[-4.5rem] md:border-[1px] md:rounded-r-lg">Search</button>
       </div>
         {/* Mobile view hidden by default */}
     
