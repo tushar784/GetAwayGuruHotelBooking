@@ -1,17 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
-import Navbar from "./Navbar";
+import Navbar from "../components/Navbar"
 import { SiPhonepe } from "react-icons/si";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../Context/Auth_Context";
 
 const  HolidayCheckout = () => {
-  const { hotelName } = useParams();
+  const { packageName } = useParams();
   const [roomType, setRoomType] = useState("");
   const [basePrice, setBasePrice] = useState(0); // Base price for a single room with up to 4 guests
-  const [hotel, setHotel] = useState(null);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [holiday, setHoliday] = useState(null);
+//   const [name, setName] = useState("");
+//   const [email, setEmail] = useState("");
   const [pincode, setPincode] = useState("");
   const [state, setState] = useState("");
   const [checkInDate, setCheckInDate] = useState("");
@@ -27,22 +27,22 @@ const  HolidayCheckout = () => {
     const fetchHolidayDetails = async () => {
       try {
         const url = import.meta.env.VITE_BASE_URL;
-        const response = await axios.get(`${url}/api/hotels/${HolidayName}}`);
-        setHotel(response.data);
+        const response = await axios.get(`${url}/api/holidaypackages/${packageName}`);
+        setHoliday(response.data);
+        console.log("data",response.data);
       } catch (error) {
-        console.error("Error fetching hotel details:", error);
+        console.error("Error fetching holiday details:", error);
       }
     };
 
     const urlParams = new URLSearchParams(window.location.search);
     const params = Object.fromEntries(urlParams.entries());
-    setRoomType(params.roomType);
     setBasePrice(parseFloat(params.price));
     setPrice(parseFloat(params.price)); // Set the initial price
     setRooms(parseInt(params.rooms) || 1); // Set the initial number of rooms
     setGuests(parseInt(params.guests) || 1); // Set the initial number of guests
-    fetchHotelDetails();
-  }, [HolidayName]);
+    fetchHolidayDetails();
+  }, [packageName]);
 
   const calculateTotalPrice = (rooms, guests, breakfast) => {
     let totalPrice = basePrice * rooms;
@@ -64,8 +64,8 @@ const  HolidayCheckout = () => {
     e.preventDefault();
     try {
       const url = import.meta.env.VITE_BASE_URL;
-      const response = await axios.post(`${url}/api/booking/createorder`, {
-        Hotel_Name: hotel?.Hotel_Name,
+      const response = await axios.post(`${url}/api/holidaypackages/booking`, {
+        Packages_Name: holiday?.Package_Name,
         checkInDate,
         checkOutDate,
         numberOfGuests: guests,
@@ -73,8 +73,8 @@ const  HolidayCheckout = () => {
         username: user.username,
         email: user.email,
         state: state,
-        room_Type: roomType,
-        pincode,
+        // room_Type: roomType,
+        // pincode,
         price: price, // Use the calculated total price
       });
 
@@ -120,14 +120,14 @@ const  HolidayCheckout = () => {
           <h3 className="font-bold mb-4 text-2xl mt-4">Summary</h3>
           <div className="flex">
             <img
-              src={hotel?.Image_1}
+              src={holiday?.Card_imgae}
               alt="Hotel"
               className="w-26 h-20 object-cover rounded "
             />
-            <h1 className="px-4 text-lg font-bold">{hotel?.Hotel_Name}</h1>
+            <h1 className="px-4 text-lg font-bold">{holiday?.Package_Name}</h1>
           </div>
           <div className="px-2 py-2 text-mx font-semibold">
-            <div className="mb-2">Room : {roomType}</div>
+            {/* <div className="mb-2">Room : {roomType}</div> */}
             <div className="mb-2">Check in: {checkInDate}</div>
             <div className="mb-2">Check out: {checkOutDate}</div>
             <div className="mb-2">No. of rooms: {rooms}</div>
@@ -144,7 +144,7 @@ const  HolidayCheckout = () => {
       </h1>
       <div className="font-poppins md:ml-[10rem] flex mt-[1rem]">
         <div className="flex-initial md:m-[2px] m-[1rem] w-[35rem] size-22">
-          <form onSubmit={handleSubmit} className="flex flex-col">
+          <form className="flex flex-col">
             <div className="flex flex-col lg:flex-row mb-2">
               <div className="mb-4 lg:mr-4 flex-auto">
                 <label htmlFor="number" className="block text-base font-semibold mb-2">
@@ -251,40 +251,6 @@ const  HolidayCheckout = () => {
               </div>
             </div>
 
-            {/* Breakfast Option */}
-            <div className="mb-[0.9rem] flex items-center justify-between">
-              <div className="flex items-center">
-                <input
-                  type="radio"
-                  id="withBreakfast"
-                  checked={breakfast}
-                  onChange={() => handleBreakfastChange(true)}
-                  className="w-4 h-4 py-3 text-blue-600 bg-gray-100 rounded border-gray-300"
-                />
-                <label
-                  htmlFor="withBreakfast"
-                  className="ml-2 flex items-center text-lg font-medium text-fuchsia-900"
-                >
-                  With Breakfast (+500 Rs per guest)
-                </label>
-              </div>
-              <div className="flex items-center">
-                <input
-                  type="radio"
-                  id="withoutBreakfast"
-                  checked={!breakfast}
-                  onChange={() => handleBreakfastChange(false)}
-                  className="w-4 h-4 py-3 text-blue-600 bg-gray-100 rounded border-gray-300"
-                />
-                <label
-                  htmlFor="withoutBreakfast"
-                  className="ml-2 flex items-center text-lg font-medium text-fuchsia-900"
-                >
-                  Without Breakfast
-                </label>
-              </div>
-            </div>
-
             <div className="mb-[0.9rem] flex items-center justify-between">
               <div className="flex items-center">
                 <input
@@ -319,11 +285,11 @@ const  HolidayCheckout = () => {
             <h3 className="font-bold mb-4 text-2xl mt-4">Summary</h3>
             <div className="flex">
               <img
-                src={hotel?.Image_1}
-                alt="Hotel"
+                src={holiday?.Card_imgae}
+                alt="holiday"
                 className="w-26 h-20 object-cover rounded "
               />
-              <h1 className="px-4 text-lg font-bold">{hotel?.Hotel_Name}</h1>
+              <h1 className="px-4 text-lg font-bold">{holiday?.Package_Name}</h1>
             </div>
             <div className="px-2 py-2 text-mx font-semibold">
               <div className="mb-2">Room : {roomType}</div>
@@ -331,7 +297,7 @@ const  HolidayCheckout = () => {
               <div className="mb-2">Check out: {checkOutDate}</div>
               <div className="mb-2">No. of rooms: {rooms}</div>
               <div className="mb-2">No. of guest: {guests}</div>
-              <div className="mb-2">Breakfast: {breakfast ? "Yes" : "No"}</div>
+              {/* <div className="mb-2">Breakfast: {breakfast ? "Yes" : "No"}</div> */}
               <div className="font-bold text-lg mb-2">Price: {price}</div>
             </div>
           </div>

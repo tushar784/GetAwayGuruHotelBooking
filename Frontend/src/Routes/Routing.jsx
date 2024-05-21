@@ -12,6 +12,7 @@ import ContactUs from '../components/ContactUs';
 import Holidays from '../Pages/Holidays';
 import HolidayInfoPage from '../Pages/HolidayInfoPage';
 import HolidayImgSection from '../ComponentHoliday/HolidayImgSection';
+import HolidayCheckout from '../ComponentHoliday/HolidayCheckout';
 // import SingleHolidayPage from '../ComponentHoliday/SingleHolidayPage';
 
 const Routing = () => {
@@ -31,6 +32,7 @@ const Routing = () => {
             <Route exact path='/holidaypackages' element={<HolidayHome />} />
             <Route exact path='/holidaypackages/location/:selectedLocation' element={<Holidays />} />
            <Route exact path='/holidaypackages/:packageName' element={<HolidayInfoPage /> }/>
+           <Route exact path='/holidaypackages/checkout/:packageName' element={<HolidayCheckout/>} />
       
             <Route exact path='/profile' element={<ProfileSection />} />
             <Route exact path='/contact' element={<ContactUs />} />
