@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import HolidayAboutPopup from './HolidayAboutPopUp';
+import {Link ,useParams} from "react-router-dom";
 
 function HolidayAboutAndBox({ singlePackage }) {
   const [showPopup, setShowPopup] = useState(false);
+  const { packageName } = useParams();
+  const [price, setPrice] = useState(singlePackage.Price);
 
   const togglePopup = () => {
     setShowPopup(!showPopup);
@@ -28,17 +31,21 @@ function HolidayAboutAndBox({ singlePackage }) {
         )}
       </div>
 
-      <div className="w-full lg:w-[30rem] h-auto lg:h-[16rem] bg-white border rounded-lg p-4 shadow-lg">
+      <div className="w-[16rem] lg:w-[25rem] h-auto lg:h-auto bg-white border rounded-lg p-4 shadow-lg">
         <h2 className="text-black text-xl font-bold mb-2">{singlePackage.Package_Name}</h2>
-        <p className="text-red-600 mb-2">Non-refundable</p>
-        <p className="text-2xl font-bold mb-2">Total Price: ₹{singlePackage.Price}</p>
-        <p className="text-gray-600 mb-4">Per night of 1 room</p>
+        {/* <p className="text-red-600 mb-2">Non-refundable</p> */}
+        <p className="text-xl font-semibold mb-2">Total Price: ₹{singlePackage.Price}</p>
+        {/* <p className="text-gray-600 mb-4">Per night of 1 room</p> */}
+
+        <Link to={`/holidaypackages/checkout/${packageName}?price=${price}`} >
         <button
           className="bg-green-500 text-white px-4 py-2 rounded w-full"
           style={{ backgroundColor: "#90CCBA" }}
         >
           Reserve Now
         </button>
+        </Link>
+
       </div>
     </div>
   );

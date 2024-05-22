@@ -1,9 +1,13 @@
 const express = require("express");
 const app = express();
 const Booking = require("./Models/booking.model");
+const packagebooking = require("./Models/packagebooking.model")
 const { v4: uuidv4 } = require('uuid'); // Import uuid to generate unique IDs
+app.use(express.json());
 
-app.post("/booking/createorder", async (req, res) => {
+
+//hotel booking
+app.post("/hotels/booking", async (req, res) => {
   const {
     Hotel_Name,
     checkInDate,
@@ -62,24 +66,90 @@ app.post("/booking/createorder", async (req, res) => {
 
 
 
-app.get("/booking/:email", async (req, res) => {
+// API to get booking history by email
+app.get('/booking/:email', async (req, res) => {
   const email = req.params.email;
 
   try {
-    // Find all bookings associated with the provided email
     const bookings = await Booking.find({ email });
 
     if (bookings.length === 0) {
-      return res.status(404).json({ error: "No bookings found for the provided email" });
+      return res.status(404).json({ error: 'No bookings found for the provided email' });
     }
 
     res.status(200).json(bookings);
   } catch (error) {
-    console.error("Error fetching bookings:", error);
+    console.error('Error fetching bookings:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// holiday packages booking(checkout page)
+app.post("/holidaypackages/booking", async (req, res) => {
+  const {
+    Packages_Name,
+    checkInDate,
+    checkOutDate,
+    numberOfGuests,
+    numberOfRooms,
+    contact_number,
+    state,
+    price,
+    username,
+    email
+  } = req.body;
+
+  // Validate the request body
+  if (
+    !Packages_Name ||
+    !checkInDate ||
+    !checkOutDate ||
+    !numberOfGuests ||
+    !numberOfRooms ||
+    !contact_number ||
+    !state ||
+    !price ||
+    !username ||
+    !email
+  ) {
+    return res.status(400).json({ error: "Missing required fields" });
+  }
+
+  // Function to format the date to dd-mm-yyyy using toLocaleDateString
+  const formatDate = (date) => {
+    const d = new Date(date);
+    return d.toLocaleDateString('en-GB'); // 'en-GB' locale formats the date as dd/mm/yyyy
+  };
+
+  // Format the dates
+  const formattedCheckInDate = formatDate(checkInDate);
+  const formattedCheckOutDate = formatDate(checkOutDate);
+
+  try {
+    const order_id = uuidv4(); // Generate a unique order_id using uuid
+
+    const newBooking = new packagebooking({
+      order_id, // Add the generated order_id to the booking
+      username,
+      email,
+      contact_number,
+      state,
+      Packages_Name,
+      checkInDate: formattedCheckInDate,
+      checkOutDate: formattedCheckOutDate,
+      numberOfGuests,
+      numberOfRooms,
+      price
+    });
+
+    const savedBooking = await newBooking.save();
+    // Return the saved booking object as a response
+    res.status(201).json(savedBooking);
+  } catch (error) {
+    console.error("Error saving booking:", error);
     return res.status(500).json({ error: "Internal server error" });
   }
 });
 
 
-module.exports = app;
-
+module.exports=app;

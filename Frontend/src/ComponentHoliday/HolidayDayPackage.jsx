@@ -1,39 +1,3 @@
-// import React from 'react';
-
-// function HolidayDayPackage({ singlePackage }) {
-//   const days = Object.keys(singlePackage).map((key, index) => (
-//     <div key={key} className="font-poppins mt-[2rem] ml-[5.5rem] w-[69rem] border rounded-2xl border-gray-300 ">
-//       <h2 className='font-bold ml-2 mt-2 text-xl'>Day {index + 1}</h2>
-//       <div className='flex'>
-//         <p className='w-[50rem] ml-2 mt-[1rem]'>
-//           {singlePackage[key]}
-//         </p>
-//         <img
-//           src={`https://source.unsplash.com/400x300/?beach,day${index + 1}`} 
-//           className="w-[20rem] h-[14rem] m-4 rounded-xl"
-//           alt={`Day ${index + 1} image`}
-//         />
-//       </div>
-//     </div>
-//   ));
-
-//   return (
-//     <>
-//       {days}
-//     </>
-//   );
-// }
-
-// export default HolidayDayPackage;
-
-
-
-
-
-
-
-
-
 import React from 'react';
 
 function HolidayDayPackage({ singlePackage }) {

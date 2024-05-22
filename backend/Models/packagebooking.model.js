@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const bookingSchema = new Schema({
+const packagesbookingSchema = new Schema({
   order_id: {
     type: String,
     required: true,
@@ -15,28 +15,25 @@ const bookingSchema = new Schema({
     required: true
   },
   contact_number: {
-    type: String,
+    type: Number,
     required: true
   },
   state: {
     type: String,
     required: true
   },
-  room_Type: {
-    type: String,
-    required: true
-  },
-  Hotel_Name: {
+
+  Packages_Name: {
     type: String,
     required: true,
   },
   checkInDate: {
-    type: Date,
+    type: String,
     required: true,
   },
 
   checkOutDate: {
-    type: Date,
+    type: String,
     required: true,
   },
   numberOfGuests: {
@@ -53,4 +50,4 @@ const bookingSchema = new Schema({
   }  
   });
   
-module.exports = mongoose.model('Booking', bookingSchema);
+module.exports = mongoose.model('Packages_Booking', packagesbookingSchema);
