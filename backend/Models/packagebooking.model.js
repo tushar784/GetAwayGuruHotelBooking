@@ -22,21 +22,18 @@ const packagesbookingSchema = new Schema({
     type: String,
     required: true
   },
-  room_Type: {
-    type: String,
-    required: true
-  },
+
   Packages_Name: {
     type: String,
     required: true,
   },
   checkInDate: {
-    type: Date,
+    type: String,
     required: true,
   },
 
   checkOutDate: {
-    type: Date,
+    type: String,
     required: true,
   },
   numberOfGuests: {

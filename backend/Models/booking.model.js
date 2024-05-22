@@ -15,7 +15,7 @@ const bookingSchema = new Schema({
     required: true
   },
   contact_number: {
-    type: Number,
+    type: String,
     required: true
   },
   state: {

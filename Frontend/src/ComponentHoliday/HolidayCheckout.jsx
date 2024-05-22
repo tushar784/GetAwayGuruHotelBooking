@@ -7,12 +7,12 @@ import { AuthContext } from "../Context/Auth_Context";
 
 const  HolidayCheckout = () => {
   const { packageName } = useParams();
-  const [roomType, setRoomType] = useState("");
+  // const [roomType, setRoomType] = useState("");
   const [basePrice, setBasePrice] = useState(0); // Base price for a single room with up to 4 guests
   const [holiday, setHoliday] = useState(null);
 //   const [name, setName] = useState("");
 //   const [email, setEmail] = useState("");
-  const [pincode, setPincode] = useState("");
+  // const [pincode, setPincode] = useState("");
   const [state, setState] = useState("");
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
@@ -20,7 +20,7 @@ const  HolidayCheckout = () => {
   const [guests, setGuests] = useState(1);
   const { user } = useContext(AuthContext);
   const [price, setPrice] = useState(0);
-  const [contactNumber, setContactNumber] = useState("");
+  const [contactNumber, setContactNumber] = useState(0);
   const [breakfast, setBreakfast] = useState(false); // State for breakfast option
 
   useEffect(() => {
@@ -73,6 +73,7 @@ const  HolidayCheckout = () => {
         username: user.username,
         email: user.email,
         state: state,
+        contact_number: contactNumber,
         // room_Type: roomType,
         // pincode,
         price: price, // Use the calculated total price
@@ -154,7 +155,6 @@ const  HolidayCheckout = () => {
                   type="tel"
                   id="number"
                   placeholder="Phone No"
-                  pattern="[0-9]{10}"
                   value={contactNumber}
                   onChange={(e) => setContactNumber(e.target.value)}
                   className="border border-gray-300 rounded-md px-4 py-2 w-full"
@@ -292,7 +292,7 @@ const  HolidayCheckout = () => {
               <h1 className="px-4 text-lg font-bold">{holiday?.Package_Name}</h1>
             </div>
             <div className="px-2 py-2 text-mx font-semibold">
-              <div className="mb-2">Room : {roomType}</div>
+              {/* <div className="mb-2">Room : {roomType}</div> */}
               <div className="mb-2">Check in: {checkInDate}</div>
               <div className="mb-2">Check out: {checkOutDate}</div>
               <div className="mb-2">No. of rooms: {rooms}</div>
