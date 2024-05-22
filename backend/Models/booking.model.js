@@ -15,7 +15,7 @@ const bookingSchema = new Schema({
     required: true
   },
   contact_number: {
-    type: String,
+    type: Number,
     required: true
   },
   state: {
@@ -31,12 +31,12 @@ const bookingSchema = new Schema({
     required: true,
   },
   checkInDate: {
-    type: Date,
+    type: String,
     required: true,
   },
 
   checkOutDate: {
-    type: Date,
+    type: String,
     required: true,
   },
   numberOfGuests: {

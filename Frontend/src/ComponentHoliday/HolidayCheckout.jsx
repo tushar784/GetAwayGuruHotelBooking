@@ -20,7 +20,7 @@ const  HolidayCheckout = () => {
   const [guests, setGuests] = useState(1);
   const { user } = useContext(AuthContext);
   const [price, setPrice] = useState(0);
-  const [contactNumber, setContactNumber] = useState(0);
+  const [contactNumber, setContactNumber] = useState("");
   const [breakfast, setBreakfast] = useState(false); // State for breakfast option
 
   useEffect(() => {

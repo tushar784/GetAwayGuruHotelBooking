@@ -34,7 +34,15 @@ app.post("/hotels/booking", async (req, res) => {
   ) {
     return res.status(400).json({ error: "Missing required fields" });
   }
+  // Function to format the date to dd-mm-yyyy using toLocaleDateString
+  const formatDate = (date) => {
+    const d = new Date(date);
+    return d.toLocaleDateString('en-GB'); // 'en-GB' locale formats the date as dd/mm/yyyy
+  };
 
+  // Format the dates
+  const formattedCheckInDate = formatDate(checkInDate);
+  const formattedCheckOutDate = formatDate(checkOutDate);
   try {
     const order_id = uuidv4(); // Generate a unique order_id using uuid
     // username and email are available through authentication context
@@ -48,8 +56,8 @@ app.post("/hotels/booking", async (req, res) => {
       state,
       room_Type,
       Hotel_Name,
-      checkInDate,
-      checkOutDate,
+      checkInDate: formattedCheckInDate,
+      checkOutDate: formattedCheckOutDate,
       numberOfGuests,
       numberOfRooms,
       price

@@ -10,14 +10,14 @@ const CheckoutForm = () => {
   const [roomType, setRoomType] = useState("");
   const [basePrice, setBasePrice] = useState(0); // Base price for a single room with up to 4 guests
   const [hotel, setHotel] = useState(null);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [pincode, setPincode] = useState("");
+  // const [name, setName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [pincode, setPincode] = useState("");
   const [state, setState] = useState("");
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
   const [rooms, setRooms] = useState(1);
-  const [contact_number, setContact_number] = useState("")
+  // const [contact_number, setContact_number] = useState("")
   const [guests, setGuests] = useState(1);
   const { user } = useContext(AuthContext);
   const [price, setPrice] = useState(0);
@@ -65,7 +65,7 @@ const CheckoutForm = () => {
     e.preventDefault();
     try {
       const url = import.meta.env.VITE_BASE_URL;
-      const response = await axios.post(`${url}/api/booking/createorder`, {
+      const response = await axios.post(`${url}/api/hotels/booking`, {
         Hotel_Name: hotel?.Hotel_Name,
         checkInDate,
         checkOutDate,
@@ -75,7 +75,7 @@ const CheckoutForm = () => {
         email: user.email,
         state: state,
         room_Type: roomType,
-        pincode,
+        contact_number: contactNumber,
         price: price, // Use the calculated total price
       });
 
