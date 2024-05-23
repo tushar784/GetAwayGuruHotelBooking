@@ -4,6 +4,14 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { useNavigate } from "react-router-dom";
+import Switzerland from "../assets/img/Holiday1.png"
+import Hongkong from "../assets/img/Holiday2.png"
+import southkorea from "../assets/img/Holiday3.png"
+import greece from "../assets/img/Holiday4.png"
+import france from "../assets/img/Holiday6.png"
+import dubai from "../assets/img/Holiday9.png"
+import abudhabi from "../assets/img/Holiday10.png"
+
 
 const NextArrow = ({ onClick }) => (
   <div className="absolute right-0 top-1/2 transform -translate-y-1/2 cursor-pointer text-white hover:text-blue-300 z-10">
@@ -81,7 +89,7 @@ const TopHolidayPackages = ({selectedLocation,setHoliday})=> {
         <div className="px-2">
         <button onClick={()=>{navigate(`/holidaypackages/location/Switzerland`);}}>
           <img
-            src="src/assets/img/Holiday1.png"
+            src={Switzerland}
             alt="Image 1"
             className="rounded-xl object-cover w-full h-[21rem] transition duration-300 transform hover:scale-110"
           />
@@ -90,7 +98,7 @@ const TopHolidayPackages = ({selectedLocation,setHoliday})=> {
         <div className="px-2">
         <button onClick={()=>{navigate(`/holidaypackages/location/Hong Kong`);}}>
           <img
-            src="src/assets/img/Holiday2.png"
+            src={Hongkong}
             alt="Image 2"
             className="rounded-xl object-cover w-full h-[21rem] transition duration-300 transform hover:scale-110"
           />
@@ -99,7 +107,7 @@ const TopHolidayPackages = ({selectedLocation,setHoliday})=> {
         <div className="px-2">
         <button onClick={()=>{navigate(`/holidaypackages/location/South Korea`);}}>
           <img
-            src="src/assets/img/Holiday3.png"
+            src={southkorea}
             alt="Image 3"
             className="rounded-xl object-cover w-full h-[21rem] transition duration-300 transform hover:scale-110"
           />
@@ -108,7 +116,7 @@ const TopHolidayPackages = ({selectedLocation,setHoliday})=> {
         <div className="px-2">
         <button onClick={()=>{navigate(`/holidaypackages/location/Greece`);}}>
           <img
-            src="src/assets/img/Holiday4.png"
+            src={greece}
             alt="Image 4"
             className="rounded-xl object-cover w-full h-[21rem] transition duration-300 transform hover:scale-110"
           />
@@ -124,7 +132,7 @@ const TopHolidayPackages = ({selectedLocation,setHoliday})=> {
         <div className="px-2">
         <button onClick={()=>{navigate(`/holidaypackages/location/France`);}}>
           <img
-            src="src/assets/img/Holiday6.png"
+            src={france}
             alt="Image 6"
             className="rounded-xl object-cover w-full h-[21rem] transition duration-300 transform hover:scale-110"
           />
@@ -147,7 +155,7 @@ const TopHolidayPackages = ({selectedLocation,setHoliday})=> {
         <div className="px-2">
         <button onClick={()=>{navigate(`/holidaypackages/location/Dubai`);}}>
           <img
-            src="src/assets/img/Holiday9.png"
+            src={dubai}
             alt="Image 9"
             className="rounded-xl object-cover w-full h-[21rem] transition duration-300 transform hover:scale-110"
           />
@@ -156,7 +164,7 @@ const TopHolidayPackages = ({selectedLocation,setHoliday})=> {
         <div className="px-2">
         <button onClick={()=>{navigate(`/holidaypackages/location/Abu Dhabi`);}}>
           <img
-            src="src/assets/img/Holiday10.png"
+            src={abudhabi}
             alt="Image 10"
             className="rounded-xl object-cover w-full h-[21rem] transition duration-300 transform hover:scale-110"
           />

@@ -235,8 +235,11 @@ import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-
-
+import Mumbai from "../assets/img/mumbai.jpg"
+import Hyderabad from "../assets/img/hydrabad.jpg"
+import goa from "../assets/img/goa.jpg"
+import jaipur from "../assets/img/jaipur.jpg"
+import manali from "../assets/img/manali.jpg"
 
 const PopularDestinations = ({ selectedLocation, setHotels })=> {
   const navigate = useNavigate();
@@ -269,35 +272,35 @@ const PopularDestinations = ({ selectedLocation, setHotels })=> {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:grid-cols-5 gap-4">
           <button onClick={()=>{navigate(`/hotels/location/mumbai`);}}>
           <img
-            src="src/assets/img/mumbai.jpg"
+            src={Mumbai}
             alt="Image 1"
             className="rounded-xl object-cover w-full sm:h-22 md:h-[21rem] h-[31rem] size-16 transition duration-300 transform md:hover:scale-110"
           />
           </button>
           <button onClick={()=>{navigate(`/hotels/location/Hyderabad`);}}>
           <img
-            src="src/assets/img/hydrabad.jpg"
+            src={Hyderabad}
             alt="Image 2"
             className="rounded-xl object-cover w-full md:h-[21rem] h-[31rem] transition duration-300 transform md:hover:scale-110"
           />
           </button>
           <button onClick={()=>{navigate(`/hotels/location/goa`);}}>
           <img
-            src="src/assets/img/goa.jpg"
+            src={goa}
             alt="Image 3"
             className="rounded-xl object-cover w-full md:h-[21rem] h-[31rem] transition duration-300 transform md:hover:scale-110"
           />
           </button>
           <button onClick={()=>{navigate(`/hotels/location/jaipur`);}}>
           <img
-            src="src/assets/img/jaipur.jpg"
+            src={jaipur}
             alt="Image 4"
             className="rounded-xl object-cover w-full md:h-[21rem] h-[31rem] transition duration-300 transform md:hover:scale-110"
           />
           </button>
           <button onClick={()=>{navigate(`/hotels/location/manali`);}}>
           <img
-            src="src/assets/img/manali.jpg"
+            src={manali}
             alt="Image 5"
             className="rounded-xl object-cover w-full md:h-[21rem] h-[31rem] transition duration-300 transform md:hover:scale-110"
           />
