@@ -31,7 +31,7 @@ app.use('/api', createorder)
 app.use('/api', packages)
 
 app.get("/", (req, res) => {
-  res.send("Aur kiya scene haiiiii!!!!!!!!!!");  //{msg: done}
+  res.send("Aur kiya scene haiiiii!!!!!!!!!!, happy birthday");  //{msg: done}
 });
 
 app.get("/api/signUp", (req, res) => {
