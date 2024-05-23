@@ -42,6 +42,7 @@ function RoomCard({ hotel, setSelectedRoom }) {
                   <p className={`mt-2 ml-1 mb-2 ${hotel.Refund_Status === 'Refundable' ? 'text-black' : 'text-red-500'}`}>
                     {hotel.Refund_Status}
                   </p>
+                  
                 </div>
                 </div>
                 <div className="ml-[8rem] justify-end ">
@@ -76,7 +77,7 @@ function RoomCard({ hotel, setSelectedRoom }) {
              <div className="py-4 flex ">
               <div className="flex items-center ">
                 <div className="ml-4 w-[280px]">
-                  <h1 className="text-xl font-bold">{hotel.Room_Type_2}</h1>
+                  <h1 className="text-2xl font-bold">{hotel.Room_Type_2}</h1>
 
 
                   <div className="text-sm mt-2">
@@ -122,7 +123,7 @@ function RoomCard({ hotel, setSelectedRoom }) {
       <div className="md:hidden ">
         <h1 className="font-bold text-xl mt-4 ml-4">Rooms</h1>
         {/* Render Deluxe Room */}
-        <div className="bg-white mb-4 h-[25rem] w-[17rem] ml-[0.5rem] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
+        <div onClick={() => handleReserveRoom("Room_Type_1", hotel.Type1_Price)} className="bg-white mb-4 h-[28rem] w-[17rem] ml-[0.5rem] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
           {/* ... */}          
         <img
           src={hotel.Type1_Img}
@@ -146,31 +147,36 @@ function RoomCard({ hotel, setSelectedRoom }) {
               <p className={`mt-2 ml-1 mb-2 ${hotel.Refund_Status === 'Refundable' ? 'text-black' : 'text-red-500'}`}>
                 {hotel.Refund_Status}
               </p>
-            </div>
-            </div>
-            <div className="ml-[8rem] justify-end ">
               <p className="text-black mt-3 text-xl mb-2 font-extrabold">
               ₹ {hotel.Type1_Price}
               </p>
+             </div>
+            </div>
+            <div className="ml-[8rem] justify-end ">
+              
               <p className='text-black text-sm mb-2 '>+₹1020 taxes</p>
               <p className='text-black text-sm mb-2 '>per night for 1 room</p>
 
         
-        <button
+        {/* <button
           className="text-white font-medium w-[11rem] h-10 rounded"
           style={{ backgroundColor: "#90CCBA" }}
           onClick={() => handleReserveRoom("Room_Type_1", hotel.Type1_Price)}
         >
           Reserve room
-        </button>
+        </button> */}
+     
        </div>
       </div>
      </div>
     </div>
 
+
+
         {/* Render Standard Room */}
-        <div className="bg-white mb-4 h-[25rem] w-[17rem] ml-[0.5rem] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
-          {/* ... */}          
+        <div onClick={() => handleReserveRoom("Room_Type_2", hotel.Type2_Price)}
+        className="bg-white mb-4 h-[27rem] w-[17rem] ml-[0.5rem] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
+                
         <img
           src={hotel.Type2_Img}
           className="w-[15rem] h-[13rem] object-cover items-center rounded-lg m-[1rem]"
@@ -194,12 +200,15 @@ function RoomCard({ hotel, setSelectedRoom }) {
               <p className={`mt-2 ml-1 mb-2 ${hotel.Refund_Status === 'Refundable' ? 'text-black' : 'text-red-500'}`}>
                 {hotel.Refund_Status}
               </p>
-            </div>  
-            </div>
-            <div className="ml-[8rem] justify-end ">
               <p className="text-black mt-3 text-xl mb-2 font-extrabold">
               ₹ {hotel.Type2_Price}
               </p>
+            </div>  
+            </div>
+            <div className="ml-[8rem] justify-end ">
+              {/* <p className="text-black mt-3 text-xl mb-2 font-extrabold">
+              ₹ {hotel.Type2_Price}
+              </p> */}
               <p className='text-black text-sm mb-2 '>+₹1020 taxes</p>
               <p className='text-black text-sm mb-2 '>per night for 1 room</p>
 

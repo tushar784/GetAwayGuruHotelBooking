@@ -83,15 +83,11 @@ const ImgLoad = ({ hotel }) => {
             src={hotel.Image_5}
             alt=""
           />
-          <div className="relative inset-0 flex items-center justify-center">
-            <p className="text-white mb-[12rem] absolute text-2xl">
-              12+ Photos
-            </p>
-          </div>
+         
         </div>
+       </div>
       </div>
-      </div>
-      </div>
+     </div>
 
       <div className="items-center md:w-[70rem] md:h-full md:ml-[6rem] md:mt-[1rem]">
         <h1 className="text-black md:text-2xl text-2xl mt-2 font-bold md:mr-2">
