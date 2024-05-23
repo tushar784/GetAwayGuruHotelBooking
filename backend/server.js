@@ -30,6 +30,10 @@ app.use('/api', forgetpassword)
 app.use('/api', createorder)
 app.use('/api', packages)
 
+app.get("/", (req, res) => {
+  res.send("Aur kiya scene haiiiii!!!!!!!!!!");  //{msg: done}
+});
+
 app.get("/api/signUp", (req, res) => {
   res.send("sign up is working");  //{msg: done}
 });
