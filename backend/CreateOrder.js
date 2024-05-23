@@ -17,7 +17,10 @@ app.post("/hotels/booking", async (req, res) => {
     contact_number,
     state,
     room_Type,
-    price
+    price,
+    breakfast, // Add breakfast to the destructuring
+    username,
+    email
   } = req.body;
 
   // Validate the request body
@@ -30,10 +33,12 @@ app.post("/hotels/booking", async (req, res) => {
     !contact_number ||
     !state ||
     !room_Type ||
-    !price
+    !price ||
+    breakfast === undefined // Ensure breakfast is validated
   ) {
     return res.status(400).json({ error: "Missing required fields" });
   }
+
   // Function to format the date to dd-mm-yyyy using toLocaleDateString
   const formatDate = (date) => {
     const d = new Date(date);
@@ -43,10 +48,9 @@ app.post("/hotels/booking", async (req, res) => {
   // Format the dates
   const formattedCheckInDate = formatDate(checkInDate);
   const formattedCheckOutDate = formatDate(checkOutDate);
+
   try {
     const order_id = uuidv4(); // Generate a unique order_id using uuid
-    // username and email are available through authentication context
-    const { username, email } = req.body;
 
     const newBooking = new Booking({
       order_id, // Add the generated order_id to the booking
@@ -60,7 +64,8 @@ app.post("/hotels/booking", async (req, res) => {
       checkOutDate: formattedCheckOutDate,
       numberOfGuests,
       numberOfRooms,
-      price
+      price,
+      breakfast // Include the breakfast option in the booking
     });
 
     const savedBooking = await newBooking.save();
@@ -71,6 +76,7 @@ app.post("/hotels/booking", async (req, res) => {
     return res.status(500).json({ error: "Internal server error" });
   }
 });
+
 
 
 

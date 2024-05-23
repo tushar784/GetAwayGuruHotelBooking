@@ -50,7 +50,11 @@ const bookingSchema = new Schema({
   price: {
     type: Number,
     required: true
-  }  
+  },
+  breakfast: {
+    type: Boolean,
+    required: true
+  }   
   });
   
 module.exports = mongoose.model('Booking', bookingSchema);

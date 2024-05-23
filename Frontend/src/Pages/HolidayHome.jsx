@@ -33,9 +33,9 @@ function HolidayHome() {
         </p>
         <HolidaySearchBar selectedLocation={selectedLocation} setHoliday={setHoliday} />
       </div>
-      <HolidayList holiday={holiday} /> {/* Render HolidayList with holiday data */}
+      {/* <HolidayList holiday={holiday} /> Render HolidayList with holiday data */}
       {/* <SingleHolidayPage holiday={holiday}/> */}
-      <TopHolidayPackages />
+      <TopHolidayPackages selectedLocation={selectedLocation} setHoliday={setHoliday} />
       <Speciality />
       <Footer />
     </>

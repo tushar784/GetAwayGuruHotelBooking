@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { useNavigate } from "react-router-dom";
 
 const NextArrow = ({ onClick }) => (
   <div className="absolute right-0 top-1/2 transform -translate-y-1/2 cursor-pointer text-white hover:text-blue-300 z-10">
@@ -16,7 +17,27 @@ const PrevArrow = ({ onClick }) => (
   </div>
 );
 
-function TopHolidayPackages() {
+const TopHolidayPackages = ({selectedLocation,setHoliday})=> {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchHolidayPackages = async () => {
+      try {
+        if (selectedLocation) {
+          const url = import.meta.env.VITE_BASE_URL;
+          const response = await axios.get(`${url}/api/holidaypackages/location/${selectedLocation}`);
+          setHoliday(response.data); // Set holiday state with response.data
+          console.log(response.data);
+        }
+      } catch (error) {
+        console.error("Error fetching holiday packages:", error);
+      }
+    };
+
+    fetchHolidayPackages();
+  }, [selectedLocation,setHoliday]);
+
+
   const settings = {
     dots: false,
     infinite: true,
@@ -58,48 +79,58 @@ function TopHolidayPackages() {
 
 
         <div className="px-2">
+        <button onClick={()=>{navigate(`/holidaypackages/location/Switzerland`);}}>
           <img
             src="src/assets/img/Holiday1.png"
             alt="Image 1"
             className="rounded-xl object-cover w-full h-[21rem] transition duration-300 transform hover:scale-110"
           />
+          </button>
         </div>
         <div className="px-2">
+        <button onClick={()=>{navigate(`/holidaypackages/location/Hong Kong`);}}>
           <img
             src="src/assets/img/Holiday2.png"
             alt="Image 2"
             className="rounded-xl object-cover w-full h-[21rem] transition duration-300 transform hover:scale-110"
           />
+          </button>
         </div>
         <div className="px-2">
+        <button onClick={()=>{navigate(`/holidaypackages/location/South Korea`);}}>
           <img
             src="src/assets/img/Holiday3.png"
             alt="Image 3"
             className="rounded-xl object-cover w-full h-[21rem] transition duration-300 transform hover:scale-110"
           />
+          </button>
         </div>
         <div className="px-2">
+        <button onClick={()=>{navigate(`/holidaypackages/location/Greece`);}}>
           <img
             src="src/assets/img/Holiday4.png"
             alt="Image 4"
             className="rounded-xl object-cover w-full h-[21rem] transition duration-300 transform hover:scale-110"
           />
+          </button>
         </div>
-        <div className="px-2">
+        {/* <div className="px-2">
           <img
             src="src/assets/img/Holiday5.png"
             alt="Image 5"
             className="rounded-xl object-cover w-full h-[21rem] transition duration-300 transform hover:scale-110"
           />
-        </div>
+        </div> */}
         <div className="px-2">
+        <button onClick={()=>{navigate(`/holidaypackages/location/France`);}}>
           <img
             src="src/assets/img/Holiday6.png"
             alt="Image 6"
             className="rounded-xl object-cover w-full h-[21rem] transition duration-300 transform hover:scale-110"
           />
+          </button>
         </div>
-        <div className="px-2">
+        {/* <div className="px-2">
           <img
             src="src/assets/img/Holiday7.png"
             alt="Image 7"
@@ -112,20 +143,24 @@ function TopHolidayPackages() {
             alt="Image 8"
             className="rounded-xl object-cover w-full h-[21rem] transition duration-300 transform hover:scale-110"
           />
-        </div>
+        </div> */}
         <div className="px-2">
+        <button onClick={()=>{navigate(`/holidaypackages/location/Dubai`);}}>
           <img
             src="src/assets/img/Holiday9.png"
             alt="Image 9"
             className="rounded-xl object-cover w-full h-[21rem] transition duration-300 transform hover:scale-110"
           />
+          </button>
         </div>
         <div className="px-2">
+        <button onClick={()=>{navigate(`/holidaypackages/location/Abu Dhabi`);}}>
           <img
             src="src/assets/img/Holiday10.png"
             alt="Image 10"
             className="rounded-xl object-cover w-full h-[21rem] transition duration-300 transform hover:scale-110"
           />
+          </button>
         </div>
       
       </Slider>

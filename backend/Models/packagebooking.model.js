@@ -47,7 +47,8 @@ const packagesbookingSchema = new Schema({
   price: {
     type: Number,
     required: true
-  }  
+  },
+   
   });
   
 module.exports = mongoose.model('Packages_Booking', packagesbookingSchema);
