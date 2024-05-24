@@ -1,18 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
-import Navbar from "../components/Navbar"
+import Navbar from "../components/Navbar";
 import { SiPhonepe } from "react-icons/si";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../Context/Auth_Context";
 
-const  HolidayCheckout = () => {
+const HolidayCheckout = () => {
   const { packageName } = useParams();
-  const [roomType, setRoomType] = useState("");
+  // const [roomType, setRoomType] = useState("");
   const [basePrice, setBasePrice] = useState(0); // Base price for a single room with up to 4 guests
   const [holiday, setHoliday] = useState(null);
-//   const [name, setName] = useState("");
-//   const [email, setEmail] = useState("");
-  const [pincode, setPincode] = useState("");
+  //   const [name, setName] = useState("");
+  //   const [email, setEmail] = useState("");
+  // const [pincode, setPincode] = useState("");
   const [state, setState] = useState("");
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
@@ -22,14 +22,17 @@ const  HolidayCheckout = () => {
   const [price, setPrice] = useState(0);
   const [contactNumber, setContactNumber] = useState("");
   const [breakfast, setBreakfast] = useState(false); // State for breakfast option
+  const [guestsError, setGuestsError] = useState("");
 
   useEffect(() => {
     const fetchHolidayDetails = async () => {
       try {
         const url = import.meta.env.VITE_BASE_URL;
-        const response = await axios.get(`${url}/api/holidaypackages/${packageName}`);
+        const response = await axios.get(
+          `${url}/api/holidaypackages/${packageName}`
+        );
         setHoliday(response.data);
-        console.log("data",response.data);
+        console.log("data", response.data);
       } catch (error) {
         console.error("Error fetching holiday details:", error);
       }
@@ -44,17 +47,15 @@ const  HolidayCheckout = () => {
     fetchHolidayDetails();
   }, [packageName]);
 
-  const calculateTotalPrice = (rooms, guests, breakfast) => {
-    let totalPrice = basePrice * rooms;
+  const calculateTotalPrice = (rooms, guests) => {
+    if (guests > rooms * 3) {
+      guests = rooms * 3;
+    }
+    let totalPrice = basePrice * guests;
 
-    // Calculate the additional cost for extra guests (more than 4 per room)
-    const extraGuestsPerRoom = Math.max(0, guests - rooms * 4);
-    const additionalCost = extraGuestsPerRoom * (basePrice / 4); // Adjust the additional cost calculation as needed
-    totalPrice += additionalCost;
-
-    // Add breakfast cost if selected
-    if (breakfast) {
-      totalPrice += 500 * guests;
+    // Calculate the cost for additional rooms
+    if (rooms > 1) {
+      totalPrice += 1500 * (rooms - 1);
     }
 
     return totalPrice;
@@ -73,6 +74,7 @@ const  HolidayCheckout = () => {
         username: user.username,
         email: user.email,
         state: state,
+        contact_number: contactNumber,
         // room_Type: roomType,
         // pincode,
         price: price, // Use the calculated total price
@@ -92,9 +94,14 @@ const  HolidayCheckout = () => {
   };
 
   const handleGuestsChange = (value) => {
-    value = Math.max(value, 1);
+    if (value > rooms * 3) {
+      setGuestsError("Maximum 3 guests allowed per room");
+    } else {
+      setGuestsError("");
+    }
+    value = Math.min(Math.max(value, 1), rooms * 3); // Restrict guests to 3 per room
     setGuests(value);
-    setPrice(calculateTotalPrice(rooms, value, breakfast));
+    setPrice(calculateTotalPrice(rooms, value));
   };
 
   const handleBreakfastChange = (value) => {
@@ -103,11 +110,34 @@ const  HolidayCheckout = () => {
   };
 
   const statesList = [
-    "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa",
-    "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala",
-    "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland",
-    "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura",
-    "Uttar Pradesh", "Uttarakhand", "West Bengal"
+    "Andhra Pradesh",
+    "Arunachal Pradesh",
+    "Assam",
+    "Bihar",
+    "Chhattisgarh",
+    "Goa",
+    "Gujarat",
+    "Haryana",
+    "Himachal Pradesh",
+    "Jharkhand",
+    "Karnataka",
+    "Kerala",
+    "Madhya Pradesh",
+    "Maharashtra",
+    "Manipur",
+    "Meghalaya",
+    "Mizoram",
+    "Nagaland",
+    "Odisha",
+    "Punjab",
+    "Rajasthan",
+    "Sikkim",
+    "Tamil Nadu",
+    "Telangana",
+    "Tripura",
+    "Uttar Pradesh",
+    "Uttarakhand",
+    "West Bengal",
   ];
 
   return (
@@ -147,21 +177,26 @@ const  HolidayCheckout = () => {
           <form className="flex flex-col">
             <div className="flex flex-col lg:flex-row mb-2">
               <div className="mb-4 lg:mr-4 flex-auto">
-                <label htmlFor="number" className="block text-base font-semibold mb-2">
-                  Contact No: 
+                <label
+                  htmlFor="number"
+                  className="block text-base font-semibold mb-2"
+                >
+                  Contact No:
                 </label>
                 <input
                   type="tel"
                   id="number"
                   placeholder="Phone No"
-                  pattern="[0-9]{10}"
                   value={contactNumber}
                   onChange={(e) => setContactNumber(e.target.value)}
                   className="border border-gray-300 rounded-md px-4 py-2 w-full"
                 />
               </div>
               <div className="mb-4 lg:mb-0 flex-auto">
-                <label htmlFor="state" className="block text-base font-semibold mb-2">
+                <label
+                  htmlFor="state"
+                  className="block text-base font-semibold mb-2"
+                >
                   State
                 </label>
                 <select
@@ -221,7 +256,7 @@ const  HolidayCheckout = () => {
                   htmlFor="room"
                   className="block text-base font-semibold mb-2"
                 >
-                  Rooms
+                  Rooms <span className="text-xs">(per room only 3 are allowed after that 1500 per room)</span>
                 </label>
                 <input
                   type="number"
@@ -233,21 +268,29 @@ const  HolidayCheckout = () => {
                 />
               </div>
 
-              <div className="mb-4 lg:mb-0 flex-auto">
+              <div className="mb-4 lg:mb-0 flex-auto relative">
+                {" "}
+                {/* Add relative positioning */}
                 <label
                   htmlFor="guest"
                   className="block text-base font-semibold mb-2"
                 >
-                  Guest
+                  Guest <span className="text-xs">(Maximum number of guests is 3)</span>
                 </label>
                 <input
                   type="number"
                   id="guest"
                   placeholder="Guest"
                   value={guests}
+                  max={rooms * 3}
                   onChange={(e) => handleGuestsChange(parseInt(e.target.value))}
                   className="border border-gray-300 rounded-md px-4 py-2 w-full"
                 />
+                {guestsError.guests && (
+                  <p className="text-red-500 absolute bottom-[-18px] left-0">
+                    {guestsError.guests}
+                  </p>
+                )}
               </div>
             </div>
 
@@ -289,10 +332,12 @@ const  HolidayCheckout = () => {
                 alt="holiday"
                 className="w-26 h-20 object-cover rounded "
               />
-              <h1 className="px-4 text-lg font-bold">{holiday?.Package_Name}</h1>
+              <h1 className="px-4 text-lg font-bold">
+                {holiday?.Package_Name}
+              </h1>
             </div>
             <div className="px-2 py-2 text-mx font-semibold">
-              <div className="mb-2">Room : {roomType}</div>
+              {/* <div className="mb-2">Room : {roomType}</div> */}
               <div className="mb-2">Check in: {checkInDate}</div>
               <div className="mb-2">Check out: {checkOutDate}</div>
               <div className="mb-2">No. of rooms: {rooms}</div>

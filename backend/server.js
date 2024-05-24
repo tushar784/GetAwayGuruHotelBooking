@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require('cors');
-const port = 4000;
+const port = process.env.PORT;
 const app = express();
 app.use(express.json());
 app.use(cors())
@@ -20,7 +20,7 @@ const hotelList = require('./HotelList.js')
 const forgetpassword = require('./ForgetPassword.js')
 const createorder = require('./CreateOrder.js')
 const packages = require('./HolidayPackage.js')
-
+const events = require('./Events.js')
 
 
 app.use("/api", register);
@@ -29,6 +29,11 @@ app.use('/api' ,hotelList)
 app.use('/api', forgetpassword)
 app.use('/api', createorder)
 app.use('/api', packages)
+app.use('/api', events)
+
+app.get("/", (req, res) => {
+  res.send("Aur kiya scene haiiiii!!!!!!!!!!, happy birthday");  //{msg: done}
+});
 
 app.get("/api/signUp", (req, res) => {
   res.send("sign up is working");  //{msg: done}
@@ -54,9 +59,13 @@ app.get('/api/holidaypackages', (req,res)=>{
   res.send('its working');
 })
 
+app.get('/api/events', (req, res)=>{
+  res.send('hey its working')
+})
+
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
 
-
+// app.listen();
 

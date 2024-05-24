@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
-import HotelSearchBar from '../components/HotelSearchBar';
 import Speciality from '../components/Speciality';
 import { useParams } from "react-router-dom";
-import PopularDestinations from '../components/PopularDestinations';
 import Footer from '../components/Footer';
 import HolidaySearchBar from '../ComponentHoliday/HolidaySearchBar';
-import HolidayList from '../ComponentHoliday/HolidayList'; // Import HolidayList
 import TopHolidayPackages from '../ComponentHoliday/TopHolidayPackages';
 // import SingleHolidayPage from '../ComponentHoliday/SingleHolidayPage';
+import bgimg from "../assets/img/HolidayHome.png"
 
 function HolidayHome() {
   const { selectedLocation } = useParams();
@@ -19,7 +17,7 @@ function HolidayHome() {
       <Navbar />
       <div className="flex flex-col items-center justify-center md:h-[32rem] h-[15rem] md:mb-0 mb-12 ">
         <img
-          src="src/assets/img/HolidayHome.png"
+          src={bgimg}
           alt="Holiday Image"
           className="hidden md:block md:pl-2 md:pr-2 md:w-[82rem] md:h-[32rem]"
         />
@@ -33,9 +31,9 @@ function HolidayHome() {
         </p>
         <HolidaySearchBar selectedLocation={selectedLocation} setHoliday={setHoliday} />
       </div>
-      <HolidayList holiday={holiday} /> {/* Render HolidayList with holiday data */}
+      {/* <HolidayList holiday={holiday} /> Render HolidayList with holiday data */}
       {/* <SingleHolidayPage holiday={holiday}/> */}
-      <TopHolidayPackages />
+      <TopHolidayPackages selectedLocation={selectedLocation} setHoliday={setHoliday} />
       <Speciality />
       <Footer />
     </>

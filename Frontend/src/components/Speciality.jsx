@@ -1,3 +1,9 @@
+import img1 from "../assets/img/deal.jpg"
+import img2 from "../assets/img/24Hr.jpg"
+import img3 from "../assets/img/LargeSelection.jpg"
+import img4 from "../assets/img/PayAtHotel.jpg"
+
+
 function Speciality() {
   return (
     <>
@@ -9,22 +15,22 @@ function Speciality() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
           {/* <div className="flex justify-center items-center ml-[3.8rem] mr-[4rem] mt-4 mb-[2rem]"> */}
           <img
-            src="src/assets/img/deal.jpg"
+            src={img1}
             alt="Image 1"
             className="rounded-xl object-cover transition duration-300 transform md:hover:scale-110"
           />
           <img
-            src="src/assets/img/24Hr.jpg"
+            src={img2}
             alt="Image 1"
             className="rounded-xl object-cover transition duration-300 transform md:hover:scale-110"
           />
           <img
-            src="src/assets/img/LargeSelection.jpg"
+            src={img3}
             alt="Image 1"
             className="rounded-xl object-cover transition duration-300 transform md:hover:scale-110"
           />
           <img
-            src="src/assets/img/PayAtHotel.jpg"
+            src={img4}
             alt="Image 1"
             className="rounded-xl object-cover transition duration-300 transform md:hover:scale-110"
           />

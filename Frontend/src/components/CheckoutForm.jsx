@@ -10,9 +10,6 @@ const CheckoutForm = () => {
   const [roomType, setRoomType] = useState("");
   const [basePrice, setBasePrice] = useState(0); // Base price for a single room with up to 4 guests
   const [hotel, setHotel] = useState(null);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [pincode, setPincode] = useState("");
   const [state, setState] = useState("");
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
@@ -48,9 +45,9 @@ const CheckoutForm = () => {
     let totalPrice = basePrice * rooms;
 
     // Calculate the additional cost for extra guests (more than 4 per room)
-    const extraGuestsPerRoom = Math.max(0, guests - rooms * 4);
-    const additionalCost = extraGuestsPerRoom * (basePrice / 4); // Adjust the additional cost calculation as needed
-    totalPrice += additionalCost;
+    // const extraGuestsPerRoom = Math.max(0, guests - rooms * 4);
+    // const additionalCost = extraGuestsPerRoom * (basePrice / 4); // Adjust the additional cost calculation as needed
+    // totalPrice += additionalCost;
 
     // Add breakfast cost if selected
     if (breakfast) {
@@ -64,7 +61,7 @@ const CheckoutForm = () => {
     e.preventDefault();
     try {
       const url = import.meta.env.VITE_BASE_URL;
-      const response = await axios.post(`${url}/api/booking/createorder`, {
+      const response = await axios.post(`${url}/api/hotels/booking`, {
         Hotel_Name: hotel?.Hotel_Name,
         checkInDate,
         checkOutDate,
@@ -74,7 +71,8 @@ const CheckoutForm = () => {
         email: user.email,
         state: state,
         room_Type: roomType,
-        pincode,
+        contact_number: contactNumber,
+        breakfast: breakfast, // Include the breakfast option
         price: price, // Use the calculated total price
       });
 
@@ -92,8 +90,19 @@ const CheckoutForm = () => {
   };
 
   const handleGuestsChange = (value) => {
-    value = Math.max(value, 1);
+    // Calculate the maximum number of guests based on the current number of rooms
+    const maxGuests = rooms * 3; // Assuming a maximum of 3 guests per room
+
+    // Check if the value exceeds the maximum number of guests
+    if (value > maxGuests) {
+      // If it exceeds, set the value to the maximum number of guests
+      value = maxGuests;
+    }
+
+    // Update the state with the new number of guests
     setGuests(value);
+
+    // Recalculate the total price based on the updated number of guests
     setPrice(calculateTotalPrice(rooms, value, breakfast));
   };
 
@@ -342,6 +351,7 @@ const CheckoutForm = () => {
 };
 
 export default CheckoutForm;
+
 
 
 

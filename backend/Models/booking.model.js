@@ -31,12 +31,12 @@ const bookingSchema = new Schema({
     required: true,
   },
   checkInDate: {
-    type: Date,
+    type: String,
     required: true,
   },
 
   checkOutDate: {
-    type: Date,
+    type: String,
     required: true,
   },
   numberOfGuests: {
@@ -50,7 +50,11 @@ const bookingSchema = new Schema({
   price: {
     type: Number,
     required: true
-  }  
+  },
+  breakfast: {
+    type: Boolean,
+    required: true
+  }   
   });
   
 module.exports = mongoose.model('Booking', bookingSchema);

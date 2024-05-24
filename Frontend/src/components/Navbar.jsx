@@ -23,10 +23,10 @@ function Navbar() {
             className="md:h-16 md:w-22 h-8" />
           </Link>
         
-          <nav className="hidden md:flex md:ml-[18vw]">
+          <nav className="hidden md:flex md:ml-[18vw]"> 
             <div className="flex gap-10 font-semibold text-gray-900">
               <Link to="/" className="">
-              Home
+              Hotels
               </Link>
               <Link to="/holidaypackages" className="">
               Holiday Packages

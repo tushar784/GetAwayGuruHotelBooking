@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import HotelSearchBar from "../components/HotelSearchBar";
+import coverimage from "../assets/img/homepage.jpg"
 import Speciality from "../components/Speciality";
 import FAQ from "../components/FAQ";
 import PopularDestinations from "../components/PopularDestinations";
@@ -17,7 +18,7 @@ function Home() {
       <Navbar />
       <div className="flex flex-col items-center justify-center md:h-[32rem] h-[15rem] md:mb-0 mb-12 ">
         <img
-          src="src/assets/img/homepage.jpg"
+          src={coverimage}
           alt="Hotel Image"
           className="hidden md:block md:pl-2 md:pr-2 md:w-[82rem] md:h-[32rem]"
         />
