@@ -75,9 +75,8 @@ const HolidayCheckout = () => {
         email: user.email,
         state: state,
         contact_number: contactNumber,
-        // room_Type: roomType,
-        // pincode,
-        price: price, // Use the calculated total price
+        price: price,
+        package_img: holiday?.Card_imgae,
       });
 
       console.log("Order created successfully:", response.data);

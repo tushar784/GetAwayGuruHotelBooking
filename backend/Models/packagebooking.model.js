@@ -22,7 +22,6 @@ const packagesbookingSchema = new Schema({
     type: String,
     required: true
   },
-
   Packages_Name: {
     type: String,
     required: true,
@@ -31,7 +30,6 @@ const packagesbookingSchema = new Schema({
     type: String,
     required: true,
   },
-
   checkOutDate: {
     type: String,
     required: true,
@@ -48,7 +46,10 @@ const packagesbookingSchema = new Schema({
     type: Number,
     required: true
   },
-   
+  package_img: {
+    type: String,
+    required: true
+  },
   });
   
 module.exports = mongoose.model('Packages_Booking', packagesbookingSchema);
