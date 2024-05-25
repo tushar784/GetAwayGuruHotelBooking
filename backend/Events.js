@@ -25,4 +25,36 @@ app.get("/events/location/:Location", async (req, res) => {
   }
 });
 
+app.get("/events/name/:eventName", async (req, res) => {
+  const { eventName } = req.params;
+  try {
+    const event = await Events.findOne({ 
+      Event_Name: { $regex: new RegExp(eventName, "i") }
+    });
+
+    if (!event) {
+      return res.status(404).json({ message: "No event found with the specified name" });
+    }
+    res.status(200).json(event);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error fetching event");
+  }
+});
+
+app.get("/events", async (req, res) => {
+  try {
+    const events = await Events.find();
+
+    if (!events || events.length === 0) {
+      return res.status(404).json({ message: "No events found" });
+    }
+    res.status(200).json(events);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error fetching events");
+  }
+});
+
+
 module.exports = app;

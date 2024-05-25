@@ -102,8 +102,7 @@ app.get('/booking/:email', async (req, res) => {
 app.post("/holidaypackages/booking", async (req, res) => {
   const {
     Packages_Name,
-    checkInDate,
-    checkOutDate,
+    Departure_Date,
     numberOfGuests,
     numberOfRooms,
     contact_number,
@@ -116,8 +115,7 @@ app.post("/holidaypackages/booking", async (req, res) => {
   // Validate the request body
   if (
     !Packages_Name ||
-    !checkInDate ||
-    !checkOutDate ||
+    !Departure_Date ||
     !numberOfGuests ||
     !numberOfRooms ||
     !contact_number ||
@@ -136,8 +134,7 @@ app.post("/holidaypackages/booking", async (req, res) => {
   };
 
   // Format the dates
-  const formattedCheckInDate = formatDate(checkInDate);
-  const formattedCheckOutDate = formatDate(checkOutDate);
+  const formattedDeparture_Date = formatDate(Departure_Date);
 
   try {
     const order_id = uuidv4(); // Generate a unique order_id using uuid
@@ -149,8 +146,7 @@ app.post("/holidaypackages/booking", async (req, res) => {
       contact_number,
       state,
       Packages_Name,
-      checkInDate: formattedCheckInDate,
-      checkOutDate: formattedCheckOutDate,
+      Departure_Date: formattedDeparture_Date,
       numberOfGuests,
       numberOfRooms,
       price

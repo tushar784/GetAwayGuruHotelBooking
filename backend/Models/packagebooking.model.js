@@ -27,12 +27,7 @@ const packagesbookingSchema = new Schema({
     type: String,
     required: true,
   },
-  checkInDate: {
-    type: String,
-    required: true,
-  },
-
-  checkOutDate: {
+  Departure_Date: {
     type: String,
     required: true,
   },
