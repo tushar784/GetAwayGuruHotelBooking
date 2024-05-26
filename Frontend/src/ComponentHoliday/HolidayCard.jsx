@@ -18,15 +18,15 @@ const HolidayCard = ({ holiday,singlePackage }) => {
   return (
     // <Link to={`/holidaypackages/${holiday.Package_Name}`} className="block">
       <div
-        className={`bg-white w-full md:w-[22rem] shadow font-poppins rounded-lg overflow-hidden mb-4 transition-all duration-300 ${
-          expanded ? 'h-auto' : 'h-[32rem]'
+        className={`bg-white w-[18rem]md:m-0 m-4 md:w-[22rem] shadow font-poppins rounded-lg overflow-hidden mb-4 transition-all duration-300 ${
+          expanded ? 'md:h-auto' : 'md:h-[32rem]'
         }`}
       >
         <div className="h-auto mt-2 ml-2 rounded-lg w-full mr-2">
           <img
             src={holiday?.Card_imgae}
             alt={holiday?.Package_Name}
-            className="object-cover w-full h-[12rem] md:h-[14rem] md:w-[20rem] md:pt-2 rounded m-2"
+            className="object-cover w-[16rem] h-[12rem] md:h-[14rem] md:w-[20rem] md:pt-2 rounded m-2"
           />
         </div>
         
@@ -56,22 +56,7 @@ const HolidayCard = ({ holiday,singlePackage }) => {
           
           <div className="flex justify-between items-center mt-2">
             <p className="text-black text-lg font-bold">₹ {holiday.Price}</p>
-            {/* <Link to={`/holidaypackages/${holiday.Package_Name}`}> */}
-            {/* <Link
-              to={`/holidaypackages/${holiday.Package_Name}`}
-              className="text-teal-500 font-semibold"
-            > */}
-            {/* <Link to="/holidaypackages/location/:selectedLocation/SingleHolidayPage" className="text-teal-500 font-semibold"> */}
-              {/* <button className="bg-[#90CCBA] hover:bg-[#46c79f] text-white font-bold py-2 px-4 rounded">
-                Book Now
-              </button>
-            </Link> */}
-
-        {/* <Link to={`/hotels/${holi.Hotel_Name}`}> */}
-        {/* <Link to= '/holidaypackages/${singlePackage.Package_Name}'> */}
-        {/* holidaypackages/${packageName} */}
         <Link to = {`/holidaypackages/${holiday.Package_Name}`}>
-          
           <button className="bg-[#90CCBA] hover:bg-[#46c79f] text-white font-bold py-2 px-4 rounded">
             Book Now
           </button>

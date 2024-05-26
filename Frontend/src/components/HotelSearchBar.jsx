@@ -119,10 +119,23 @@ const HotelSearchBar = ({ setHotels, selectedLocation: propSelectedLocation }) =
   return (
     <>
       {/* Desktop view */}
-      <div className="hidden md:block md:h-16 md:w-5/6 bg-[white] font-poppins md:flex md:justify-around absolute md:px-0 md:py-2.5 md:border-[1px] rounded-xl md:ml-2 md:mt-28 md:mb-2">
+      {/* <div className="hidden md:block md:h-16 md:w-5/6 bg-[white] font-poppins md:flex md:justify-around absolute md:px-0 md:py-2.5 md:border-[1px] rounded-xl md:ml-2 md:mt-28 md:mb-2">
         <div className="md:items-center md:gap-2.5">
           <h1 className="md:ml-[0.3rem] md:font-semibold">Destination</h1>
           <select value={selectedLocation} onChange={handleLocationChange}>
+            <option value="">Select Location</option>
+            {destinations.map((destination) => (
+              <option key={destination.value} value={destination.value}>
+                {destination.label}
+              </option>
+            ))}
+          </select>
+        </div> */}
+        {/* Desktop view */}
+      <div className="hidden md:flex md:h-16 md:w-full lg:w-5/6 xl:w-2/3 bg-white font-poppins md:justify-around absolute md:px-4 md:py-2.5 md:border-[1px] rounded-xl md:ml-2 md:mt-28 md:mb-2 max-w-screen-xl">
+        <div className="md:items-center md:gap-2.5">
+          <h1 className="md:ml-[0.3rem] md:font-semibold">Destination</h1>
+          <select value={selectedLocation} onChange={handleLocationChange} className="border border-gray-300 rounded-md px-2">
             <option value="">Select Location</option>
             {destinations.map((destination) => (
               <option key={destination.value} value={destination.value}>
@@ -165,15 +178,15 @@ const HotelSearchBar = ({ setHotels, selectedLocation: propSelectedLocation }) =
         
           )}
         </div>
- <div className="headerSearchItem font-poppins">
+      <div className="headerSearchItem font-poppins">
         <h1 className="md:font-semibold">Rooms & Guests</h1>
         <div className="headerSearchText md:text-gray-400 md:bold md:cursor-pointer flex items-center rounded-lg">
           <button onClick={() => setOpenOptions(!openOptions)} className="flex items-center">
             <span className="mr-2">{`${options.guest} guest & ${options.room} room`}</span>
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            {/* <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M10 12a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
               <path fillRule="evenodd" d="M10 3a7 7 0 100 14 7 7 0 000-14zM0 10a10 10 0 1120 0 10 10 0 01-20 0z" clipRule="evenodd" />
-            </svg>
+            </svg> */}
           </button>
         </div>
 
@@ -225,7 +238,7 @@ const HotelSearchBar = ({ setHotels, selectedLocation: propSelectedLocation }) =
       </div>
       <button onClick={handleSearch} className="search-button md:bg-[#90CCBA] md:text-white md:font-bold md:h-16 md:pl-6 md:pr-6 md:mt-[-0.7rem] md:mr-[-4.5rem] md:border-[1px] md:rounded-r-lg">Search</button>
       </div>
-        {/* Mobile view hidden by default */}
+        {/* Mobile view  */}
     
         <div className="md:hidden">
           <div className="bg-white rounded-lg border-[1px] p-4 mt-80">

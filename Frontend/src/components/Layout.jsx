@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
       </div>
       
       {/* hotellist  */}
-      <div className="md:w-3/4 p-4 ml-2 w-[20rem] ">
+      <div className="md:w-3/4 p-4 md:ml-2 w-[20rem] ">
         {children[1]}
       </div>
     </div>

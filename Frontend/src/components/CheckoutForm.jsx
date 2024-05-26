@@ -124,7 +124,7 @@ const CheckoutForm = () => {
       <Navbar />
 
       {/* Mobile View Summery Box */}
-      <div className="font-poppins md:hidden">
+      <div className="font-poppins md:hidden m-4">
         <div className="border border-gray-300 rounded-2xl pl-4 mb-4">
           <h3 className="font-bold mb-4 text-2xl mt-4">Summary</h3>
           <div className="flex">

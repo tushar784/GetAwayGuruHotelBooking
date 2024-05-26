@@ -8,7 +8,7 @@ function Speciality() {
   return (
     <>
       <div className="container mx-auto px-4 py-8 sm:mt-[10rem]]">
-        <h1 className="md:text-xl font-bold md:mb-4 md:mt-1 mt-60 text-mx mb-4">
+        <h1 className="md:text-xl font-bold md:mb-4 md:mt-1 text-mx mb-4">
           Why book hotels with GetawayGuru
         </h1>
 

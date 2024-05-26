@@ -55,7 +55,7 @@ function SignUp() {
     try {
       const url = import.meta.env.VITE_BASE_URL;
       const response = await axios.post(`${url}/api/signUp`, formData);
-      toast.success("Login successful!", {
+      toast.success("Signup successful!", {
         position: "top-right",
         autoClose: 1000,
         onClose: () => navigate("/login"), // Navigate after the toast is closed

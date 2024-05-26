@@ -7,15 +7,10 @@ import { AuthContext } from "../Context/Auth_Context";
 
 const HolidayCheckout = () => {
   const { packageName } = useParams();
-  // const [roomType, setRoomType] = useState("");
   const [basePrice, setBasePrice] = useState(0); // Base price for a single room with up to 4 guests
   const [holiday, setHoliday] = useState(null);
-  //   const [name, setName] = useState("");
-  //   const [email, setEmail] = useState("");
-  // const [pincode, setPincode] = useState("");
   const [state, setState] = useState("");
-  const [checkInDate, setCheckInDate] = useState("");
-  const [checkOutDate, setCheckOutDate] = useState("");
+  const [departure, setDepartureDate] = useState("");
   const [rooms, setRooms] = useState(1);
   const [guests, setGuests] = useState(1);
   const { user } = useContext(AuthContext);
@@ -67,8 +62,7 @@ const HolidayCheckout = () => {
       const url = import.meta.env.VITE_BASE_URL;
       const response = await axios.post(`${url}/api/holidaypackages/booking`, {
         Packages_Name: holiday?.Package_Name,
-        checkInDate,
-        checkOutDate,
+        departure,
         numberOfGuests: guests,
         numberOfRooms: rooms,
         username: user.username,
@@ -109,6 +103,11 @@ const HolidayCheckout = () => {
     setPrice(calculateTotalPrice(rooms, guests, value));
   };
 
+  // Calculate tomorrow's date
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const minDate = tomorrow.toISOString().split("T")[0];
+
   const statesList = [
     "Andhra Pradesh",
     "Arunachal Pradesh",
@@ -145,7 +144,7 @@ const HolidayCheckout = () => {
       <Navbar />
 
       {/* Mobile View Summery Box */}
-      <div className="font-poppins md:hidden">
+      <div className="font-poppins md:hidden m-4">
         <div className="border border-gray-300 rounded-2xl pl-4 mb-4">
           <h3 className="font-bold mb-4 text-2xl mt-4">Summary</h3>
           <div className="flex">
@@ -158,8 +157,8 @@ const HolidayCheckout = () => {
           </div>
           <div className="px-2 py-2 text-mx font-semibold">
             {/* <div className="mb-2">Room : {roomType}</div> */}
-            <div className="mb-2">Check in: {checkInDate}</div>
-            <div className="mb-2">Check out: {checkOutDate}</div>
+            <div className="mb-2">Departure Date: {departure}</div>
+            {/* <div className="mb-2">Check out: {checkOutDate}</div> */}
             <div className="mb-2">No. of rooms: {rooms}</div>
             <div className="mb-2">No. of guest: {guests}</div>
             <div className="mb-2">Breakfast: {breakfast ? "Yes" : "No"}</div>
@@ -218,31 +217,17 @@ const HolidayCheckout = () => {
             <div className="flex flex-col lg:flex-row mb-2">
               <div className="mb-4 lg:mr-4 flex-auto">
                 <label
-                  htmlFor="checkInDate"
+                  htmlFor="departure"
                   className="block text-base font-semibold mb-2"
                 >
-                  Check in date
+                  Departure
                 </label>
                 <input
                   type="date"
-                  id="checkInDate"
-                  value={checkInDate}
-                  onChange={(e) => setCheckInDate(e.target.value)}
-                  className="border border-gray-300 rounded-md px-4 py-2 w-full"
-                />
-              </div>
-              <div className="mb-4 lg:mb-0 flex-auto">
-                <label
-                  htmlFor="checkOutDate"
-                  className="block text-base font-semibold mb-2"
-                >
-                  Checkout date
-                </label>
-                <input
-                  type="date"
-                  id="checkOutDate"
-                  value={checkOutDate}
-                  onChange={(e) => setCheckOutDate(e.target.value)}
+                  id="departureDate"
+                  value={departure}
+                  min={minDate}
+                  onChange={(e) => setDepartureDate(e.target.value)}
                   className="border border-gray-300 rounded-md px-4 py-2 w-full"
                 />
               </div>
@@ -323,7 +308,7 @@ const HolidayCheckout = () => {
         </div>
 
         {/* Desktop View For Summary Box */}
-        <div className="md:ml-[4rem] mb-4 md:flex hidden w-[25rem] h-[25rem]">
+        <div className="md:ml-[4rem] mb-4 md:flex hidden w-[21rem] h-[20rem]">
           <div className="border border-gray-300 rounded-2xl pl-4">
             <h3 className="font-bold mb-4 text-2xl mt-4">Summary</h3>
             <div className="flex">
@@ -337,12 +322,9 @@ const HolidayCheckout = () => {
               </h1>
             </div>
             <div className="px-2 py-2 text-mx font-semibold">
-              {/* <div className="mb-2">Room : {roomType}</div> */}
-              <div className="mb-2">Check in: {checkInDate}</div>
-              <div className="mb-2">Check out: {checkOutDate}</div>
+              <div className="mb-2">Departure Date: {departure}</div> 
               <div className="mb-2">No. of rooms: {rooms}</div>
               <div className="mb-2">No. of guest: {guests}</div>
-              {/* <div className="mb-2">Breakfast: {breakfast ? "Yes" : "No"}</div> */}
               <div className="font-bold text-lg mb-2">Price: {price}</div>
             </div>
           </div>

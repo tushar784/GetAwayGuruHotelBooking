@@ -34,7 +34,9 @@ function ProfileSection({ updateProfilePic }) {
             <div className="flex flex-col md:flex-row h-auto md:h-[36.5rem] font-poppins ">
             <div className="hidden md:block w-full md:w-[15rem] bg-[#90CCBA] md:order-1">
                 <h2 className="text-2xl font-semibold text-white font-poppins mt-[2rem] md:mt-[5rem] ml-4">Profile</h2>
+                <Link to={`/packagebooking/history/${user.email}`} className="mb-12" style={{ color: "#90CCBA" }}>
                 <p className='text-xl text-white font-poppins mt-[1rem] ml-4'>Order history</p>
+                </Link>
                 <Link to="/" className="mb-12" style={{ color: "#90CCBA" }}>
                     <button
                         onClick={logout}

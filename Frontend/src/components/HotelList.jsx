@@ -7,7 +7,7 @@ const HotelList = ({ hotels }) => {
       <h1 className="text-xl font-semibold mb-4">
         Showing Properties in {hotels.length ? hotels[0].Location : "Selected Location"}
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 ml-[5rem]">
+      <div className="grid grid-cols-1 md:grid-cols-2 md:ml-[5rem] ">
         {hotels.map((hotel) => (
           <HotelCard key={hotel.Hotel_id} hotel={hotel} />
         ))}

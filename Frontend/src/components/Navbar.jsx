@@ -86,6 +86,7 @@ function Navbar() {
                       {user?.username}
                     </Link>
                     <br />
+                    <Link to="/" >
                     <button
                       onClick={logout}
                       className="text-gray-700 w-full px-6 py-2 text-left text-sm"
@@ -95,6 +96,7 @@ function Navbar() {
                     >
                       Logout
                     </button>
+                    </Link>
                   </div>
                 </div>
               )}

@@ -79,13 +79,32 @@ app.post("/hotels/booking", async (req, res) => {
 
 
 
-
-// API to get booking history by email
-app.get('/booking/:email', async (req, res) => {
+// API to get booking history by email of hotel
+app.get('/hotelbooking/history/:email', async (req, res) => {
   const email = req.params.email;
 
   try {
     const bookings = await Booking.find({ email });
+
+    if (bookings.length === 0) {
+      return res.status(404).json({ error: 'No bookings found for the provided email' });
+    }
+
+    res.status(200).json(bookings);
+  } catch (error) {
+    console.error('Error fetching bookings:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+
+
+// API to get booking history by email of holiday
+app.get('/packagebooking/history/:email', async (req, res) => {
+  const email = req.params.email;
+
+  try {
+    const bookings = await packagebooking.find({ email });
 
     if (bookings.length === 0) {
       return res.status(404).json({ error: 'No bookings found for the provided email' });
