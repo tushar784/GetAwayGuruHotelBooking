@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const Booking = require("./Models/booking.model");
-const packagebooking = require("./Models/packagebooking.model")
+const Packagebooking = require("./Models/packagebooking.model")
 const { v4: uuidv4 } = require('uuid'); // Import uuid to generate unique IDs
 app.use(express.json());
 
@@ -121,29 +121,29 @@ app.get('/packagebooking/history/:email', async (req, res) => {
 app.post("/holidaypackages/booking", async (req, res) => {
   const {
     Packages_Name,
-    checkInDate,
-    checkOutDate,
+    Departure_Date,
     numberOfGuests,
     numberOfRooms,
     contact_number,
     state,
     price,
     username,
-    email
+    email,
+    package_img
   } = req.body;
 
   // Validate the request body
   if (
     !Packages_Name ||
-    !checkInDate ||
-    !checkOutDate ||
+    !Departure_Date ||
     !numberOfGuests ||
     !numberOfRooms ||
     !contact_number ||
     !state ||
     !price ||
     !username ||
-    !email
+    !email ||
+    !package_img
   ) {
     return res.status(400).json({ error: "Missing required fields" });
   }
@@ -155,24 +155,23 @@ app.post("/holidaypackages/booking", async (req, res) => {
   };
 
   // Format the dates
-  const formattedCheckInDate = formatDate(checkInDate);
-  const formattedCheckOutDate = formatDate(checkOutDate);
+  const formattedDeparture_Date = formatDate(Departure_Date);
 
   try {
     const order_id = uuidv4(); // Generate a unique order_id using uuid
 
-    const newBooking = new packagebooking({
+    const newBooking = new Packagebooking({
       order_id, // Add the generated order_id to the booking
       username,
       email,
       contact_number,
       state,
       Packages_Name,
-      checkInDate: formattedCheckInDate,
-      checkOutDate: formattedCheckOutDate,
+      Departure_Date: formattedDeparture_Date,
       numberOfGuests,
       numberOfRooms,
-      price
+      price,
+      package_img
     });
 
     const savedBooking = await newBooking.save();
