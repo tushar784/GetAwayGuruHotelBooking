@@ -63,9 +63,9 @@ app.get('/api/events', (req, res)=>{
   res.send('hey its working')
 })
 
-app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`Server listening on port ${port}`);
+// });
 
-// app.listen();
+app.listen();
 
