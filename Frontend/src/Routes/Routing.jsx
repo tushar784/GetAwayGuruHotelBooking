@@ -14,7 +14,9 @@ import HolidayInfoPage from '../Pages/HolidayInfoPage';
 import HolidayImgSection from '../ComponentHoliday/HolidayImgSection';
 import HolidayCheckout from '../ComponentHoliday/HolidayCheckout';
 import HolidayOrderHistory from '../ComponentHoliday/HolidayOrderHistory';
-import Events from '../Pages/Events';
+import Events from '../Pages/Events'
+import EventsSinglePage from '../ComponentEvents/EventsSinglePage';
+
 
 
 const Routing = () => {
@@ -40,12 +42,13 @@ const Routing = () => {
             <Route exact path='/holidaypackages/checkout/:packageName' element={<HolidayCheckout/>} />
             <Route exact path='/packagebooking/history/:email' element={<HolidayOrderHistory/>} />
 
-            <Route exact path='/events' element={<Events />} />
+       
             
 
             {/* For Events Route */}
-            <Route path="/events/location/:selectedLocation" element={<Events />} />
-
+            <Route path="/events" element={<Events />} />
+            <Route path="/events/name/:eventName" element={<EventsSinglePage />} />
+            {/* <Route path="/ev" element={<EventsSinglePage />} /> */}
 
 
             <Route exact path='/profile' element={<ProfileSection />} />

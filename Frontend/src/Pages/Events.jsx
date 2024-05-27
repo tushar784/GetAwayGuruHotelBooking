@@ -1,33 +1,43 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import EventsList from '../ComponentEvents/EventsList';
-import Loading from '../components/Loading'; // Add loading component
-import axios from 'axios'; // Import axios
-import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import Loading from '../components/Loading';
 
-function Events() {
-  const { selectedLocation } = useParams();
+const Events = () => {
+  const { selectedLocation: locationFromUrl } = useParams();
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedLocation, setSelectedLocation] = useState(locationFromUrl || '');
 
   useEffect(() => {
     const fetchEvents = async () => {
       try {
         setLoading(true);
+        const url = import.meta.env.VITE_BASE_URL;
+        let response;
+
         if (selectedLocation) {
-          const url = import.meta.env.VITE_BASE_URL;
-          const response = await axios.get(`${url}/events/location/${selectedLocation}`);
-          setEvents(response.data);
-          setLoading(false);
+          const encodedLocation = encodeURIComponent(selectedLocation);
+          response = await axios.get(`${url}/api/events/location/${encodedLocation}`);
+        } else {
+          response = await axios.get(`${url}/api/events`);
         }
+
+        setEvents(response.data);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching events:', error);
         setLoading(false);
       }
     };
-
     fetchEvents();
   }, [selectedLocation]);
+
+  const handleSelectLocation = (location) => {
+    setSelectedLocation(location);
+  };
 
   if (loading) {
     return <Loading />;
@@ -36,9 +46,9 @@ function Events() {
   return (
     <>
       <Navbar />
-      <EventsList events={events} />
+      <EventsList events={events} onSelectLocation={handleSelectLocation} selectedLocation={selectedLocation} />
     </>
   );
-}
+};
 
 export default Events;
