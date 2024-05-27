@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const bookingSchema = new Schema({
-  order_id: {
-    type: String,
-    required: true,
+  orderDate: { 
+    type: String, 
+    required: true 
   },
   username: {
     type: String,
@@ -47,14 +47,21 @@ const bookingSchema = new Schema({
     type: Number,
     required: true,
   },
-  price: {
+  amount: {
     type: Number,
     required: true
   },
   breakfast: {
     type: Boolean,
     required: true
+  },
+  razorpay_order_id: {   // Add this field
+    type: String, 
+    required: true 
+  }, 
+  razorpay_payment_id: { 
+    type: String 
   }   
-  });
+});
   
 module.exports = mongoose.model('Booking', bookingSchema);

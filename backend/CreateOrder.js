@@ -1,10 +1,11 @@
 const express = require("express");
 const app = express();
+const cors = require("cors")
 const Booking = require("./Models/booking.model");
-const Packagebooking = require("./Models/packagebooking.model")
 const { v4: uuidv4 } = require('uuid'); // Import uuid to generate unique IDs
+const Razorpay = require('razorpay'); // Import Razorpay
 app.use(express.json());
-
+app.use(cors())
 
 //hotel booking
 app.post("/hotels/booking", async (req, res) => {
@@ -17,8 +18,8 @@ app.post("/hotels/booking", async (req, res) => {
     contact_number,
     state,
     room_Type,
-    price,
-    breakfast, // Add breakfast to the destructuring
+    amount,
+    breakfast,
     username,
     email
   } = req.body;
@@ -33,8 +34,8 @@ app.post("/hotels/booking", async (req, res) => {
     !contact_number ||
     !state ||
     !room_Type ||
-    !price ||
-    breakfast === undefined // Ensure breakfast is validated
+    !amount ||
+    breakfast === undefined
   ) {
     return res.status(400).json({ error: "Missing required fields" });
   }
@@ -50,10 +51,33 @@ app.post("/hotels/booking", async (req, res) => {
   const formattedCheckOutDate = formatDate(checkOutDate);
 
   try {
-    const order_id = uuidv4(); // Generate a unique order_id using uuid
+    // Initialize Razorpay instance
+    console.log("Initializing Razorpay with Key ID:", process.env.RAZORPAY_KEY_ID);
+    const razorpay = new Razorpay({
+      key_id: process.env.RAZORPAY_KEY_ID,
+      key_secret: process.env.RAZORPAY_KEY_SECRET,
+    });
 
+    // Create Razorpay order options
+    const receiptId = `rcpt_${uuidv4().substring(0, 8)}`;
+    const options = {
+      amount: amount * 100, // amount in smallest currency unit (e.g., paise for INR)
+      currency: "INR",
+      receipt: receiptId,
+      payment_capture: 1, // auto capture
+    };
+
+    // Create Razorpay order
+    const razorpayOrder = await razorpay.orders.create(options);
+
+    if (!razorpayOrder) {
+      console.error("Error creating Razorpay order");
+      return res.status(500).send("Error creating Razorpay order");
+    }
+
+    const orderDate = new Date().toLocaleDateString('en-GB');
     const newBooking = new Booking({
-      order_id, // Add the generated order_id to the booking
+      orderDate,
       username,
       email,
       contact_number,
@@ -64,18 +88,41 @@ app.post("/hotels/booking", async (req, res) => {
       checkOutDate: formattedCheckOutDate,
       numberOfGuests,
       numberOfRooms,
-      price,
-      breakfast // Include the breakfast option in the booking
+      amount,
+      breakfast,
+      paymentStatus: 'not completed',
+      razorpay_order_id: razorpayOrder.id, // Save Razorpay order ID
     });
 
     const savedBooking = await newBooking.save();
-    // Return the saved booking object as a response
-    res.status(201).json(savedBooking);
+
+    // Return the saved booking object and Razorpay order details as a response
+    res.status(201).json({
+      message: "Booking created successfully",
+      bookingDetails: {
+        bookingId: savedBooking._id,
+        razorpayOrderId: razorpayOrder.id,
+        amount: razorpayOrder.amount,
+        email,
+        username,
+        orderDate,
+        Hotel_Name,
+        checkInDate: formattedCheckInDate,
+        checkOutDate: formattedCheckOutDate,
+        numberOfGuests,
+        numberOfRooms,
+        contact_number,
+        state,
+        room_Type,
+        breakfast
+      }
+    });
   } catch (error) {
     console.error("Error saving booking:", error);
     return res.status(500).json({ error: "Internal server error" });
   }
 });
+
 
 
 
