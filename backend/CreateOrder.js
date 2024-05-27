@@ -104,7 +104,7 @@ app.get('/packagebooking/history/:email', async (req, res) => {
   const email = req.params.email;
 
   try {
-    const bookings = await packagebooking.find({ email });
+    const bookings = await Packagebooking.find({ email });
 
     if (bookings.length === 0) {
       return res.status(404).json({ error: 'No bookings found for the provided email' });
@@ -129,7 +129,6 @@ app.post("/holidaypackages/booking", async (req, res) => {
     price,
     username,
     email,
-    package_img
   } = req.body;
 
   // Validate the request body
@@ -142,8 +141,7 @@ app.post("/holidaypackages/booking", async (req, res) => {
     !state ||
     !price ||
     !username ||
-    !email ||
-    !package_img
+    !email 
   ) {
     return res.status(400).json({ error: "Missing required fields" });
   }
@@ -171,7 +169,6 @@ app.post("/holidaypackages/booking", async (req, res) => {
       numberOfGuests,
       numberOfRooms,
       price,
-      package_img
     });
 
     const savedBooking = await newBooking.save();

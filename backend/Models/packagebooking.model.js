@@ -42,10 +42,7 @@ const packagesbookingSchema = new Schema({
     type: Number,
     required: true
   },
-  package_img: {
-    type: String,
-    required: true
-  },
-  });
+
+ });
   
 module.exports = mongoose.model('Packages_Booking', packagesbookingSchema);

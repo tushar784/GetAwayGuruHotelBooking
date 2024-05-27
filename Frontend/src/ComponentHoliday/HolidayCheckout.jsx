@@ -62,7 +62,7 @@ const HolidayCheckout = () => {
       const url = import.meta.env.VITE_BASE_URL;
       const response = await axios.post(`${url}/api/holidaypackages/booking`, {
         Packages_Name: holiday?.Package_Name,
-        departure,
+        Departure_Date: departure,
         numberOfGuests: guests,
         numberOfRooms: rooms,
         username: user.username,
@@ -70,16 +70,15 @@ const HolidayCheckout = () => {
         state: state,
         contact_number: contactNumber,
         price: price,
-        package_img: holiday?.Card_imgae,
       });
-
+  
       console.log("Order created successfully:", response.data);
       setOrderSuccess(true); // Set orderSuccess to true on successful order creation
     } catch (error) {
       console.error("Error creating order:", error);
     }
   };
-
+  
   const handleRoomsChange = (value) => {
     value = Math.max(value, 1);
     setRooms(value);
