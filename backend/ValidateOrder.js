@@ -1,5 +1,5 @@
 const crypto = require('crypto');
-const OrderDetail = require('../models/orderdetails.model');
+const OrderDetail = require('./Models/booking.model');
 
 async function ValidateOrder(req, res) {
   const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;

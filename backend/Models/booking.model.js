@@ -61,6 +61,9 @@ const bookingSchema = new Schema({
   }, 
   razorpay_payment_id: { 
     type: String 
+  },
+  paymentStatus: {
+    type: String
   }   
 });
   
