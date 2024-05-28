@@ -95,9 +95,9 @@ const CheckoutForm = () => {
       // Create order in the backend
       const response = await axios.post(`${url}/api/hotels/booking`, orderData);
       console.log("ewwww", response.data);
-
-      if (response.data.bookingDetails) {
-        const { amount,razorpayOrderId, key, email, username } = response.data.bookingDetails;
+      console.log("data", response.data.hotelBookingDetails);
+      if (response.data.hotelBookingDetails) {
+        const { amount,razorpayOrderId, key, email, username } = response.data.hotelBookingDetails;
         console.log("hiiewd");
         // Prepare Razorpay options
         const options = {

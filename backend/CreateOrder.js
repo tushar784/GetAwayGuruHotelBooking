@@ -101,7 +101,7 @@ app.post("/hotels/booking", async (req, res) => {
     // Return the saved booking object and Razorpay order details as a response
     res.status(201).json({
       message: "Booking created successfully",
-      package: {
+      hotelBookingDetails: {
         bookingId: savedBooking._id,
         razorpayOrderId: razorpayOrder.id,
         amount: razorpayOrder.amount,
