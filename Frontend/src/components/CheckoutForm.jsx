@@ -2,11 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import { SiPhonepe } from "react-icons/si";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/Auth_Context";
 
 const CheckoutForm = () => {
   const { hotelName } = useParams();
+  const navigate = useNavigate()
   const [roomType, setRoomType] = useState("");
   const [basePrice, setBasePrice] = useState(0); // Base price for a single room with up to 4 guests
   const [hotel, setHotel] = useState(null);
@@ -15,6 +16,7 @@ const CheckoutForm = () => {
   const [checkOutDate, setCheckOutDate] = useState("");
   const [rooms, setRooms] = useState(1);
   const [guests, setGuests] = useState(1);
+  const [orderDate, setOrderDate] = useState("");
   const { user } = useContext(AuthContext);
   const [price, setPrice] = useState(0);
   const [contactNumber, setContactNumber] = useState("");
@@ -59,9 +61,21 @@ const CheckoutForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+  
+    // Validate form inputs
+    // if (!validateForm()) {
+    //   return;
+    // }
+  
     try {
       const url = import.meta.env.VITE_BASE_URL;
-      const response = await axios.post(`${url}/api/hotels/booking`, {
+
+      // Capture current date as orderDate
+      const currentOrderDate = new Date().toISOString();
+
+    setOrderDate(currentOrderDate);
+      // Prepare the order data
+      const orderData = {
         Hotel_Name: hotel?.Hotel_Name,
         checkInDate,
         checkOutDate,
@@ -73,15 +87,67 @@ const CheckoutForm = () => {
         room_Type: roomType,
         contact_number: contactNumber,
         breakfast: breakfast, // Include the breakfast option
-        price: price, // Use the calculated total price
-      });
+        amount: price, // Amount in paise (smallest currency unit)
+        orderDate: currentOrderDate, // Include orderDate
+    
+      };
+  
+      // Create order in the backend
+      const response = await axios.post(`${url}/api/hotels/booking`, orderData);
+      console.log("ewwww", response.data);
 
-      console.log("Order created successfully:", response.data);
-      setOrderSuccess(true); // Set orderSuccess to true on successful order creation
+      if (response.data.bookingDetails) {
+        const { amount,razorpayOrderId, key, email, username } = response.data.bookingDetails;
+        console.log("hiiewd");
+        // Prepare Razorpay options
+        const options = {
+          key,
+          amount,
+          currency: 'INR',
+          name: "Hotel Booking",
+          description: 'Hotel Booking Payment',
+          order_id: razorpayOrderId,
+          handler: async function (response) {
+            const body = {
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
+            };
+  
+            // Validate payment
+            const validateRes = await axios.post(`${url}/api/order/validate`, body);
+  
+            if (validateRes.data.msg === 'success') {
+              toast.success('Payment successful');
+              navigate(`/orderplaced/${orderId}`);
+            } else {
+              toast.error('Payment validation failed');
+              navigate(`/checkout/${hotelName}`);
+            }
+          },
+          prefill: {
+            name: username,
+            email: email,
+            contact: contactNumber,
+          },
+          notes: {
+            address: `${hotel?.Hotel_Name}, ${state}`,
+          },
+          theme: {
+            color: '#3399cc',
+          },
+        };
+  
+        // Initialize Razorpay payment
+        const rzp1 = new window.Razorpay(options);
+        rzp1.open();
+      }
     } catch (error) {
-      console.error("Error creating order:", error);
+      console.error("Error in order creation or payment initiation:", error);
+      navigate('/checkout');
     }
   };
+  
 
   const handleRoomsChange = (value) => {
     value = Math.max(value, 1);

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const packagesbookingSchema = new Schema({
+const eventsbookingSchema = new Schema({
   orderDate: { 
     type: String, 
     required: true 
@@ -22,11 +22,11 @@ const packagesbookingSchema = new Schema({
     type: String,
     required: true
   },
-  Packages_Name: {
+  Event_Name: {
     type: String,
     required: true,
   },
-  Departure_Date: {
+  Event_Date: {
     type: String,
     required: true,
   },
@@ -34,13 +34,12 @@ const packagesbookingSchema = new Schema({
     type: Number,
     required: true,
   },
-  numberOfRooms: {
-    type: Number,
-    required: true,
-  },
   amount: {
     type: Number,
     required: true
+  },
+  venue_addr: {
+    type: String,
   },
   razorpay_order_id: {   // Add this field
     type: String, 
@@ -54,4 +53,4 @@ const packagesbookingSchema = new Schema({
   } 
  });
   
-module.exports = mongoose.model('Packages_Booking', packagesbookingSchema);
+module.exports = mongoose.model('Events_Booking', eventsbookingSchema);

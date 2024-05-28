@@ -1,12 +1,14 @@
 require('dotenv').config();
+const Razorpay = require('razorpay');
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require('cors');
+const {ValidateOrder} = require("./ValidateOrder.js")
 const port = process.env.PORT;
 const app = express();
 app.use(express.json());
 app.use(cors())
-app.use(express.json()); 
+app.use(express.urlencoded({ extended: false }));
 
 const URL = process.env.MONGO_URL;
 mongoose.connect(URL)
@@ -62,6 +64,18 @@ app.get('/api/holidaypackages', (req,res)=>{
 app.get('/api/events', (req, res)=>{
   res.send('hey its working')
 })
+
+// Define the /api/order/validate route
+app.post('/api/order/validate', async (req, res) => {
+  try {
+    await ValidateOrder(req, res);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+});
+
+
 
 // app.listen(port, () => {
 //   console.log(`Server listening on port ${port}`);

@@ -2,11 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { SiPhonepe } from "react-icons/si";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/Auth_Context";
 
 const HolidayCheckout = () => {
   const { packageName } = useParams();
+  const navigate = useNavigate()
   const [basePrice, setBasePrice] = useState(0); // Base price for a single room with up to 4 guests
   const [holiday, setHoliday] = useState(null);
   const [state, setState] = useState("");
@@ -15,6 +16,7 @@ const HolidayCheckout = () => {
   const [guests, setGuests] = useState(1);
   const { user } = useContext(AuthContext);
   const [price, setPrice] = useState(0);
+  const [orderDate, setOrderDate] = useState("");
   const [contactNumber, setContactNumber] = useState("");
   const [breakfast, setBreakfast] = useState(false); // State for breakfast option
   const [guestsError, setGuestsError] = useState("");
@@ -58,9 +60,13 @@ const HolidayCheckout = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const url = import.meta.env.VITE_BASE_URL;
-      const response = await axios.post(`${url}/api/holidaypackages/booking`, {
+      const currentOrderDate = new Date().toISOString();
+      setOrderDate(currentOrderDate);
+
+      const orderData = {
         Packages_Name: holiday?.Package_Name,
         Departure_Date: departure,
         numberOfGuests: guests,
@@ -69,13 +75,58 @@ const HolidayCheckout = () => {
         email: user.email,
         state: state,
         contact_number: contactNumber,
-        price: price,
-      });
-  
-      console.log("Order created successfully:", response.data);
-      setOrderSuccess(true); // Set orderSuccess to true on successful order creation
+        amount: price,
+        orderDate: currentOrderDate,
+      };
+
+      const response = await axios.post(`${url}/api/holidaypackages/booking`, orderData);
+
+      if (response.data.packageBookingDetails) {
+        const { amount, razorpayOrderId, key, email, username } = response.data.packageBookingDetails;
+
+        const options = {
+          key,
+          amount,
+          currency: 'INR',
+          name: "Holiday Package Booking",
+          description: 'Holiday Package Payment',
+          order_id: razorpayOrderId,
+          handler: async function (response) {
+            const body = {
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
+            };
+
+            const validateRes = await axios.post(`${url}/api/order/validate`, body);
+
+            if (validateRes.data.msg === 'success') {
+              toast.success('Payment successful');
+              navigate(`/orderplaced/${razorpayOrderId}`);
+            } else {
+              toast.error('Payment validation failed');
+              navigate(`/checkout/${packageName}`);
+            }
+          },
+          prefill: {
+            name: username,
+            email: email,
+            contact: contactNumber,
+          },
+          notes: {
+            address: `${holiday?.Package_Name}, ${state}`,
+          },
+          theme: {
+            color: '#3399cc',
+          },
+        };
+
+        const rzp1 = new window.Razorpay(options);
+        rzp1.open();
+      }
     } catch (error) {
-      console.error("Error creating order:", error);
+      console.error("Error in order creation or payment initiation:", error);
+      navigate('/checkout');
     }
   };
   
