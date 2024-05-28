@@ -152,7 +152,7 @@ app.get('/packagebooking/history/:email', async (req, res) => {
   const email = req.params.email;
 
   try {
-    const bookings = await Packagebooking.find({ email });
+    const bookings = await PackageBooking.find({ email });
 
     if (bookings.length === 0) {
       return res.status(404).json({ error: 'No bookings found for the provided email' });

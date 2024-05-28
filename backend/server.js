@@ -4,6 +4,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require('cors');
 const {ValidateOrder} = require("./ValidateOrder.js")
+const {ValidatePackageOrder} = require("./ValidatePackageOrder.js")
 const port = process.env.PORT;
 const app = express();
 app.use(express.json());
@@ -75,11 +76,18 @@ app.post('/api/order/validate', async (req, res) => {
   }
 });
 
+app.post('/api/order/validatepackageorder', async (req, res) => {
+  try {
+    await ValidatePackageOrder(req, res);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+});
 
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});
 
-// app.listen(port, () => {
-//   console.log(`Server listening on port ${port}`);
-// });
-
-app.listen();
+// app.listen();
 

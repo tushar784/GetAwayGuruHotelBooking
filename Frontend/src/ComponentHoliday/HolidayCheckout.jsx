@@ -98,7 +98,7 @@ const HolidayCheckout = () => {
               razorpay_signature: response.razorpay_signature,
             };
 
-            const validateRes = await axios.post(`${url}/api/order/validate`, body);
+            const validateRes = await axios.post(`${url}/api/order/validatepackageorder`, body);
 
             if (validateRes.data.msg === 'success') {
               toast.success('Payment successful');

@@ -26,7 +26,7 @@ app.get('/holidaypackages/:Package_Name', async (req, res) => {
   try {
     const package = await HolidayPackage.findOne({ Package_Name });
     if (!package) {
-      return res.status(404).json({ message: 'Hotel not found' });
+      return res.status(404).json({ message: 'package not found' });
     }
     res.status(200).json(package);
   } catch (error) {
