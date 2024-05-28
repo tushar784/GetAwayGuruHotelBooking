@@ -85,7 +85,7 @@ function EventsSinglePage() {
           <h2 className="text-xl font-semibold mb-2 text-black">{event.Venue_addr}</h2>
         </div>
 
-        <div className="border border-slate-400 h-[21rem] w-[60rem] rounded-lg p-8 mt-8">
+        <div className="border border-slate-400 h-[23rem] w-[60rem] rounded-lg p-8 mt-8">
           <div className="flex items-center mb-8">
             <img
               src={event.Artist_Img}

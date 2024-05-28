@@ -16,6 +16,7 @@ import HolidayCheckout from '../ComponentHoliday/HolidayCheckout';
 import HolidayOrderHistory from '../ComponentHoliday/HolidayOrderHistory';
 import Events from '../Pages/Events'
 import EventsSinglePage from '../ComponentEvents/EventsSinglePage';
+import EventCheckout from '../ComponentEvents/EventCheckout';
 
 
 
@@ -49,6 +50,7 @@ const Routing = () => {
             <Route path="/events" element={<Events />} />
             <Route path="/events/name/:eventName" element={<EventsSinglePage />} />
             {/* <Route path="/ev" element={<EventsSinglePage />} /> */}
+            <Route path='/checkoutevent' element={<EventCheckout/>}/>
 
 
             <Route exact path='/profile' element={<ProfileSection />} />
