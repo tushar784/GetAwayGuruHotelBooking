@@ -3,13 +3,20 @@ import Navbar from '../components/Navbar';
 import { SiPhonepe } from "react-icons/si";
 import { useParams } from 'react-router-dom';
 import { AuthContext } from '../Context/Auth_Context';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const EventCheckout = () => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate()
   const { eventName } = useParams();
   const [event, setEvent] = useState(null);
   const [numGuests, setNumGuests] = useState(1);
+  const [contactNumber, setContactNumber] = useState("");
+  const [state, setState] = useState("");
+  const [price, setPrice] = useState(0);
+  const [orderDate, setOrderDate] = useState("");
+  const [guests, setGuests] = useState(1);
 
   useEffect(() => {
     const fetchEventData = async () => {
@@ -26,6 +33,92 @@ const EventCheckout = () => {
   }, [eventName]);
 
   const totalPrice = event ? (event.Price * numGuests + 89) : null; // Add booking fees of ₹89
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    // Validate form inputs
+    // if (!validateForm()) {
+    //   return;
+    // }
+  
+    try {
+      const url = import.meta.env.VITE_BASE_URL;
+
+      // Capture current date as orderDate
+      const currentOrderDate = new Date().toISOString();
+
+    setOrderDate(currentOrderDate);
+      // Prepare the order data
+      const orderData = {
+        Event_Name: event?.Event_Name,
+        numberOfGuests: guests,
+        Event_Date: event?.Date,
+        username: user.username,
+        email: user.email,
+        state: state,
+        venue_addr: event?.Venue_addr,
+        contact_number: contactNumber,
+        amount: totalPrice, // Amount in paise (smallest currency unit)
+        orderDate: currentOrderDate, // Include orderDate
+    
+      };
+  
+      // Create order in the backend
+      const response = await axios.post(`${url}/api/events/booking`, orderData);
+      console.log("ewwww", response.data);
+      console.log("data", response.data.eventsBookingDetails);
+      if (response.data.eventsBookingDetails) {
+        const { amount,razorpayOrderId, key, email, username } = response.data.eventsBookingDetails;
+        console.log("hiiewd");
+        // Prepare Razorpay options
+        const options = {
+          key,
+          amount,
+          currency: 'INR',
+          name: "GetAwayGuru Booking",
+          description: 'Event Booking Payment',
+          order_id: razorpayOrderId,
+          handler: async function (response) {
+            const body = {
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
+            };
+  
+            // Validate payment
+            const validateRes = await axios.post(`${url}/api/order/validateeventorder`, body);
+  
+            if (validateRes.data.msg === 'success') {
+              toast.success('Payment successful');
+              navigate(`/orderplaced/${orderId}`);
+            } else {
+              toast.error('Payment validation failed');
+              navigate(`/checkout/${eventName}`);
+            }
+          },
+          prefill: {
+            name: username,
+            email: email,
+            contact: contactNumber,
+          },
+          notes: {
+            address: `${event?.Event_Name}, ${state}`,
+          },
+          theme: {
+            color: '#3399cc',
+          },
+        };
+  
+        // Initialize Razorpay payment
+        const rzp1 = new window.Razorpay(options);
+        rzp1.open();
+      }
+    } catch (error) {
+      console.error("Error in order creation or payment initiation:", error);
+      navigate('/checkout');
+    }
+  };
 
   return (
     <>
@@ -51,6 +144,8 @@ const EventCheckout = () => {
               </label>
               <input
                 type="text"
+                value={contactNumber}
+                onChange={(e) => setContactNumber(e.target.value)}
                 id="contact"
                 className="border border-gray-400 px-2 py-1 rounded w-full"
                 placeholder="Contact number"
@@ -64,45 +159,48 @@ const EventCheckout = () => {
               </label>
               <select
                 id="state"
+                value={state}
+                onChange={(e) => setState(e.target.value)}
                 className="border border-gray-400 px-2 py-1 rounded w-[14.4rem] "
               >
                 <option value="">Select State</option>
                 {/* ... (existing state options) */}
-                <option value="AP">Andhra Pradesh</option>
-                <option value="AR">Arunachal Pradesh</option>
-                <option value="AS">Assam</option>
-                <option value="BR">Bihar</option>
-                <option value="CT">Chhattisgarh</option>
-                <option value="GA">Goa</option>
-                <option value="GJ">Gujarat</option>
-                <option value="HR">Haryana</option>
-                <option value="HP">Himachal Pradesh</option>
-                <option value="JK">Jammu and Kashmir</option>
-                <option value="JH">Jharkhand</option>
-                <option value="KA">Karnataka</option>
-                <option value="KL">Kerala</option>
-                <option value="MP">Madhya Pradesh</option>
-                <option value="MH">Maharashtra</option>
-                <option value="MN">Manipur</option>
-                <option value="ML">Meghalaya</option>
-                <option value="MZ">Mizoram</option>
-                <option value="NL">Nagaland</option>
-                <option value="OR">Odisha</option>
-                <option value="PB">Punjab</option>
-                <option value="RJ">Rajasthan</option>
-                <option value="SK">Sikkim</option>
-                <option value="TN">Tamil Nadu</option>
-                <option value="TG">Telangana</option>
-                <option value="TR">Tripura</option>
-                <option value="UP">Uttar Pradesh</option>
-                <option value="UT">Uttarakhand</option>
-                <option value="WB">West Bengal</option>
-                <option value="AN">Andaman and Nicobar Islands</option>
-                <option value="CH">Chandigarh</option>
-                <option value="DN">Dadra and Nagar Haveli and Daman and Diu</option>
-                <option value="LD">Lakshadweep</option>
-                <option value="DL">Delhi</option>
-                <option value="PY">Puducherry</option>
+                <option>Andhra Pradesh</option>
+                <option>Arunachal Pradesh</option>
+                <option>Assam</option>
+                <option>Bihar</option>
+                <option>Chhattisgarh</option>
+                <option>Goa</option>
+                <option>Gujarat</option>
+                <option>Haryana</option>
+                <option>Himachal Pradesh</option>
+                <option>Jammu and Kashmir</option>
+                <option>Jharkhand</option>
+                <option>Karnataka</option>
+                <option>Kerala</option>
+                <option>Madhya Pradesh</option>
+                <option>Maharashtra</option>
+                <option>Manipur</option>
+                <option>Meghalaya</option>
+                <option>Mizoram</option>
+                <option>Nagaland</option>
+                <option>Odisha</option>
+                <option>Punjab</option>
+                <option>Rajasthan</option>
+                <option>Sikkim</option>
+                <option>Tamil Nadu</option>
+                <option>Telangana</option>
+                <option>Tripura</option>
+                <option>Uttar Pradesh</option>
+                <option>Uttarakhand</option>
+                <option>West Bengal</option>
+                <option>Andaman and Nicobar Islands</option>
+                <option>Chandigarh</option>
+                <option>Dadra and Nagar Haveli and Daman and Diu</option>
+                <option>Lakshadweep</option>
+                <option>Delhi</option>
+                <option>Puducherry</option>
+
               </select>
             </div>
             <div className="flex flex-col w-full">
@@ -115,7 +213,7 @@ const EventCheckout = () => {
                 className="border border-gray-400 px-2 py-1 rounded w-full"
                 placeholder="Number of guests"
                 value={numGuests}
-                onChange={(e) => setNumGuests(Math.max(1, parseInt(e.target.value) || 0))}
+                onChange={(e) => setGuests(Math.max(1, parseInt(e.target.value) || 0))}
                 min="1"
               />
             </div>
@@ -160,7 +258,8 @@ const EventCheckout = () => {
 
               <div className="font-bold text-lg mb-2">Total: ₹{totalPrice !== null ? totalPrice : 'Loading...'}</div>
             </div>
-            <button className="bg-[#90CCBA] text-white font-bold py-2 px-4 rounded w-full">
+            <button className="bg-[#90CCBA] text-white font-bold py-2 px-4 rounded w-full"
+            onClick={handleSubmit}>
               Pay now
             </button>
           </div>
