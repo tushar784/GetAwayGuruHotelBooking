@@ -88,7 +88,7 @@ const HolidayCheckout = () => {
           key,
           amount,
           currency: 'INR',
-          name: "Holiday Package Booking",
+          name: "GetAwayGuru Booking",
           description: 'Holiday Package Payment',
           order_id: razorpayOrderId,
           handler: async function (response) {

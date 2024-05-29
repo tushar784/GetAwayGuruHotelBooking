@@ -104,7 +104,7 @@ const CheckoutForm = () => {
           key,
           amount,
           currency: 'INR',
-          name: "Hotel Booking",
+          name: "GetAwayGuru Booking",
           description: 'Hotel Booking Payment',
           order_id: razorpayOrderId,
           handler: async function (response) {
