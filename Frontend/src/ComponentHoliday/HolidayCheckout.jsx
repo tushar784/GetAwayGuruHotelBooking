@@ -3,6 +3,8 @@ import Navbar from "../components/Navbar";
 import { SiPhonepe } from "react-icons/si";
 import axios from "axios";
 import { useParams,useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../Context/Auth_Context";
 
 const HolidayCheckout = () => {
@@ -102,7 +104,7 @@ const HolidayCheckout = () => {
 
             if (validateRes.data.msg === 'success') {
               toast.success('Payment successful');
-              navigate(`/orderplaced/${razorpayOrderId}`);
+              navigate(`/thankyou/${response.razorpay_order_id}`);
             } else {
               toast.error('Payment validation failed');
               navigate(`/checkout/${packageName}`);
@@ -379,6 +381,7 @@ const HolidayCheckout = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 };

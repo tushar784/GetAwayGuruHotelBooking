@@ -4,6 +4,8 @@ import { SiPhonepe } from "react-icons/si";
 import { useParams } from 'react-router-dom';
 import { AuthContext } from '../Context/Auth_Context';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from 'axios';
 
 const EventCheckout = () => {
@@ -91,7 +93,7 @@ const EventCheckout = () => {
   
             if (validateRes.data.msg === 'success') {
               toast.success('Payment successful');
-              navigate(`/orderplaced/${orderId}`);
+              navigate(`/thankyou/${response.razorpay_order_id}`);
             } else {
               toast.error('Payment validation failed');
               navigate(`/checkout/${eventName}`);
@@ -126,7 +128,7 @@ const EventCheckout = () => {
       <div className="flex flex-col md:flex-row md:ml-[12rem] mt-8 mx-[1rem]">
         <div className="flex flex-col w-full md:w-[30rem] mb-8 md:mb-0">
           <div className="flex flex-col md:flex-row mb-4">
-            <div className="flex flex-col w-full md:w-1/2 md:mr-4 mb-4 md:mb-0">
+            {/* <div className="flex flex-col w-full md:w-1/2 md:mr-4 mb-4 md:mb-0">
               <label htmlFor="email" className="block text-base font-semibold mb-2">
                 Email
               </label>
@@ -137,7 +139,7 @@ const EventCheckout = () => {
                 className="border border-gray-300 rounded-md px-4 py-2 w-full"
                 placeholder="Email"
               />
-            </div>
+            </div> */}
             <div className="flex flex-col w-full md:w-1/2">
               <label htmlFor="contact" className="block text-base font-semibold mb-2">
                 Contact Number
@@ -267,6 +269,7 @@ const EventCheckout = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 };

@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import { SiPhonepe } from "react-icons/si";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useParams,useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/Auth_Context";
 
@@ -119,7 +121,7 @@ const CheckoutForm = () => {
   
             if (validateRes.data.msg === 'success') {
               toast.success('Payment successful');
-              navigate(`/orderplaced/${orderId}`);
+              navigate(`/thankyou/${response.razorpay_order_id}`);
             } else {
               toast.error('Payment validation failed');
               navigate(`/checkout/${hotelName}`);
@@ -412,6 +414,7 @@ const CheckoutForm = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 };

@@ -17,6 +17,7 @@ import HolidayOrderHistory from '../ComponentHoliday/HolidayOrderHistory';
 import Events from '../Pages/Events'
 import EventsSinglePage from '../ComponentEvents/EventsSinglePage';
 import EventCheckout from '../ComponentEvents/EventCheckout';
+import ThankyouPage from '../components/ThankyouPage';
 
 
 
@@ -53,8 +54,9 @@ const Routing = () => {
             <Route path="/events/checkout/:eventName" element={<EventCheckout />} />
 
 
-            <Route exact path='/profile' element={<ProfileSection />} />
-            <Route exact path='/contact' element={<ContactUs />} />
+            <Route path='/profile' element={<ProfileSection />} />
+            <Route path='/contact' element={<ContactUs />} />
+            <Route path='/thankyou/:razorpay_order_id' element={<ThankyouPage />} />
 
 
           </Routes>

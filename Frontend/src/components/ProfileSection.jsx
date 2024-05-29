@@ -1,19 +1,28 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import Navbar from './Navbar';
 import { AuthContext } from '../Context/Auth_Context';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
-function ProfileSection({ updateProfilePic }) {
+function ProfileSection() {
     const { user, logout } = useContext(AuthContext);
-    const [profilePic, setProfilePic] = useState('src/assets/img/profile.png');
+    const [profilePic, setProfilePic] = useState('');
     const [editingField, setEditingField] = useState(null);
     const [formData, setFormData] = useState({
-        username: user.username,
+        username: user?.username,
         contactNumber: '',
-        email: user.email,
+        email: user?.email,
     });
+
+    useEffect(() => {
+        const storedProfilePic = localStorage.getItem('profilePic');
+        if (storedProfilePic) {
+            setProfilePic(storedProfilePic);
+        } else {
+            setProfilePic('src/assets/img/dummyprofileimg.png');
+        }
+    }, []);
 
     const handleChange = (event) => {
         const { value } = event.target;
@@ -27,7 +36,7 @@ function ProfileSection({ updateProfilePic }) {
 
         reader.onloadend = () => {
             setProfilePic(reader.result);
-            updateProfilePic(reader.result); // Update the profile picture in Navbar
+            localStorage.setItem('profilePic', reader.result); // Store the profile picture in localStorage
         };
 
         if (file) {
@@ -104,7 +113,7 @@ function ProfileSection({ updateProfilePic }) {
                                     <input
                                         type="text"
                                         id="name"
-                                        value={formData.username}
+                                        value={user?.username}
                                         name="name"
                                         className="mt-1 w-full border-b-2 border-gray-300 md:mt-[0.5rem] bg-transparent focus:outline-none focus:border-[#90CCBA]"
                                         placeholder="Enter Your Name"
@@ -117,7 +126,7 @@ function ProfileSection({ updateProfilePic }) {
                                     </span>
                                 </div>
     
-                                <div className="mb-4 relative md:mt-[1.5rem]">
+                                {/* <div className="mb-4 relative md:mt-[1.5rem]">
                                     <label htmlFor="number" className="block text-sm font-medium text-gray-700">Contact number</label>
                                     <input
                                         type="tel"
@@ -131,13 +140,12 @@ function ProfileSection({ updateProfilePic }) {
                                         onChange={handleChange}
                                         value={formData.contactNumber}
                                         readOnly={editingField !== 'contactNumber'}
-                                        // onChange={(e) => handleInputChange(e, 'contactNumber')}
                                         required
                                     />
                                     <span className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                         <FontAwesomeIcon icon={faEdit} className="cursor-pointer" onClick={() => handleEdit('contactNumber')} />
                                     </span>
-                                </div>
+                                </div> */}
     
                                 <div className="mb-4 relative md:mt-[1.5rem]">
                                     <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email address</label>
@@ -145,7 +153,7 @@ function ProfileSection({ updateProfilePic }) {
                                         type="email"
                                         id="email"
                                         name="email"
-                                        value={formData.email}
+                                        value={user?.email}
                                         className="mt-1 w-full border-b-2 border-gray-300 md:mt-[0.5rem] bg-transparent focus:outline-none focus:border-[#90CCBA]"
                                         placeholder="Enter Your Email"
                                         readOnly={editingField !== 'email'}
@@ -181,9 +189,10 @@ function ProfileSection({ updateProfilePic }) {
                 </div>
             </div>
         </>
-    )
+    );
 }
 export default ProfileSection;
+
 
 
 
