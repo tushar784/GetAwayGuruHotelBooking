@@ -23,33 +23,28 @@ const EventsCard = ({ event, selectedCategory }) => {
     
     <Link to={`/events/name/${event.Event_Name}`} className="block">
       <div
-        className={`bg-white w-[18rem]  md:mb-[3rem] md:m-0 m-4 md:w-[19rem] shadow font-poppins rounded-lg overflow-hidden mb-4 transition-all duration-300 transform hover:scale-105 ${
+        className={`bg-white w-[22rem] md:mb-[3rem] md:m-0 m-4 md:w-[19rem] h-[34rem] shadow font-poppins rounded-lg overflow-hidden mb-4 transition-all duration-300 transform hover:scale-105 ${
           expanded ? 'md:h-auto' : 'md:h-[39rem]'
         }`}
       >
-        <div className="h-auto mt-2 ml-2 rounded-lg w-full mr-2">
+        <div className="h-auto mt-2 md:ml-2 ml-[2.5rem] rounded-lg w-full mr-2 md:mt-0 mt-[2rem]">
           <img
             src={event.Card_Img}
             alt={event.Event_Name}
-            className="object-center w-[16rem] h-[12rem] md:h-[25rem] md:w-[17rem] md:pt-2 rounded m-2"
+            className="md:object-center w-[16rem] h-[19rem] md:h-[25rem] md:w-[17rem] md:pt-2 rounded m-2"
           />
         </div>
-        <div className="p-4 flex flex-col w-full">
+        <div className="p-4 flex flex-col w-full md:ml-0 ml-[2.5rem] ">
           <h2 className="text-xl font-semibold mb-2 text-black">{event.Event_Name}</h2>
           <p className="text-sm mb-2 text-gray-500">{event.Event_Category}</p>
           <div className="flex items-center mb-2">
             <ImLocation2 className="text-1xl mt-[4px] mr-2" />
             <p className="text-black">{event.Location}</p>
           </div>
-       
-          {/* <div className="flex justify-between items-center mt-2"> */}
+          
           <p className='text-gray-500 font-semibold mb-2 text-black'>{event.Venue_addr}</p>
-            <p className="text-gray-500 text-lg "> {event.Price} onwards</p>
+            <p className="text-gray-500 text-lg "> ₹ {event.Price} onwards</p>
 
-            {/* <button className="bg-[#90CCBA] hover:bg-[#46c79f] text-white font-bold py-2 px-4 rounded">
-              Book Now
-            </button> */}
-          {/* </div> */}
         </div>
       </div>
     </Link>

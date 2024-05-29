@@ -12,7 +12,7 @@ function HolidayDayPackage({ singlePackage }) {
               {singlePackage.Day_1}
             </p>
             <img
-              src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/04/11/12/package-holiday-credit-grafner.jpg?width=1200"
+              src={singlePackage.Day1_img}
               className="w-full lg:w-80 h-56 rounded-xl object-cover"
               alt="Coastal town in Greece"
             />
@@ -27,7 +27,7 @@ function HolidayDayPackage({ singlePackage }) {
               {singlePackage.Day_2}
             </p>
             <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREpRT9PoOH8YGK8GBBV1W6Eos-PgGxVYFakLbaoQje_2AyngIX3sxkkSqgFhfqUwxQQnc&usqp=CAU"
+              src={singlePackage.Day2_img}
               className="w-full lg:w-80 h-56 rounded-xl object-cover"
               alt="Coastal town in Greece"
             />
@@ -42,7 +42,7 @@ function HolidayDayPackage({ singlePackage }) {
               {singlePackage.Day_3}
             </p>
             <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRB19aqJJgiX8ByB7XRBNEhlsIW5LGFPnto4m4QDmRN3w9srMPcT6-lB9NsG9svI7rYamY&usqp=CAU"
+              src={singlePackage.Day3_img}
               className="w-full lg:w-80 h-56 rounded-xl object-cover"
               alt="Coastal town in Greece"
             />
@@ -57,7 +57,7 @@ function HolidayDayPackage({ singlePackage }) {
               {singlePackage.Day_4}
             </p>
             <img
-              src="https://5.imimg.com/data5/SELLER/Default/2023/6/315657859/VW/MS/HX/9333012/goa-combo-package-250x250.jpg"
+              src={singlePackage.Day4_img}
               className="w-full lg:w-80 h-56 rounded-xl object-cover"
               alt="Coastal town in Greece"
             />
@@ -72,7 +72,7 @@ function HolidayDayPackage({ singlePackage }) {
               {singlePackage.Day_5}
             </p>
             <img
-              src="https://www.travelguru.com/holiday-packages/images/goa.jpg"
+              src={singlePackage.Day5_img}
               className="w-full lg:w-80 h-56 rounded-xl object-cover"
               alt="Coastal town in Greece"
             />

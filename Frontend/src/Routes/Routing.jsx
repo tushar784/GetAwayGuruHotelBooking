@@ -41,7 +41,7 @@ const Routing = () => {
             <Route exact path='/holidaypackages/location/:selectedLocation' element={<Holidays />} />
             <Route exact path='/holidaypackages/:packageName' element={<HolidayInfoPage /> }/>
             <Route exact path='/holidaypackages/checkout/:packageName' element={<HolidayCheckout/>} />
-            <Route exact path='/packagebooking/history/:email' element={<HolidayOrderHistory/>} />
+            <Route exact path='/bookinghistory' element={<HolidayOrderHistory/>} />
 
        
             

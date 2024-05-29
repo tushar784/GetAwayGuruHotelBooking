@@ -380,7 +380,7 @@ const CheckoutForm = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="bg-[#90CCBA] text-white font-bold py-2 px-4 rounded"
+              className="bg-[#90CCBA] hover:bg-[#46c79f] text-white font-bold py-2 px-4 rounded"
               onClick={handleSubmit}
             >
               Submit

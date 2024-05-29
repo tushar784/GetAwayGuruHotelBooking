@@ -236,7 +236,7 @@ const HotelSearchBar = ({ setHotels, selectedLocation: propSelectedLocation }) =
           </div>
         )}
       </div>
-      <button onClick={handleSearch} className="search-button md:bg-[#90CCBA] md:text-white md:font-bold md:h-16 md:pl-6 md:pr-6 md:mt-[-0.7rem] md:mr-[-4.5rem] md:border-[1px] md:rounded-r-lg">Search</button>
+      <button onClick={handleSearch} className="bg-[#90CCBA] hover:bg-[#46c79f] md:text-white md:font-bold md:h-16 md:pl-6 md:pr-6 md:mt-[-0.7rem] md:mr-[-4.5rem] md:border-[1px] md:rounded-r-lg">Search</button>
       </div>
         {/* Mobile view  */}
     
@@ -321,12 +321,12 @@ const HotelSearchBar = ({ setHotels, selectedLocation: propSelectedLocation }) =
             </div>
 
             <button
-              type="button"
-              className="w-full bg-[#90CCBA] text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-              onClick={handleSearch}
-            >
-              Search
-            </button>
+                type="button"
+                className="bg-[#90CCBA] hover:bg-[#46c79f] w-full text-white font-bold py-2 px-4 rounded-md "
+              >
+                Search
+              </button>
+
 
             {openOptions && (
               <div className="options absolute bg-white shadow-md rounded-xl mt-2">
