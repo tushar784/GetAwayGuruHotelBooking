@@ -63,11 +63,14 @@ const CheckoutForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    // Validate form inputs
-    // if (!validateForm()) {
-    //   return;
-    // }
+
+    if (!user) {
+      toast.info('Please log in to proceed with the payment.');
+      setTimeout(() => {
+        navigate('/login');
+      }, 2000); // Delay the navigation to allow the toast message to be shown
+      return;
+    }
   
     try {
       const url = import.meta.env.VITE_BASE_URL;
