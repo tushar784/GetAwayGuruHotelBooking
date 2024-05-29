@@ -55,9 +55,12 @@ function HolidayOrderHistory() {
       <Navbar />
       <div className="flex h-screen">
         <div className="sticky top-0 left-0 hidden md:block w-full md:w-[18rem] md:h-[12rem] rounded md:ml-[2rem] md:mt-[3rem] bg-[#90CCBA] overflow-y-auto">
+
+          <Link to="/profile">
           <h2 className="text-xl font-semibold text-white font-poppins mt-[2rem] md:mt-[2rem] ml-4">
             Profile
           </h2>
+          </Link>
           <p className="text-xl text-white font-poppins mt-[1rem] ml-4">Order history</p>
           <Link to="/" className="mb-12" style={{ color: '#90CCBA' }}>
             <button
