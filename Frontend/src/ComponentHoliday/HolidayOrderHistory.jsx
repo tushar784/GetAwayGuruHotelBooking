@@ -90,10 +90,11 @@ function HolidayOrderHistory() {
                     onClick={() => toggleDropdown(index, 'package')}
                   >
                     <div className="text-gray-500">
-                      <p>Order no: {booking.order_id}</p>
+                      <p>Order no: {booking.razorpay_order_id}</p>
+                      <p>Transaction id: {booking.razorpay_payment_id}</p>
                       <div className="font-semibold text-lg text-black">
                         <h3 className="text-lg">{booking.Packages_Name}</h3>
-                        <p>₹{booking.price}</p>
+                        <p>₹{booking.amount}</p>
                       </div>
                     </div>
                     <div className="ml-auto">{booking.isOpen ? <FaChevronUp /> : <FaChevronDown />}</div>
@@ -101,14 +102,14 @@ function HolidayOrderHistory() {
                   {booking.isOpen && (
                     <div className="font-semibold p-4 flex justify-between ml-[6rem]">
                       <div>
-                        <p>Check-in:</p>
-                        <p>Check-out:</p>
+                        <p>Booking date:</p>
+                        <p>Departure date:</p>
                         <p>Guests:</p>
                         <p>Rooms:</p>
                       </div>
                       <div className="text-right mr-2">
-                        <p>{booking.checkInDate}</p>
-                        <p>{booking.checkOutDate}</p>
+                        <p>{booking.orderDate}</p>
+                        <p>{booking.Departure_Date}</p>
                         <p>{booking.numberOfGuests}</p>
                         <p>{booking.numberOfRooms}</p>
                       </div>
@@ -136,11 +137,12 @@ function HolidayOrderHistory() {
                     onClick={() => toggleDropdown(index, 'hotel')}
                   >
                     <div className="text-gray-500">
-                      <p>Order no: {booking.order_id}</p>
+                      <p>Order no: {booking.razorpay_order_id}</p>
+                      <p>Order no: {booking.razorpay_payment_id}</p>
                       <div className="font-semibold text-lg text-black">
                         <h3 className="text-lg">{booking.Hotel_Name}</h3>
                         <h3 className="text-lg">{booking.room_Type}</h3>
-                        <p>₹{booking.price}</p>
+                        <p>₹{booking.amount}</p>
                       </div>
                     </div>
                     <div className="ml-auto">{booking.isOpen ? <FaChevronUp /> : <FaChevronDown />}</div>
@@ -148,12 +150,14 @@ function HolidayOrderHistory() {
                   {booking.isOpen && (
                     <div className="font-semibold p-4 flex justify-between ml-[6rem]">
                       <div>
+                        <p>Booking date:</p>
                         <p>Check-in:</p>
                         <p>Check-out:</p>
                         <p>Guests:</p>
                         <p>Rooms:</p>
                       </div>
                       <div className="text-right mr-2">
+                        <p>{booking.orderDate}</p>
                         <p>{booking.checkInDate}</p>
                         <p>{booking.checkOutDate}</p>
                         <p>{booking.numberOfGuests}</p>

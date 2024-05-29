@@ -88,7 +88,7 @@ const HolidayCheckout = () => {
           key,
           amount,
           currency: 'INR',
-          name: "Holiday Package Booking",
+          name: "GetAwayGuru Booking",
           description: 'Holiday Package Payment',
           order_id: razorpayOrderId,
           handler: async function (response) {
@@ -98,7 +98,7 @@ const HolidayCheckout = () => {
               razorpay_signature: response.razorpay_signature,
             };
 
-            const validateRes = await axios.post(`${url}/api/order/validate`, body);
+            const validateRes = await axios.post(`${url}/api/order/validatepackageorder`, body);
 
             if (validateRes.data.msg === 'success') {
               toast.success('Payment successful');

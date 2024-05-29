@@ -27,7 +27,7 @@ const eventsSchema = new Schema({
     required: true,
   },
   price: {
-    type: String,
+    type: Number,
     required: true,
   },
   artist_name: {
