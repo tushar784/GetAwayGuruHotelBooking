@@ -49,8 +49,8 @@ const Routing = () => {
             {/* For Events Route */}
             <Route path="/events" element={<Events />} />
             <Route path="/events/name/:eventName" element={<EventsSinglePage />} />
-            {/* <Route path="/ev" element={<EventsSinglePage />} /> */}
-            <Route path='/checkoutevent' element={<EventCheckout/>}/>
+            {/* <Route path='/checkoutevent' element={<EventCheckout/>}/> */}
+            <Route path="/events/checkout/:eventName" element={<EventCheckout />} />
 
 
             <Route exact path='/profile' element={<ProfileSection />} />

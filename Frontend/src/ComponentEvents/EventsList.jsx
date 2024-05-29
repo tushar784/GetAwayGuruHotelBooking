@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // Import Link
 import EventsCard from './EventsCard';
 import DropdownEvents from './DropdownEvents';
+import EventCheckout from './EventCheckout';
 
 const EventsList = ({ events }) => {
   const [selectedCategory, setSelectedCategory] = useState('');

@@ -31,7 +31,7 @@ function Navbar() {
               <Link to="/holidaypackages" className="">
               Holiday Packages
               </Link>
-              <Link to="" className="">
+              <Link to="/events" className="">
                 Events
               </Link>
               <Link to="/contact" className="">
