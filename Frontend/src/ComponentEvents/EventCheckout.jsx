@@ -256,7 +256,7 @@ const EventCheckout = () => {
 
               <div className="font-bold text-lg mb-2">Total: ₹{totalPrice !== null ? totalPrice : 'Loading...'}</div>
             </div>
-            <button className="bg-[#90CCBA] hover:bg-[#46c79f]  text-white font-bold py-2 px-4 rounded w-full">
+            <button className="bg-[#90CCBA] hover:bg-[#46c79f]  text-white font-bold py-2 px-4 rounded w-full" onClick={handleSubmit}>
               Pay now
             </button>
           </div>
