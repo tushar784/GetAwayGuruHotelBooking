@@ -1,103 +1,67 @@
-// import React from 'react';
-// import EventsCard from './EventsCard';
-
-// const EventsList = () => {
-//   const events = [
-//     {
-//       title: 'Papon Live in Concert',
-//       date: 'Sat, 25 May',
-//       venue: 'Infiniti Malad: Mumbai',
-//       imageSrc: 'papon-live.jpg',
-//     },
-//     {
-//       title: 'Clown Town at Nexus Seawoods',
-//       date: 'Sat, 25 May onwards',
-//       venue: 'Seawoods',
-//       imageSrc: 'clown-town.jpg',
-//     },
-//     {
-//       title: 'CANDYCITY',
-//       date: 'Sat, 25 May onwards',
-//       venue: 'Phoenix Marketcity...',
-//       imageSrc: 'candy-city.jpg',
-//     },
-//     {
-//       title: 'Dhandho - Munawar Faruqui Live',
-//       date: 'Sun, 2 Jun',
-//       venue: 'Faruqui Live',
-//       imageSrc: 'dhandho.jpg',
-//     },
-//   ];
-
-//   const categories = [
-//     'Comedy Shows',
-//     'Workshops',
-//     'Music Shows',
-//     'Kids',
-//     'Performances',
-//     'Meetups',
-//     'Screening',
-//     'Exhibitions',
-//     'Conferences',
-//     'Award shows',
-//     'Spirituality',
-//     'Talks',
-//     'Cruises',
-//   ];
-
-//   return (
-//     <div className="container mx-auto p-4">
-//       <h1 className="text-3xl font-bold mb-4">Events In Mumbai</h1>
-//       <div className="flex flex-wrap mb-4">
-//         {categories.map((category, index) => (
-//           <span
-//             key={index}
-//             className="bg-gray-200 text-gray-700 rounded-full px-3 py-1 mr-2 mb-2"
-//           >
-//             {category}
-//           </span>
-//         ))}
-//       </div>
-//       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-//         {events.map((event, index) => (
-//           <EventsCard key={index} event={event} />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default EventsList;
-
-
-
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link
 import EventsCard from './EventsCard';
+import DropdownEvents from './DropdownEvents';
+import EventCheckout from './EventCheckout';
 
 const EventsList = ({ events }) => {
-  const categories = [
-    'Comedy Shows', 'Workshops', 'Music Shows', 'Kids', 'Performances', 'Meetups',
-    'Screening', 'Exhibitions', 'Conferences', 'Award shows', 'Spirituality', 'Talks', 'Cruises',
-  ];
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedLocation, setSelectedLocation] = useState('All Locations');
+
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+  };
+
+  const handleLocationSelect = (location) => {
+    setSelectedLocation(location);
+    setSelectedCategory(''); // Reset the category when location changes
+  };
+
+  const filteredEvents = events.filter((event) => {
+    const categoryMatch =
+      selectedCategory && event.Event_Category.toLowerCase() === selectedCategory.toLowerCase();
+    const locationMatch = selectedLocation === 'All Locations' || event.Location.toLowerCase() === selectedLocation.toLowerCase();
+    return locationMatch && (!selectedCategory || categoryMatch);
+  });
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4">Events In {events.length ? events[0].Location : 'Selected Location'}</h1>
-      <div className="flex flex-wrap mb-4">
-        {categories.map((category, index) => (
-          <span key={index} className="bg-gray-200 text-gray-700 rounded-full px-3 py-1 mr-2 mb-2">
-            {category}
-          </span>
-        ))}
+    <div className="container md:mx-auto font-poppins md:pl-[9rem] md:pr-[5rem] md:pt-[2rem]">
+      <div className="mb-4 flex justify-between items-center">
+        <div>
+          <button
+            className={`py-2 px-4 border border-gray-400 rounded-full transition-colors duration-300 ${
+              selectedCategory === 'comedy shows'
+                ? 'bg-teal-500 text-white'
+                : 'bg-white text-teal-600 hover:bg-teal-500 hover:text-white'
+            }`}
+            onClick={() => handleCategorySelect('comedy shows')}
+          >
+            Comedy Shows
+          </button>
+          <button
+            className={`py-2 px-4 border border-gray-400 rounded-full ml-[1rem] transition-colors duration-300 ${
+              selectedCategory === 'music shows'
+                ? 'bg-teal-500 text-white'
+                : 'bg-white text-teal-600 hover:bg-teal-500 hover:text-white'
+            }`}
+            onClick={() => handleCategorySelect('music shows')}
+          >
+            Music Shows
+          </button>
+        </div>
+        <DropdownEvents onSelectLocation={handleLocationSelect} selectedLocation={selectedLocation} />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {events.map((event, index) => (
-          <EventsCard key={event.Event_Id} event={event} />
-        ))}
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+        {Array.isArray(filteredEvents) &&
+          filteredEvents.map((event) => (
+            <Link key={event._id} to={`/events/${event.Event_Name.toLowerCase().replace(/\s+/g, '-')}`}>
+              <EventsCard event={event} selectedCategory={selectedCategory} />
+            </Link>
+          ))}
       </div>
     </div>
   );
 };
 
 export default EventsList;
-

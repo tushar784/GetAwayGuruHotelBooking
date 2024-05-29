@@ -1,131 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { ImLocation2 } from 'react-icons/im';
 
-const EventsCard = ({ event }) => {
+const EventsCard = ({ event, selectedCategory }) => {
+  const [expanded, setExpanded] = useState(false);
+  const facilities = typeof event.Facilities === 'string' ? event.Facilities.split(',') : [event.Facilities];
+  const visibleFacilities = expanded ? facilities : facilities.slice(0, 3);
+
+  const handleToggleExpand = (e) => {
+    e.preventDefault();
+    setExpanded(!expanded);
+  };
+  const shouldRenderCard =
+    selectedCategory === '' ||
+    event.Event_Category.toLowerCase() === selectedCategory.toLowerCase();
+
+  if (!shouldRenderCard) {
+    return null; // Don't render the card if the category doesn't match
+  }
+
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden">
-      <img
-        src={event.imageSrc}
-        alt={event.title}
-        className="w-full h-48 object-cover"
-      />
-      <div className="p-4">
-        <h2 className="text-lg font-bold mb-2">{event.Event_Name}</h2>
-        <p className="text-gray-600">{event.Location}</p>
-        <p className="text-gray-600">{event.Date}</p>
-        <p className="text-gray-600">{event.Venue_addr}</p>
+    
+    <Link to={`/events/name/${event.Event_Name}`} className="block">
+      <div
+        className={`bg-white w-[18rem]  md:mb-[3rem] md:m-0 m-4 md:w-[19rem] shadow font-poppins rounded-lg overflow-hidden mb-4 transition-all duration-300 transform hover:scale-105 ${
+          expanded ? 'md:h-auto' : 'md:h-[39rem]'
+        }`}
+      >
+        <div className="h-auto mt-2 ml-2 rounded-lg w-full mr-2">
+          <img
+            src={event.Card_Img}
+            alt={event.Event_Name}
+            className="object-center w-[16rem] h-[12rem] md:h-[25rem] md:w-[17rem] md:pt-2 rounded m-2"
+          />
+        </div>
+        <div className="p-4 flex flex-col w-full">
+          <h2 className="text-xl font-semibold mb-2 text-black">{event.Event_Name}</h2>
+          <p className="text-sm mb-2 text-gray-500">{event.Event_Category}</p>
+          <div className="flex items-center mb-2">
+            <ImLocation2 className="text-1xl mt-[4px] mr-2" />
+            <p className="text-black">{event.Location}</p>
+          </div>
+       
+          {/* <div className="flex justify-between items-center mt-2"> */}
+          <p className='text-gray-500 font-semibold mb-2 text-black'>{event.Venue_addr}</p>
+            <p className="text-gray-500 text-lg "> {event.Price} onwards</p>
+
+            {/* <button className="bg-[#90CCBA] hover:bg-[#46c79f] text-white font-bold py-2 px-4 rounded">
+              Book Now
+            </button> */}
+          {/* </div> */}
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
 export default EventsCard;
-
-
-
-
-
-
-// import React from 'react';
-
-// function EventsCard() {
-//   return (
-//     <div className="container mx-auto p-4">
-//       <h1 className="text-3xl font-bold mb-4">Events In Mumbai</h1>
-//       <div className="flex flex-wrap mb-4">
-//         <span className="bg-gray-200 text-gray-700 rounded-full px-3 py-1 mr-2 mb-2">
-//           Comedy Shows
-//         </span>
-//         <span className="bg-gray-200 text-gray-700 rounded-full px-3 py-1 mr-2 mb-2">
-//           Workshops
-//         </span>
-//         <span className="bg-gray-200 text-gray-700 rounded-full px-3 py-1 mr-2 mb-2">
-//           Music Shows
-//         </span>
-//         <span className="bg-gray-200 text-gray-700 rounded-full px-3 py-1 mr-2 mb-2">
-//           Kids
-//         </span>
-//         <span className="bg-gray-200 text-gray-700 rounded-full px-3 py-1 mr-2 mb-2">
-//           Performances
-//         </span>
-//         <span className="bg-gray-200 text-gray-700 rounded-full px-3 py-1 mr-2 mb-2">
-//           Meetups
-//         </span>
-//         <span className="bg-gray-200 text-gray-700 rounded-full px-3 py-1 mr-2 mb-2">
-//           Screening
-//         </span>
-//         <span className="bg-gray-200 text-gray-700 rounded-full px-3 py-1 mr-2 mb-2">
-//           Exhibitions
-//         </span>
-//         <span className="bg-gray-200 text-gray-700 rounded-full px-3 py-1 mr-2 mb-2">
-//           Conferences
-//         </span>
-//         <span className="bg-gray-200 text-gray-700 rounded-full px-3 py-1 mr-2 mb-2">
-//           Award shows
-//         </span>
-//         <span className="bg-gray-200 text-gray-700 rounded-full px-3 py-1 mr-2 mb-2">
-//           Spirituality
-//         </span>
-//         <span className="bg-gray-200 text-gray-700 rounded-full px-3 py-1 mr-2 mb-2">
-//           Talks
-//         </span>
-//         <span className="bg-gray-200 text-gray-700 rounded-full px-3 py-1 mr-2 mb-2">
-//           Cruises
-//         </span>
-//       </div>
-//       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-//         <div className="bg-white rounded-lg shadow-md overflow-hidden">
-//           <img
-//             src="papon-live.jpg"
-//             alt="Papon Live in Concert"
-//             className="w-full h-48 object-cover"
-//           />
-//           <div className="p-4">
-//             <h2 className="text-lg font-bold mb-2">Papon Live in Concert</h2>
-//             <p className="text-gray-600">Sat, 25 May</p>
-//             <p className="text-gray-600">Infiniti Malad: Mumbai</p>
-//           </div>
-//         </div>
-//         <div className="bg-white rounded-lg shadow-md overflow-hidden">
-//           <img
-//             src="clown-town.jpg"
-//             alt="Clown Town at Nexus Seawoods"
-//             className="w-full h-48 object-cover"
-//           />
-//           <div className="p-4">
-//             <h2 className="text-lg font-bold mb-2">
-//               Clown Town at Nexus Seawoods
-//             </h2>
-//             <p className="text-gray-600">Sat, 25 May onwards</p>
-//             <p className="text-gray-600">Seawoods</p>
-//           </div>
-//         </div>
-//         <div className="bg-white rounded-lg shadow-md overflow-hidden">
-//           <img
-//             src="candy-city.jpg"
-//             alt="CANDYCITY"
-//             className="w-full h-48 object-cover"
-//           />
-//           <div className="p-4">
-//             <h2 className="text-lg font-bold mb-2">CANDYCITY</h2>
-//             <p className="text-gray-600">Sat, 25 May onwards</p>
-//             <p className="text-gray-600">Phoenix Marketcity...</p>
-//           </div>
-//         </div>
-//         <div className="bg-white rounded-lg shadow-md overflow-hidden">
-//           <img
-//             src="dhandho.jpg"
-//             alt="Dhandho - Munawar Faruqui Live"
-//             className="w-full h-48 object-cover"
-//           />
-//           <div className="p-4">
-//             <h2 className="text-lg font-bold mb-2">Dhandho - Munawar Faruqui Live</h2>
-//             <p className="text-gray-600">Sun, 2 Jun</p>
-//             <p className="text-gray-600">Faruqui Live</p>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default EventsCard;
