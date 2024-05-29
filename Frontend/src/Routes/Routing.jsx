@@ -10,6 +10,7 @@ import HolidayHome from '../Pages/HolidayHome';
 import ProfileSection from '../components/ProfileSection';
 import ContactUs from '../components/ContactUs';
 import HolidayPackagesInfo from '../ComponentHoliday/HolidayPackagesInfo';
+import ThankyouPage from '../Pages/ThankyouPage';
 
 const Routing = () => {
   return (
@@ -25,6 +26,7 @@ const Routing = () => {
             <Route path="/checkout/:hotelName" element={<CheckoutForm />} />
             <Route exact path="/contactpage" element={<ContactUs />} /> {/* Use ContactPage instead of Contact */}
             <Route exact path="/holidaypackagesinfo" element={<HolidayPackagesInfo />} /> 
+            <Route path="/thankyoupage" element={<ThankyouPage />} /> 
 
 
 
