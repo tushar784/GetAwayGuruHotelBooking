@@ -25,16 +25,16 @@ function Navbar() {
         
           <nav className="hidden md:flex md:ml-[18vw]"> 
             <div className="flex gap-10 font-semibold text-gray-900">
-              <Link to="/" className="">
+              <Link to="/" className="text-black hover:text-[#46c79f] ">
               Hotels
-              </Link>
-              <Link to="/holidaypackages" className="">
+              </Link> 
+              <Link to="/holidaypackages" className="text-black hover:text-[#46c79f]">
               Holiday Packages
               </Link>
-              <Link to="/events" className="">
+              <Link to="/events" className="text-black hover:text-[#46c79f]">
                 Events
               </Link>
-              <Link to="/contact" className="">
+              <Link to="/contact" className="text-black hover:text-[#46c79f]">
                 Contact Us
               </Link>
              
@@ -89,7 +89,7 @@ function Navbar() {
                     <Link to="/" >
                     <button
                       onClick={logout}
-                      className="text-gray-700 w-full px-6 py-2 text-left text-sm"
+                      className="text-gray-700 hover:bg-red-200  w-full px-6 py-2 text-left text-sm"
                       role="menuitem"
                       tabIndex="-1"
                       id="menu-item-3"
@@ -104,7 +104,7 @@ function Navbar() {
           ) : (
             <Link to="/login" >
               <button
-                className="flex items-center justify-center bg-[#90CCBA] text-white font-bold py-2 md:px-8 px-[6px] rounded transition-colors duration-300">                
+                className="bg-[#90CCBA] hover:bg-[#46c79f] flex items-center justify-center text-white font-bold py-2 md:px-8 px-[6px] rounded transition-colors duration-300">                
                Login
               </button>
             </Link>
@@ -149,35 +149,20 @@ function Navbar() {
               Holiday Packages
             </Link>
             <Link
-              to=""
+              to="/events"
               className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100 transition duration-300"
               onClick={() => setMobileMenuOpen(false)}
             >
               Events
             </Link>
             <Link
-              to=""
+              to="/bookinghistory"
               className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100 transition duration-300"
               onClick={() => setMobileMenuOpen(false)}
             >
               Order History
             </Link>
-          
-            {/* <Link
-              to="/cart"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100 transition duration-300"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Cart
-            </Link>
-            <Link
-              to="/contact"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100 transition duration-300"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Contact
-            </Link> */}
-            
+                      
             {user ? (
               <button
                 onClick={logout}
@@ -188,8 +173,7 @@ function Navbar() {
               >
                 Logout
               </button>
-              //   </div>
-              // </div>
+            
             ) : (
               <Link
                 onClick={() => setMobileMenuOpen(false)}

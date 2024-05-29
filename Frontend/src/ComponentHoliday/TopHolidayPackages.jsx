@@ -80,7 +80,7 @@ const TopHolidayPackages = ({selectedLocation,setHoliday})=> {
   };
 
   return (
-    <div className="container mx-auto px-4 py-4 relative">
+    <div className="container mx-auto px-4 py-4  relative">
       <h1 className="text-2xl font-bold mb-4">Top Holiday Packages</h1>
       <Slider {...settings}>
         {/* ... (image slides) */}

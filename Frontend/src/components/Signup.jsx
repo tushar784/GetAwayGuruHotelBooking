@@ -125,7 +125,7 @@ function SignUp() {
           </div>
           <button
             type="submit"
-            className="w-full bg-teal-500 text-white font-semibold py-2 px-4 rounded hover:bg-teal-600 transition duration-200"
+            className="w-full bg-[#90CCBA] hover:bg-[#46c79f] text-white font-semibold py-2 px-4 rounded transition duration-200"
           >
             Sign up
           </button>

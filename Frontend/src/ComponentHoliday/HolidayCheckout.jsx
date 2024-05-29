@@ -348,7 +348,7 @@ const HolidayCheckout = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="bg-[#90CCBA] text-white font-bold py-2 px-4 rounded"
+              className="bg-[#90CCBA] hover:bg-[#46c79f] text-white font-bold py-2 px-4 rounded"
               onClick={handleSubmit}
             >
               Submit
@@ -374,7 +374,7 @@ const HolidayCheckout = () => {
               <div className="mb-2">Departure Date: {departure}</div> 
               <div className="mb-2">No. of rooms: {rooms}</div>
               <div className="mb-2">No. of guest: {guests}</div>
-              <div className="font-bold text-lg mb-2">Price: {price}</div>
+              <div className="font-bold text-lg mb-2">Price: ₹ {price}</div>
             </div>
           </div>
         </div>

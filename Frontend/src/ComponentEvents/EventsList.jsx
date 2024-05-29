@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link
+import { Link } from 'react-router-dom';
 import EventsCard from './EventsCard';
 import DropdownEvents from './DropdownEvents';
-import EventCheckout from './EventCheckout';
 
 const EventsList = ({ events }) => {
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -25,11 +24,11 @@ const EventsList = ({ events }) => {
   });
 
   return (
-    <div className="container md:mx-auto font-poppins md:pl-[9rem] md:pr-[5rem] md:pt-[2rem]">
-      <div className="mb-4 flex justify-between items-center">
-        <div>
+    <div className="container mx-auto font-poppins px-4 py-4 md:pl-[9rem] md:pr-[5rem] md:pt-[2rem]">
+      <div className="mb-4 flex flex-col md:flex-row justify-between items-center">
+        <div className="mb-4 md:mb-0">
           <button
-            className={`py-2 px-4 border border-gray-400 rounded-full transition-colors duration-300 ${
+            className={`py-2 px-4 border border-gray-400 rounded-full transition-colors duration-300 mb-2 md:mb-0 md:mr-2 ${
               selectedCategory === 'comedy shows'
                 ? 'bg-teal-500 text-white'
                 : 'bg-white text-teal-600 hover:bg-teal-500 hover:text-white'
@@ -39,7 +38,7 @@ const EventsList = ({ events }) => {
             Comedy Shows
           </button>
           <button
-            className={`py-2 px-4 border border-gray-400 rounded-full ml-[1rem] transition-colors duration-300 ${
+            className={`py-2 px-4 border border-gray-400 rounded-full transition-colors duration-300 ${
               selectedCategory === 'music shows'
                 ? 'bg-teal-500 text-white'
                 : 'bg-white text-teal-600 hover:bg-teal-500 hover:text-white'
@@ -52,7 +51,7 @@ const EventsList = ({ events }) => {
         <DropdownEvents onSelectLocation={handleLocationSelect} selectedLocation={selectedLocation} />
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:ml-0 ml-[2rem]">
         {Array.isArray(filteredEvents) &&
           filteredEvents.map((event) => (
             <Link key={event._id} to={`/events/${event.Event_Name.toLowerCase().replace(/\s+/g, '-')}`}>

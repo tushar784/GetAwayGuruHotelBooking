@@ -41,7 +41,7 @@ const EventCheckout = () => {
                 value={user.email}
                 type="email"
                 id="email"
-                className="border border-gray-400 px-2 py-1 rounded w-full"
+                className="border border-gray-300 rounded-md px-4 py-2 w-full"
                 placeholder="Email"
               />
             </div>
@@ -52,19 +52,19 @@ const EventCheckout = () => {
               <input
                 type="text"
                 id="contact"
-                className="border border-gray-400 px-2 py-1 rounded w-full"
+                className="border border-gray-300 rounded-md px-4 py-2 w-full"
                 placeholder="Contact number"
               />
             </div>
           </div>
           <div className="flex mb-4">
-            <div className="w-[20rem] mr-4">
+            <div className="w-[30rem] mr-4">
               <label htmlFor="state" className="block text-base font-semibold mb-2">
                 State
               </label>
               <select
                 id="state"
-                className="border border-gray-400 px-2 py-1 rounded w-[14.4rem] "
+                className="border border-gray-300 rounded-md px-4 py-2 w-full"
               >
                 <option value="">Select State</option>
                 {/* ... (existing state options) */}
@@ -112,7 +112,7 @@ const EventCheckout = () => {
               <input
                 type="number"
                 id="guest"
-                className="border border-gray-400 px-2 py-1 rounded w-full"
+                className="border border-gray-300 rounded-md px-4 py-2 w-full"
                 placeholder="Number of guests"
                 value={numGuests}
                 onChange={(e) => setNumGuests(Math.max(1, parseInt(e.target.value) || 0))}
@@ -138,7 +138,7 @@ const EventCheckout = () => {
           </div>
         </div>
 
-        <div className="md:ml-[4rem] md:flex hidden w-[21rem] h-[27em]">
+        <div className="md:ml-[4rem] md:flex w-[21rem] h-[27em]">
           <div className="border border-gray-300 rounded-2xl p-4">
             <h3 className="font-bold mb-4 text-2xl">Order Summary</h3>
             <div className="flex mb-4">
@@ -160,7 +160,7 @@ const EventCheckout = () => {
 
               <div className="font-bold text-lg mb-2">Total: ₹{totalPrice !== null ? totalPrice : 'Loading...'}</div>
             </div>
-            <button className="bg-[#90CCBA] text-white font-bold py-2 px-4 rounded w-full">
+            <button className="bg-[#90CCBA] hover:bg-[#46c79f]  text-white font-bold py-2 px-4 rounded w-full">
               Pay now
             </button>
           </div>

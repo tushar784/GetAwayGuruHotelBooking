@@ -54,8 +54,7 @@ function RoomCard({ hotel, setSelectedRoom }) {
 
             
             <button
-              className="text-white font-medium w-[11rem] h-10 rounded"
-              style={{ backgroundColor: "#90CCBA" }}
+              className="bg-[#90CCBA] hover:bg-[#46c79f] text-white font-medium w-[11rem] h-10 rounded"
               onClick={() => handleReserveRoom("Room_Type_1", hotel.Type1_Price)}
             >
               Reserve room
@@ -103,8 +102,8 @@ function RoomCard({ hotel, setSelectedRoom }) {
                   <p className='text-black text-sm mb-2 '>per night for 1 room</p>
 
             <button
-              className="text-white font-medium w-[11rem] h-10 rounded"
-              style={{ backgroundColor: "#90CCBA" }}
+              className="bg-[#90CCBA] hover:bg-[#46c79f] text-white font-medium w-[11rem] h-10 rounded"
+              
               onClick={() => handleReserveRoom("Room_Type_2", hotel.Type2_Price)}
             >
               Reserve room
@@ -213,8 +212,7 @@ function RoomCard({ hotel, setSelectedRoom }) {
               <p className='text-black text-sm mb-2 '>per night for 1 room</p>
 
         <button
-          className="text-white font-medium w-[11rem] h-10 rounded"
-          style={{ backgroundColor: "#90CCBA" }}
+          className="bg-[#90CCBA] hover:bg-[#46c79f]text-white font-medium w-[11rem] h-10 rounded "          
           onClick={() => handleReserveRoom("Room_Type_2", hotel.Type2_Price)}
         >
           Reserve room

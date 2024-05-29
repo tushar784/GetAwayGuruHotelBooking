@@ -115,8 +115,8 @@ const InfoSection = ({ selectedRoom, hotel, guests }) => {
             }&price=${price}`}
           >
             <button
-              className="text-white font-bold w-80 h-10 mb-4 rounded"
-              style={{ backgroundColor: "#90CCBA" }}
+              className="text-white font-bold w-80 h-10 mb-4 rounded bg-[#90CCBA] hover:bg-[#46c79f]"
+              
             >
               Reserve Now
             </button>

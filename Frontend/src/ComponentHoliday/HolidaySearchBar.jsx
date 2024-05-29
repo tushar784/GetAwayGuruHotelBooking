@@ -43,7 +43,6 @@ const HolidaySearchBar = ({ selectedLocation, setHoliday }) => {
     { value: "Australia", label: "Australia" },
     { value: "Dubai", label: "Dubai" },
     { value: "South Korea", label: "South Korea" },
-    { value: "Greece", label: "Greece" },
     { value: "Mumbai", label: "Mumbai" },
     { value: "Rajasthan", label: "Rajasthan" },
     { value: "Bengaluru", label: "Bengaluru" },
@@ -68,7 +67,7 @@ const HolidaySearchBar = ({ selectedLocation, setHoliday }) => {
         </div>
         <div className="headerSearchItem">
           <button
-            className="md:bg-[#90CCBA] md:text-white md:font-bold md:h-16 md:pl-6 md:pr-6 md:mt-[-0.7rem] md:mr-[-4.5rem] md:border-[1px] md:rounded-r-lg"
+            className="bg-[#90CCBA] hover:bg-[#46c79f] md:text-white md:font-bold md:h-16 md:pl-6 md:pr-6 md:mt-[-0.7rem] md:mr-[-4.5rem] md:border-[1px] md:rounded-r-lg"
             onClick={handleSearch}
           >
             Search

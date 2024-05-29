@@ -39,8 +39,7 @@ function HolidayAboutAndBox({ singlePackage }) {
 
         <Link to={`/holidaypackages/checkout/${packageName}?price=${price}`} >
         <button
-          className="bg-green-500 text-white px-4 py-2 rounded w-full"
-          style={{ backgroundColor: "#90CCBA" }}
+          className="bg-[#90CCBA] hover:bg-[#46c79f] text-white px-4 py-2 rounded w-full"
         >
           Reserve Now
         </button>
