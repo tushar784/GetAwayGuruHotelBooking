@@ -15,7 +15,7 @@ function HolidayOrderHistory() {
   useEffect(() => {
     const fetchHotelBookings = async () => {
       const url = import.meta.env.VITE_BASE_URL;
-      const response = await axios.get(`${url}/api/hotelbooking/history/${user.email}`);
+      const response = await fetch(`${url}/api/hotelbooking/history/${user.email}`);
       const data = await response.json();
       setHotelBookings(data);
       console.log("edewq", response.data)
@@ -27,7 +27,7 @@ function HolidayOrderHistory() {
    
     const fetchpackageBookings = async () => {
       const url = import.meta.env.VITE_BASE_URL;
-      const response_pack = await axios.get(`${url}/api/packagebooking/history/${user.email}`);
+      const response_pack = await fetch(`${url}/api/packagebooking/history/${user.email}`);
       const data_pack = await response_pack.json();
       setPackage(data_pack);
     };
@@ -38,7 +38,7 @@ function HolidayOrderHistory() {
     
     const fetchEventBookings = async () => {
       const url = import.meta.env.VITE_BASE_URL;
-      const response_evnt = await axios.get(`${url}/api/events/history/${user.email}`);
+      const response_evnt = await fetch(`${url}/api/events/history/${user.email}`);
       const data_evnt = await response_evnt.json();
       setEventBookings(data_evnt);
     };
@@ -124,7 +124,7 @@ function HolidayOrderHistory() {
           )}
 
           <h2 className="text-2xl font-bold mb-4 mt-8">Your Hotel Bookings</h2>
-          {hotelBookings.length > 0 ? (
+          {hotelBookings?.length > 0 ? (
             hotelBookings.map((booking, index) => (
               <div
                 key={booking.order_id}
@@ -169,7 +169,7 @@ function HolidayOrderHistory() {
           )}
 
           <h2 className="text-2xl font-bold mb-4 mt-8">Your Event Bookings</h2>
-          {eventBookings.length > 0 ? (
+          {eventBookings?.length > 0 ? (
             eventBookings.map((booking, index) => (
               <div
                 key={booking.order_id}
