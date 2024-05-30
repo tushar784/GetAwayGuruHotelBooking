@@ -13,7 +13,7 @@ function ProfileSection() {
     const [formData, setFormData] = useState({
         username: user?.username,
         contactNumber: '',
-        email: user?.email,
+        email: user?.email,  
     });
 
     useEffect(() => {
