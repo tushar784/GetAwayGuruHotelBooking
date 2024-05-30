@@ -15,7 +15,7 @@ function HolidayOrderHistory() {
   useEffect(() => {
     const fetchHotelBookings = async () => {
       const url = import.meta.env.VITE_BASE_URL;
-      const response = await fetch(`${url}/api/hotelbooking/history/${user.email}`);
+      const response = await axios.get(`${url}/api/hotelbooking/history/${user.email}`);
       const data = await response.json();
       setHotelBookings(data);
       console.log("edewq", response.data)
@@ -27,7 +27,7 @@ function HolidayOrderHistory() {
    
     const fetchpackageBookings = async () => {
       const url = import.meta.env.VITE_BASE_URL;
-      const response_pack = await fetch(`${url}/api/packagebooking/history/${user.email}`);
+      const response_pack = await axios.get(`${url}/api/packagebooking/history/${user.email}`);
       const data_pack = await response_pack.json();
       setPackage(data_pack);
     };
@@ -38,7 +38,7 @@ function HolidayOrderHistory() {
     
     const fetchEventBookings = async () => {
       const url = import.meta.env.VITE_BASE_URL;
-      const response_evnt = await fetch(`${url}/api/events/history/${user.email}`);
+      const response_evnt = await axios.get(`${url}/api/events/history/${user.email}`);
       const data_evnt = await response_evnt.json();
       setEventBookings(data_evnt);
     };
