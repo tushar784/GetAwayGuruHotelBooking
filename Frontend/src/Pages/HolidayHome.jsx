@@ -7,6 +7,7 @@ import HolidaySearchBar from '../ComponentHoliday/HolidaySearchBar';
 import TopHolidayPackages from '../ComponentHoliday/TopHolidayPackages';
 // import SingleHolidayPage from '../ComponentHoliday/SingleHolidayPage';
 import bgimg from "../assets/img/HolidayHome.png"
+import HolidayFandQ from '../ComponentHoliday/HolidayFandQ';
 
 function HolidayHome() {
   const { selectedLocation } = useParams();
@@ -35,6 +36,7 @@ function HolidayHome() {
       {/* <SingleHolidayPage holiday={holiday}/> */}
       <TopHolidayPackages selectedLocation={selectedLocation} setHoliday={setHoliday} />
       <Speciality />
+      <HolidayFandQ />
       <Footer />
     </>
   );

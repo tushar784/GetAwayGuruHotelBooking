@@ -93,32 +93,6 @@ const HolidayImgSection = ({ singlePackage }) => {
         <h1 className="text-black md:text-2xl text-2xl mt-2 font-bold md:mr-2">
           {singlePackage.Package_Name}
         </h1>
-        {/* <div className="flex justify-normal gap-2">
-          {[...Array(hotel.Staring_Rating)].map((_, index) => {
-            const currentRating = index + 1;
-            return (
-              <label key={index}>
-                <FaStar
-                  size={12}
-                  className={`text-yellow-500 cursor-pointer mt-4 ${
-                    currentRating <= (hover || rating)
-                      ? "text-yellow-500"
-                      : "text-gray-400"
-                  }`}
-                  onMouseEnter={() => setHover(currentRating)}
-                  onMouseLeave={() => setHover(null)}
-                />
-              </label>
-            );
-          })}
-          <p className="mt-[10px]">{hotel.Staring_Rating}/5</p>
-          <div className="flex mt-0 gap-2 ">
-            <ImLocation2 className="text-1xl mt-[15px] " />
-            <p className="mt-[10px] ml-[5px]">{hotel.Location}</p>
-            <IoShareSocialSharp className="text-1xl mt-[15px] " />
-            <p className="cursor-pointer mt-[10px]">share</p>
-          </div>
-        </div> */}
         <div className="flex mt-0 gap-2 ">
             <ImLocation2 className="text-1xl mt-[15px] " />
             <p className="mt-[10px] ml-[5px]">{singlePackage.Location}</p>

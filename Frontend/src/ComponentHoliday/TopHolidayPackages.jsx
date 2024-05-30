@@ -91,7 +91,7 @@ const TopHolidayPackages = ({selectedLocation,setHoliday})=> {
           <img
             src={Switzerland}
             alt="Image 1"
-            className="rounded-xl object-cover w-full h-[21rem] transition duration-300 transform hover:scale-110"
+            className="rounded-xl object-cover w-full h-[21rem] transition duration-300 transform hover:scale-110 "
           />
           </button>
         </div>

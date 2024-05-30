@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { ImLocation2 } from "react-icons/im";
-// import SingleHolidayPage from "./SingleHolidayPage";
 
-
-const HolidayCard = ({ holiday,singlePackage }) => {
+const HolidayCard = ({ holiday }) => {
   const [expanded, setExpanded] = useState(false);
 
   const facilities = typeof holiday.Facilities === "string" ? holiday.Facilities.split(",") : [holiday.Facilities];
@@ -16,61 +14,63 @@ const HolidayCard = ({ holiday,singlePackage }) => {
   };
 
   return (
-    // <Link to={`/holidaypackages/${holiday.Package_Name}`} className="block">
-      <div
-        className={`bg-white w-[18rem]md:m-0 m-4 md:w-[22rem] shadow font-poppins rounded-lg overflow-hidden mb-4 transition-all duration-300 ${
-          expanded ? 'md:h-auto' : 'md:h-[32rem]'
-        }`}
-      >
-        <div className="h-auto mt-2 ml-2 rounded-lg w-full mr-2">
-          <img
-            src={holiday?.Card_imgae}
-            alt={holiday?.Package_Name}
-            className="object-cover w-[16rem] h-[12rem] md:h-[14rem] md:w-[20rem] md:pt-2 rounded m-2"
-          />
-        </div>
-        
-        <div className="p-4 flex flex-col w-full">
-          <h2 className="text-xl font-semibold mb-2 text-black">
-            {holiday.Package_Name}
-          </h2>
-
-          <div className="flex items-center mb-2">
-            <ImLocation2 className="text-1xl mt-[4px] mr-2" />
-            <p className="text-black">{holiday.Location}</p>
+    <div className="m-4">
+      {/* <Link to={`/holidaypackages/${holiday.Package_Name}`} className="block"> */}
+        <div
+          className={`bg-white w-[18rem] md:w-[22rem] shadow font-poppins rounded-lg overflow-hidden mb-4 transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
+            expanded ? 'md:h-auto' : 'md:h-[32rem]'
+          }`}
+        >
+          <div className="h-auto mt-2 ml-2 rounded-lg w-full mr-2">
+            <img
+              src={holiday?.
+                Card_imgae}
+              alt={holiday?.Package_Name}
+              className="object-cover w-[16rem] h-[12rem] md:h-[14rem] md:w-[20rem] md:pt-2 rounded m-2"
+            />
           </div>
-
-          <ul className="text-black flex flex-col mb-4 text-sm list-disc pl-5 transition-all duration-300">
-            {visibleFacilities.map((facility, index) => (
-              <li key={index}>{facility}</li>
-            ))}
-          </ul>
-          {facilities.length > 3 && (
-            <button
-              onClick={handleToggleExpand}
-              className="text-[#90CCBA] hover:text-[#46c79f] text-sm"
-            >
-              {expanded ? "Show less" : "Show more"}
-            </button>
-          )}
           
-          <div className="flex justify-between items-center mt-2">
-            <p className="text-black text-lg font-bold">₹ {holiday.Price}</p>
-        <Link to = {`/holidaypackages/${holiday.Package_Name}`}>
+          <div className="p-4 flex flex-col w-full">
+            <h2 className="text-xl font-semibold mb-2 text-black">
+              {holiday.Package_Name}
+            </h2>
+
+            <div className="flex items-center mb-2">
+              <ImLocation2 className="text-1xl mt-[4px] mr-2" />
+              <p className="text-black">{holiday.Location}</p>
+            </div>
+
+            <ul className="text-black flex flex-col mb-4 text-sm list-disc pl-5 transition-all duration-300">
+              {visibleFacilities.map((facility, index) => (
+                <li key={index}>{facility}</li>
+              ))}
+            </ul>
+            {facilities.length > 3 && (
+              <button
+                onClick={handleToggleExpand}
+                className="text-[#90CCBA] hover:text-[#46c79f] text-sm"
+              >
+                {expanded ? "Show less" : "Show more"}
+              </button>
+            )}
+            
+            <div className="flex justify-between items-center mt-2">
+              <p className="text-black text-lg font-bold">₹ {holiday.Price}</p>
+              <Link to = {`/holidaypackages/${holiday.Package_Name}`}>
           <button className="bg-[#90CCBA] hover:bg-[#46c79f] text-white font-bold py-2 px-4 rounded">
             Book Now
           </button>
         </Link>
-        
+            </div>
           </div>
         </div>
-      </div>
-      
-    // </Link>
+      {/* </Link> */}
+    </div>
   );
 };
 
 export default HolidayCard;
+
 
 
 
