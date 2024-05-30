@@ -9,6 +9,7 @@ function HolidayOrderHistory() {
   const [bookings, setBookings] = useState([]);
   const [hotelBookings, setHotelBookings] = useState([]);
   const [eventBookings, setEventBookings] = useState([]);
+  const [bookingType, setBookingType] = useState(null);
   const { user } = useContext(AuthContext);
 
   useEffect(() => {

@@ -26,7 +26,7 @@ const ThankyouPage = () => {
             </div>
             <h1 className="text-4xl md:text-7xl font-bold mt-8 mb-4 text-center">Thank you!</h1>
             <p className="text-gray-600 text-lg md:text-2xl text-center leading-relaxed">
-              Your hotel booking has been confirmed!
+              Your booking has been confirmed!
               <br />
               "Thank you for choosing us for your stay! We’re thrilled to be a
               part of your journey <br />
