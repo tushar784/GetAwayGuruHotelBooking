@@ -121,9 +121,9 @@ function ProfileSection() {
                                         readOnly={editingField !== 'username'}
                                         onChange={(e) => handleInputChange(e, 'username')}
                                     />
-                                    <span className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                    {/* <span className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                         <FontAwesomeIcon icon={faEdit} className="cursor-pointer" onClick={() => handleEdit('username')} />
-                                    </span>
+                                    </span> */}
                                 </div>
     
                                 {/* <div className="mb-4 relative md:mt-[1.5rem]">
@@ -160,12 +160,12 @@ function ProfileSection() {
                                         onChange={(e) => handleInputChange(e, 'email')}
                                         required
                                     />
-                                    <span className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                    {/* <span className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                         <FontAwesomeIcon icon={faEdit} className="cursor-pointer" onClick={() => handleEdit('email')} />
-                                    </span>
+                                    </span> */}
                                 </div>
     
-                                <button type="submit" className="bg-[#90CCBA] hover:bg-[#46c79f] text-white md:px-4 md:py-2 md:p-0 px-2 py-2 rounded md:mt-[0.6rem] md:ml-0 ml-[5.6rem] md:text-[1rem] text-xs mobile-save-changes">Save changes</button>
+                                {/* <button type="submit" className="bg-[#90CCBA] hover:bg-[#46c79f] text-white md:px-4 md:py-2 md:p-0 px-2 py-2 rounded md:mt-[0.6rem] md:ml-0 ml-[5.6rem] md:text-[1rem] text-xs mobile-save-changes">Save changes</button> */}
                             </form>
                         </div>
     
