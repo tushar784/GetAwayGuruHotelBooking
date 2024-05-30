@@ -28,9 +28,7 @@ const ThankyouPage = () => {
             <p className="text-gray-600 text-lg md:text-2xl text-center leading-relaxed">
               Your booking has been confirmed!
               <br />
-              "Thank you for choosing us for your stay! We’re thrilled to be a
-              part of your journey <br />
-              and can’t wait to make your experience unforgettable. 🌟💖"
+              "Thank you for choosing GetawayGuru for all your travel needs!<br /> Whether you're booking a hotel, a holiday package, or planning an event,<br /> we are dedicated to providing you with the best options and a seamless experience. 🌟💖"
             </p>
           </div>
         </div>
