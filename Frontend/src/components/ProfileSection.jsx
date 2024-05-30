@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import { AuthContext } from '../Context/Auth_Context';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import dummyprofile from '../assets/img/dummyprofileimg.png'
 
 function ProfileSection() {
     const { user, logout } = useContext(AuthContext);
@@ -20,7 +21,7 @@ function ProfileSection() {
         if (storedProfilePic) {
             setProfilePic(storedProfilePic);
         } else {
-            setProfilePic('src/assets/img/dummyprofileimg.png');
+            setProfilePic({dummyprofile});
         }
     }, []);
 
