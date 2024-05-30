@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
+import Loading from "../components/Loading";
 
 function EventsSinglePage() {
   const { eventName } = useParams();
@@ -29,11 +30,7 @@ function EventsSinglePage() {
   }, [eventName]);
 
   if (loading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        Loading...
-      </div>
-    );
+    return <Loading />; // Show the loading spinner while data is being fetched
   }
 
   if (!event) {
