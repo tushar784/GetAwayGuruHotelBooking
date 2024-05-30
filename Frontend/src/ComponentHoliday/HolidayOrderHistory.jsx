@@ -9,32 +9,43 @@ function HolidayOrderHistory() {
   const [bookings, setBookings] = useState([]);
   const [hotelBookings, setHotelBookings] = useState([]);
   const [eventBookings, setEventBookings] = useState([]);
-  const [bookingType, setBookingType] = useState(null);
+  const [Packages, setPackage] = useState(null);
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    const fetchBookings = async () => {
-      if (user && user.email) {
-        try {
-          const url = import.meta.env.VITE_BASE_URL;
-
-          const [packageBookingResponse, hotelBookingResponse, eventsBookingResponse] = await Promise.all([
-            axios.get(`${url}/api/packagebooking/history/${user.email}`),
-            axios.get(`${url}/api/hotelbooking/history/${user.email}`),
-            axios.get(`${url}/api/events/history/${user.email}`)
-          ]);
-
-          setBookings(packageBookingResponse.data);
-          setHotelBookings(hotelBookingResponse.data);
-          setEventBookings(eventsBookingResponse.data);
-        } catch (error) {
-          console.error('Error fetching bookings:', error);
-        } 
-      }
+    const fetchHotelBookings = async () => {
+      const url = import.meta.env.VITE_BASE_URL;
+      const response = await fetch(`${url}/api/hotelbooking/history/${user.email}`);
+      const data = await response.json();
+      setHotelBookings(data);
+      console.log("edewq", response.data)
     };
+    fetchHotelBookings();
+  }, [user?.email]);
 
-    fetchBookings();
-  }, [user]);
+  useEffect(() => {
+   
+    const fetchpackageBookings = async () => {
+      const url = import.meta.env.VITE_BASE_URL;
+      const response_pack = await fetch(`${url}/api/packagebooking/history/${user.email}`);
+      const data_pack = await response_pack.json();
+      setPackage(data_pack);
+    };
+    fetchpackageBookings();
+  }, [user?.email]);
+
+  useEffect(() => {
+    
+    const fetchEventBookings = async () => {
+      const url = import.meta.env.VITE_BASE_URL;
+      const response_evnt = await fetch(`${url}/api/events/history/${user.email}`);
+      const data_evnt = await response_evnt.json();
+      setEventBookings(data_evnt);
+    };
+    fetchEventBookings();
+  }, [user?.email]);
+
+
 
   const toggleDropdown = (index, type) => {
     const updatedBookings = [...(type === 'package' ? bookings : type === 'hotel' ? hotelBookings : eventBookings)];
@@ -71,8 +82,8 @@ function HolidayOrderHistory() {
         </div>
         <div className="w-full md:w-3/4 p-8">
           <h2 className="text-2xl font-bold mb-4">Your Package Bookings</h2>
-          {bookings.length > 0 ? (
-            bookings.map((booking, index) => (
+          {Packages?.length < 0 ? (
+            Packages.map((booking, index) => (
               <div
                 key={booking.order_id}
                 className={`border p-2 rounded-lg overflow-hidden mb-4 ${booking.isOpen ? 'border-gray-400' : ''}`}
@@ -109,7 +120,7 @@ function HolidayOrderHistory() {
               </div>
             ))
           ) : (
-            <p>No package bookings found.</p>
+            <p>No package package found.</p>
           )}
 
           <h2 className="text-2xl font-bold mb-4 mt-8">Your Hotel Bookings</h2>
