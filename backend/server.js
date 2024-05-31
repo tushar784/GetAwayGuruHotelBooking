@@ -25,6 +25,7 @@ const forgetpassword = require('./ForgetPassword.js')
 const createorder = require('./CreateOrder.js')
 const packages = require('./HolidayPackage.js')
 const events = require('./Events.js')
+const resetpassword = require('./ResetPassword.js')
 
 
 app.use("/api", register);
@@ -34,6 +35,7 @@ app.use('/api', forgetpassword)
 app.use('/api', createorder)
 app.use('/api', packages)
 app.use('/api', events)
+app.use('/api', resetpassword)
 
 app.get("/", (req, res) => {
   res.send("Aur kiya scene haiiiii!!!!!!!!!!, happy birthday");  //{msg: done}
@@ -50,6 +52,10 @@ app.get("/api/login", (req, res) => {
 app.get("/api/forgot-password", (req, res) => {
   res.send("Forget password is working");
 });
+
+app.get("/api/reset-password", (req,res)=>{
+  res.send("reset kar")
+})
  
 app.get('/api/hotels', (req,res)=>{
   res.send("hotels list")
@@ -95,9 +101,9 @@ app.post('/api/order/validateeventorder', async (req, res) => {
   }
 });
 
-// app.listen(port, () => {
-//   console.log(`Server listening on port ${port}`);
-// });
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});
 
-app.listen();
+// app.listen();
 

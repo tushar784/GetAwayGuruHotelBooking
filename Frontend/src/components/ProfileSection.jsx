@@ -94,7 +94,7 @@ function ProfileSection() {
                             <div className="relative mb-4">
                                 <img
                                     className="object-cover w-[7rem] h-[7rem] rounded-full "
-                                    src={profilePic}
+                                    src={dummyprofile}
                                     alt="Profile"
                                 />
                                 <div className="absolute inset-0 flex items-center justify-center w-[7rem] mt-[9rem] ">
@@ -175,7 +175,7 @@ function ProfileSection() {
                             <div className="relative">
                                 <img
                                     className="object-cover w-[17rem] h-[17rem] rounded-full"
-                                    src={profilePic}
+                                    src={dummyprofile}
                                     alt="Profile"
                                 />
                                 <div className="absolute inset-0 flex items-center justify-center mt-[19.5rem]">

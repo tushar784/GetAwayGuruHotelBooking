@@ -3,8 +3,8 @@ import HotelCard from "./HotelCard";
 
 const HotelList = ({ hotels }) => {
   return (
-    <div className="container mx-auto px-4">
-      <h1 className="text-xl font-semibold mb-4">
+    <div className="container mx-auto px-12">
+      <h1 className="text-xl font-semibold mb-4 ml-[-2rem]">
         Showing Properties in {hotels.length ? hotels[0].Location : "Selected Location"}
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 md:ml-[5rem] ">

@@ -4,6 +4,7 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
+import Footer from "../components/Footer";
 
 function EventsSinglePage() {
   const { eventName } = useParams();
@@ -17,7 +18,7 @@ function EventsSinglePage() {
       try {
         setLoading(true);
         const url = import.meta.env.VITE_BASE_URL;
-        const response = await axios.get(`${url}/api/events/name/${eventName}`);
+        const response = await axios.get(`${url}/api/events/name/${encodeURIComponent(eventName)}`);
         setEvent(response.data);
         setLoading(false);
       } catch (error) {
@@ -165,6 +166,7 @@ function EventsSinglePage() {
           )}
         </div>
       </div>
+      <Footer />
     </>
   );
 }

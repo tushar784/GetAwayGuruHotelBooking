@@ -5,7 +5,7 @@ function HolidayDayPackage({ singlePackage }) {
     <>
       <div className="container mx-auto mt-8 px-4">
         {/* Day 1 */}
-        <div className="font-poppins md:ml-[5rem] md:w-[69rem] border rounded-2xl border-gray-300 mb-8 p-4">
+        <div className="font-poppins md:ml-[5rem] md:w-[69rem] border rounded-2xl border-gray-300 mb-8 p-4 shadow-lg">
           <h2 className="font-bold text-xl mb-4">Day 1</h2>
           <div className="flex flex-col lg:flex-row">
             <p className="flex-1 mb-4 lg:mb-0 lg:mr-4">
@@ -20,7 +20,7 @@ function HolidayDayPackage({ singlePackage }) {
         </div>
 
         {/* Day 2 */}
-        <div className="font-poppins md:ml-[5rem] md:w-[69rem] border rounded-2xl border-gray-300 mb-8 p-4">
+        <div className="font-poppins md:ml-[5rem] md:w-[69rem] border rounded-2xl border-gray-300 mb-8 p-4 shadow-lg">
           <h2 className="font-bold text-xl mb-4">Day 2</h2>
           <div className="flex flex-col lg:flex-row">
             <p className="flex-1 mb-4 lg:mb-0 lg:mr-4">
@@ -35,7 +35,7 @@ function HolidayDayPackage({ singlePackage }) {
         </div>
 
         {/* Day 3 */}
-        <div className="font-poppins md:ml-[5rem] md:w-[69rem] border rounded-2xl border-gray-300 mb-8 p-4">
+        <div className="font-poppins md:ml-[5rem] md:w-[69rem] border rounded-2xl border-gray-300 mb-8 p-4 shadow-lg">
           <h2 className="font-bold text-xl mb-4">Day 3</h2>
           <div className="flex flex-col lg:flex-row">
             <p className="flex-1 mb-4 lg:mb-0 lg:mr-4">
@@ -50,7 +50,7 @@ function HolidayDayPackage({ singlePackage }) {
         </div>
 
         {/* Day 4 */}
-        <div className="font-poppins md:ml-[5rem] md:w-[69rem] border rounded-2xl border-gray-300 mb-8 p-4">
+        <div className="font-poppins md:ml-[5rem] md:w-[69rem] border rounded-2xl border-gray-300 mb-8 p-4 shadow-lg">
           <h2 className="font-bold text-xl mb-4">Day 4</h2>
           <div className="flex flex-col lg:flex-row">
             <p className="flex-1 mb-4 lg:mb-0 lg:mr-4">
@@ -65,7 +65,7 @@ function HolidayDayPackage({ singlePackage }) {
         </div>
 
         {/* Day 5 */}
-        <div className="font-poppins md:ml-[5rem] md:w-[69rem] border rounded-2xl border-gray-300 mb-8 p-4">
+        <div className="font-poppins md:ml-[5rem] md:w-[69rem] border rounded-2xl border-gray-300 mb-8 p-4 shadow-lg">
           <h2 className="font-bold text-xl mb-4">Day 5</h2>
           <div className="flex flex-col lg:flex-row">
             <p className="flex-1 mb-4 lg:mb-0 lg:mr-4">

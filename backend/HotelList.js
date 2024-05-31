@@ -21,9 +21,11 @@ app.get('/hotels', async (req, res) => {
 // GET request to fetch hotels by name
 app.get('/hotels/:Hotel_Name', async (req, res) => {
     const { Hotel_Name } = req.params;
+    // Convert hyphens back to spaces
+    const decodedHotelName = decodeURIComponent(Hotel_Name).replace(/-/g, ' ');
 
     try {
-        const hotel = await schema.findOne({ Hotel_Name });
+        const hotel = await schema.findOne({ Hotel_Name: decodedHotelName });
 
         if (!hotel) {
             return res.status(404).json({ message: 'Hotel not found' });
@@ -35,6 +37,7 @@ app.get('/hotels/:Hotel_Name', async (req, res) => {
         res.status(500).json({ message: 'Server Error' });
     }
 });
+
 
 app.get('/hotels/location/:Location', async (req, res) => {
     const { Location } = req.params;

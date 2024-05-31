@@ -31,9 +31,11 @@ app.get("/events/location/:Location", async (req, res) => {
 // Route to get event by name
 app.get("/events/name/:eventName", async (req, res) => {
   const { eventName } = req.params;
+  // Convert hyphens back to spaces
+  const decodedEventName = decodeURIComponent(eventName).replace(/-/g, ' ')
   try {
     const event = await Events.findOne({ 
-      Event_Name: { $regex: new RegExp(eventName, "i") }
+      Event_Name: { $regex: new RegExp(decodedEventName, "i") }
     });
 
     if (!event) {

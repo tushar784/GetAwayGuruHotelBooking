@@ -96,7 +96,7 @@ function Login() {
                 <p className="text-red-500 text-xs mt-1">{validation.password}</p>
               )}
             </div>
-            {/* <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between mb-4">
               <div className="flex items-center">
                 <input type="checkbox" id="rememberMe" className="mr-2" />
                 <label htmlFor="rememberMe" className="text-sm text-gray-600">
@@ -106,7 +106,7 @@ function Login() {
               <Link to="/forgot-password" className="text-sm text-gray-600">
                 Forgot Password?
               </Link>
-            </div> */}
+            </div>
             <button
               type="submit"
               className="bg-[#90CCBA] hover:bg-[#46c79f] w-full text-white font-semibold py-2 px-4 rounded transition duration-200"

@@ -8,7 +8,7 @@ const HotelCard = ({ hotel }) => {
   const [hover, setHover] = useState(null);
   const [expanded, setExpanded] = useState(false);
   const amenities = typeof hotel.Amenities === "string" ? hotel.Amenities.split(" , ") : [hotel.Amenities];
-
+  const formattedHotelName = hotel.Hotel_Name.replace(/ /g, '-');
   const handleToggleExpand = (e) => {
     e.preventDefault();
     setExpanded(!expanded);
@@ -61,7 +61,7 @@ const HotelCard = ({ hotel }) => {
         )}
         <div className="flex justify-between items-center mt-2">
           <p className="text-black text-lg font-bold">₹ {hotel.Price}</p>
-          <Link to={`/hotels/${hotel.Hotel_Name}`}>
+          <Link to={`/hotels/${formattedHotelName}`}>
             <button className="bg-[#90CCBA] hover:bg-[#46c79f] text-white font-bold py-2 px-4 rounded">
               Book Now
             </button>

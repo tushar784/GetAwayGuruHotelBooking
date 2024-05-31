@@ -23,8 +23,10 @@ app.get('/holidaypackages/location/:Location', async (req, res) => {
 
 app.get('/holidaypackages/:Package_Name', async (req, res) => {
   const { Package_Name } = req.params;
+  // Convert hyphens back to spaces
+  const decodedPackageName = decodeURIComponent(Package_Name).replace(/-/g, ' ')
   try {
-    const package = await HolidayPackage.findOne({ Package_Name });
+    const package = await HolidayPackage.findOne({ Package_Name: decodedPackageName });
     if (!package) {
       return res.status(404).json({ message: 'package not found' });
     }

@@ -45,6 +45,18 @@ const CheckoutForm = () => {
     fetchHotelDetails();
   }, [hotelName]);
 
+
+  useEffect(() => {
+    // Retrieve values from local storage
+    const startDate = localStorage.getItem('startDate');
+    const endDate = localStorage.getItem('endDate');
+    
+    // Set the values to the state variables
+    setCheckInDate(startDate);
+    setCheckOutDate(endDate);
+  }, []);
+  
+
   const calculateTotalPrice = (rooms, guests, breakfast) => {
     let totalPrice = basePrice * rooms;
 
