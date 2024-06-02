@@ -18,6 +18,8 @@ import Events from '../Pages/Events'
 import EventsSinglePage from '../ComponentEvents/EventsSinglePage';
 import EventCheckout from '../ComponentEvents/EventCheckout';
 import ThankyouPage from '../components/ThankyouPage';
+import ForgotPass from '../Pages/ForgotPass';
+import ResetPasswordForm from '../Pages/ResetPasswordForm';
 
 
 
@@ -31,6 +33,8 @@ const Routing = () => {
             <Route exact path='/' element={<Home />} />
             <Route exact path='/signup' element={<Signup />} />
             <Route exact path='/login' element={<Login />} />
+            <Route path='/forgotpass' element={<ForgotPass />} />
+            <Route path='/resetpass' element={<ResetPasswordForm />} />
             <Route exact path='/hotels/location/:selectedLocation' element={<Hotels />} />
             <Route path="/hotels/:hotelName" element={<HotelInfoPage />} />
             <Route path="/checkout/:hotelName" element={<CheckoutForm />} />
@@ -52,6 +56,7 @@ const Routing = () => {
             <Route path="/events/name/:eventName" element={<EventsSinglePage />} />
             {/* <Route path='/checkoutevent' element={<EventCheckout/>}/> */}
             <Route path="/events/checkout/:eventName" element={<EventCheckout />} />
+
 
 
             <Route path='/profile' element={<ProfileSection />} />

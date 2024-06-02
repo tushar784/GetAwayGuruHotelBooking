@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import HotelCard from "./HotelCard";
+import Filters from "./Filters";
 
 const HotelList = ({ hotels }) => {
+  const [filteredHotels, setFilteredHotels] = useState(hotels);
+
+  const handleFiltersChange = (filteredHotels) => {
+    setFilteredHotels(filteredHotels);
+  };
+
   return (
-    <div className="container mx-auto px-4">
-      <h1 className="text-xl font-semibold mb-4">
-        Showing Properties in {hotels.length ? hotels[0].Location : "Selected Location"}
-      </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 md:ml-[5rem] ">
-        {hotels.map((hotel) => (
+    <div className="container mx-auto px-4 mt-[2rem]">
+      <div className="flex items-center mb-4">
+        <h1 className="w-[21rem] ml-8 text-xl font-semibold">
+          Showing Properties in{" "}
+          {filteredHotels.length ? filteredHotels[0].Location : "Selected Location"}
+        </h1>
+        <Filters setFilters={handleFiltersChange} hotels={filteredHotels} className="mr-4 w-[12rem]"/>
+      </div>
+      <div className="ml-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4">
+        {filteredHotels.map((hotel) => (
           <HotelCard key={hotel.Hotel_id} hotel={hotel} />
         ))}
       </div>
@@ -17,30 +28,3 @@ const HotelList = ({ hotels }) => {
 };
 
 export default HotelList;
-
-
-
-//list code old design
-// import React from "react";
-// import HotelCard from "./HotelCard";
-// import { Link } from "react-router-dom";
-
-// const HotelList = ({ hotels,hotel }) => {
-//   return (
-   
-//     <div className="container md:mx-auto font-poppins md:pl-[5rem] md:pt-[2rem]  ">
-//       {/* <h1 className="md:text-xl font-semibold md:mb-4 text-sm mb-4 mt-2" >Showing Properties in {hotels.Location}</h1> */}
-
-//       <h1 className="md:text-xl font-semibold md:mb-4 text-sm mb-4 mt-2" >Showing Properties in  {hotels.length ? hotels[0].Location : 'Selected Location'}</h1>
-     
-//       {/* <h1 className="text-black md:text-xl font-semibold md:mb-4 text-sm mb-4 mt-2 ">{hotel.Location}</h1> */}
-      
-//       <div className="grid grid-rows-1 sm:grid-rows-2 md:grid-rows-3 lg:grid-rows-4 gap-4">
-//         {hotels.map((hotel) => (
-//           <HotelCard key={hotel.Hotel_id} hotel={hotel} />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-// export default HotelList;
