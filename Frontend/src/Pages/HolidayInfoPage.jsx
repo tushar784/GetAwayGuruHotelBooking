@@ -18,7 +18,7 @@ const HolidayInfoPage = () => {
       try {
         setLoading(true); // Set loading to true before fetching data
         const url = import.meta.env.VITE_BASE_URL;
-        const response = await axios.get(`${url}/api/holidaypackages/${packageName}`);
+        const response = await axios.get(`${url}/api/holidaypackages/${encodeURIComponent(packageName)}`);
         setSinglePackage(response.data);
         setLoading(false); // Set loading to false after fetching data
         console.log(response.data);

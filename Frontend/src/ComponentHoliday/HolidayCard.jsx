@@ -9,7 +9,7 @@ const HolidayCard = ({ holiday,singlePackage }) => {
 
   const facilities = typeof holiday.Facilities === "string" ? holiday.Facilities.split(",") : [holiday.Facilities];
   const visibleFacilities = expanded ? facilities : facilities.slice(0, 3);
-
+  const formattedPakageName = holiday.Package_Name.replace(/ /g, '-');
   const handleToggleExpand = (e) => {
     e.preventDefault();
     setExpanded(!expanded);
@@ -56,7 +56,7 @@ const HolidayCard = ({ holiday,singlePackage }) => {
           
           <div className="flex justify-between items-center mt-2">
             <p className="text-black text-lg font-bold">₹ {holiday.Price}</p>
-        <Link to = {`/holidaypackages/${holiday.Package_Name}`}>
+        <Link to = {`/holidaypackages/${formattedPakageName}`}>
           <button className="bg-[#90CCBA] hover:bg-[#46c79f] text-white font-bold py-2 px-4 rounded">
             Book Now
           </button>

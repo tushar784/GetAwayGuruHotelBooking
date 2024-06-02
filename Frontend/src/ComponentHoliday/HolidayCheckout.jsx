@@ -34,7 +34,7 @@ const HolidayCheckout = () => {
         console.log("data", response.data);
       } catch (error) {
         console.error("Error fetching holiday details:", error);
-      }
+      } 
     };
 
     const urlParams = new URLSearchParams(window.location.search);

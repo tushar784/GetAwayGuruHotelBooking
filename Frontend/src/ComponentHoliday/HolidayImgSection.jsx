@@ -90,7 +90,7 @@ const HolidayImgSection = ({ singlePackage }) => {
      </div>
 
       <div className="items-center md:w-[70rem] md:h-full md:ml-[6rem] md:mt-[1rem]">
-        <h1 className="text-black md:text-2xl text-2xl mt-2 font-bold md:mr-2">
+        <h1 className="text-black md:text-2xl text-2xl mt-2 ml-4 font-bold md:mr-2">
           {singlePackage.Package_Name}
         </h1>
         {/* <div className="flex justify-normal gap-2">
@@ -120,9 +120,9 @@ const HolidayImgSection = ({ singlePackage }) => {
           </div>
         </div> */}
         <div className="flex mt-0 gap-2 ">
-            <ImLocation2 className="text-1xl mt-[15px] " />
-            <p className="mt-[10px] ml-[5px]">{singlePackage.Location}</p>
-            <IoShareSocialSharp className="text-1xl mt-[15px] " />
+            <ImLocation2 className="text-1xl mt-[15px] ml-4" />
+            <p className="mt-[10px] ml-[4px]">{singlePackage.Location}</p>
+            <IoShareSocialSharp className="text-1xl mt-[15px] ml-2" />
             <p className="cursor-pointer mt-[10px]">share</p>
           </div>
       </div>

@@ -31,7 +31,7 @@ function HolidayAboutAndBox({ singlePackage }) {
         )}
       </div>
 
-      <div className="w-[16rem] lg:w-[25rem] h-auto lg:h-auto bg-white border rounded-lg p-4 shadow-lg">
+      <div className="w-[20rem] lg:w-[25rem] h-auto lg:h-auto bg-white border rounded-lg p-4 shadow-lg">
         <h2 className="text-black text-xl font-bold mb-2">{singlePackage.Package_Name}</h2>
         {/* <p className="text-red-600 mb-2">Non-refundable</p> */}
         <p className="text-xl font-semibold mb-2">Total Price: ₹{singlePackage.Price}</p>

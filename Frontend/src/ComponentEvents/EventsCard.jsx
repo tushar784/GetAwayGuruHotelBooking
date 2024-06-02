@@ -6,7 +6,7 @@ const EventsCard = ({ event, selectedCategory }) => {
   const [expanded, setExpanded] = useState(false);
   const facilities = typeof event.Facilities === 'string' ? event.Facilities.split(',') : [event.Facilities];
   const visibleFacilities = expanded ? facilities : facilities.slice(0, 3);
-
+  const formattedEventName = event.Event_Name.replace(/ /g, '-');
   const handleToggleExpand = (e) => {
     e.preventDefault();
     setExpanded(!expanded);
@@ -21,7 +21,7 @@ const EventsCard = ({ event, selectedCategory }) => {
 
   return (
     
-    <Link to={`/events/name/${event.Event_Name}`} className="block">
+    <Link to={`/events/${formattedEventName}`} className="block">
       <div
         className={`bg-white w-[22rem] md:mb-[3rem] md:m-0 m-4 md:w-[19rem] h-[34rem] shadow font-poppins rounded-lg overflow-hidden mb-4 transition-all duration-300 transform hover:scale-105 ${
           expanded ? 'md:h-auto' : 'md:h-[39rem]'
