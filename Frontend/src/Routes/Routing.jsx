@@ -33,8 +33,11 @@ const Routing = () => {
             <Route exact path='/' element={<Home />} />
             <Route exact path='/signup' element={<Signup />} />
             <Route exact path='/login' element={<Login />} />
-            <Route path='/forgotpass' element={<ForgotPass />} />
-            <Route path='/resetpass' element={<ResetPasswordForm />} />
+            {/* <Route path='/forgotpass' element={<ForgotPass />} /> */}
+            {/* <Route path='/resetpass' element={<ResetPasswordForm />} /> */}
+
+            <Route path="/forgot-password" element={<ForgotPass />} />
+            <Route path="/reset-password/:token" element={<ResetPasswordForm />} />
             <Route exact path='/hotels/location/:selectedLocation' element={<Hotels />} />
             <Route path="/hotels/:hotelName" element={<HotelInfoPage />} />
             <Route path="/checkout/:hotelName" element={<CheckoutForm />} />
