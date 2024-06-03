@@ -23,7 +23,7 @@ const CheckoutForm = () => {
   const [price, setPrice] = useState(0);
   const [contactNumber, setContactNumber] = useState("");
   const [breakfast, setBreakfast] = useState(false); // State for breakfast option
-
+  const today = new Date().toISOString().split('T')[0];
   useEffect(() => {
     const fetchHotelDetails = async () => {
       try {
@@ -202,6 +202,34 @@ const CheckoutForm = () => {
     "Uttar Pradesh", "Uttarakhand", "West Bengal"
   ];
 
+  const handleCheckInDateChange = (e) => {
+    const selectedDate = e.target.value;
+
+    // Check if the selected date is before the current date
+    if (selectedDate < today) {
+      // If it is, don't update the state and show an alert
+      alert("You cannot select a date before the current date.");
+      return;
+    }
+
+    // Otherwise, update the state with the selected date
+    setCheckInDate(selectedDate);
+  };
+
+  const handleCheckOutDateChange = (e) => {
+    const selectedDate = e.target.value;
+
+    // Check if the selected date is before the current date
+    if (selectedDate < today) {
+      // If it is, don't update the state and show an alert
+      alert("You cannot select a date before the current date.");
+      return;
+    }
+
+    // Otherwise, update the state with the selected date
+    setCheckOutDate(selectedDate);
+  };
+
   return (
     <>
       <Navbar />
@@ -284,7 +312,8 @@ const CheckoutForm = () => {
                   type="date"
                   id="checkInDate"
                   value={checkInDate}
-                  onChange={(e) => setCheckInDate(e.target.value)}
+                  onChange={handleCheckInDateChange}
+                  min={today}
                   className="border border-gray-300 rounded-md px-4 py-2 w-full"
                 />
               </div>
@@ -299,7 +328,7 @@ const CheckoutForm = () => {
                   type="date"
                   id="checkOutDate"
                   value={checkOutDate}
-                  onChange={(e) => setCheckOutDate(e.target.value)}
+                  onChange={handleCheckOutDateChange}
                   className="border border-gray-300 rounded-md px-4 py-2 w-full"
                 />
               </div>

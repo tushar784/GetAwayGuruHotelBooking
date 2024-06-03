@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 
 app.post('/reset-password/:token', async (req, res) => {
     const { token } = req.params;
-    const { password } = req.body;
+    const { password } = req.body;                      
 
     try {
         const user = await ResetSchema.findOne({
