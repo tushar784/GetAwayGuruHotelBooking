@@ -36,11 +36,8 @@ const ResetPasswordForm = () => {
             setSuccessMessage(response.data.message);
             setErrorMessage('');
             toast.success(response.data.message);
-
-            // Redirect to the login page after a short delay
-            setTimeout(() => {
+         // Redirect to the login page after a short delay
               navigate('/login');
-            }, 2000); // Redirect after 2 seconds
           } else {
             setErrorMessage(response.data.message);
             setSuccessMessage('');
