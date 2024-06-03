@@ -103,7 +103,7 @@ function Login() {
                   Remember me
                 </label>
               </div> */}
-              <Link to="/forgotpass" className="text-sm text-gray-600">
+              <Link to="/forgot-password" className="text-sm text-gray-600">
                 Forgot Password?
               </Link>
             </div>

@@ -13,6 +13,10 @@ app.post('/reset-password/:token', async (req, res) => {
     const { token } = req.params;
     const { password } = req.body;
 
+    // Log the received token and password for debugging
+    console.log('Token:', token);
+    console.log('Password:', password);
+
     try {
         const user = await ResetSchema.findOne({
             resetPasswordToken: token,
@@ -21,6 +25,10 @@ app.post('/reset-password/:token', async (req, res) => {
 
         if (!user) {
             return res.status(400).json({ message: 'Password reset token is invalid or has expired.' });
+        }
+
+        if (!password) {
+            return res.status(400).json({ message: 'Password is required.' });
         }
 
         // Hash the new password before saving
