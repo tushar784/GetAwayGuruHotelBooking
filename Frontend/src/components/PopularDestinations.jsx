@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { Link, useNavigate } from "react-router-dom";
@@ -9,9 +10,11 @@ import goa from "../assets/img/goa.jpg"
 import jaipur from "../assets/img/jaipur.jpg"
 import manali from "../assets/img/manali.jpg"
 
-const PopularDestinations = ({ selectedLocation, setHotels })=> {
+const PopularDestinations = ()=> {
+  const { selectedLocation } = useParams();
   const navigate = useNavigate();
-
+  const [hotels, setHotels] = useState('')
+  
   useEffect(() => {
     const fetchHotels = async () => {
       try {

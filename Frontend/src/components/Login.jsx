@@ -67,6 +67,7 @@ function Login() {
 
   return (
     <>
+    <ToastContainer />
       <div className="bg-slate-200 min-h-screen flex justify-center items-center md:flex">       
         <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
             <Link to='/'>
@@ -129,7 +130,7 @@ function Login() {
           </div>
         </div>
       </div>
-      <ToastContainer />
+      
     </>
   );
 }

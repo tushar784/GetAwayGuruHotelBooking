@@ -27,7 +27,7 @@ function Home() {
           className="absolute md:text-4xl text-2xl font-bold md:mt-12 md:mb-52 mb-[10rem] md:text-amber-50 italic text-center  text-black"
           style={{ fontFamily: "cursive" }}
         >
-          GetawayGuru:Find Your Home Away From Home
+          GetawayGuru: Find Your Home Away From Home
         </h1>
         <p
           className="absolute md:text-2xl text-lg font-bold md:mt-14 md:mb-28 mt-[3rem] mb-[4rem] md:text-amber-50 text-[0.81rem] font-bold text-black italic"
@@ -40,7 +40,7 @@ function Home() {
       />
       </div>
       <Speciality />
-      <PopularDestinations selectedLocation={selectedLocation} setHotels={setHotels} />
+      <PopularDestinations />
       <FAQ />
       <Footer />
     
