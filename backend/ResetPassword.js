@@ -40,7 +40,7 @@ app.post('/reset-password/:token', async (req, res) => {
         await user.save();
 
         res.json({ message: 'Password has been reset successfully.' });
-    } catch (error) {
+        } catch (error) {
         console.log(error);
         res.status(500).send({ message: 'Internal Server Error' });
     }

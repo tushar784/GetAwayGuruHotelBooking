@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
+import { Link } from "react-router-dom";
 
 const ThankyouPage = () => {
   return (
@@ -9,7 +10,9 @@ const ThankyouPage = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col w-full items-center">
             <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-green-500 flex items-center justify-center">
-              <svg
+              
+             
+               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-16 w-16 md:h-24 md:w-24 text-white"
                 fill="none"
@@ -23,8 +26,9 @@ const ThankyouPage = () => {
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
+             
             </div>
-            <h1 className="text-4xl md:text-7xl font-bold mt-8 mb-4 text-center">Thank you!</h1>
+            <Link to="/" className="text-teal-500 font-semibold"><h1 className="text-4xl md:text-7xl font-bold mt-8 mb-4 text-center">Thank you!</h1></Link>
             <p className="text-gray-600 text-lg md:text-2xl text-center leading-relaxed">
               Your booking has been confirmed!
               <br />
