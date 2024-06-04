@@ -19,13 +19,13 @@ const InfoSection = ({ selectedRoom, hotel, guests }) => {
 
   const handleIncrement = () => {
     setQuantity(quantity + 1);
-    setGuests(guests + 1); // Update guests when incrementing quantity
+    // setGuests(guests + 1); // Update guests when incrementing quantity
   };
 
   const handleDecrement = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
-      setGuests(guests - 1); // Update guests when decrementing quantity
+      // setGuests(guests - 1); // Update guests when decrementing quantity
     }
   };
 
@@ -112,7 +112,7 @@ const InfoSection = ({ selectedRoom, hotel, guests }) => {
           <Link
             to={`/checkout/${hotelName}?roomType=${
               selectedRoom?.roomType === "Room_Type_1" ? "Deluxe Room" : "Standard Room"
-            }&price=${price}`}
+            }&price=${price}&rooms=${quantity}`}
           >
             <button
               className="text-white font-bold w-80 h-10 mb-4 rounded bg-[#90CCBA] hover:bg-[#46c79f]"

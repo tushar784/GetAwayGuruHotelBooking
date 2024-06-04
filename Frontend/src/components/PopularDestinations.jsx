@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { Link, useNavigate } from "react-router-dom";
@@ -9,9 +10,13 @@ import goa from "../assets/img/goa.jpg"
 import jaipur from "../assets/img/jaipur.jpg"
 import manali from "../assets/img/manali.jpg"
 
-const PopularDestinations = ({ selectedLocation, setHotels })=> {
+const PopularDestinations = ()=> {
+  const { selectedLocation } = useParams();
   const navigate = useNavigate();
-
+  const [hotels, setHotels] = useState('')
+  const [packages, setPackages] = useState('')
+  const [events, setEvents] =  useState('')
+  
   useEffect(() => {
     const fetchHotels = async () => {
       try {
@@ -30,9 +35,6 @@ const PopularDestinations = ({ selectedLocation, setHotels })=> {
     fetchHotels();
   }, [selectedLocation, setHotels]);
 
-  // const handleSearch = () => {
-  //   navigate(`/hotels/location/${selectedLocation}`);
-  // }
     return (
       <div className="container mx-auto px-4 py-4">
         <h1 className="text-xl font-bold mb-4">Popular Destinations</h1>

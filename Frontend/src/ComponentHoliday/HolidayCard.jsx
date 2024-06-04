@@ -5,7 +5,7 @@ import { ImLocation2 } from "react-icons/im";
 const HolidayCard = ({ holiday }) => {
   const [expanded, setExpanded] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-
+  console.log("dwqd", holiday);
   const facilities = typeof holiday.Facilities === "string" ? holiday.Facilities.split(",") : [holiday.Facilities];
   const visibleFacilities = expanded ? facilities : facilities.slice(0, 3);
   const formattedPakageName = holiday.Package_Name.replace(/ /g, '-');

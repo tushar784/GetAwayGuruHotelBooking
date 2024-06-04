@@ -32,6 +32,7 @@ const HotelInfoPage = () => {
     };
     fetchHotelDetails();
   }, [hotelName]);
+  
 
   if (loading) {
     return <Loading />;  // Show the loading spinner while data is being fetched

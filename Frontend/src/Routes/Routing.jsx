@@ -20,6 +20,7 @@ import EventCheckout from '../ComponentEvents/EventCheckout';
 import ThankyouPage from '../components/ThankyouPage';
 import ForgotPass from '../Pages/ForgotPass';
 import ResetPasswordForm from '../Pages/ResetPasswordForm';
+import LocationDetails from '../Pages/AllDetails';
 
 
 
@@ -35,6 +36,7 @@ const Routing = () => {
             <Route exact path='/login' element={<Login />} />
             {/* <Route path='/forgotpass' element={<ForgotPass />} /> */}
             {/* <Route path='/resetpass' element={<ResetPasswordForm />} /> */}
+            <Route path="/location/:selectedLocation" element={<LocationDetails />} />
 
             <Route path="/forgot-password" element={<ForgotPass />} />
             <Route path="/reset-password/:token" element={<ResetPasswordForm />} />
