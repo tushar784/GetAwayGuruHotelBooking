@@ -14,8 +14,6 @@ const PopularDestinations = ()=> {
   const { selectedLocation } = useParams();
   const navigate = useNavigate();
   const [hotels, setHotels] = useState('')
-  const [packages, setPackages] = useState('')
-  const [events, setEvents] =  useState('')
   
   useEffect(() => {
     const fetchHotels = async () => {

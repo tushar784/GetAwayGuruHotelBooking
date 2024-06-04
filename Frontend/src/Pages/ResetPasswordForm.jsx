@@ -32,22 +32,40 @@ const ResetPasswordForm = () => {
           const response = await axios.post(`${url}/api/reset-password/${token}`, requestData);
 
           // Handle the successful response
-          if (response.data.success) {
-            setSuccessMessage(response.data.message);
+          if ("Password Reset Successfully") {
+            setSuccessMessage("Password Reset Successfully");
             setErrorMessage('');
-            toast.success(response.data.message);
-         // Redirect to the login page after a short delay
-              navigate('/login');
+            toast.success("Password Reset Successfully", {
+              style: {
+                backgroundColor: 'green',
+                color: 'white'
+              }
+            });
+            // Redirect to the login page after a short delay
+            // navigate('/login');
+            setTimeout(() => {
+                    navigate('/login');
+                    }, 3000); // 3-second delay
           } else {
             setErrorMessage(response.data.message);
             setSuccessMessage('');
-            toast.error(response.data.message);
+            toast.error(response.data.message, {
+              style: {
+                backgroundColor: 'red',
+                color: 'white'
+              }
+            });
           }
         } catch (error) {
           // Handle the error
           setErrorMessage('An error occurred. Please try again later.');
           setSuccessMessage('');
-          toast.error('An error occurred. Please try again later.');
+          toast.error('An error occurred. Please try again later.', {
+            style: {
+              backgroundColor: 'red',
+              color: 'white'
+            }
+          });
           console.error('Error:', error);
         }
       };
@@ -56,7 +74,12 @@ const ResetPasswordForm = () => {
     } else {
       setErrorMessage('Passwords do not match');
       setSuccessMessage('');
-      toast.error('Passwords do not match');
+      toast.error('Passwords do not match', {
+        style: {
+          backgroundColor: 'red',
+          color: 'white'
+        }
+      });
     }
   };
 
@@ -113,16 +136,6 @@ const ResetPasswordForm = () => {
 };
 
 export default ResetPasswordForm;
-
-
-
-
-
-
-
-
-
-
 
 
 

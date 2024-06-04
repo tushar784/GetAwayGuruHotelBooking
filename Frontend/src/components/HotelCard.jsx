@@ -25,12 +25,12 @@ const HotelCard = ({ hotel }) => {
   const trimmedHotelName = hotel.Hotel_Name.length > 20 ? `${hotel.Hotel_Name.slice(0, 20)}...` : hotel.Hotel_Name;
 
   return (
-    <div className="bg-white w-[17rem] md:w-[22rem] md:ml-[1rem] h-[35rem] shadow font-poppins rounded-lg overflow-hidden mb-4 mt-2 transition-all duration-300 flex flex-col justify-between">
+    <div className="bg-white w-[23rem] md:w-[22rem] md:ml-[1rem] ml-[2rem] h-[35rem] shadow font-poppins rounded-lg overflow-hidden mb-4 mt-2 transition-all duration-300 flex flex-col justify-between">
       <div className="h-auto mt-2 ml-2 rounded-lg w-full mr-2">
-        <img
+      <img
           src={hotel?.Card_Image}
           alt={hotel?.Hotel_Name}
-          className="object-cover w-[15rem] h-[12rem] md:h-[14rem] md:w-[20rem] md:pt-2 rounded m-2"
+          className="object-cover w-[21rem] h-[15rem] md:h-[14rem] md:w-[20rem] md:pt-2 rounded m-2 "
         />
       </div>
       <div className="p-4 flex flex-col flex-grow w-full">
@@ -66,14 +66,14 @@ const HotelCard = ({ hotel }) => {
             );
           })}
         </div>
-        <ul className={`text-black flex flex-col text-sm list-disc pl-5 transition-all duration-300 ${expanded ? 'max-h-40' : 'max-h-[3.5rem]'} overflow-hidden`}>
+        <ul className={`text-black flex flex-col text-sm list-disc pl-5 transition-all duration-300 h-[3.4rem] overflow-hidden`}>
           {amenities.map((amenity, index) => (
             <li key={index}>{amenity}</li>
           ))}
         </ul>
        
       </div>
-      <div className="flex justify-between items-center p-4">
+      <div className="flex justify-between items-center p-4 border-t border-gray-200">
         <p className="text-black text-lg font-bold">₹ {hotel.Price}</p>
         <Link to={`/hotels/${formattedHotelName}`}>
           <button className="bg-[#90CCBA] hover:bg-[#46c79f] text-white font-bold py-2 px-4 rounded ">
