@@ -136,15 +136,15 @@ const InfoSection = ({ selectedRoom, hotel, guests }) => {
 
         {/*Mobile view Total price card  */}
 
-        <div className="border shadow-lg h-[19rem] p-5 mt-[1rem] w-[85%] ml-[1.6rem] mx-auto mb-4">
+        <div className="border shadow-lg h-[20rem] pl-[2rem] pt-[1rem] mt-[1rem] w-[22rem] ml-[3rem] mx-auto mb-4">
           <h1 className="card-title text-2xl font-semibold">
             {selectedRoom?.roomType === "Room_Type_1" ? "Deluxe Room" : "Standard Room"}
           </h1>
           <p className="text-black mt-3 text-xl mb-2 font-extrabold">₹{selectedRoom ? selectedRoom.price : hotel.Type2_Price}</p>
 
-          <p className="mt-5">Per night for {quantity} room</p>
+          <p className="mt-5 text-2xl">Per night for {quantity} room</p>
 
-          <div className="flex items-center mt-4">
+          <div className="flex items-center mt-4 text-2xl">
             <button onClick={handleDecrement} onChange={handlePrice}>-</button>
             <span className="mx-2">{quantity}</span>
             <button onClick={handleIncrement} onChange={handlePrice}>+</button>
@@ -157,7 +157,7 @@ const InfoSection = ({ selectedRoom, hotel, guests }) => {
               selectedRoom?.roomType === "Room_Type_1" ? "Deluxe Room" : "Standard Room"
             }&price=${price}`}
           >
-            <button className="text-white font-bold w-[12.5rem] h-10 mb-4 rounded" style={{ backgroundColor: "#90CCBA" }}>
+            <button className="text-white text-xl font-bold w-[18rem] h-12 mb-4 rounded" style={{ backgroundColor: "#90CCBA" }}>
               Reserve Now
              </button>
           </Link>

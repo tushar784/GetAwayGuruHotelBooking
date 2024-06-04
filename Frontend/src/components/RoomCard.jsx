@@ -17,7 +17,7 @@ function RoomCard({ hotel, setSelectedRoom }) {
             {/* Render Deluxe Room */}
 
 
-            <div className="bg-white mb-4 h-[14rem] w-[95%] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
+            <div className="transform transition-transform duration-300 hover:scale-105 bg-white mb-4 h-[14rem] w-[95%] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
               {/* ... */}
               
             <img
@@ -65,7 +65,7 @@ function RoomCard({ hotel, setSelectedRoom }) {
       </div>
 
             {/* Render Standard Room */}
-            <div className="bg-white h-[14rem] w-[95%] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
+            <div className="transform transition-transform duration-300 hover:scale-105 bg-white h-[14rem] w-[95%] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
               {/* ... */}
           
 
@@ -123,7 +123,7 @@ function RoomCard({ hotel, setSelectedRoom }) {
         <h1 className="font-bold text-2xl mt-4 ml-4 mb-2">Rooms</h1>
         {/* Render Deluxe Room */}
         <div onClick={() => handleReserveRoom("Room_Type_1", hotel.Type1_Price)} 
-             className="bg-white mb-4 h-auto w-[22rem] ml-[3.4rem] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
+             className="transform transition-transform duration-300 hover:scale-105 bg-white mb-4 h-auto w-[22rem] ml-[3.4rem] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
           {/* ... */}          
         <img
           src={hotel.Type1_Img}
@@ -165,7 +165,7 @@ function RoomCard({ hotel, setSelectedRoom }) {
 
         {/* Render Standard Room */}
         <div onClick={() => handleReserveRoom("Room_Type_2", hotel.Type2_Price)}
-        className="bg-white mb-4 h-auto w-[22rem] ml-[3.4rem] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
+        className="transform transition-transform duration-300 hover:scale-105 bg-white mb-4 h-auto w-[22rem] ml-[3.4rem] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
                 
         <img
           src={hotel.Type2_Img}

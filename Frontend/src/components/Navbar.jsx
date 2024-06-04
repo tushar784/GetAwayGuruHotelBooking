@@ -20,7 +20,7 @@ function Navbar() {
         <div className="flex items-center">
           <Link to='/'>
             <img src={logo} alt=""
-            className="md:h-16 md:w-22 h-8" />
+            className="md:h-16 md:w-22 h-[3rem]" />
           </Link>
         
           <nav className="hidden md:flex md:ml-[18vw]"> 

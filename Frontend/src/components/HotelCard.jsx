@@ -25,7 +25,7 @@ const HotelCard = ({ hotel }) => {
   const trimmedHotelName = hotel.Hotel_Name.length > 20 ? `${hotel.Hotel_Name.slice(0, 20)}...` : hotel.Hotel_Name;
 
   return (
-    <div className="bg-white w-[23rem] md:w-[22rem] md:ml-[1rem] ml-[2rem] h-[35rem] shadow font-poppins rounded-lg overflow-hidden mb-4 mt-2 transition-all duration-300 flex flex-col justify-between">
+    <div className="transform transition-transform duration-300 hover:scale-105 bg-white w-[23rem] md:w-[22rem] md:ml-[1rem] ml-[2rem] h-[35rem] shadow font-poppins rounded-lg overflow-hidden mb-4 mt-2 transition-all duration-300 flex flex-col justify-between">
       <div className="h-auto mt-2 ml-2 rounded-lg w-full mr-2">
       <img
           src={hotel?.Card_Image}

@@ -245,11 +245,11 @@ const HotelSearchBar = ({
       {/* Mobile view  */}
 
       <div className="md:hidden">
-        <div className="bg-white rounded-lg border-[1px] p-4 mt-80">
+        <div className="bg-white rounded-lg border border-gray-300 p-4 mt-[20rem] h-[16rem]">
           <div className="mb-4">
             <label
               htmlFor="location"
-              className="text-sm text-gray-500 mb-1 mr-2"
+              className="text-lg text-gray-500 mb-1 mr-2"
             >
               Destination
             </label>
@@ -257,7 +257,7 @@ const HotelSearchBar = ({
               id="location"
               value={selectedLocation}
               onChange={handleLocationChange}
-              className="border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-lg text-lg"
             >
               <option value="">Select Location</option>
               {destinations.map((destination) => (
@@ -267,30 +267,30 @@ const HotelSearchBar = ({
               ))}
             </select>
           </div>
-          <div className="flex justify-between mb-4">
+          <div className="flex justify-between mb-[2rem]">
             <div>
-              <p className="text-sm text-gray-500">Check-in</p>
+              <p className="text-lg text-gray-500 mt-2 mb-2">Check-in</p>
               <input
                 type="date"
                 value={checkinDate}
                 ref={checkinRef}
                 onChange={handleCheckInDateChange}
-                className="bg-white border border-gray-300 rounded-md py-2 px-4 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="bg-white border border-gray-300 rounded-md py-2 px-4 text-lg font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               />
             </div>
             <div>
-              <p className="text-sm text-gray-500">Check-out</p>
+              <p className="text-lg text-gray-500 mt-2 mb-2">Check-out</p>
               <input
                 type="date"
                 ref={checkoutRef}
                 value={checkoutDate}
                 onChange={handleCheckOutDateChange}
-                className="bg-white border border-gray-300 rounded-md py-2 px-4 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ml-2"
+                className="bg-white border border-gray-300 rounded-md py-2 px-4 text-lg font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ml-2"
               />
             </div>
           </div>
 
-          <div className="mb-4">
+          {/* <div className="mb-4">
             <p className="text-sm text-gray-500 mb-1">Room & guests</p>
             <button
               type="button"
@@ -299,12 +299,12 @@ const HotelSearchBar = ({
             >
               {`${options.guest} guest & ${options.room}`}
             </button>
-          </div>
+          </div> */}
 
           <button
             onClick={handleSearch}
             type="button"
-            className="bg-[#90CCBA] hover:bg-[#46c79f] w-full text-white font-bold py-2 px-4 rounded-md "
+            className="bg-[#90CCBA] hover:bg-[#46c79f] w-full text-white font-bold py-2 px-4 rounded-md text-xl"
           >
             Search
           </button>
