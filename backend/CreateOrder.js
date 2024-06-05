@@ -21,6 +21,7 @@ app.post("/hotels/booking", async (req, res) => {
     state,
     room_Type,
     amount,
+    guestName,
     breakfast,
     username,
     email
@@ -36,6 +37,7 @@ app.post("/hotels/booking", async (req, res) => {
     !contact_number ||
     !state ||
     !room_Type ||
+    !guestName ||
     !amount ||
     breakfast === undefined
   ) {
@@ -92,6 +94,7 @@ app.post("/hotels/booking", async (req, res) => {
       numberOfRooms,
       amount,
       breakfast,
+      guestName,
       paymentStatus: 'not completed',
       razorpay_order_id: razorpayOrder.id, // Save Razorpay order ID
     });
@@ -115,6 +118,7 @@ app.post("/hotels/booking", async (req, res) => {
         numberOfRooms,
         contact_number,
         state,
+        guestName,
         room_Type,
         breakfast
       }
@@ -195,6 +199,7 @@ app.post("/holidaypackages/booking", async (req, res) => {
     contact_number,
     state,
     amount,
+    guestName,
     username,
     email,
   } = req.body;
@@ -209,6 +214,7 @@ app.post("/holidaypackages/booking", async (req, res) => {
     !state ||
     !amount ||
     !username ||
+    !guestName ||
     !email
   ) {
     return res.status(400).json({ error: "Missing required fields" });
@@ -259,6 +265,7 @@ app.post("/holidaypackages/booking", async (req, res) => {
       Departure_Date: formattedDeparture_Date,
       numberOfGuests,
       numberOfRooms,
+      guestName,
       amount,
       paymentStatus: 'not completed',
       razorpay_order_id: razorpayOrder.id, // Save Razorpay order ID
@@ -280,6 +287,7 @@ app.post("/holidaypackages/booking", async (req, res) => {
         Departure_Date: formattedDeparture_Date,
         numberOfGuests,
         numberOfRooms,
+        guestName,
         contact_number,
         state,
       },

@@ -34,7 +34,6 @@ const bookingSchema = new Schema({
     type: String,
     required: true,
   },
-
   checkOutDate: {
     type: String,
     required: true,
@@ -53,6 +52,10 @@ const bookingSchema = new Schema({
   },
   breakfast: {
     type: Boolean,
+    required: true
+  },
+  guestName: {
+    type: String,
     required: true
   },
   razorpay_order_id: {   // Add this field

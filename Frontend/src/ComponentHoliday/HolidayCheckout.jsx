@@ -20,6 +20,7 @@ const HolidayCheckout = () => {
   const [price, setPrice] = useState(0);
   const [orderDate, setOrderDate] = useState("");
   const [contactNumber, setContactNumber] = useState("");
+  const [guestName, setGuestName] = useState("")
   const [breakfast, setBreakfast] = useState(false); // State for breakfast option
   const [guestsError, setGuestsError] = useState("");
 
@@ -86,6 +87,7 @@ const HolidayCheckout = () => {
         state: state,
         contact_number: contactNumber,
         amount: price,
+        guestName: guestName,
         orderDate: currentOrderDate,
       };
 
@@ -231,6 +233,17 @@ const HolidayCheckout = () => {
         Customer Details
       </h1>
       <div className="font-poppins md:ml-[10rem] flex mt-[1rem]">
+       <div className="flex-initial md:m-[2px] m-[1rem] w-[35rem] size-22">
+         <div className="flex flex-col mb-4">
+              <label htmlFor="name" className="mb-2 font-semibold">Whom are you booking for?</label>
+              <input 
+                  type="text" id="name"
+                  value={guestName}
+                  onChange={(e) => setGuestName(e.target.value)} 
+                  placeholder="Enter the guest's name" 
+                  className="border border-gray-300 p-2 rounded-md" />
+          </div>
+        <div className="font-poppins md:ml-[10rem] flex mt-[1rem]">
         <div className="flex-initial md:m-[2px] m-[1rem] w-[35rem] size-22">
           <form className="flex flex-col">
             <div className="flex flex-col lg:flex-row mb-2">
@@ -365,6 +378,7 @@ const HolidayCheckout = () => {
               Submit
             </button>
           </form>
+          </div>
         </div>
 
         {/* Desktop View For Summary Box */}
@@ -390,8 +404,9 @@ const HolidayCheckout = () => {
           </div>
         </div>
       </div>
+      </div>
       <ToastContainer />
-    </>
+   </>
   );
 };
 
