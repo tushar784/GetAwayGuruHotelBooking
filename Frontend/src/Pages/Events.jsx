@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import EventsList from '../ComponentEvents/EventsList';
 import axios from 'axios';
 import Loading from '../components/Loading';
+import Footer from '../components/Footer';
 
 const Events = () => {
   const { selectedLocation: locationFromUrl } = useParams();
@@ -47,6 +48,7 @@ const Events = () => {
     <>
       <Navbar />
       <EventsList events={events} onSelectLocation={handleSelectLocation} selectedLocation={selectedLocation} />
+      {/* <Footer /> */}
     </>
   );
 };

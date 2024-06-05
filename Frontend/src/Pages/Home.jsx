@@ -42,7 +42,7 @@ function Home() {
       <Speciality />
       <PopularDestinations />
       <FAQ />
-      <Footer />
+      {/* <Footer /> */}
     
      
     </>

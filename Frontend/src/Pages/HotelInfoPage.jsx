@@ -54,7 +54,7 @@ const HotelInfoPage = () => {
         )}
       </div>
       <ReviewSection />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

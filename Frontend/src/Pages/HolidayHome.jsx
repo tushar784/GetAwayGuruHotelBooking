@@ -35,7 +35,7 @@ function HolidayHome() {
       {/* <SingleHolidayPage holiday={holiday}/> */}
       <TopHolidayPackages selectedLocation={selectedLocation} setHoliday={setHoliday} />
       <Speciality />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

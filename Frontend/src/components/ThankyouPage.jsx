@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 const ThankyouPage = () => {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="bg-white min-h-screen flex items-center justify-center">
         <div className="container mx-auto px-4">
           <div className="flex flex-col w-full items-center">
-            <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-green-500 flex items-center justify-center">
+            <div className="w-[5rem] h-[5rem] md:w-[7rem] md:h-[7rem] rounded-full bg-green-500 flex items-center justify-center">
               
              
                <svg
@@ -29,7 +29,7 @@ const ThankyouPage = () => {
              
             </div>
             <Link to="/" className="text-teal-500 font-semibold"><h1 className="text-4xl md:text-7xl font-bold mt-8 mb-4 text-center">Thank you!</h1></Link>
-            <p className="text-gray-600 text-lg md:text-2xl text-center leading-relaxed">
+            <p className="text-gray-600 text-lg md:text-lg text-center leading-relaxed">
               Your booking has been confirmed!
               <br />
               "Thank you for choosing GetawayGuru for all your travel needs!<br /> Whether you're booking a hotel, a holiday package, or planning an event,<br /> we are dedicated to providing you with the best options and a seamless experience. 🌟💖"

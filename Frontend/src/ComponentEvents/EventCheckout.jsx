@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from 'axios';
+import Footer from '../components/Footer';
 
 const EventCheckout = () => {
   const { user } = useContext(AuthContext);
@@ -277,6 +278,7 @@ const EventCheckout = () => {
         </div>
       </div>
       <ToastContainer />
+      
     </>
   );
 };

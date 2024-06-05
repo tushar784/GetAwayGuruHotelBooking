@@ -48,7 +48,7 @@ const HolidayInfoPage = () => {
           </>
         )}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

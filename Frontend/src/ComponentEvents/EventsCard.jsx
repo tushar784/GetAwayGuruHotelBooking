@@ -48,6 +48,7 @@ const EventsCard = ({ event, selectedCategory }) => {
         </div>
       </div>
     </Link>
+    
   );
 };
 

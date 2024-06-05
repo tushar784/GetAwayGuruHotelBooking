@@ -76,7 +76,7 @@ const Hotels = () => {
         {/* <Filters setFilters={handleFiltersChange} hotels={hotels} /> */}
         <HotelList key="hotelList" hotels={hotels} />
       {/* </Layout> */}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
