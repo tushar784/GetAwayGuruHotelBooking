@@ -37,6 +37,7 @@ const Routing = () => {
             {/* <Route path='/forgotpass' element={<ForgotPass />} /> */}
             {/* <Route path='/resetpass' element={<ResetPasswordForm />} /> */}
             <Route path="/location/:selectedLocation" element={<LocationDetails />} />
+            
 
             <Route path="/forgot-password" element={<ForgotPass />} />
             <Route path="/reset-password/:token" element={<ResetPasswordForm />} />

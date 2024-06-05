@@ -259,11 +259,19 @@ const CheckoutForm = () => {
       </div>
 
       {/* Customer details Form */}
-      <h1 className="font-poppins ml-[7rem] text-xl font-semibold mt-10 mb-2">
+      <h1 className="font-poppins ml-[7rem] text-xl font-semibold mt-[1rem] mb-2">
         Customer Details
       </h1>
+    
       <div className="font-poppins md:ml-[10rem] flex mt-[1rem]">
-        <div className="flex-initial md:m-[2px] m-[1rem] w-[35rem] size-22">
+       <div className="flex-initial md:m-[2px] m-[1rem] w-[35rem] size-22">
+         <div className="flex flex-col mb-4">
+              <label htmlFor="name" className="mb-2">Name</label>
+              <input 
+                  type="text" id="name" 
+                  placeholder="Enter Your Name" 
+                  className="border border-gray-300 p-2 rounded-md" />
+          </div>
           <form onSubmit={handleSubmit} className="flex flex-col">
             <div className="flex flex-col lg:flex-row mb-2">
               <div className="mb-4 lg:mr-4 flex-auto">
