@@ -146,6 +146,7 @@ function HolidayOrderHistory() {
                   {booking.isOpen && (
                     <div className="font-semibold p-4 flex justify-between">
                       <div>
+                        <p>Whom are you booking for?:</p>
                         <p>Booking date:</p>
                         <p>Check-in:</p>
                         <p>Check-out:</p>
@@ -153,6 +154,7 @@ function HolidayOrderHistory() {
                         <p>Rooms:</p>
                       </div>
                       <div className="text-right mr-2">
+                        <p>{booking.guestName}</p>
                         <p>{booking.orderDate}</p>
                         <p>{booking.checkInDate}</p>
                         <p>{booking.checkOutDate}</p>

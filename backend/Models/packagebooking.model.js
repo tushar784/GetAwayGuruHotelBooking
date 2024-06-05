@@ -10,6 +10,10 @@ const packagesbookingSchema = new Schema({
     type: String,
     required: true,
   },
+  guestName: {
+    type: String,
+    required: true
+  },
   email: {
     type: String,
     required: true

@@ -22,6 +22,7 @@ const CheckoutForm = () => {
   const { user } = useContext(AuthContext);
   const [price, setPrice] = useState(0);
   const [contactNumber, setContactNumber] = useState("");
+  const [guestName, setGuestName] = useState("") 
   const [breakfast, setBreakfast] = useState(false); // State for breakfast option
   const today = new Date().toISOString().split('T')[0];
   useEffect(() => {
@@ -41,15 +42,15 @@ const CheckoutForm = () => {
     setBasePrice(parseFloat(params.price));
     setPrice(parseFloat(params.price)); // Set the initial price
     setRooms(parseInt(params.rooms) || 1); // Set the initial number of rooms
-    setGuests(parseInt(params.guests) || 1); // Set the initial number of guests
+    // setGuests(parseInt(params.guests) || 1); // Set the initial number of guests
     fetchHotelDetails();
   }, [hotelName]);
 
 
   useEffect(() => {
     // Retrieve values from local storage
-    const startDate = localStorage.getItem('startDate');
-    const endDate = localStorage.getItem('endDate');
+    const startDate = localStorage.getItem('checkinDate');
+    const endDate = localStorage.getItem('checkoutDate');
     
     // Set the values to the state variables
     setCheckInDate(startDate);
@@ -103,6 +104,7 @@ const CheckoutForm = () => {
         state: state,
         room_Type: roomType,
         contact_number: contactNumber,
+        guestName: guestName,
         breakfast: breakfast, // Include the breakfast option
         amount: price, // Amount in paise (smallest currency unit)
         orderDate: currentOrderDate, // Include orderDate
@@ -161,7 +163,7 @@ const CheckoutForm = () => {
       }
     } catch (error) {
       console.error("Error in order creation or payment initiation:", error);
-      navigate('/checkout');
+      navigate(`/checkout/${hotelName}`);
     }
   };
   
@@ -185,8 +187,7 @@ const CheckoutForm = () => {
     // Update the state with the new number of guests
     setGuests(value);
 
-    // Recalculate the total price based on the updated number of guests
-    setPrice(calculateTotalPrice(rooms, value, breakfast));
+   
   };
 
   const handleBreakfastChange = (value) => {
@@ -266,10 +267,12 @@ const CheckoutForm = () => {
       <div className="font-poppins md:ml-[10rem] flex mt-[1rem]">
        <div className="flex-initial md:m-[2px] m-[1rem] w-[35rem] size-22">
          <div className="flex flex-col mb-4">
-              <label htmlFor="name" className="mb-2">Name</label>
+              <label htmlFor="name" className="mb-2 font-semibold">Whom are you booking for?</label>
               <input 
-                  type="text" id="name" 
-                  placeholder="Enter Your Name" 
+                  type="text" id="name"
+                  value={guestName}
+                  onChange={(e) => setGuestName(e.target.value)} 
+                  placeholder="Enter the guest's name" 
                   className="border border-gray-300 p-2 rounded-md" />
           </div>
           <form onSubmit={handleSubmit} className="flex flex-col">
@@ -335,6 +338,7 @@ const CheckoutForm = () => {
                 <input
                   type="date"
                   id="checkOutDate"
+                  min={today}
                   value={checkOutDate}
                   onChange={handleCheckOutDateChange}
                   className="border border-gray-300 rounded-md px-4 py-2 w-full"
