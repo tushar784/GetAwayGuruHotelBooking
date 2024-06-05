@@ -2,15 +2,15 @@ import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { SiPhonepe } from "react-icons/si";
 import axios from "axios";
-import { useParams,useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../Context/Auth_Context";
 
 const HolidayCheckout = () => {
   const { packageName } = useParams();
-  const navigate = useNavigate()
-  const [basePrice, setBasePrice] = useState(0); // Base price for a single room with up to 4 guests
+  const navigate = useNavigate();
+  const [basePrice, setBasePrice] = useState(0);
   const [holiday, setHoliday] = useState(null);
   const [state, setState] = useState("");
   const [departure, setDepartureDate] = useState("");
@@ -20,8 +20,8 @@ const HolidayCheckout = () => {
   const [price, setPrice] = useState(0);
   const [orderDate, setOrderDate] = useState("");
   const [contactNumber, setContactNumber] = useState("");
-  const [guestName, setGuestName] = useState("")
-  const [breakfast, setBreakfast] = useState(false); // State for breakfast option
+  const [guestName, setGuestName] = useState("");
+  const [breakfast, setBreakfast] = useState(false);
   const [guestsError, setGuestsError] = useState("");
 
   useEffect(() => {
@@ -35,15 +35,15 @@ const HolidayCheckout = () => {
         console.log("data", response.data);
       } catch (error) {
         console.error("Error fetching holiday details:", error);
-      } 
+      }
     };
 
     const urlParams = new URLSearchParams(window.location.search);
     const params = Object.fromEntries(urlParams.entries());
     setBasePrice(parseFloat(params.price));
-    setPrice(parseFloat(params.price)); // Set the initial price
-    setRooms(parseInt(params.rooms) || 1); // Set the initial number of rooms
-    setGuests(parseInt(params.guests) || 1); // Set the initial number of guests
+    setPrice(parseFloat(params.price));
+    setRooms(parseInt(params.rooms) || 1);
+    setGuests(parseInt(params.guests) || 1);
     fetchHolidayDetails();
   }, [packageName]);
 
@@ -53,7 +53,6 @@ const HolidayCheckout = () => {
     }
     let totalPrice = basePrice * guests;
 
-    // Calculate the cost for additional rooms
     if (rooms > 1) {
       totalPrice += 1500 * (rooms - 1);
     }
@@ -65,10 +64,10 @@ const HolidayCheckout = () => {
     e.preventDefault();
 
     if (!user) {
-      toast.info('Please log in to proceed with the payment.');
+      toast.info("Please log in to proceed with the payment.");
       setTimeout(() => {
-        navigate('/login');
-      }, 2000); // Delay the navigation to allow the toast message to be shown
+        navigate("/login");
+      }, 2000);
       return;
     }
 
@@ -91,17 +90,26 @@ const HolidayCheckout = () => {
         orderDate: currentOrderDate,
       };
 
-      const response = await axios.post(`${url}/api/holidaypackages/booking`, orderData);
+      const response = await axios.post(
+        `${url}/api/holidaypackages/booking`,
+        orderData
+      );
 
       if (response.data.packageBookingDetails) {
-        const { amount, razorpayOrderId, key, email, username } = response.data.packageBookingDetails;
+        const {
+          amount,
+          razorpayOrderId,
+          key,
+          email,
+          username,
+        } = response.data.packageBookingDetails;
 
         const options = {
           key,
           amount,
-          currency: 'INR',
+          currency: "INR",
           name: "GetAwayGuru Booking",
-          description: 'Holiday Package Payment',
+          description: "Holiday Package Payment",
           order_id: razorpayOrderId,
           handler: async function (response) {
             const body = {
@@ -110,13 +118,16 @@ const HolidayCheckout = () => {
               razorpay_signature: response.razorpay_signature,
             };
 
-            const validateRes = await axios.post(`${url}/api/order/validatepackageorder`, body);
+            const validateRes = await axios.post(
+              `${url}/api/order/validatepackageorder`,
+              body
+            );
 
-            if (validateRes.data.msg === 'success') {
-              toast.success('Payment successful');
+            if (validateRes.data.msg === "success") {
+              toast.success("Payment successful");
               navigate(`/thankyou/${response.razorpay_order_id}`);
             } else {
-              toast.error('Payment validation failed');
+              toast.error("Payment validation failed");
               navigate(`/checkout/${packageName}`);
             }
           },
@@ -129,7 +140,7 @@ const HolidayCheckout = () => {
             address: `${holiday?.Package_Name}, ${state}`,
           },
           theme: {
-            color: '#3399cc',
+            color: "#3399cc",
           },
         };
 
@@ -138,10 +149,10 @@ const HolidayCheckout = () => {
       }
     } catch (error) {
       console.error("Error in order creation or payment initiation:", error);
-      navigate('/checkout');
+      navigate("/checkout");
     }
   };
-  
+
   const handleRoomsChange = (value) => {
     value = Math.max(value, 1);
     setRooms(value);
@@ -154,7 +165,7 @@ const HolidayCheckout = () => {
     } else {
       setGuestsError("");
     }
-    value = Math.min(Math.max(value, 1), rooms * 3); // Restrict guests to 3 per room
+    value = Math.min(Math.max(value, 1), rooms * 3);
     setGuests(value);
     setPrice(calculateTotalPrice(rooms, value));
   };
@@ -164,7 +175,6 @@ const HolidayCheckout = () => {
     setPrice(calculateTotalPrice(rooms, guests, value));
   };
 
-  // Calculate tomorrow's date
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   const minDate = tomorrow.toISOString().split("T")[0];
@@ -209,6 +219,7 @@ const HolidayCheckout = () => {
         <div className="border border-gray-300 rounded-2xl pl-4 mb-4">
           <h3 className="font-bold mb-4 text-2xl mt-4">Summary</h3>
           <div className="flex">
+            
             <img
               src={holiday?.Card_imgae}
               alt="Hotel"
@@ -232,9 +243,13 @@ const HolidayCheckout = () => {
       <h1 className="font-poppins ml-[7rem] text-xl font-semibold mt-10 mb-2">
         Customer Details
       </h1>
-      <div className="font-poppins md:ml-[10rem] flex mt-[1rem]">
+      <div className="flex font-poppins md:ml-[10rem] flex mt-[1rem]">
        <div className="flex-initial md:m-[2px] m-[1rem] w-[35rem] size-22">
-         <div className="flex flex-col mb-4">
+         
+        {/* <div className="flex font-poppins md:ml-[10rem] flex mt-[1rem]"> */}
+        {/* <div className="flex-initial md:m-[2px] m-[1rem] w-[35rem] size-22"> */}
+          
+        <div className="flex flex-col mb-4">
               <label htmlFor="name" className="mb-2 font-semibold">Whom are you booking for?</label>
               <input 
                   type="text" id="name"
@@ -243,8 +258,6 @@ const HolidayCheckout = () => {
                   placeholder="Enter the guest's name" 
                   className="border border-gray-300 p-2 rounded-md" />
           </div>
-        <div className="font-poppins md:ml-[10rem] flex mt-[1rem]">
-        <div className="flex-initial md:m-[2px] m-[1rem] w-[35rem] size-22">
           <form className="flex flex-col">
             <div className="flex flex-col lg:flex-row mb-2">
               <div className="mb-4 lg:mr-4 flex-auto">
@@ -372,18 +385,20 @@ const HolidayCheckout = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="bg-[#90CCBA] hover:bg-[#46c79f] text-white font-bold py-2 px-4 rounded"
+              className="bg-[#90CCBA] hover:bg-[#46c79f] text-white font-bold py-2 px-4 rounded mb-8"
               onClick={handleSubmit}
             >
               Submit
             </button>
           </form>
-          </div>
-        </div>
+          </div> 
+          {/* </div> */}
+        {/* </div> */}
 
         {/* Desktop View For Summary Box */}
-        <div className="md:ml-[4rem] mb-4 md:flex hidden w-[21rem] h-[20rem]">
-          <div className="border border-gray-300 rounded-2xl pl-4">
+        {/* <div className="flex md:ml-[4rem] mb-4 md:flex hidden w-[21rem] h-[20rem]"> */}
+          <div className="hidden md:flex md:ml-[4rem] mb-4 w-[21rem] h-[20rem]">
+          <div className="w-[22rem] border border-gray-300 rounded-2xl pl-4">
             <h3 className="font-bold mb-4 text-2xl mt-4">Summary</h3>
             <div className="flex">
               <img
@@ -403,7 +418,7 @@ const HolidayCheckout = () => {
             </div>
           </div>
         </div>
-      </div>
+      {/* </div>  */}
       </div>
       <ToastContainer />
    </>

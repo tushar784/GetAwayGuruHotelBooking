@@ -46,6 +46,10 @@ function Login() {
         localStorage.setItem("token", token);
         login({ user, token });
         toast.success("Login successful!", {
+          style: {
+            backgroundColor: 'green',
+            color: 'white'
+          },
           position: "top-right",
           autoClose: 1000,
           onClose: () => navigate("/"), // Navigate after the toast is closed
@@ -53,12 +57,20 @@ function Login() {
       } catch (error) {
         console.error(error);
         toast.error("Invalid email or password. Please try again.", {
+          style: {
+            backgroundColor: 'red',
+            color: 'white'
+          },
           position: "top-right",
           autoClose: 3000,
         });
       }
     } else {
       toast.error("Please correct the errors in the form.", {
+        style: {
+          backgroundColor: 'red',
+          color: 'white'
+        },
         position: "top-right",
         autoClose: 3000,
       });
@@ -67,12 +79,12 @@ function Login() {
 
   return (
     <>
-    <ToastContainer />
-      <div className="bg-slate-200 min-h-screen flex justify-center items-center md:flex">       
+      <ToastContainer />
+      <div className="bg-slate-200 min-h-screen flex justify-center items-center md:flex">
         <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
-            <Link to='/'>
+          <Link to='/'>
             <img src={logo} alt=""
-            className="md:h-14 md:w-22 h-10 ml-[3.5rem]" />
+              className="md:h-14 md:w-22 h-10 ml-[3.5rem]" />
           </Link>
           <h2 className="md:text-xl text-mx font-semibold text-gray-800 mb-2">
             Welcome Back!
@@ -130,12 +142,20 @@ function Login() {
           </div>
         </div>
       </div>
-      
     </>
   );
 }
 
 export default Login;
+
+
+
+
+
+
+
+
+
 
 
 
@@ -166,7 +186,7 @@ export default Login;
 //   const [validation, setValidation] = useState({});
 
 //   function Validation(formData) {
-//     const errors = [];
+//     const errors = {};
 //     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 //     if (!emailRegex.test(formData.email)) {
 //       errors.email = "Enter email in correct format";
@@ -187,27 +207,39 @@ export default Login;
 
 //   const handleSubmit = async (event) => {
 //     event.preventDefault();
-//     setValidation(Validation(formData));
-  
-//     try {
-//       const url = import.meta.env.VITE_BASE_URL;
-//       const response = await axios.post(`${url}/api/login`, formData);
-//       const { token, user } = response.data;
-//       localStorage.setItem("token", token);
-//       login({ user, token });
-//       toast.success("Login successful!", {
+//     const errors = Validation(formData);
+//     setValidation(errors);
+
+//     if (Object.keys(errors).length === 0) {
+//       try {
+//         const url = import.meta.env.VITE_BASE_URL;
+//         const response = await axios.post(`${url}/api/login`, formData);
+//         const { token, user } = response.data;
+//         localStorage.setItem("token", token);
+//         login({ user, token });
+//         toast.success("Login successful!", {
+//           position: "top-right",
+//           autoClose: 1000,
+//           onClose: () => navigate("/"), // Navigate after the toast is closed
+//         });
+//       } catch (error) {
+//         console.error(error);
+//         toast.error("Invalid email or password. Please try again.", {
+//           position: "top-right",
+//           autoClose: 3000,
+//         });
+//       }
+//     } else {
+//       toast.error("Please correct the errors in the form.", {
 //         position: "top-right",
-//         autoClose: 1000,
-//         onClose: () => navigate("/"), // Navigate after the toast is closed
+//         autoClose: 3000,
 //       });
-//     } catch (error) {
-//       console.error(error);
 //     }
 //   };
-  
 
 //   return (
 //     <>
+//     <ToastContainer />
 //       <div className="bg-slate-200 min-h-screen flex justify-center items-center md:flex">       
 //         <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
 //             <Link to='/'>
@@ -249,12 +281,6 @@ export default Login;
 //               )}
 //             </div>
 //             <div className="flex items-center justify-between mb-4">
-//               {/* <div className="flex items-center">
-//                 <input type="checkbox" id="rememberMe" className="mr-2" />
-//                 <label htmlFor="rememberMe" className="text-sm text-gray-600">
-//                   Remember me
-//                 </label>
-//               </div> */}
 //               <Link to="/forgot-password" className="text-sm text-gray-600">
 //                 Forgot Password?
 //               </Link>
@@ -276,9 +302,16 @@ export default Login;
 //           </div>
 //         </div>
 //       </div>
-//       <ToastContainer />
+      
 //     </>
 //   );
 // }
 
 // export default Login;
+
+
+
+
+
+
+

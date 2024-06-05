@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import HotelSearchBar from "../components/HotelSearchBar";
-import coverimage from "../assets/img/homepage.jpg"
+import coverimage from "../assets/img/homepage.png"
 import Speciality from "../components/Speciality";
 import FAQ from "../components/FAQ";
 import PopularDestinations from "../components/PopularDestinations";

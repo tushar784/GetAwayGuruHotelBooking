@@ -4,7 +4,7 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 
 function EventsSinglePage() {
   const { eventName } = useParams();
@@ -168,7 +168,7 @@ function EventsSinglePage() {
           </div>
         )}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

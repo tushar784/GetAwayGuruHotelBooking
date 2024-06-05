@@ -132,21 +132,7 @@ const EventCheckout = () => {
       <Navbar />
       <div className="flex flex-col md:flex-row md:ml-[12rem] mt-8 mx-[1rem]">
         <div className="flex flex-col w-full md:w-[30rem] mb-8 md:mb-0">
-          <div className="flex flex-col md:flex-row mb-4">
-            {/* <div className="flex flex-col w-full md:w-1/2 md:mr-4 mb-4 md:mb-0">
-              <label htmlFor="email" className="block text-base font-semibold mb-2">
-                Email
-              </label>
-              <input
-                value={user.email}
-                type="email"
-                id="email"
-                className="border border-gray-300 rounded-md px-4 py-2 w-full"
-                placeholder="Email"
-              />
-            </div> */}
-           
-
+          <div className="flex flex-col md:flex-row mb-4">      
             <div className="flex flex-col w-full md:w-[14rem] mt-2 ">
               <label htmlFor="contact" className="block text-base font-semibold mb-2">
                 Contact Number
@@ -249,7 +235,7 @@ const EventCheckout = () => {
           </div>
         </div>
 
-        <div className="w-full md:w-[21rem] md:ml-[4rem] order-first md:order-last">
+        <div className="w-full md:w-[21rem] md:ml-[4rem] order-first md:order-last  md:mb-[8rem]">
           <div className="border border-gray-300 rounded-2xl p-4">
             <h3 className="font-bold mb-4 text-2xl">Order Summary</h3>
             <div className="flex mb-4">

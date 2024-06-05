@@ -3,7 +3,7 @@ import HolidayCard from "./HolidayCard";
 
 const HolidayList = ({ holiday }) => {
   return (
-    <div className="container mx-auto font-poppins pl-4 pr-4 pt-4 md:pl-[5rem] md:pt-[2rem] ">
+    <div className="container mx-auto font-poppins pl-4 pr-4 pt-4 md:pl-[5rem] md:pt-[2rem] md:mb-[2rem]">
       <h1 className="text-xl font-semibold mb-4 mt-2">
         Showing Properties in {holiday.length ? holiday[0].Location : 'Selected Location'}
       </h1>

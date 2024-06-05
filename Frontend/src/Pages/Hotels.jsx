@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer.jsx";
 import Layout from "../components/Layout";
 import HotelList from "../components/HotelList";
 import Filters from "../components/Filters";
@@ -76,7 +75,7 @@ const Hotels = () => {
         {/* <Filters setFilters={handleFiltersChange} hotels={hotels} /> */}
         <HotelList key="hotelList" hotels={hotels} />
       {/* </Layout> */}
-      {/* <Footer /> */}
+
     </>
   );
 };

@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import Mumbai from "../assets/img/mumbai.jpg";
-import Hyderabad from "../assets/img/hydrabad.jpg";
-import goa from "../assets/img/goa.jpg";
-import jaipur from "../assets/img/jaipur.jpg";
-import manali from "../assets/img/manali.jpg";
+import Mumbai from "../assets/img/mumbai.png";
+import Hyderabad from "../assets/img/hydrabad.png";
+// import goa from "../assets/img/goa.jpg";
+import goa from "../assets/img/goa.png";
+// import jaipur from "../assets/img/jaipur.png";
+import dubai from "../assets/img/dubai.png";
+import bengaluru from "../assets/img/bengaluru.png";
 
 const PopularDestinations = () => {
   const navigate = useNavigate();
@@ -40,14 +42,14 @@ const PopularDestinations = () => {
         </button>
         <button onClick={() => handleLocationClick('jaipur')}>
           <img
-            src={jaipur}
+            src={dubai}
             alt="Image 4"
             className="rounded-xl object-cover md:w-full w-[22rem] sm:h-22 md:h-[21rem] h-[32rem] size-16 transition duration-300 transform hover:scale-110"
           />
         </button>
-        <button onClick={() => handleLocationClick('manali')}>
+        <button onClick={() => handleLocationClick('bengaluru')}>
           <img
-            src={manali}
+            src={bengaluru}
             alt="Image 5"
             className="rounded-xl object-cover md:w-full w-[22rem] sm:h-22 md:h-[21rem] h-[32rem] size-16 transition duration-300 transform hover:scale-110"
           />
