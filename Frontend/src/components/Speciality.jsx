@@ -7,7 +7,7 @@ import img4 from "../assets/img/PayAtHotel.jpg"
 function Speciality() {
   return (
     <>
-      <div className="container mx-auto px-4 py-8 sm:mt-[10rem] md:mt-0 mt-[10rem] ">
+      <div className="container mx-auto md:px-4 py-8 sm:mt-[10rem] md:mt-0 mt-[10rem] ">
         <h1 className="md:text-xl text-2xl font-bold md:mb-4 md:mt-1 md:ml-0 ml-[1rem] md:mb-4 mb-[2rem]">
           Why book hotels with GetawayGuru
         </h1>

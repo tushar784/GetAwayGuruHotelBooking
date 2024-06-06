@@ -159,7 +159,7 @@ const HotelSearchBar = ({
             type="date"
             value={checkinDate}
             ref={checkinRef}
-            onChange={handleCheckInDateChange} 
+            onChange={handleCheckInDateChange}
             className="md:absolute md:ml-[2rem] md:text-gray-400 md:bold cursor-pointer flex items-center"
           />
         </div>
@@ -173,68 +173,6 @@ const HotelSearchBar = ({
             className="md:absolute md:ml-[2rem] md:text-gray-400 md:bold cursor-pointer flex items-center"
           />
         </div>
-{/* 
-        <div className="headerSearchItem font-poppins">
-          <h1 className="md:font-semibold">Rooms & Guests</h1>
-          <div className="headerSearchText md:text-gray-400 md:bold md:cursor-pointer flex items-center rounded-lg">
-            <button
-              onClick={() => setOpenOptions(!openOptions)}
-              className="flex items-center"
-            >
-              <span className="mr-2">{`${options.guest} guest & ${options.room} room`}</span>
-            
-            </button>
-          </div>
-
-          {openOptions && (
-            <div
-              className="options absolute bg-white shadow-md rounded-xl mt-2 p-"
-              ref={optionsRef}
-            >
-              <div className="optionItem flex justify-between m-4 pt-2">
-                <span className="optionText">Guests :</span>
-                <div className="optionCounter flex items-center ml-2 gap-2 text-xs text-[black]">
-                  <button
-                    disabled={options.guest <= 1}
-                    className="optionCounterButton w-8 h-8 border text-[#0071c2] cursor-pointer border-solid border-[#0071c2] rounded-full"
-                    onClick={() => handleOption("guest", "d")}
-                  >
-                    -
-                  </button>
-
-                  <span className="optionCounterNumber">{options.guest}</span>
-
-                  <button
-                    className="optionCounterButton w-8 h-8 border text-[#0071c2] cursor-pointer border-solid border-[#0071c2] rounded-full"
-                    onClick={() => handleOption("guest", "i")}
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-
-              <div className="optionItem flex justify-between m-4 pt-2">
-                <span className="optionText">Rooms :</span>
-                <div className="optionCounter flex items-center gap-2 text-xs text-[black]">
-                  <button
-                    disabled={options.room <= 1}
-                    className="optionCounterButton w-8 h-8 border text-[#0071c2] cursor-pointer border-solid border-[#0071c2] rounded-full"
-                    onClick={() => handleOption("room", "d")}
-                  >
-                    -
-                  </button>
-                  <span className="optionCounterNumber">{options.room}</span>
-                  <button
-                    className="optionCounterButton w-8 h-8 border text-[#0071c2] cursor-pointer border-solid border-[#0071c2] rounded-full"
-                    onClick={() => handleOption("room", "i")}
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
-        </div> */}
         <button
           onClick={handleSearch}
           className="bg-[#90CCBA] hover:bg-[#46c79f] md:text-white md:font-bold md:h-16 md:pl-6 md:pr-6 md:mt-[-0.66rem] md:mr-[-4.5rem] md:border-[1px] md:rounded-r-lg"
@@ -242,10 +180,11 @@ const HotelSearchBar = ({
           Search
         </button>
       </div>
+
       {/* Mobile view  */}
 
       <div className="md:hidden">
-        <div className="bg-white rounded-lg border border-gray-300 p-4 mt-[20rem] h-[16rem]">
+        <div className="bg-white rounded-lg border border-gray-300 p-4 mt-[10rem] md:ml-[3.5rem] ml-[2rem] h-[17rem] w-[22rem] md:mt-0 ">
           <div className="mb-4">
             <label
               htmlFor="location"
@@ -275,7 +214,7 @@ const HotelSearchBar = ({
                 value={checkinDate}
                 ref={checkinRef}
                 onChange={handleCheckInDateChange}
-                className="bg-white border border-gray-300 rounded-md py-2 px-4 text-lg font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="bg-white border border-gray-300 rounded-md py-2 px-4 text-lg font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-[10rem]"
               />
             </div>
             <div>
@@ -285,7 +224,7 @@ const HotelSearchBar = ({
                 ref={checkoutRef}
                 value={checkoutDate}
                 onChange={handleCheckOutDateChange}
-                className="bg-white border border-gray-300 rounded-md py-2 px-4 text-lg font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ml-2"
+                className="bg-white border border-gray-300 rounded-md py-2 px-4 text-lg font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ml-2 w-[10rem]"
               />
             </div>
           </div>
@@ -304,7 +243,7 @@ const HotelSearchBar = ({
           <button
             onClick={handleSearch}
             type="button"
-            className="bg-[#90CCBA] hover:bg-[#46c79f] w-full text-white font-bold py-2 px-4 rounded-md text-xl"
+            className="bg-[#90CCBA] hover:bg-[#46c79f] md:w-full w-[20rem] md:mr-0 text-white font-bold py-2 px-4 rounded-md text-xl"
           >
             Search
           </button>

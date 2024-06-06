@@ -65,7 +65,7 @@ const Filters = ({ setFilters, hotels }) => {
             <FaChevronDown className="ml-1" />
           </button>
           {showSortDropdown && (
-            <div className="w-[10rem] absolute right-0 mt-2 bg-white shadow-md rounded-md p-2">
+            <div className="w-[10rem] absolute right-0 mt-2 bg-white shadow-md rounded-md p-2 z-50">
               <button
                 className="block w-full text-left hover:bg-gray-100 py-1 px-2"
                 onClick={() => handleSort("price", "high-to-low")}

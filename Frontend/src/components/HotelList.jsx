@@ -16,7 +16,7 @@ const HotelList = ({ hotels }) => {
           Showing Properties in{" "}
           {filteredHotels.length ? filteredHotels[0].Location : "Selected Location"}
         </h1>
-        <Filters setFilters={handleFiltersChange} hotels={filteredHotels} className="mr-4 w-[12rem]"/>
+        <Filters setFilters={handleFiltersChange} hotels={filteredHotels} className="mr-4 w-[12rem] "/>
         {/* <Filters setFilters={handleFiltersChange} hotels={filteredHotels} className="mr-4 w-[12rem]"/> */}
       </div>
       <div className="ml-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4">
