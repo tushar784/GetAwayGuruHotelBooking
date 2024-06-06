@@ -29,7 +29,7 @@ const ResetPasswordForm = () => {
             password,  // Send the actual password
           };
           console.log('Request data:', requestData);
-          const response = await axios.post(`${url}/api/resetpassword/${token}`, requestData);
+          const response = await axios.post(`${url}/api/reset-password/${token}`, requestData);
 
           // Handle the successful response
           if ("Password Reset Successfully") {
