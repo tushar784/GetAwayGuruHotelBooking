@@ -53,7 +53,7 @@ app.get("/api/forgot-password", (req, res) => {
   res.send("Forget password is working");
 });
 
-app.get("/api/reset-password", (req,res)=>{
+app.get("/api/resetpassword", (req,res)=>{
   res.send("reset kar")
 })
  

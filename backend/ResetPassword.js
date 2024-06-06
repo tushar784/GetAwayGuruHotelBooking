@@ -9,7 +9,7 @@ const bcrypt = require('bcrypt'); // Import bcrypt library
 app.use(cors());
 app.use(bodyParser.json());
 
-app.post('/reset-password/:token', async (req, res) => {
+app.post('/resetpassword/:token', async (req, res) => {
     const { token } = req.params;
     const { password } = req.body;                      
 
