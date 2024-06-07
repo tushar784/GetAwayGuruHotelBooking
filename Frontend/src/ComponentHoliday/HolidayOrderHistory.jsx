@@ -60,7 +60,7 @@ function HolidayOrderHistory() {
   return (
     <>
       <Navbar />
-      <div className="flex h-screen">
+      <div className="flex h-full">
         <div className="sticky top-0 left-0 hidden md:block w-full md:w-[18rem] md:h-[12rem] rounded md:ml-[2rem] md:mt-[3rem] bg-[#90CCBA] overflow-y-auto">
           <Link to="/profile">
             <h2 className="text-xl font-semibold text-white font-poppins mt-[2rem] md:mt-[2rem] ml-4">
