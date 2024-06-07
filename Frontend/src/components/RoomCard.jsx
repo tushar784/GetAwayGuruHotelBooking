@@ -18,7 +18,7 @@ function RoomCard({ hotel, setSelectedRoom }) {
 
 
             <div className="transform transition-transform duration-300 hover:scale-105 bg-white mb-4 h-[14rem] w-[95%] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
-              {/* ... */}
+              
               
             <img
               src={hotel.Type1_Img}

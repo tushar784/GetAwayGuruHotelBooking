@@ -43,7 +43,7 @@ const LocationDetails = () => {
     <>
       <Navbar />
       <div>
-        <h2 className='text-2xl ml-[4rem] mb-[1rem] font-bold'>Hotels</h2>
+      <h2 className='text-4xl ml-[3rem] mb-[1rem] mt-[2rem] font-bold font-serif ml-[35rem]'>Hotels</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 ml-[3rem]">
           {hotels.length > 0 ? (
             hotels.map((hotel) => <HotelCard key={hotel.id} hotel={hotel} />)
@@ -52,7 +52,7 @@ const LocationDetails = () => {
           )}
         </div>
 
-        <h2 className='text-2xl ml-[3rem] mb-[1rem] font-bold'>Packages</h2>
+        <h2 className='text-4xl ml-[3rem] mb-[1rem] mt-[2rem] font-bold font-serif ml-[35rem]'>Packages</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 ml-[3rem]">
           {packages.length > 0 ? (
             packages.map((Package) => <HolidayCard key={Package.id} holiday={Package} />)
@@ -61,7 +61,8 @@ const LocationDetails = () => {
           )}
         </div>
 
-        <h2 className='text-2xl ml-[3rem] mb-[1rem] font-bold'>Events</h2>
+        <h2 className='text-4xl ml-[3rem] mb-[1rem] mt-[2rem] font-bold font-serif ml-[35rem]'>Events</h2>
+        
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  w-[70rem] ml-[4rem]">
           {events.length > 0 ? (
             events.map((event) => <EventsCard key={event.id} event={event} selectedCategory={selectedCategory} />)

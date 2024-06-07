@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "../assets/img/logo.jpg";
 import Navbar from '../components/Navbar';
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
 
 const ForgotPass = () => {
   const [email, setEmail] = useState('');
@@ -19,9 +20,16 @@ const ForgotPass = () => {
           const response = await axios.post(`${url}/api/forgot-password`, { email });
 
           // Handle the successful response
-          if (response.data.success) {
-            setSuccessMessage(response.data.message);
+          if ("Email sent Successfully") {
+            setSuccessMessage("Email sent Successfully");
             setErrorMessage('');
+            toast.success("Email sent Successfully", {
+              style: {
+                backgroundColor: 'green',
+                color: 'white'
+              }
+            });
+            
           } else {
             setErrorMessage(response.data.message);
             setSuccessMessage('');
