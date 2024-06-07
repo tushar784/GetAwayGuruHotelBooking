@@ -120,7 +120,7 @@ function HolidayOrderHistory() {
               </div>
             ))
           ) : (
-            <p>No package package found.</p>
+            <p>No package found.</p>
           )}
 
           <h2 className="text-2xl font-bold mb-4 mt-8">Your Hotel Bookings</h2>
