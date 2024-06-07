@@ -52,8 +52,8 @@ const Filters = ({ setFilters, hotels }) => {
   };
 
   return (
-    <div className="hidden md:block bg-white ml-[44rem] rounded-xl w-full md:w-[6rem] md:shadow">
-      <div className="flex items-center m-4">
+    <div className="hidden md:block rounded-xl w-full md:w-[6rem] md:shadow">
+      <div className="flex items-center m-2">
         {/* <FaFilter className="text-gray-600 mr-2" /> */}
         {/* <h2 className="text-xl font-bold text-gray-800">Filters</h2> */}
         <div className="relative">
@@ -61,13 +61,13 @@ const Filters = ({ setFilters, hotels }) => {
             className="flex items-center text-gray-600 hover:text-gray-800 focus:outline-none"
             onClick={() => setShowSortDropdown(!showSortDropdown)}
           >
-            <span className="font-bold">Sort</span>
-            <FaChevronDown className="ml-1" />
+            <span className="font-bold ml-2">Sort</span>
+            <FaChevronDown className="ml-[1rem] mt-1" />
           </button>
           {showSortDropdown && (
             <div className="w-[10rem] absolute right-0 mt-2 bg-white shadow-md rounded-md p-2 z-50">
               <button
-                className="block w-full text-left hover:bg-gray-100 py-1 px-2"
+                className="block w-full text-left hover:bg-gray-100 py-1 px-2 ml-"
                 onClick={() => handleSort("price", "high-to-low")}
               >
                 Price: High to Low
@@ -99,6 +99,9 @@ const Filters = ({ setFilters, hotels }) => {
 };
 
 export default Filters;
+
+
+
 
 
 

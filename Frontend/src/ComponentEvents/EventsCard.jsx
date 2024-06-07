@@ -23,18 +23,18 @@ const EventsCard = ({ event, selectedCategory }) => {
     
     <Link to={`/events/${formattedEventName}`} className="block">
       <div
-        className={`bg-white w-[22rem] md:mb-[3rem] md:m-0 m-4 md:w-[19rem] h-[34rem] shadow font-poppins rounded-lg overflow-hidden mb-4 transition-all duration-300 transform hover:scale-105 ${
+        className={`bg-white w-[20rem] md:w-[19rem] md:mb-[3rem] md:m-0 m-4 h-[36rem] shadow font-poppins rounded-lg overflow-hidden mb-4 transition-all duration-300 transform hover:scale-105 hover:bg-gray-100 ${
           expanded ? 'md:h-auto' : 'md:h-[39rem]'
         }`}
       >
-        <div className="h-auto mt-2 md:ml-2 ml-[2.5rem] rounded-lg w-full mr-2 md:mt-0 mt-[2rem]">
+        <div className="h-auto mt-2 md:ml-2 ml-[1.5rem] rounded-lg w-full mr-2 md:mt-0 mt-[2rem]">
           <img
             src={event.Card_Img}
             alt={event.Event_Name}
-            className="md:object-center w-[16rem] h-[19rem] md:h-[25rem] md:w-[17rem] md:pt-2 rounded m-2"
+            className="md:object-center w-[16rem] h-[21rem] md:h-[25rem] md:w-[17rem] md:pt-2 rounded m-2"
           />
         </div>
-        <div className="p-4 flex flex-col w-full md:ml-0 ml-[2.5rem] ">
+        <div className="p-4 flex flex-col w-full md:ml-0 ml-[1.5rem] ">
           <h2 className="text-xl font-semibold mb-2 text-black">{event.Event_Name}</h2>
           <p className="text-sm mb-2 text-gray-500">{event.Event_Category}</p>
           <div className="flex items-center mb-2">

@@ -25,14 +25,14 @@ const HolidayFandQ = () => {
       answer: "A. It's recommended to book your holiday package well in advance, especially during peak travel seasons or for popular destinations. Early booking can help you secure better rates and availability. However, we also offer last-minute deals and discounts for those looking to plan their holidays at the last moment."
     },
     {
-      question: "Q. Can I make changes or cancellations to my holiday package booking?",
+      question: "Q. Can I make changes or cancellations to holiday package booking?",
       answer: "A. Yes, you can make changes or cancellations to your holiday package booking, subject to the terms and conditions of the package. Some packages may allow free cancellations or changes up to a certain date, while others may have a fee or penalty. Please refer to the specific package details or contact our customer support team for assistance."
     },
     // Add more questions and answers related to holiday packages here
   ];
 
   return (
-    <div className="container mx-auto px-4 mt-4">
+    <div className="container mx-auto px-4 mt-4 md:w-full w-[25rem]">
       <h1 className="text-xl font-bold mb-2 mt-8">FAQ</h1>
       <div className="space-y-8">
         {faqs.map((faq, index) => (

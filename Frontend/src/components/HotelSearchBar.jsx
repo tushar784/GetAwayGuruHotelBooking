@@ -98,7 +98,7 @@ const HotelSearchBar = ({
     { value: "Goa", label: "Goa" },
     { value: "Manali", label: "Manali" },
     { value: "Chennai", label: "Chennai" },
-    { value: "Kerala", label: "Kerala" },
+    // { value: "Kerala", label: "Kerala" },
     { value: "Dubai", label: "Dubai" },
     { value: "Bangkok", label: "Bangkok" },
     { value: "Singapore", label: "Singapore" },
@@ -175,7 +175,7 @@ const HotelSearchBar = ({
         </div>
         <button
           onClick={handleSearch}
-          className="bg-[#90CCBA] hover:bg-[#46c79f] md:text-white md:font-bold md:h-16 md:pl-6 md:pr-6 md:mt-[-0.66rem] md:mr-[-4.5rem] md:border-[1px] md:rounded-r-lg"
+          className="bg-[#90CCBA] hover:bg-[#46c79f] md:text-white md:font-bold md:h-16 md:pl-6 md:pr-6 md:mt-[-0.66rem] md:mr-[-4.5rem] md:border-[1px] md:rounded-r-lg "
         >
           Search
         </button>
@@ -184,7 +184,7 @@ const HotelSearchBar = ({
       {/* Mobile view  */}
 
       <div className="md:hidden">
-        <div className="bg-white rounded-lg border border-gray-300 p-4 mt-[10rem] md:ml-[3.5rem] ml-[2rem] h-[17rem] w-[22rem] md:mt-0 ">
+        <div className="bg-white rounded-lg border border-gray-300 p-4 mt-[10rem] h-[17rem] w-[21.5rem] md:mt-0 ">
           <div className="mb-4">
             <label
               htmlFor="location"
@@ -214,7 +214,7 @@ const HotelSearchBar = ({
                 value={checkinDate}
                 ref={checkinRef}
                 onChange={handleCheckInDateChange}
-                className="bg-white border border-gray-300 rounded-md py-2 px-4 text-lg font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-[10rem]"
+                className="bg-white border border-gray-300 rounded-md py-2 px-4 text-lg font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-[9.8rem]"
               />
             </div>
             <div>
@@ -224,26 +224,15 @@ const HotelSearchBar = ({
                 ref={checkoutRef}
                 value={checkoutDate}
                 onChange={handleCheckOutDateChange}
-                className="bg-white border border-gray-300 rounded-md py-2 px-4 text-lg font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ml-2 w-[10rem]"
+                className="bg-white border border-gray-300 rounded-md py-2 px-4 text-lg font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ml-2 w-[9.8rem]"
               />
             </div>
           </div>
 
-          {/* <div className="mb-4">
-            <p className="text-sm text-gray-500 mb-1">Room & guests</p>
-            <button
-              type="button"
-              onClick={() => setOpenOptions(!openOptions)}
-              className="w-full bg-white border border-gray-300 rounded-md py-2 px-4 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              {`${options.guest} guest & ${options.room}`}
-            </button>
-          </div> */}
-
           <button
             onClick={handleSearch}
             type="button"
-            className="bg-[#90CCBA] hover:bg-[#46c79f] md:w-full w-[20rem] md:mr-0 text-white font-bold py-2 px-4 rounded-md text-xl"
+            className="bg-[#90CCBA] hover:bg-[#46c79f] md:w-full w-[19rem] md:mr-0 text-white font-bold py-2 px-4 rounded-md text-xl"
           >
             Search
           </button>

@@ -74,7 +74,7 @@ const InfoSection = ({ selectedRoom, hotel, guests }) => {
         </div>
 
         {/* Desktop view Total price card */}
-        <div className="border shadow-sm h-[19rem] p-5 ml-[2rem] mt-4 w-[25rem]">
+        <div className="border shadow-sm h-[17rem] p-5 ml-[2rem] mt-4 w-[25rem]">
           <h1 className="card-title text-2xl font-semibold">
             {selectedRoom?.roomType === "Room_Type_1" ? "Deluxe Room" : "Standard Room"}
           </h1>
@@ -84,30 +84,8 @@ const InfoSection = ({ selectedRoom, hotel, guests }) => {
 
           <p className="mt-5">Per night for {quantity} room</p>
 
-          <div className="flex items-center mt-4">
-            <button onClick={handleDecrement} onChange={handlePrice}>
-              -
-            </button>
-            <span className="mx-2">{quantity}</span>
-            <button onClick={handleIncrement} onChange={handlePrice}>
-              +
-            </button>
-          </div>
-
           <p className="text-xl font-semibold mt-3">Total Price: ₹{price}</p>
           <br />
-          {/* <Link
-            to={`/checkout/${hotelName}?roomType=${
-              selectedRoom?.roomType === "Room_Type_1" ? "Deluxe Room" : "Standard Room"
-            }&price=${price}&rooms=${quantity}&guests=${guests}`}
-          >
-            <button
-              className="text-white font-bold w-80 h-10 mb-4 rounded"
-              style={{ backgroundColor: "#90CCBA" }}
-            >
-              Reserve Now
-            </button>
-          </Link> */}
 
           <Link
             to={`/checkout/${hotelName}?roomType=${
@@ -136,7 +114,7 @@ const InfoSection = ({ selectedRoom, hotel, guests }) => {
 
         {/*Mobile view Total price card  */}
 
-        <div className="border shadow-lg h-[20rem] pl-[2rem] pt-[1rem] mt-[1rem] w-[22rem] ml-[3rem] mx-auto mb-4">
+        <div className="border shadow-lg h-auto pl-[2rem] pt-[1rem] mt-[1rem] w-[20rem] mx-auto mb-4">
           <h1 className="card-title text-2xl font-semibold">
             {selectedRoom?.roomType === "Room_Type_1" ? "Deluxe Room" : "Standard Room"}
           </h1>
@@ -144,11 +122,11 @@ const InfoSection = ({ selectedRoom, hotel, guests }) => {
 
           <p className="mt-5 text-2xl">Per night for {quantity} room</p>
 
-          <div className="flex items-center mt-4 text-2xl">
+          {/* <div className="flex items-center mt-4 text-2xl">
             <button onClick={handleDecrement} onChange={handlePrice}>-</button>
             <span className="mx-2">{quantity}</span>
             <button onClick={handleIncrement} onChange={handlePrice}>+</button>
-          </div>
+          </div> */}
 
           <p className="text-xl font-semibold mt-3">Total Price: ₹{price}</p>
           <br />
@@ -157,7 +135,7 @@ const InfoSection = ({ selectedRoom, hotel, guests }) => {
               selectedRoom?.roomType === "Room_Type_1" ? "Deluxe Room" : "Standard Room"
             }&price=${price}`}
           >
-            <button className="text-white text-xl font-bold w-[18rem] h-12 mb-4 rounded" style={{ backgroundColor: "#90CCBA" }}>
+            <button className="text-white text-xl font-bold w-[16rem] h-12 mb-4 rounded" style={{ backgroundColor: "#90CCBA" }}>
               Reserve Now
              </button>
           </Link>

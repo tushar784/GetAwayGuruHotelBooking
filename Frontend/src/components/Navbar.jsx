@@ -1,6 +1,6 @@
 import { CgProfile } from "react-icons/cg";
 import { FaCartPlus, FaBars, FaTimes } from "react-icons/fa";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/logo.jpg";
 import { AuthContext } from "../Context/Auth_Context";
@@ -9,10 +9,25 @@ function Navbar() {
   const { user, logout } = useContext(AuthContext);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+  
+    document.addEventListener("mousedown", handleClickOutside);
+  
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownRef]);
 
   return (
     <div className="bg-white text-gray-900 z-50 w-full">
@@ -26,7 +41,7 @@ function Navbar() {
           <nav className="hidden md:flex md:ml-[18vw]"> 
             <div className="flex gap-10 font-semibold text-gray-900">
               <Link to="/" className="text-black hover:text-[#46c79f] ">
-              Hotels
+              Home
               </Link> 
               <Link to="/holidaypackages" className="text-black hover:text-[#46c79f]">
               Holiday Packages
@@ -66,18 +81,19 @@ function Navbar() {
                 </button>
 
               </div>
-              {dropdownOpen && (
-                <div
-                  className="absolute right-0 z-10 mt-2 w-[12rem] h-[4rem] origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                  role="menu"
-                  aria-orientation="vertical"
-                  aria-labelledby="menu-button"
-                  tabIndex="-1"
-                >
+             {dropdownOpen && (
+                  <div
+                    className="absolute right-0 z-10 mt-2 w-[12rem] h-[4rem] origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                    role="menu"
+                    aria-orientation="vertical"
+                    aria-labelledby="menu-button"
+                    tabIndex="-1"
+                    ref={dropdownRef}
+                  >
                   <div>
                     <Link
                       to="/profile"
-                      className="text-gray-700 px-6 py-2 text-sm"
+                      className="text-gray-700 w-full px-6 py-2 text-left text-sm transition-transform transform-gpu hover:scale-105 hover:text-black"
                       role="menuitem"
                       tabIndex="-1"
                       id="menu-item-0"
@@ -89,13 +105,14 @@ function Navbar() {
                     <Link to="/" >
                     <button
                       onClick={logout}
-                      className="text-gray-700 hover:bg-red-200  w-full px-6 py-2 text-left text-sm"
+                      className="text-gray-700 w-full px-6 py-2 text-left text-sm transition-transform transform-gpu hover:scale-105 hover:text-red-400"
                       role="menuitem"
                       tabIndex="-1"
                       id="menu-item-3"
                     >
                       Logout
                     </button>
+
                     </Link>
                   </div>
                 </div>
@@ -164,6 +181,7 @@ function Navbar() {
             </Link>
                       
             {user ? (
+              <Link to="/" >
               <button
                 onClick={logout}
                 className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100 transition duration-300"
@@ -173,6 +191,7 @@ function Navbar() {
               >
                 Logout
               </button>
+              </Link>
             
             ) : (
               <Link

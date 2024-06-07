@@ -38,7 +38,7 @@ const EventsList = ({ events }) => {
             Comedy Shows
           </button>
           <button
-            className={`py-2 px-4 border border-gray-400 rounded-full transition-colors duration-300 ${
+            className={`py-2 px-4 md:ml-0 ml-4 border border-gray-400 rounded-full transition-colors duration-300 ${
               selectedCategory === 'music shows'
                 ? 'bg-teal-500 text-white'
                 : 'bg-white text-teal-600 hover:bg-teal-500 hover:text-white'
@@ -51,7 +51,7 @@ const EventsList = ({ events }) => {
         <DropdownEvents onSelectLocation={handleLocationSelect} selectedLocation={selectedLocation} />
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:ml-0 ml-[2rem]">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:ml-0 ">
         {Array.isArray(filteredEvents) &&
           filteredEvents.map((event) => (
             <Link key={event._id} to={`/events/${event.Event_Name.toLowerCase().replace(/\s+/g, '-')}`}>

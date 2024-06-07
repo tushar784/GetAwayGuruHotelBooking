@@ -81,7 +81,7 @@ function Login() {
     <>
       <ToastContainer />
       <div className="bg-slate-200 min-h-screen flex justify-center items-center md:flex">
-        <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
+        <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg md:ml-0 ml-4 md:mr-0 mr-4">
           <Link to='/'>
             <img src={logo} alt=""
               className="md:h-14 md:w-22 h-10 ml-[3.5rem]" />

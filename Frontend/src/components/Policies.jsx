@@ -2,8 +2,8 @@ import React from "react";
 
 const Policies = () => {
   return (
-    <div className=" md:pr-[2rem] md:ml-[4rem] ml-[2rem] md:h-[15rem] md:w-[70rem]">
-      <h1 className="font-bold md:text-2xl md:ml-2 text-lg ml-2 mb-4">Hotel policies</h1>
+    <div className=" md:pr-[2rem] md:ml-[4rem] ml-[1rem] md:h-[15rem] md:w-[70rem] w-[21rem]">
+      <h1 className="font-bold md:text-2xl md:ml-2 text-2xl mb-4">Hotel policies</h1>
       <div className="flex flex-col md:flex-row">
         <div className="w-full md:w-[71rem] mb-4 md:mb-0">
           <div className="flex justify-between items-center border-b border-gray-400 pb-2">

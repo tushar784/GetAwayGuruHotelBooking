@@ -12,7 +12,7 @@ function Speciality() {
           Why book hotels with GetawayGuru
         </h1>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:w-[77rem] w-[25rem] md:ml-0 ml-[1.5rem]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:w-[77rem] w-[20.5rem] md:ml-0 ml-[1.5rem]">
           {/* <div className="flex justify-center items-center ml-[3.8rem] mr-[4rem] mt-4 mb-[2rem]"> */}
           <img
             src={img1}

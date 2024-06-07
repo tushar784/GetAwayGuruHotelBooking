@@ -47,7 +47,7 @@ function EventsSinglePage() {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen flex flex-col items-center px-4 sm:px-0">
+      <div className="min-h-screen flex flex-col items-center px-4 sm:px-0 md:ml-0 ml-[2rem]">
         <div className="mt-6 w-full sm:w-[62rem] sm:ml-8">
           <img
             className="object-center rounded mt-2 max-w-full"

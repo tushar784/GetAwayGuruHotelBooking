@@ -25,12 +25,12 @@ const HotelCard = ({ hotel }) => {
   const trimmedHotelName = hotel.Hotel_Name.length > 20 ? `${hotel.Hotel_Name.slice(0, 20)}...` : hotel.Hotel_Name;
 
   return (
-    <div className="transform transition-transform duration-300 hover:scale-105 bg-white w-[23rem] md:w-[22rem] md:ml-[1rem] ml-[2rem] h-[35rem] shadow font-poppins rounded-lg overflow-hidden mb-4 mt-2 transition-all duration-300 flex flex-col justify-between">
-      <div className="h-auto mt-2 ml-2 rounded-lg w-full mr-2">
+    <div className="transform transition-transform duration-300 hover:scale-105 hover:bg-gray-100 bg-white w-[20rem] md:w-[22rem] md:ml-[1rem] h-[35rem] shadow font-poppins rounded-lg overflow-hidden mb-4 mt-2 transition-all duration-300 flex flex-col justify-between">
+      <div className="h-auto mt-2 ml-2 rounded-lg md:w-full mr-2">
       <img
           src={hotel?.Card_Image}
           alt={hotel?.Hotel_Name}
-          className="object-cover w-[21rem] h-[15rem] md:h-[14rem] md:w-[20rem] md:pt-2 rounded m-2 "
+          className="object-cover w-[18rem] h-[12rem] md:h-[14rem] md:w-[20rem] md:pt-2 rounded m-2 "
         />
       </div>
       <div className="p-4 flex flex-col flex-grow w-full">
@@ -66,7 +66,7 @@ const HotelCard = ({ hotel }) => {
             );
           })}
         </div>
-        <ul className={`text-black flex flex-col text-sm list-disc pl-5 transition-all duration-300 h-[3.4rem] overflow-hidden`}>
+        <ul className={`text-black flex flex-col text-sm list-disc pl-5 transition-all duration-300 md:h-[3.4rem] overflow-hidden`}>
           {amenities.map((amenity, index) => (
             <li key={index}>{amenity}</li>
           ))}

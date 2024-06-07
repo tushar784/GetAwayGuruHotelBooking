@@ -4,12 +4,33 @@ import { FaInstagram } from "react-icons/fa";
 
 function Footer() {
   return (
-    <footer className="bg-gray-800 text-white p-4 flex flex-col lg:flex-row justify-center items-center">
-      <p className="mb-4 lg:mb-0 lg:mr-24">© 2024 Unipolar Technology Ltd. India. All brands are trademarks of their respective owners.</p>
-      <div className="flex space-x-4">
-        <IoLogoFacebook className="text-2xl" />
-        <FaSquareXTwitter className="text-2xl" />
-        <FaInstagram className="text-2xl" />
+
+    // Desktop View
+    <footer className="bg-gray-800 text-white flex justify-between items-center md:p-4 md:w-full w-[23.8rem]">
+      <div className="hidden md:flex items-center">
+        <p className="mr-24 pl-[12rem]">
+          © 2024 Unipolar Technology Ltd. India. All brands are trademarks of their respective owners.
+        </p>
+        <div className="flex space-x-4">
+          <IoLogoFacebook className="text-2xl" />
+          <FaSquareXTwitter className="text-2xl" />
+          <FaInstagram className="text-2xl" />
+        </div>
+      </div>
+
+
+
+      {/*  Mobile View */}
+
+      <div className="md:hidden flex flex-col items-center py-8"> {/* Increased padding for mobile view */}
+        <p className="mb-4 text-center">
+          © 2024 Unipolar Technology Ltd. India. All brands are trademarks of their respective owners.
+        </p>
+        <div className="flex space-x-4">
+          <IoLogoFacebook className="text-2xl" />
+          <FaSquareXTwitter className="text-2xl" />
+          <FaInstagram className="text-2xl" />
+        </div>
       </div>
     </footer>
   );

@@ -62,6 +62,23 @@ const HolidayCheckout = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+    
+      // Check if any required fields are empty
+      if (!user || !guestName || !contactNumber || !state || !departure) {
+        toast.error("Please fill in all required fields.");
+        return;
+      }
+    
+      try {
+        // Rest of the code for submitting the form
+      } catch (error) {
+        console.error("Error in order creation or payment initiation:", error);
+        navigate("/checkout");
+      }
+    };
+    
 
     if (!user) {
       toast.info("Please log in to proceed with the payment.");
