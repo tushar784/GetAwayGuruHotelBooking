@@ -43,8 +43,8 @@ const LocationDetails = () => {
     <>
       <Navbar />
       <div>
-      <h2 className='md:text-4xl text-2xl ml-[2rem] md:mb-[1rem] md:mt-[2rem] font-bold font-serif md:ml-[35rem]'>Hotels</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:ml-[3rem] ml-[2rem]">
+      <h2 className='md:text-2xl text-xl ml-[2rem] md:mb-[1rem] md:mt-[2rem] font-semibold font-poppins md:ml-[4rem]'>Showing hotels for stay in {selectedLocation}</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:ml-[3rem] ml-[2rem] mb-2">
           {hotels.length > 0 ? (
             hotels.map((hotel) => <HotelCard key={hotel.id} hotel={hotel} className="hover:bg-gray-100" />)
           ) : (
@@ -52,8 +52,8 @@ const LocationDetails = () => {
           )}
         </div>
 
-        <h2 className='md:text-4xl text-2xl ml-[2rem] md:mb-[1rem] md:mt-[2rem] font-bold font-serif md:ml-[35rem]'>Packages</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:ml-[3rem] ml-[1rem]">
+        <h2 className='md:text-2xl text-xl ml-[2rem] md:mb-[1rem] md:mt-[2rem] font-semibold font-poppins md:ml-[4rem]'>Showing holiday packages in {selectedLocation}</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:ml-[4rem] ml-[1rem]">
           {packages.length > 0 ? (
             packages.map((Package) => <HolidayCard key={Package.id} holiday={Package} />)
           ) : (
@@ -61,9 +61,9 @@ const LocationDetails = () => {
           )}
         </div>
 
-        <h2 className='md:text-4xl text-2xl ml-[2rem] md:mb-[1rem] md:mt-[2rem] font-bold font-serif md:ml-[35rem]'>Events</h2>
+        <h2 className='md:text-2xl text-xl ml-[2rem] md:mb-[1rem] md:mt-[2rem] font-semibold font-poppins md:ml-[4rem]'>Showing events in {selectedLocation}</h2>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:ml-[3rem] ml-[1rem]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:ml-[4rem] ml-[1rem] md:mb-2">
           {events.length > 0 ? (
             events.map((event) => <EventsCard key={event.id} event={event} selectedCategory={selectedCategory} />)
           ) : (

@@ -73,7 +73,7 @@ const HotelCard = ({ hotel }) => {
         </ul>
        
       </div>
-      <div className="flex justify-between items-center p-4 border-t border-gray-200">
+      <div className="flex justify-between items-center p-4 border-t border-gray-200 md:ml-2 md:mr-2 ml-2 mr-2">
         <p className="text-black text-lg font-bold">₹ {hotel.Price}</p>
         <Link to={`/hotels/${formattedHotelName}`}>
           <button className="bg-[#90CCBA] hover:bg-[#46c79f] text-white font-bold py-2 px-4 rounded ">

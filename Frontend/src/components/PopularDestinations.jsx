@@ -19,7 +19,7 @@ const PopularDestinations = () => {
       <h1 className="md:text-xl text-2xl font-bold md:mb-4 mb-[2rem] md:ml-[1rem] ml-[1rem]">Popular Destinations</h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:grid-cols-5 gap-4 md:ml-0 ml-[1.3rem] px-4">
-        <button onClick={() => handleLocationClick('mumbai')}>
+        <button onClick={() => handleLocationClick('Mumbai')}>
           <img
             src={Mumbai}
             alt="Image 1"
@@ -33,21 +33,21 @@ const PopularDestinations = () => {
             className="rounded-xl object-cover md:w-full w-[25rem] sm:h-22 md:h-[21rem] h-[29rem] size-16 transition duration-300 transform hover:scale-110"
           />
         </button>
-        <button onClick={() => handleLocationClick('goa')}>
+        <button onClick={() => handleLocationClick('Goa')}>
           <img
             src={goa}
             alt="Image 3"
             className="rounded-xl object-cover md:w-full w-[25rem] sm:h-22 md:h-[21rem] h-[29rem] size-16 transition duration-300 transform hover:scale-110"
           />
         </button>
-        <button onClick={() => handleLocationClick('jaipur')}>
+        <button onClick={() => handleLocationClick('Dubai')}>
           <img
             src={dubai}
             alt="Image 4"
             className="rounded-xl object-cover md:w-full w-[25rem] sm:h-22 md:h-[21rem] h-[29rem] size-16 transition duration-300 transform hover:scale-110"
           />
         </button>
-        <button onClick={() => handleLocationClick('bengaluru')}>
+        <button onClick={() => handleLocationClick('Bengaluru')}>
           <img
             src={bengaluru}
             alt="Image 5"

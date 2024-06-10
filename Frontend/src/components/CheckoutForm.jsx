@@ -266,7 +266,9 @@ const CheckoutForm = () => {
             <div className="mb-2">No. of rooms: {rooms}</div>
             <div className="mb-2">No. of guest: {guests}</div>
             <div className="mb-2">Breakfast: {breakfast ? "Yes" : "No"}</div>
-            <div className="font-bold text-lg mb-2">Price: {price}</div>
+            <div className="border-t border-gray-300 pt-2 font-bold text-lg mb-2 mr-2">
+        Price: {price}
+      </div>
           </div>
         </div>
       </div>
@@ -478,7 +480,9 @@ const CheckoutForm = () => {
               <div className="mb-2">No. of rooms: {rooms}</div>
               <div className="mb-2">No. of guest: {guests}</div>
               <div className="mb-2">Breakfast: {breakfast ? "Yes" : "No"}</div>
-              <div className="font-bold text-lg mb-2">Price: {price}</div>
+              <div className="border-t border-gray-300 pt-2 font-bold text-lg mb-2 mr-2">
+        Price: {price}
+      </div>
             </div>
           </div>
         </div>
