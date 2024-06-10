@@ -55,7 +55,7 @@ const ForgotPass = () => {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="bg-slate-200 min-h-screen flex items-center justify-center">
         <div className="bg-white p-6 rounded-md shadow-md h-[22rem] w-[22rem]">
           <Link to='/'>

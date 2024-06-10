@@ -15,7 +15,7 @@ function Home() {
   return (
     <>
       <Navbar />
-      <div className="flex flex-col items-center justify-center md:h-[32rem] h-[800px] md:mb-0 mb-12 md:ml-0 ml-[2rem] ">
+      <div className="flex flex-col items-center justify-center md:h-[32rem] h-[800px] md:mb-0 mb-12 md:ml-0 ">
         <img
           src={coverimage}
           alt="Hotel Image"

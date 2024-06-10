@@ -17,7 +17,7 @@ function RoomCard({ hotel, setSelectedRoom }) {
             {/* Render Deluxe Room */}
 
 
-            <div className="transform transition-transform duration-300 hover:scale-105 bg-white mb-4 h-[14rem] w-[95%] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
+            <div className="transform transition-transform duration-300 hover:scale-105 hover:bg-gray-200 bg-white mb-4 h-[14rem] w-[95%] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
               
               
             <img
@@ -65,7 +65,7 @@ function RoomCard({ hotel, setSelectedRoom }) {
       </div>
 
             {/* Render Standard Room */}
-            <div className="transform transition-transform duration-300 hover:scale-105 bg-white h-[14rem] w-[95%] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
+            <div className="transform transition-transform duration-300 hover:scale-105 hover:bg-gray-200 bg-white h-[14rem] w-[95%] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
               {/* ... */}
           
 
@@ -120,14 +120,14 @@ function RoomCard({ hotel, setSelectedRoom }) {
 
       {/* Mobile View */}
       <div className="md:hidden ">
-        <h1 className="font-bold text-2xl mt-4 ml-4 mb-2">Rooms</h1>
+        <h1 className="font-bold text-2xl mt-4 ml-2 mb-2">Rooms</h1>
         {/* Render Deluxe Room */}
         <div onClick={() => handleReserveRoom("Room_Type_1", hotel.Type1_Price)} 
-             className="transform transition-transform duration-300 hover:scale-105 bg-white mb-4 h-auto w-[22rem] ml-[3.4rem] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
+             className="transform transition-transform duration-300 hover:scale-105 hover:bg-gray-200 bg-white mb-4 h-auto w-[20rem] ml-[1rem] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
           {/* ... */}          
         <img
           src={hotel.Type1_Img}
-          className="w-[20rem] h-[13rem] object-cover items-center rounded-lg m-[1rem]"
+          className="w-[18rem] h-[11rem] object-cover items-center rounded-lg m-[1rem]"
         />
         <div className="py-4 flex ">
           <div className="flex items-center ">
@@ -165,11 +165,11 @@ function RoomCard({ hotel, setSelectedRoom }) {
 
         {/* Render Standard Room */}
         <div onClick={() => handleReserveRoom("Room_Type_2", hotel.Type2_Price)}
-        className="transform transition-transform duration-300 hover:scale-105 bg-white mb-4 h-auto w-[22rem] ml-[3.4rem] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
+        className="transform transition-transform duration-300 hover:scale-105 hover:bg-gray-200 bg-white mb-4 h-auto w-[20rem] ml-[1rem] shadow font-poppins rounded-lg overflow-hidden flex flex-col md:flex-row">
                 
         <img
           src={hotel.Type2_Img}
-          className="w-[20rem] h-[13rem] object-cover items-center rounded-lg m-[1rem]"
+          className="w-[18rem] h-[11rem] object-cover items-center rounded-lg m-[1rem]"
         />
        <div className="py-4 flex ">
           <div className="flex items-center ">

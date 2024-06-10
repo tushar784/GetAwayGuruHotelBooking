@@ -41,7 +41,7 @@ function Navbar() {
           <nav className="hidden md:flex md:ml-[18vw]"> 
             <div className="flex gap-10 font-semibold text-gray-900">
               <Link to="/" className="text-black hover:text-[#46c79f] ">
-              Hotels
+              Home
               </Link> 
               <Link to="/holidaypackages" className="text-black hover:text-[#46c79f]">
               Holiday Packages
@@ -181,6 +181,7 @@ function Navbar() {
             </Link>
                       
             {user ? (
+              <Link to="/" >
               <button
                 onClick={logout}
                 className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100 transition duration-300"
@@ -190,6 +191,7 @@ function Navbar() {
               >
                 Logout
               </button>
+              </Link>
             
             ) : (
               <Link

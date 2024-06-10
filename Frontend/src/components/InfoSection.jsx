@@ -114,7 +114,7 @@ const InfoSection = ({ selectedRoom, hotel, guests }) => {
 
         {/*Mobile view Total price card  */}
 
-        <div className="border shadow-lg h-[20rem] pl-[2rem] pt-[1rem] mt-[1rem] w-[22rem] ml-[3rem] mx-auto mb-4">
+        <div className="border shadow-lg h-auto pl-[2rem] pt-[1rem] mt-[1rem] w-[20rem] mx-auto mb-4">
           <h1 className="card-title text-2xl font-semibold">
             {selectedRoom?.roomType === "Room_Type_1" ? "Deluxe Room" : "Standard Room"}
           </h1>
@@ -135,7 +135,7 @@ const InfoSection = ({ selectedRoom, hotel, guests }) => {
               selectedRoom?.roomType === "Room_Type_1" ? "Deluxe Room" : "Standard Room"
             }&price=${price}`}
           >
-            <button className="text-white text-xl font-bold w-[18rem] h-12 mb-4 rounded" style={{ backgroundColor: "#90CCBA" }}>
+            <button className="text-white text-xl font-bold w-[16rem] h-12 mb-4 rounded" style={{ backgroundColor: "#90CCBA" }}>
               Reserve Now
              </button>
           </Link>

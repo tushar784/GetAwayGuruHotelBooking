@@ -23,35 +23,35 @@ const PopularDestinations = () => {
           <img
             src={Mumbai}
             alt="Image 1"
-            className="rounded-xl object-cover md:w-full w-[25rem] sm:h-22 md:h-[21rem] h-[25rem] size-16 transition duration-300 transform hover:scale-110"
+            className="rounded-xl object-cover md:w-full w-[25rem] sm:h-22 md:h-[21rem] h-[29rem] size-16 md:transition duration-300 transform md:hover:scale-110"
           />
         </button>
         <button onClick={() => handleLocationClick('Hyderabad')}>
           <img
             src={Hyderabad}
             alt="Image 2"
-            className="rounded-xl object-cover md:w-full w-[25rem] sm:h-22 md:h-[21rem] h-[25rem] size-16 transition duration-300 transform hover:scale-110"
+            className="rounded-xl object-cover md:w-full w-[25rem] sm:h-22 md:h-[21rem] h-[29rem] size-16 transition duration-300 transform hover:scale-110"
           />
         </button>
         <button onClick={() => handleLocationClick('goa')}>
           <img
             src={goa}
             alt="Image 3"
-            className="rounded-xl object-cover md:w-full w-[25rem] sm:h-22 md:h-[21rem] h-[25rem] size-16 transition duration-300 transform hover:scale-110"
+            className="rounded-xl object-cover md:w-full w-[25rem] sm:h-22 md:h-[21rem] h-[29rem] size-16 transition duration-300 transform hover:scale-110"
           />
         </button>
         <button onClick={() => handleLocationClick('jaipur')}>
           <img
             src={dubai}
             alt="Image 4"
-            className="rounded-xl object-cover md:w-full w-[25rem] sm:h-22 md:h-[21rem] h-[25rem] size-16 transition duration-300 transform hover:scale-110"
+            className="rounded-xl object-cover md:w-full w-[25rem] sm:h-22 md:h-[21rem] h-[29rem] size-16 transition duration-300 transform hover:scale-110"
           />
         </button>
         <button onClick={() => handleLocationClick('bengaluru')}>
           <img
             src={bengaluru}
             alt="Image 5"
-            className="rounded-xl object-cover md:w-full w-[25rem] sm:h-22 md:h-[21rem] h-[25rem] size-16 transition duration-300 transform hover:scale-110"
+            className="rounded-xl object-cover md:w-full w-[25rem] sm:h-22 md:h-[21rem] h-[29rem] size-16 transition duration-300 transform hover:scale-110"
           />
         </button>
       </div>

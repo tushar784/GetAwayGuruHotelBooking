@@ -27,14 +27,14 @@ const HotelList = ({ hotels }) => {
             placeholder="Search hotels"
             value={searchQuery}
             onChange={handleSearchChange}
-            className="px-4 py-2 ml-[rem] mr-[2rem] border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-4 py-2 md:mr-[2rem] mr-[3rem] border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
         <Filters setFilters={handleFiltersChange} hotels={searchedHotels} className="mr-4 w-[12rem]" />
       </div>
       {searchedHotels.length > 0 ? (
         <>
-          <h1 className="w-[21rem] ml-8 text-xl font-semibold mb-4">
+          <h1 className="w-[21rem] ml-3 text-xl font-semibold mb-4">
             Showing Properties in {searchedHotels[0].Location}
           </h1>
           <div className="ml-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4">

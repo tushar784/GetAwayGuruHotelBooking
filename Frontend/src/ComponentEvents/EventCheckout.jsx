@@ -146,7 +146,7 @@ const EventCheckout = () => {
                 placeholder="Contact number"
               />
             </div>
-            <div className="flex flex-col w-full md:w-[14rem] mt-2 ml-4">
+            <div className="flex flex-col w-full md:w-[14rem] mt-2 md:ml-4">
               <label htmlFor="guest" className="block text-base font-semibold mb-2">
                 Number of Guests
               </label>
@@ -214,7 +214,7 @@ const EventCheckout = () => {
             </div>
            
           </div>
-          <button className="bg-[#90CCBA] hover:bg-[#46c79f] text-white font-bold py-2 px-4 rounded w-[29rem] " onClick={handleSubmit}>
+          <button className="bg-[#90CCBA] hover:bg-[#46c79f] text-white font-bold py-2 px-4 rounded md:w-[29rem] " onClick={handleSubmit}>
             Pay now
           </button>
           <div className="mt-[0.9rem]">
