@@ -5,17 +5,20 @@ import HotelCard from '../components/HotelCard';
 import HolidayCard from '../ComponentHoliday/HolidayCard';
 import Navbar from '../components/Navbar';
 import EventsCard from '../ComponentEvents/EventsCard';
+import Loading from '../components/Loading';
 
 const LocationDetails = () => {
   const { selectedLocation } = useParams();
   const [hotels, setHotels] = useState([]);
   const [packages, setPackages] = useState([]);
   const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState('');
 
   useEffect(() => {
     const fetchLocationData = async () => {
       try {
+        setLoading(true);
         const url = import.meta.env.VITE_BASE_URL;
 
         // Fetch hotels
@@ -29,6 +32,7 @@ const LocationDetails = () => {
         // Fetch events
         const eventsResponse = await axios.get(`${url}/api/events/location/${selectedLocation}`);
         setEvents(eventsResponse.data);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching location data:', error);
       }
@@ -38,6 +42,10 @@ const LocationDetails = () => {
       fetchLocationData();
     }
   }, [selectedLocation]);
+
+  if (loading) {
+    return <Loading />;  // Show the loading spinner while data is being fetched
+  }
 
   return (
     <>
