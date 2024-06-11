@@ -69,7 +69,7 @@ app.post('/signUp', async (req, res) => {
       from: process.env.EMAIL_USER,
       to: email,
       subject: 'Your OTP for registration',
-      text: `<p>Your OTP is <strong style="font-size: 16px;">${otp}</strong>. It is valid for 10 minutes.</p>`,
+      text: `Your OTP is ${otp}. It is valid for 10 minutes.`,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
