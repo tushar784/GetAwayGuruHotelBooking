@@ -145,6 +145,11 @@ const CheckoutForm = () => {
             const validateRes = await axios.post(`${url}/api/order/validate`, body);
   
             if (validateRes.data.msg === 'success') {
+              const token = localStorage.getItem('token');
+              localStorage.clear();
+              if (token) {
+                localStorage.setItem('token', token);
+              }
               toast.success('Payment successful');
               navigate(`/thankyou/${response.razorpay_order_id}`);
             } else {
