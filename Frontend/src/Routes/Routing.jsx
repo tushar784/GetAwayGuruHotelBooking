@@ -69,7 +69,7 @@ const Routing = () => {
             <Route path='/profile' element={<ProfileSection />} />
             <Route path='/contact' element={<ContactUs />} />
             <Route path='/thankyou/:razorpay_order_id' element={<ThankyouPage />} />
-            <Route path="/otp" element={<OTPVerification />} />
+            <Route path="/otpVerification" element={<OTPVerification />} />
 
 
 
