@@ -26,6 +26,7 @@ const createorder = require('./CreateOrder.js')
 const packages = require('./HolidayPackage.js')
 const events = require('./Events.js')
 const resetpassword = require('./ResetPassword.js')
+const profileupload = require('./profileimageupload.js')
 
 
 app.use("/api", register);
@@ -36,6 +37,7 @@ app.use('/api', createorder)
 app.use('/api', packages)
 app.use('/api', events)
 app.use('/api', resetpassword)
+app.use('/api', profileupload)
 
 app.get("/", (req, res) => {
   res.send("Aur kiya scene haiiiii!!!!!!!!!!, happy birthday");  //{msg: done}
@@ -101,9 +103,9 @@ app.post('/api/order/validateeventorder', async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`Server listening on port ${port}`);
+// });
 
-// app.listen();
+app.listen();
 

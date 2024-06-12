@@ -22,11 +22,21 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    otp: {
+      type: String,
+    },
+    otpExpires: {
+      type: Date,
+    },
     resetPasswordToken: {
       type: String,
     },
     resetPasswordExpires: {
       type: Date,
+    },
+    profileImage: {
+      data: Buffer,
+      contentType: String,
     },
   },
   { timestamps: true }
