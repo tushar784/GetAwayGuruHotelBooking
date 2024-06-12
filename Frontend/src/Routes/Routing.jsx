@@ -21,6 +21,7 @@ import ThankyouPage from '../components/ThankyouPage';
 import ForgotPass from '../Pages/ForgotPass';
 import ResetPasswordForm from '../Pages/ResetPasswordForm';
 import LocationDetails from '../Pages/AllDetails';
+import OTPVerification from '../Pages/OTPVerification';
 
 
 
@@ -68,6 +69,8 @@ const Routing = () => {
             <Route path='/profile' element={<ProfileSection />} />
             <Route path='/contact' element={<ContactUs />} />
             <Route path='/thankyou/:razorpay_order_id' element={<ThankyouPage />} />
+            <Route path="/otpVerification" element={<OTPVerification />} />
+
 
 
           </Routes>
