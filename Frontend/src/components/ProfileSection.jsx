@@ -5,6 +5,7 @@ import { AuthContext } from '../Context/Auth_Context';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import dummyprofile from '../assets/img/dummyprofileimg.png'
+import axios from "axios";
 
 function ProfileSection() {
     const { user, logout } = useContext(AuthContext);
@@ -12,7 +13,6 @@ function ProfileSection() {
     const [editingField, setEditingField] = useState(null);
     const [formData, setFormData] = useState({
         username: user?.username,
-        contactNumber: '',
         email: user?.email,  
     });
 
@@ -21,36 +21,36 @@ function ProfileSection() {
         if (storedProfilePic) {
             setProfilePic(storedProfilePic);
         } else {
-            setProfilePic({dummyprofile});
+            setProfilePic(dummyprofile);
         }
     }, []);
 
-    const handleChange = (event) => {
-        const { value } = event.target;
-        const filteredValue = value.replace(/\D/g, '');
-        event.target.value = filteredValue;
-    };
-
-    const handleFileChange = (event) => {
+    const handleFileChange = async (event) => {
         const file = event.target.files[0];
-        const reader = new FileReader();
+        if (!file) return;
 
-        reader.onloadend = () => {
-            setProfilePic(reader.result);
-            localStorage.setItem('profilePic', reader.result); // Store the profile picture in localStorage
-        };
+        const formData = new FormData();
+        formData.append('profileImage', file);
+        formData.append('email', user?.email);
 
-        if (file) {
-            reader.readAsDataURL(file);
+        const url = import.meta.env.VITE_BASE_URL;
+        try {
+            const response = await axios.post(`${url}/api/uploadProfileImage`, formData);
+            if (response.status === 200) {
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                    setProfilePic(reader.result);
+                    localStorage.setItem('profilePic', reader.result); // Store the profile picture in localStorage
+                };
+                reader.readAsDataURL(file);
+                alert(response.data.msg);
+            } else {
+                alert(response.data.msg);
+            }
+        } catch (error) {
+            console.error('Error uploading profile image:', error);
+            alert('Error uploading profile image.');
         }
-    };
-
-    const handleEdit = (field) => {
-        setEditingField(field);
-    };
-
-    const handleInputChange = (e, field) => {
-        setFormData({ ...formData, [field]: e.target.value });
     };
 
     const handleSubmit = (e) => {
@@ -60,6 +60,7 @@ function ProfileSection() {
         // You can make an API call or update the user data here
         setEditingField(null); // Reset the editing field
     };
+
     return (
         <>
             <Navbar />
@@ -150,7 +151,7 @@ function ProfileSection() {
                             <div className="relative">
                                 <img
                                     className="object-cover w-[17rem] h-[17rem] rounded-full"
-                                    src={dummyprofile}
+                                    src={profilePic}
                                     alt="Profile"
                                 />
                                 <div className="absolute inset-0 flex items-center justify-center mt-[19.5rem]">

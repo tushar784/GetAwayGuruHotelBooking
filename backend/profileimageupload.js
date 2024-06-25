@@ -12,15 +12,15 @@ const upload = multer({ storage: storage });
 
 // Endpoint to upload profile image
 app.post('/uploadProfileImage', upload.single('profileImage'), async (req, res) => {
-  const { userId } = req.body;
+  const { email } = req.body;
   const profileImage = req.file;
 
-  if (!userId || !profileImage) {
-    return res.status(400).send({ msg: 'User ID and profile image are required' });
+  if (!email || !profileImage) {
+    return res.status(400).send({ msg: 'Email and profile image are required' });
   }
 
   try {
-    const user = await schema.findById(userId);
+    const user = await schema.findOne({ email: email });
     if (!user) {
       return res.status(404).send({ msg: 'User not found' });
     }
@@ -39,5 +39,33 @@ app.post('/uploadProfileImage', upload.single('profileImage'), async (req, res) 
     res.status(500).send({ msg: 'Server error' });
   }
 });
+
+
+
+
+// Endpoint to fetch profile image by email
+app.get('/uploadProfileImage/:email', async (req, res) => {
+  const { email } = req.params;
+
+  try {
+    const user = await schema.findOne({ email: email });
+
+    if (!user || !user.profileImage) {
+      return res.status(404).send({ msg: 'Profile image not found' });
+    }
+
+    res.set('Content-Type', user.profileImage.contentType);
+    res.send(user.profileImage.data);
+
+  } catch (error) {
+    console.error('Error fetching profile image:', error);
+    res.status(500).send({ msg: 'Server error' });
+  }
+});
+
+
+
+
+
 
 module.exports = app;

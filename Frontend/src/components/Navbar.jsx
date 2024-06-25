@@ -4,15 +4,45 @@ import { useContext, useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/logo.jpg";
 import { AuthContext } from "../Context/Auth_Context";
+import axios from 'axios';
+import dummyProfile from "../assets/img/dummyprofileimg.png";
+
+
 
 function Navbar() {
   const { user, logout } = useContext(AuthContext);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [profilePic, setProfilePic] = useState('');
   const dropdownRef = useRef(null);
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
+  };
+
+  useEffect(() => {
+    if (user?.email) {
+      fetchProfileImage(user.email);
+    } else {
+      setProfilePic(dummyProfile);
+    }
+  }, [user]);
+
+  const fetchProfileImage = async (email) => {
+    const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
+    try {
+      const response = await axios.get(`${VITE_BASE_URL}/api/uploadProfileImage/${email}`, { responseType: 'blob' });
+      if (response.status === 200) {
+        const imageBlob = response.data;
+        const imageUrl = URL.createObjectURL(imageBlob);
+        setProfilePic(imageUrl);
+      } else {
+        setProfilePic(dummyProfile);
+      }
+    } catch (error) {
+      console.error('Error fetching profile image:', error);
+      setProfilePic(dummyProfile);
+    }
   };
 
   useEffect(() => {
@@ -21,9 +51,9 @@ function Navbar() {
         setDropdownOpen(false);
       }
     };
-  
+
     document.addEventListener("mousedown", handleClickOutside);
-  
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -37,14 +67,14 @@ function Navbar() {
             <img src={logo} alt=""
             className="md:h-[2%] md:w-[80%] h-[3rem]" />
           </Link>
-        
-          <nav className="hidden md:flex md:ml-[18vw]"> 
+
+          <nav className="hidden md:flex md:ml-[18vw]">
             <div className="flex gap-10 font-semibold text-gray-900">
               <Link to="/" className="text-black hover:text-[#46c79f] ">
-              Home
-              </Link> 
+                Home
+              </Link>
               <Link to="/holidaypackages" className="text-black hover:text-[#46c79f]">
-              Holiday Packages
+                Holiday Packages
               </Link>
               <Link to="/events" className="text-black hover:text-[#46c79f]">
                 Events
@@ -52,7 +82,6 @@ function Navbar() {
               <Link to="/contact" className="text-black hover:text-[#46c79f]">
                 Contact Us
               </Link>
-             
             </div>
           </nav>
         </div>
@@ -72,24 +101,31 @@ function Navbar() {
           {user ? (
             <div className="relative inline-block text-left">
               <div className="flex items-center">
-                                
                 <button
-                    onClick={toggleDropdown}
-                    className="focus:outline-none ml-2 mr-[1rem]"
+                  onClick={toggleDropdown}
+                  className="focus:outline-none ml-2 mr-[1rem]"
                 >
+                  {profilePic ? (
+                    <img
+                      src={profilePic}
+                      alt="Profile"
+                      className="h-[2rem] w-[2rem] rounded-full"
+                      style={{ width: '1.7rem', height: '1.7rem' }}
+                    />
+                  ) : (
                     <CgProfile className="h-[2rem] w-[1.4rem]" style={{ width: '1.7rem', height: '1.7rem' }} />
+                  )}
                 </button>
-
               </div>
-             {dropdownOpen && (
-                  <div
-                    className="absolute right-0 z-10 mt-2 w-[12rem] h-[4rem] origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                    role="menu"
-                    aria-orientation="vertical"
-                    aria-labelledby="menu-button"
-                    tabIndex="-1"
-                    ref={dropdownRef}
-                  >
+              {dropdownOpen && (
+                <div
+                  className="absolute right-0 z-10 mt-2 w-[12rem] h-[4rem] origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="menu-button"
+                  tabIndex="-1"
+                  ref={dropdownRef}
+                >
                   <div>
                     <Link
                       to="/profile"
@@ -98,21 +134,19 @@ function Navbar() {
                       tabIndex="-1"
                       id="menu-item-0"
                     >
-                      {/* Profile */}
                       {user?.username}
                     </Link>
                     <br />
                     <Link to="/" >
-                    <button
-                      onClick={logout}
-                      className="text-gray-700 w-full px-6 py-2 text-left text-sm transition-transform transform-gpu hover:scale-105 hover:text-red-400"
-                      role="menuitem"
-                      tabIndex="-1"
-                      id="menu-item-3"
-                    >
-                      Logout
-                    </button>
-
+                      <button
+                        onClick={logout}
+                        className="text-gray-700 w-full px-6 py-2 text-left text-sm transition-transform transform-gpu hover:scale-105 hover:text-red-400"
+                        role="menuitem"
+                        tabIndex="-1"
+                        id="menu-item-3"
+                      >
+                        Logout
+                      </button>
                     </Link>
                   </div>
                 </div>
@@ -121,8 +155,8 @@ function Navbar() {
           ) : (
             <Link to="/login" >
               <button
-                className="bg-[#90CCBA] hover:bg-[#46c79f] flex items-center justify-center text-white font-bold py-2 md:px-8 px-[6px] rounded transition-colors duration-300">                
-               Login
+                className="bg-[#90CCBA] hover:bg-[#46c79f] flex items-center justify-center text-white font-bold py-2 md:px-8 px-[6px] rounded transition-colors duration-300">
+                Login
               </button>
             </Link>
           )}
@@ -189,17 +223,17 @@ function Navbar() {
                       
             {user ? (
               <Link to="/" >
-              <button
-                onClick={logout}
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100 transition duration-300"
-                role="menuitem"
-                tabIndex="-1"
-                id="menu-item-3"
-              >
-                Logout
-              </button>
+                <button
+                  onClick={logout}
+                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100 transition duration-300"
+                  role="menuitem"
+                  tabIndex="-1"
+                  id="menu-item-3"
+                >
+                  Logout
+                </button>
               </Link>
-            
+
             ) : (
               <Link
                 onClick={() => setMobileMenuOpen(false)}
@@ -217,4 +251,3 @@ function Navbar() {
 }
 
 export default Navbar;
-
