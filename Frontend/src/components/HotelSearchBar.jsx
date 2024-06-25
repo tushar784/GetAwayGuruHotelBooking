@@ -175,7 +175,7 @@ const HotelSearchBar = ({
         </div>
         <button
           onClick={handleSearch}
-          className="bg-[#90CCBA] hover:bg-[#46c79f] md:text-white md:font-bold md:h-16 md:pl-6 md:pr-6 md:mt-[-0.66rem] md:mr-[-4.5rem] md:border-[1px] md:rounded-r-lg "
+          className="bg-[#90CCBA] hover:bg-[#46c79f] md:text-white md:font-bold md:h-16 md:pl-6 md:pr-6 md:mt-[-0.66rem] md:mr-[-4.5rem] md:border-[1px] md:rounded-r-lg stickey "
         >
           Search
         </button>

@@ -31,11 +31,11 @@ function Navbar() {
 
   return (
     <div className="bg-white text-gray-900 z-50 w-full">
-      <header className="container mx-auto md:py-2 md:px-6 py-2 px-2 flex items-center justify-between">
+      <header className="container mx-auto md:py-2 py-2 px-2 flex items-center justify-between">
         <div className="flex items-center">
           <Link to='/'>
             <img src={logo} alt=""
-            className="md:h-16 md:w-22 h-[3rem]" />
+            className="md:h-[2%] md:w-[80%] h-[3rem]" />
           </Link>
         
           <nav className="hidden md:flex md:ml-[18vw]"> 
@@ -178,6 +178,13 @@ function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
             >
               Order History
+            </Link>
+            <Link
+              to="/contact"
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100 transition duration-300"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Contact Us
             </Link>
                       
             {user ? (

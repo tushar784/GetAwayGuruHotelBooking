@@ -61,7 +61,6 @@ const Routing = () => {
             {/* For Events Route */}
             <Route path="/events" element={<Events />} />
             <Route path="/events/:eventName" element={<EventsSinglePage />} />
-            {/* <Route path='/checkoutevent' element={<EventCheckout/>}/> */}
             <Route path="/events/checkout/:eventName" element={<EventCheckout />} />
 
 

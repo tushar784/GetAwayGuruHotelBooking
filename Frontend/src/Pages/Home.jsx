@@ -19,7 +19,7 @@ function Home() {
         <img
           src={coverimage}
           alt="Hotel Image"
-          className="hidden md:block md:pl-2 md:pr-2 md:w-[82rem] md:h-[32rem]"
+          className="hidden md:block md:pl-2 md:pr-2 md:w-[100%] md:h-[100%]"
         />
 
         <h1
