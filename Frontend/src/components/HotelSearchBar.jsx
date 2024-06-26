@@ -136,7 +136,9 @@ const HotelSearchBar = ({
   return (
     <>
       {/* Desktop view */}
+      {/* <div className="hidden md:flex md:h-16 md:w-full lg:w-5/6 xl:w-[60%] bg-white font-poppins md:justify-around absolute md:px-4 md:py-2.5 md:border-[1px] rounded-xl md:ml-2 md:mt-28 md:mb-2 max-w-screen-xl"> */}
       <div className="hidden md:flex md:h-16 md:w-full lg:w-5/6 xl:w-3/5 2xl:w-1/2 bg-white font-poppins md:justify-around md:absolute md:px-4 md:py-2.5 md:border-[1px] rounded-xl md:ml-2 md:mt-28 md:mb-2 max-w-screen-xl">
+
         <div className="md:items-center md:gap-2.5">
           <h1 className="md:ml-[0.3rem] md:font-semibold">Destination</h1>
           <select
